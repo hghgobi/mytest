@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a><font size="6">查询作业情况界面</font></a>
+<form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><font size="5">请输入姓名:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="name"></td>
+                </tr>
+                
+                
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="--->>点此查询<<---"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <hr/>
+    <h2>查询结果</h2>
+    <table border="1" cellpadding="5">
+        <tr>
+            <td><font size="2">学生姓名</font></td>
+            <td><font size="2">作业时间</font></td>
+            <td><font size="2">作业内容</font></td>
+            <td><font size="2">完成情况</font></td>
+            
+            
+        </tr>
+        {%for i in homeworkmessages %}
+            <tr>
+                <td><font size="2" color="red">{{i.homeworkstudent}}</font></td>
+                <td><font size="2" color="red">{{i.homeworktime|date:"Y年m月d号"}}</font></td>
+                <td><font size="2" color="red">{{i.homeworkname}}</font></td>
+                <td><font size="2" color="red">{{i.homeworkscore}}</font></td>
+            </tr>
+        {% empty %}
+        <p>----------</p>
+        {% endfor %}
+    </table>
+    
+{% endblock %}

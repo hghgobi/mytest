@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+<div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
+
+
+{% for i in showquestions %}
+  
+<a ><font size="4">第{{ i.questionid}}题</font></a>
+<form id="daan" action="" method="post">
+	<input type="text" name="studentanswer" value="">
+	
+	<input type="hidden" name="questionanswer" value={{i.questionanswer}} >
+	<input type="hidden" name="questionlist" value={{i.questiontestlist}} >
+	<input type="hidden" name="questionid" value={{i.questionid}} >
+	<input type="hidden" name="score" value={{score}} >
+<input type="submit" name="tijiao" value="提交答案">
+<img src="{{i.questiontext.url}}" width="100%" height="20%"/><br/>
+
+{% endfor %}
+
+</form>
+  
+</body>
+</html>

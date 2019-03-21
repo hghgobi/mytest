@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td>班级:</td>
+                    <td><input type="text" name="name"></td>
+                </tr>
+                 <tr>
+                    <td>教师:</td>
+                    <td><input type="text" name="teach"></td>
+                </tr>
+                
+                <tr>
+                    <td></td>
+                    <td><input type="submit" value ="提交"></td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+    <h1>信息展示</h1>
+    <table border="1">
+        <tr>
+            <td>班级</td>
+            <td>教师</td>
+            
+        </tr>
+        {%for i in classlist %}
+            <tr>
+                <td>{{i.classname}}</td>
+                <td>{{i.teachername}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    
+</body>
+</html>

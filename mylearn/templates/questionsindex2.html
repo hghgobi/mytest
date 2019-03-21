@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<a><font size="6">在线测试登陆界面</font></a>
+<form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><font size="5">请输入姓名:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="name"></td>
+                </tr>
+                
+                
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="--->>登陆并开始测试<<---" ></td>
+                </tr>
+
+                
+            </tbody>
+        </table>
+    </form>
+    <hr/>
+    <h2 style="color: red">输入错误，用户名不存在，请重新输入！</h2>
+
+
+{% endblock %}

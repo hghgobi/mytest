@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+	<title>Document</title>
+
+</head>
+<body>
+	
+
+	<button id='save'> send_ajax </button>
+	
+    
+	<input id='1', type="text" name="" value="">
+
+	
+
+	<script >
+		
+		$("#save").click(function(){
+			
+			
+			$.ajax({
+				url:"http://localhost:8000/ajax_handle/",
+				type:"get",
+				
+				success:function(data){
+					console.log(data);
+					
+					var data=JSON.stringify(data);
+
+					alert(data);
+				
+					
+					$("#1").val(data);
+					
+					
+					
+
+				
+					
+
+}
+
+
+					}
+				)
+		})
+
+   </script>
+	
+	<form id="frm" action="http://www.baidu.com">
+         考试还剩余<div id="time"></div>
+    </form>
+
+    <script>
+    	var overtime = $.cookie("overtime");
+    	if (overtime==null|| overtime==undefined ||overtime=='undefined'||overtime=='null')
+    	{ var now = new Date().getTime();
+    	  var endtime = 60 * 1000 +now;
+    	  var locksecends=60;
+    	  $.cookie("overtime",endtime);
+
+    	}
+    	else {
+    		var overtime = $.cookie("overtime");
+    		var now = new Date().getTime();
+    		var locksecends=parseInt((overtime-now)/1000);
+
+    	}
+    	
+       
+        var timeDiv = document.getElementById("time");
+        var timeObj = null;
+        function timer(){
+            if(locksecends == 0){
+             //倒计时结束，提交表单
+             document.getElementById("frm").submit();
+             window.clearInterval(timeObj);
+             $.cookie("overtime",null);
+             return;
+         }
+         var t = Math.floor(locksecends/60) +"分"+locksecends%60+"秒"
+         timeDiv.innerHTML = t;
+         locksecends --;
+     }
+         timeObj = window.setInterval(timer,1000);
+ </script>
+	
+</body>
+</html>
