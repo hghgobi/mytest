@@ -22,34 +22,23 @@ def addclasses(request):
 
 
 def Homeworkmessages(request):
-    if request.method =='POST':
-        name = request.POST.get('name')
-        
-        homeworkmessages = Homework.objects.filter(homeworkstudent__studentname=name)
-        if homeworkmessages:
-            return render(request,'homework.html',{"homeworkmessages":homeworkmessages})
-        else :
-            return render(request,'homework3.html')
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    homeworkmessages = Homework.objects.filter(homeworkstudent__studentname=teststudent)
+    return render(request,'homework.html',{'homeworkmessages':homeworkmessages})
 
-        
-    elif request.method =='GET':
-        
-        return render(request,'homework2.html')
-        
+    
       
 def Exammessages(request):
-    if request.method =='POST':
-        name = request.POST.get('name')
-        
-        exammessages = Exams.objects.filter(examstudent__studentname=name)
-        if exammessages:
-            return render(request,'exam.html',{"exammessages":exammessages})
-        else:
-            return render(request,'exam3.html')
-   
-    elif request.method =='GET':
-        
-        return render(request,'exam2.html')    
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    
+    exammessages = Exams.objects.filter(examstudent__studentname=teststudent)
+    return render(request,'exam.html',{'exammessages':exammessages}) 
+
+
 def Daohang(request):
     return render(request,'index2.html')
 
