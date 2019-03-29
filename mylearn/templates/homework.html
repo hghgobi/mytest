@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-    <meta charset="UTF-8">
-    <title>作业情况查询</title>
-</head>
-<body bgcolor="#b8fec0">
+{% extends 'base2.html' %}  
+{% block content %}
  <a><font size="6">作业情况查询结果</font></a>
   <table border="1" cellpadding="5">
         <tr>
@@ -19,7 +13,7 @@
         {%for i in homeworkmessages %}
             <tr>
                 <td><font size="2" color="red">{{i.homeworkstudent}}</font></td>
-                <td><font size="2" color="red">{{i.homeworktime|date:"Y年m月d号"}}</font></td>
+                <td><font size="2" color="red">{{i.homeworktime}}</font></td>
                 <td><font size="2" color="red">{{i.homeworkname}}</font></td>
                 <td><font size="2" color="red">{{i.homeworkscore}}</font></td>
             </tr>
@@ -27,5 +21,6 @@
         <p><font size="2" color="red">暂无相关信息</font></p>
         {% endfor %}
     </table>       
-</body>
-</html>
+    
+{% endblock %}
+

@@ -1,7 +1,6 @@
-{% extends 'base2.html' %}
 
+{% extends 'base2.html' %}  
 {% block content %}
-<a>本次测试你的分数为：{{score}},低于历史纪录的分数将不会保存！</a>
 <p><font size="6">测试排行榜</font></p>
     
     <table border="1" cellpadding="5">
@@ -15,10 +14,10 @@
             
             
         </tr>
-        {%for i in showscores %}
+        {%for i in testranks %}
             <tr>
                 <td><font size="1" color="red">{{i.scorename}}</font></td>
-                <td><font size="1" color="red">{{i.scoreupdatetime}}</font></td>
+                <td><font size="1" color="red">{{i.scoretime}}</font></td>
                 <td><font size="1" color="red">{{i.scoreid}}</font></td>
                 <td><font size="1" color="red">{{i.testscore}}</font></td>
                 <td><font size="1" color="red">{{i.correctpercent}}</font></td>
@@ -28,5 +27,7 @@
         <p>----------</p>
         {% endfor %}
     </table>
-   
+    </table>    
+    
 {% endblock %}
+

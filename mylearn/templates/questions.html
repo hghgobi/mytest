@@ -6,13 +6,20 @@
 	<meta charset="UTF-8">
 	
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-	<title>Document</title>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, null, document.URL);
+    });
+   </script>
+	<title>在线测试</title>
 	
 	
 
 </head>
-<body>
+<body bgcolor="#b8fec0">
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
 
  {% for i in showquestions %} 
@@ -43,8 +50,9 @@
 </form>
 {%endfor%}
 
-
-
+===========================================================================================================================
+===========================================================================================================================
+<input type="button" id="btn" value="提前交卷点此" >
 
 
  <script>
@@ -52,8 +60,8 @@
     	var overtime = $.cookie("overtime");
     	if (overtime==null|| overtime==undefined ||overtime=='undefined'||overtime=='null')
     	{ var now = new Date().getTime();
-    	  var endtime = 60 * 1000 +now;
-    	  var locksecends=60;
+    	  var endtime = 1200 * 1000 +now;
+    	  var locksecends=1200;
     	  $.cookie("overtime",endtime);
 
     	}
@@ -82,7 +90,18 @@
      }
          timeObj = window.setInterval(timer,1000);})
  </script>
-
+ <script>
+    
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick = function(){
+        $("#11").val('1');
+             document.getElementById("checkbox").submit();
+             
+             $.cookie("overtime",null);
+    };
+             
+            
+ </script>
  
-    </body>
+</body>
 </html>

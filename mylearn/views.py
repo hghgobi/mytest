@@ -43,6 +43,11 @@ def Daohang(request):
     return render(request,'index2.html')
 
 def Onlinetestlogin(request):
+    teststudent=request.session.get("teststudent")
+    if  teststudent:
+        return redirect('../indexs')
+
+
     if request.method == "POST":
         user = request.POST.get('user')
         pwd = request.POST.get('pwd')
@@ -61,7 +66,25 @@ def Onlinetestlogin(request):
     return render(request,'questionsindex.html')
 
 def Indexs(request):
-    return render(request,'base.html')
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    classnotes=Classnotes.objects.all()
+
+    return render(request,'base.html',{'classnotes':classnotes})
+def Classnoteslist(request):
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    classnotes=Classnotes.objects.all()
+    return render(request,'classnoteslist.html',{'classnotes':classnotes})
+
+
+
+
+def Logout(request):
+    request.session.flush()
+    return redirect("../")
 
 
 def Learningnews(request):
@@ -71,6 +94,20 @@ def Learningnews(request):
     homeworkmessages = Homework.objects.filter(homeworkstudent__studentname=teststudent)
     exammessages = Exams.objects.filter(examstudent__studentname=teststudent)
     return render(request,'learningnews.html',{'homeworkmessages':homeworkmessages,'exammessages':exammessages})
+def Classnotesdetail(request,notename_pk):
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    classnotesdetail=Classnotes.objects.filter(id=notename_pk)
+    return render(request,'classnotes.html',{'classnotesdetail':classnotesdetail})
+
+
+
+
+
+
+
+    
 
 
     
@@ -152,6 +189,14 @@ def Showquestions(request):
 
             
             return render(request,'questions3.html',{'showscores':showscores,'score':score,'correctpercent':correctpercent,'testall':testall})
+
+def Onlinetestrank(request):
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    testrank=Scores.objects.all()
+    testranks=testrank.order_by('-testscore')
+    return render(request,'onlinetestrank.html',{'testranks':testranks})
 
 
 

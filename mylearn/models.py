@@ -93,10 +93,15 @@ class Scores(models.Model):
 		names=Scores.objects.filter(scorename=teststudent)
 		if names:
 			if names[0].testscore<=int(score):
-				names[0].testscore=score
-				names[0].correctpercent=correctpercent
-				names[0].testamount=testamount
-				names[0].save()
+				#names[0].testscore=score
+				#names[0].correctpercent=correctpercent
+				#names[0].testamount=testamount
+				#names[0].save()
+				names.delete()
+				clscore =cls(scorename=teststudent,testscore = score,scoreid=scoreid,correctpercent=correctpercent,testamount=testamount)
+				clscore.save()
+				return clscore
+
 			else:
 				pass
 			
