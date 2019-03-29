@@ -21,29 +21,35 @@
 </head>
 <body bgcolor="#b8fec0">
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
-
- {% for i in showquestions %} 
-  <a ><font size="4">已做{{questionids}}题--目前得分{{scorelinshi}}分--</font></a>考试时间还剩余<a id="time"></a> 
-
-<form id="checkbox" action="" method="post">
-	<input  type="checkbox" name="studentanswer" value="A">A
-	<input  type="checkbox" name="studentanswer" value="B">B
-	<input  type="checkbox" name="studentanswer" value="C">C
-	<input  type="checkbox" name="studentanswer" value="D">D
-	<input  type="hidden" name="questionanswer" value={{i.questionanswer}} >
-	<input  type="hidden" name="questionlist" value={{i.questiontestlist}} >
-	<input  type="hidden" name="questionids" value={{questionids}} >
-	<input  type="hidden" name="score" value={{score}} >
-	<input  type="hidden" name="listidss" value='{{listidss}}'>
-	<input  id='11' type="hidden" name="timeover" value='' >
-	<input  type="hidden" name="teststudent" value={{teststudent}} >
-	<input  type="hidden" name="testall" value={{testall}}>
+<style> 
+div{text-align:center} 
+</style> 
+{% for i in showquestions %}
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a ><font size="4">已做{{questionids}}题--目前得分{{scorelinshi}}分--</font></a>考试时间还剩余<a id="time"></a> </div>
+                    <div class="panel-body">
+                     <form id="checkbox" action="" method="post">
+    <input  type="checkbox" name="studentanswer" value="A">A
+    <input  type="checkbox" name="studentanswer" value="B">B
+    <input  type="checkbox" name="studentanswer" value="C">C
+    <input  type="checkbox" name="studentanswer" value="D">D
+    <input  type="hidden" name="questionanswer" value={{i.questionanswer}} >
+    <input  type="hidden" name="questionlist" value={{i.questiontestlist}} >
+    <input  type="hidden" name="questionids" value={{questionids}} >
+    <input  type="hidden" name="score" value={{score}} >
+    <input  type="hidden" name="listidss" value='{{listidss}}'>
+    <input  id='11' type="hidden" name="timeover" value='' >
+    <input  type="hidden" name="teststudent" value={{teststudent}} >
+    <input  type="hidden" name="testall" value={{testall}}>
     <input  type="hidden" name="correctamount" value={{correctamount}} >
 
-		
+        
      
-    <input id="tj" type="submit" name="tijiao" value="提交答案">	
-	
+    <input id="tj" type="submit" name="tijiao" value="提交答案">    
+    
 
 <img id =6 src="{{i.questiontext.url}}" width="100%" height="20%"/><br/>
 
@@ -53,7 +59,9 @@
 <hr/>
 <hr/>
 <input type="button" id="btn" value="提前交卷点此" >
-
+                    </div>
+                </div>
+            </div>        
 
  <script>
  	$(document).ready(function(){
