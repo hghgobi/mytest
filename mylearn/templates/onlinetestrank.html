@@ -1,33 +1,41 @@
 
 {% extends 'base2.html' %}  
 {% block content %}
-<p><font size="6">测试排行榜</font></p>
-    
-    <table border="1" cellpadding="5">
+<style> 
+div{text-align:center} 
+</style> 
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><p><font size="6">测试排行榜</font></p></div>
+                    <div class="panel-body">
+                      <table border="1" cellpadding="6">
         <tr>
-            <td><font size="1">学生姓名</font></td>
-            <td><font size="1">最后测试时间</font></td>
-            <td><font size="1">测试内容</font></td>
-            <td><font size="1">考试成绩</font></td>
-            <td><font size="1">正确率</font></td>
-            <td><font size="1">答题总数</font></td>
+            <td><font size="4">学生姓名</font></td>
+            <td><font size="4">最后测试时间</font></td>
+            <td><font size="4">测试内容</font></td>
+            <td><font size="4">考试成绩</font></td>
+            <td><font size="4">正确率</font></td>
+            <td><font size="4">答题总数</font></td>
             
             
         </tr>
         {%for i in testranks %}
             <tr>
-                <td><font size="1" color="red">{{i.scorename}}</font></td>
-                <td><font size="1" color="red">{{i.scoretime}}</font></td>
-                <td><font size="1" color="red">{{i.scoreid}}</font></td>
-                <td><font size="1" color="red">{{i.testscore}}</font></td>
-                <td><font size="1" color="red">{{i.correctpercent}}</font></td>
-                <td><font size="1" color="red">{{i.testamount}}</font></td>
+                <td><font size="3" color="red">{{i.scorename}}</font></td>
+                <td><font size="3" color="red">{{i.scoretime}}</font></td>
+                <td><font size="3" color="red">{{i.scoreid}}</font></td>
+                <td><font size="3" color="red">{{i.testscore}}</font></td>
+                <td><font size="3" color="red">{{i.correctpercent}}</font></td>
+                <td><font size="3" color="red">{{i.testamount}}</font></td>
             </tr>
         {% empty %}
         <p>----------</p>
         {% endfor %}
-    </table>
-    </table>    
-    
+    </table> 
+                    </div>
+                </div>
+            </div>      
 {% endblock %}
 
