@@ -21,15 +21,15 @@
 </head>
 <body bgcolor="#b8fec0">
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
-<style> 
-div{text-align:center} 
-</style> 
+    <a ><font size="4"> 已做{{questionids}}题--目前得分{{scorelinshi}}分--</font></a>考试时间还剩余<a id="time"></a>
+
 {% for i in showquestions %}
+
  <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><a ><font size="4">已做{{questionids}}题--目前得分{{scorelinshi}}分--</font></a>考试时间还剩余<a id="time"></a> </div>
+                    <div class="panel-heading"></div>
                     <div class="panel-body">
                      <form id="checkbox" action="" method="post">
     <input  type="checkbox" name="studentanswer" value="A">A
