@@ -28,5 +28,38 @@
         <p>----------</p>
         {% endfor %}
     </table>
-   
+   <style> 
+div{text-align:center} 
+</style> 
+<a>本次测试你的分数为：{{score}},低于历史纪录的分数将不会保存！</a>
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><p><font size="6">测试排行榜</font></p></div>
+                    <div class="panel-body">
+                      <table border="1" cellpadding="6">
+        <tr>
+            <td><font size="3">学生姓名</font></td>
+            <td><font size="3">最后测试时间</font></td>
+            <td><font size="3">测试内容</font></td>
+            <td><font size="3">考试成绩</font></td>
+            <td><font size="3">正确率</font></td>
+            <td><font size="3">答题总数</font></td>
+            
+            
+        </tr>
+        {%for i in showscores %}
+            <tr>
+                <td><font size="2" color="red">{{i.scorename}}</font></td>
+                <td><font size="2" color="red">{{i.scoreupdatetime}}</font></td>
+                <td><font size="2" color="red">{{i.scoreid}}</font></td>
+                <td><font size="2" color="red">{{i.testscore}}</font></td>
+                <td><font size="2" color="red">{{i.correctpercent}}</font></td>
+                <td><font size="2" color="red">{{i.testamount}}</font></td>
+            </tr>
+        {% empty %}
+        <p>----------</p>
+        {% endfor %}
+    </table>
 {% endblock %}
