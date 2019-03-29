@@ -1,15 +1,17 @@
 {% extends 'base2.html' %}  
 {% block content %}
-    
-
-    {% for i in classnotesdetail %}
-        
-        <h3>{{ i.notename }}</h3>
-        <p>发表日期：{{i.notetime}}</p>
-        <p>{{ i.notecontent}}</p>
-        
-    
-    {% endfor %}
-    
+<style> 
+div{text-align:center} 
+</style>
+{% for i in classnotesdetail %} 
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h3>{{ i.notename }}</h3></div>
+                    <div class="panel-body">
+                     <p>发表日期：{{i.notetime}}</p>
+                     <p>{{ i.notecontent}}</p>
+                     {% endfor %}
 {% endblock %}
 
