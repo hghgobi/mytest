@@ -57,6 +57,8 @@ class Classnotes(models.Model):
 	noteupdatetime = models.DateTimeField(auto_now=True)
 	def __str__(self):
 		return self.notename
+	class Meta:
+		ordering = ['-id']
 #在线测试
 class onlinetestgrade(models.Model):
 	gradename= models.CharField(max_length=50)
