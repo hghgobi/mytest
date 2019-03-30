@@ -7,6 +7,7 @@ import random
 import numpy as np
 from django.core import serializers
 from django.contrib import auth
+from django.core.paginator import Paginator
 
 # Create your views here.
 def addclasses(request):
@@ -69,15 +70,28 @@ def Indexs(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
-    classnotes=Classnotes.objects.all()
+    notes_all_list = Classnotes.objects.all()
+    paginator = Paginator(notes_all_list,6)
+    page_num = request.GET.get('page',1)
+    page_of_notes = paginator.get_page(page_num)
+    currentr_page_num = page_of_notes.number
+    if currentr_page_num>=3:
+        page_range = [currentr_page_num-2,currentr_page_num-1,currentr_page_num,currentr_page_num+1,currentr_page_num+2]
+    else:
+        page_range = [currentr_page_num,currentr_page_num+1,currentr_page_num+2]
 
-    return render(request,'base.html',{'classnotes':classnotes})
+    return render(request,'base.html',{'page_of_notes':page_of_notes,'page_range':page_range})
 def Classnoteslist(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
-    classnotes=Classnotes.objects.all()
-    return render(request,'classnoteslist.html',{'classnotes':classnotes})
+    
+    notes_all_list = Classnotes.objects.all()
+    paginator = Paginator(notes_all_list,6)
+    page_num = request.GET.get('page',1)
+    page_of_notes = paginator.get_page(page_num)
+
+    return render(request,'classnoteslist.html',{'page_of_notes':page_of_notes})
 
 
 
