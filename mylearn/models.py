@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 
 # Create your models here.
 class Classes(models.Model):
@@ -52,7 +53,7 @@ class Exams(models.Model):
 
 class Classnotes(models.Model):
 	notename = models.CharField(max_length=200)
-	notecontent = models.TextField()
+	notecontent = RichTextUploadingField()
 	notetime = models.DateTimeField(auto_now_add=True)
 	noteupdatetime = models.DateTimeField(auto_now=True)
 	def __str__(self):

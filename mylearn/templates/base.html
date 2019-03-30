@@ -19,7 +19,7 @@ h3{text-align:left}
                                     
                                     <span class="glyphicon glyphicon-time"></span>{{ i.notetime }}
                                 </p>
-                                <p>{{ i.notecontent|truncatechars:10 }}</p>
+                                <p>{{ i.notecontent|striptags|truncatechars:10 }}</p>
                                 <hr/>
                             </div>
                         {% empty %}
