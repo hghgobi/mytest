@@ -75,10 +75,8 @@ def Indexs(request):
     page_num = request.GET.get('page',1)
     page_of_notes = paginator.get_page(page_num)
     currentr_page_num = page_of_notes.number
-    if currentr_page_num>=3:
-        page_range = [currentr_page_num-2,currentr_page_num-1,currentr_page_num,currentr_page_num+1,currentr_page_num+2]
-    else:
-        page_range = [currentr_page_num,currentr_page_num+1,currentr_page_num+2]
+    page_range = list(range(max(currentr_page_num - 2,1),currentr_page_num)) + \
+                 list(range(currentr_page_num,min(currentr_page_num + 2,paginator.num_pages)+1))
 
     return render(request,'base.html',{'page_of_notes':page_of_notes,'page_range':page_range})
 def Classnoteslist(request):
