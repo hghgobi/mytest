@@ -21,4 +21,4 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('classnoteslist',views.Classnoteslist,name="classnoteslists"),
 
 
-] 
+]
