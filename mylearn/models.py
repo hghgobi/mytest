@@ -35,10 +35,20 @@ class Students(models.Model):
 class Homework(models.Model):
 	homeworkname = models.CharField(max_length=200)
 	homeworkscore = models.CharField(max_length=50)
-	homeworktime =models.CharField(max_length=200)
+	homeworktime =models.DateTimeField(auto_now_add=True)
 	homeworkstudent = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
 	class Meta:
 		ordering = ['-homeworktime']
+	@classmethod
+	def createhomework(cls,idd,score,homeworkname):
+		name = Students.objects.filter(pk=idd)
+		homeworkstudent=name[0]
+		homework = cls(homeworkstudent=homeworkstudent,homeworkscore=score,homeworkname=homeworkname)
+		homework.save()
+		return homework
+		
+		
+	
 
 class Exams(models.Model):
 	examname = models.CharField(max_length=200)

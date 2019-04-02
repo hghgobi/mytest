@@ -210,6 +210,42 @@ def Onlinetestrank(request):
     testranks=testrank.order_by('-testscore')
     return render(request,'onlinetestrank.html',{'testranks':testranks})
 
+def Addhomeworklogin(request):
+    addhomeworkadmin=request.session.get("addhomeworkadmin")
+    if  addhomeworkadmin:
+        return redirect('../addhomework')
+
+
+    if request.method == "POST":
+        user = request.POST.get('user')
+        pwd = request.POST.get('pwd')
+
+        addhomeworkadmin=Students.objects.filter(studentname=user,studentid=pwd)
+
+        if addhomeworkadmin:
+            request.session["addhomeworkadmin"]=user
+            return redirect('../addhomework')
+        else:
+            return render(request,'addhomeworkindex.html',{'errors':'错误，请重新输入！'})
+      
+    return render(request,'addhomeworkindex.html')
+def Addhomework(request):
+    addhomeworkadmin=request.session.get("addhomeworkadmin")
+    if not addhomeworkadmin:
+        return redirect('../addhomeworklogin')
+    if request.method == 'GET':
+        return render(request,'addhomework.html')
+        
+
+
+    idd=request.POST.get('idd')
+    idd=int(idd)
+    score=request.POST.get('score')
+    homeworkname='作业'
+    Homework.createhomework(idd,score,homeworkname)
+    return render(request,'addhomework.html')
+
+
 
 
 def Testajax(request):

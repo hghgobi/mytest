@@ -19,6 +19,8 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('onlinetestrank/',views.Onlinetestrank),
                 path('classnotes/<int:notename_pk>',views.Classnotesdetail,name="classnotes"),
                 path('classnoteslist',views.Classnoteslist,name="classnoteslists"),
+                path('addhomework/',views.Addhomework),
+                path('addhomeworklogin/',views.Addhomeworklogin),
 
 
 ]
