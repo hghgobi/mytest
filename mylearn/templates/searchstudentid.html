@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<title>首页</title>
+</head>
+<body>
+
+
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="5">学号查询界面</font></a></div>
+                    <hr/>
+                    <div class="panel-body">
+                     <form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><font size="4">请输入家长手机号:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="phone"></td>
+                </tr>
+                
+                
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="--->>点此查询<<---" ></td>
+                </tr>
+               
+
+                
+
+                
+            </tbody>
+        </table>
+                <a><font size="5" color="red">{{errorss}}</font></a>
+                 <p></p>
+                 {%for i in studentids%}
+                <a><font size="5" color="red">姓名：{{i.student}}</font></a>
+                <p></p><a><font size="5" color="red">学号：{{i.studentid}}</font></a>
+                {%endfor%}
+
+                <p></p><p></p><a href="../../"><font size="5" color="blue" > ——-->>点此返回登陆界面<<——--</font></a>
+    </form> 
+   
+                    </div>
+                </div>
+            </div>      
+</body>
+</html>

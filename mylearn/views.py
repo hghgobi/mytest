@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid
 import json
 import random
 import numpy as np
@@ -65,6 +65,23 @@ def Onlinetestlogin(request):
             return render(request,'questionsindex.html',{'errors':'姓名或学号错误，请重新输入！'})
       
     return render(request,'questionsindex.html')
+def Searchstudent_id(request):
+    if request.method =='GET':
+        return render(request,'searchstudentid.html')
+    if request.method =='POST':
+        phone = request.POST.get('phone')
+        if not  phone.isdigit():
+            return render(request,'searchstudentid.html',{'errorss':'信息不存在或手机号输错！请重新输入！'})
+
+        
+        studentids= Searchstudentid.objects.filter(phone=phone)
+        if studentids :
+            return render(request,'searchstudentid.html',{'studentids':studentids})
+        else:
+            errorss='信息不存在或手机号输错！请重新输入！'
+            return render(request,'searchstudentid.html',{'errorss':errorss})
+        
+
 
 def Indexs(request):
     teststudent=request.session.get("teststudent")

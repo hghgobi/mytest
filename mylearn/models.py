@@ -123,8 +123,14 @@ class Scores(models.Model):
 			clscore.save()
 			return clscore
      
-        
-        	
+class Searchstudentid(models.Model):
+	phone = models.IntegerField()
+	student= models.CharField(max_length=200)
+	studentid = models.IntegerField()
+	def __str__(self):
+		return self.student
+
+
         	
         	
 

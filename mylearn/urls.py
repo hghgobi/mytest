@@ -21,6 +21,6 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('classnoteslist',views.Classnoteslist,name="classnoteslists"),
                 path('addhomework/',views.Addhomework),
                 path('addhomeworklogin/',views.Addhomeworklogin),
-
+                path('searchstudentid/',views.Searchstudent_id),
 
 ]
