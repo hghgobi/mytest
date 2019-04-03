@@ -124,7 +124,7 @@ class Scores(models.Model):
 			return clscore
      
 class Searchstudentid(models.Model):
-	phone = models.IntegerField()
+	phone = models.BigIntegerField()
 	student= models.CharField(max_length=200)
 	studentid = models.IntegerField()
 	def __str__(self):
