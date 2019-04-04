@@ -10,7 +10,9 @@ div{text-align:center}
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3>{{ i.notename }}</h3></div>
                     <div class="panel-body">
-                     <p>发表日期：{{i.notetime}}</p>
+                     <p>发表日期：{{i.notetime}}
+                     &nbsp;&nbsp;
+                  <span class="glyphicon glyphicon-eye-open"></span>&nbsp;阅读({{ i.readed_num }})</p>
                      <p>{{ i.notecontent|safe}}</p>
                      {% endfor %}
 {% endblock %}

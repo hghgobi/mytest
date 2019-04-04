@@ -24,7 +24,7 @@ class StudentsAdmin(admin.ModelAdmin):
 
 @admin.register(Classnotes)
 class ClassnotesAdmin(admin.ModelAdmin):
-	list_display = ['pk','notetime','notename','noteupdatetime']
+	list_display = ['pk','notetime','notename','noteupdatetime','readed_num']
 
 @admin.register(onlinetestgrade)
 class ClassnotesAdmin(admin.ModelAdmin):

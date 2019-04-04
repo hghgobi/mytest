@@ -17,7 +17,8 @@ h3{text-align:left}
                                 <h3><a href="../../classnotes/{{i.pk}}">{{ i.notename }}</a></h3>
                                 <p class="blog-info">
                                     
-                                    <span class="glyphicon glyphicon-time"></span>{{ i.notetime }}
+                                    <span class="glyphicon glyphicon-time"></span>{{ i.notetime }}&nbsp;&nbsp;
+                                    <span class="glyphicon glyphicon-eye-open"></span>&nbsp;阅读({{ i.readed_num }})
                                 </p>
                                 <p>{{ i.notecontent|striptags|truncatechars:10 }}</p>
                                 <hr/>

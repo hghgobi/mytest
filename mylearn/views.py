@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
 from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid
@@ -128,6 +128,10 @@ def Classnotesdetail(request,notename_pk):
     if not teststudent:
         return redirect('../testlogin')
     classnotesdetail=Classnotes.objects.filter(id=notename_pk)
+    classnotes=get_object_or_404(Classnotes,id=notename_pk)
+    classnotes.readed_num += 1
+    classnotes.save()
+
     return render(request,'classnotes.html',{'classnotesdetail':classnotesdetail})
 
 

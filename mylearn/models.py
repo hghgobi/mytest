@@ -66,6 +66,7 @@ class Classnotes(models.Model):
 	notecontent = RichTextUploadingField()
 	notetime = models.DateTimeField(auto_now_add=True)
 	noteupdatetime = models.DateTimeField(auto_now=True)
+	readed_num =models.IntegerField(default=0)
 	def __str__(self):
 		return self.notename
 	class Meta:
