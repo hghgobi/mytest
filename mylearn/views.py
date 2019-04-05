@@ -9,6 +9,10 @@ from django.core import serializers
 from django.contrib import auth
 from django.core.paginator import Paginator
 
+from django.contrib.contenttypes.models import ContentType
+from comment.models import Comment
+
+
 # Create your views here.
 def addclasses(request):
     if request.method =='POST':
@@ -118,6 +122,7 @@ def Logout(request):
 
 def Learningnews(request):
     teststudent=request.session.get("teststudent")
+    user=teststudent
     if not teststudent:
         return redirect('../testlogin')
     homeworkmessages = Homework.objects.filter(homeworkstudent__studentname=teststudent)
@@ -125,14 +130,22 @@ def Learningnews(request):
     return render(request,'learningnews.html',{'homeworkmessages':homeworkmessages,'exammessages':exammessages})
 def Classnotesdetail(request,notename_pk):
     teststudent=request.session.get("teststudent")
+    notename_pk=notename_pk
+    user=teststudent
     if not teststudent:
         return redirect('../testlogin')
     classnotesdetail=Classnotes.objects.filter(id=notename_pk)
     classnotes=get_object_or_404(Classnotes,id=notename_pk)
+   
     classnotes.readed_num += 1
     classnotes.save()
 
-    return render(request,'classnotes.html',{'classnotesdetail':classnotesdetail})
+    notes_content_type = ContentType.objects.get_for_model(classnotes)
+    comments = Comment.objects.filter(content_type=notes_content_type, object_id=notename_pk)
+  
+    response = render(request,'classnotes.html',{'classnotesdetail':classnotesdetail,'comments':comments,'user':user,'notename_pk':notename_pk})
+   
+    return response
 
 
 
