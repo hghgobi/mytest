@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord
 import json
 import random
 import numpy as np
@@ -91,6 +91,9 @@ def Indexs(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
+    loginrecord = Loginrecord()
+    loginrecord.loginuser=teststudent
+    loginrecord.save()
     notes_all_list = Classnotes.objects.all()
     paginator = Paginator(notes_all_list,6)
     page_num = request.GET.get('page',1)

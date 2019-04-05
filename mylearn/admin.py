@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord
 # Register your models here.
 @admin.register(Classes)
 class ClassesAdmin(admin.ModelAdmin):
@@ -45,4 +45,9 @@ class ClassnotesAdmin(admin.ModelAdmin):
 @admin.register(Searchstudentid)
 class ClassnotesAdmin(admin.ModelAdmin):
 	list_display = ['phone','student','studentid']
+@admin.register(Loginrecord)
+class LogintimeAdmin(admin.ModelAdmin):
+	list_display = ('logintime','loginuser')
+
+
 	

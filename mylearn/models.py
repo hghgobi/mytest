@@ -131,6 +131,15 @@ class Searchstudentid(models.Model):
 	def __str__(self):
 		return self.student
 
+class Loginrecord(models.Model):
+	logintime = models.DateTimeField(auto_now_add=True)
+	loginuser = models.CharField(max_length=50)
+	class Meta:
+		ordering=['-logintime']
+
+
+
+
 
         	
         	
