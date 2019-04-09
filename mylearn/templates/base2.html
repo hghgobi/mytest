@@ -14,22 +14,33 @@
 <style> 
 div{text-align:center} 
 </style> 
+
 <div class="nav">
  <ul class="nav nav-tabs">
-       <li> <a  href="../../"><font size="5" color="black">
-            首页</font>
-        </a></li>
-       
-       <li> <a href="../../exam" ><font size="5" color="black">考试</font></a></li>
-	    <li><a href="../../homework" ><font size="5" color="black">作业</font></a></li>
-       <li> <a href="../../class" ><font size="5" color="black">课堂</font></a></li>
+       <li> <a  href="../../" class="btn btn-primary"><font size="5" color="black">首页</font> </a></li>
+       <li> <a href="../../exam" class="btn btn-info"><font size="5" color="black">考试</font></a></li>
+	    <li><a href="../../homework" class="btn btn-success" ><font size="5" color="black">作业</font></a></li>
+       <li> <a href="../../class" class="btn btn-warning" ><font size="5" color="black">课堂</font></a></li>
 
-        <li><a href="../../onlinetestrank" ><font size="5" color="black">在线测试排行榜</font></a></li>
-	    <li><a href="../../onlinetest" ><font size="5" color="black">在线测试</font></a></li>
-	   <li> <a href="../../logout" ><font size="4" color="red">注销</font></a></li>
+       <li class="dropdown"> <a   data-toggle="dropdown" class="btn btn-danger"><font size="5" color="black">其他</font><span class="caret"></span></a> 
+        <ul class="dropdown-menu"> 
+            
+            <li><a href="../../onlinetestrank" class="btn btn-primary"><font size="4" color="black">在线测试排行</font></a></li> 
+            
+            <li><a href="../../onlinetest" class="btn btn-info"><font size="4" color="black">在线测试</font></a></li>
+            
+            
+            <li><a href="../../logout" class="btn btn-success"><font size="4" color="red">注销</font></a></li>
+            
+
+        </ul> 
+
+        </li> 
 
     </ul>
 </div>
+
+
     {% block content %}{% endblock %}
 </body>
 
