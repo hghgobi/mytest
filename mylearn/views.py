@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss
 import json
 import random
 import numpy as np
@@ -32,6 +32,13 @@ def Homeworkmessages(request):
         return redirect('../testlogin')
     homeworkmessages = Homework.objects.filter(homeworkstudent__studentname=teststudent)
     return render(request,'homework.html',{'homeworkmessages':homeworkmessages})
+
+def Classmessages(request):
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    classmessages = Classingss.objects.filter(classstudent__studentname=teststudent)
+    return render(request,'class.html',{'classmessages':classmessages})
 
     
       
@@ -92,7 +99,7 @@ def Indexs(request):
     if not teststudent:
         return redirect('../testlogin')
     loginrecord=get_object_or_404(Loginrecord,loginuser=teststudent)
-    
+
     loginrecord.logincount =int(loginrecord.logincount)+1
     loginrecord.save()
     notes_all_list = Classnotes.objects.all()
@@ -282,6 +289,41 @@ def Addhomework(request):
     homeworkname='作业'
     Homework.createhomework(idd,score,homeworkname)
     return render(request,'addhomework.html')
+def Addclasslogin(request):
+    addclassadmin=request.session.get("addclassadmin")
+    if  addclassadmin:
+        return redirect('../addclass')
+
+
+    if request.method == "POST":
+        user = request.POST.get('user')
+        pwd = request.POST.get('pwd')
+
+        addclassadmin=Students.objects.filter(studentname=user,studentid=pwd)
+
+        if addclassadmin:
+            request.session["addclassadmin"]=user
+            return redirect('../addclass')
+        else:
+            return render(request,'addclassindex.html',{'errors':'错误，请重新输入！'})
+      
+    return render(request,'addclassindex.html')
+
+def Addclass(request):
+    addclassadmin=request.session.get("addclassadmin")
+    if not addclassadmin:
+        return redirect('../addclasslogin')
+    if request.method == 'GET':
+        return render(request,'addclass.html')
+        
+
+
+    idd=request.POST.get('idd')
+    idd=int(idd)
+    score=request.POST.get('score')
+    classname='课堂情况'
+    Classingss.createclass(idd,score,classname)
+    return render(request,'addclass.html')
 
 
 

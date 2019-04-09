@@ -46,6 +46,21 @@ class Homework(models.Model):
 		homework = cls(homeworkstudent=homeworkstudent,homeworkscore=score,homeworkname=homeworkname)
 		homework.save()
 		return homework
+
+class Classingss(models.Model):
+	classname = models.CharField(max_length=200)
+	classscore = models.CharField(max_length=200)
+	classtime =models.DateTimeField(auto_now_add=True)
+	classstudent = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
+	class Meta:
+		ordering = ['-classtime']
+	@classmethod
+	def createclass(cls,idd,score,classname):
+		name = Students.objects.filter(pk=idd)
+		classstudent=name[0]
+		addclass = cls(classstudent=classstudent,classscore=score,classname=classname)
+		addclass.save()
+		return addclass
 		
 		
 	

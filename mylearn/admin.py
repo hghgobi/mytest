@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss
 # Register your models here.
 @admin.register(Classes)
 class ClassesAdmin(admin.ModelAdmin):
@@ -12,6 +12,9 @@ class CoursesAdmin(admin.ModelAdmin):
 @admin.register(Homework)
 class HomeworkAdmin(admin.ModelAdmin):
 	list_display = ['homeworktime','homeworkname','homeworkstudent','homeworkscore']
+@admin.register(Classingss)
+class ClassingssAdmin(admin.ModelAdmin):
+	list_display = ['classtime','classname','classstudent','classscore']
 
 
 @admin.register(Exams)

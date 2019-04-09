@@ -6,6 +6,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [path('homework/',views.Homeworkmessages),
+               path('class/',views.Classmessages),
                 path('exam/',views.Exammessages),
                 path('',views.Onlinetestlogin),
                 #path('test/rank/',views.Showscores),
@@ -21,6 +22,8 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('classnoteslist',views.Classnoteslist,name="classnoteslists"),
                 path('addhomework/',views.Addhomework),
                 path('addhomeworklogin/',views.Addhomeworklogin),
+                path('addclass/',views.Addclass),
+                path('addclasslogin/',views.Addclasslogin),
                 path('searchstudentid/',views.Searchstudent_id),
 
 ]
