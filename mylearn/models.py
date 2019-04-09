@@ -133,9 +133,14 @@ class Searchstudentid(models.Model):
 
 class Loginrecord(models.Model):
 	logintime = models.DateTimeField(auto_now_add=True)
+	lastlogintime=models.DateTimeField(auto_now=True)
 	loginuser = models.CharField(max_length=50)
+	logincount = models.IntegerField(default=0)
 	class Meta:
-		ordering=['-logintime']
+		ordering=['-lastlogintime']
+	
+
+
 
 
 

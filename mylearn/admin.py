@@ -47,7 +47,7 @@ class ClassnotesAdmin(admin.ModelAdmin):
 	list_display = ['phone','student','studentid']
 @admin.register(Loginrecord)
 class LogintimeAdmin(admin.ModelAdmin):
-	list_display = ('logintime','loginuser')
+	list_display = ('lastlogintime','loginuser','logincount')
 
 
 	

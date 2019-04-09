@@ -91,8 +91,9 @@ def Indexs(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
-    loginrecord = Loginrecord()
-    loginrecord.loginuser=teststudent
+    loginrecord=get_object_or_404(Loginrecord,loginuser=teststudent)
+    
+    loginrecord.logincount =int(loginrecord.logincount)+1
     loginrecord.save()
     notes_all_list = Classnotes.objects.all()
     paginator = Paginator(notes_all_list,6)
