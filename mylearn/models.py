@@ -164,6 +164,8 @@ class Homeworksum(models.Model):
 	dcount = models.IntegerField(default=0)
 	ecount = models.IntegerField(default=0)
 	fcount = models.IntegerField(default=0)
+	class Meta:
+		ordering=['-lasttime']
 
 	
 
