@@ -153,6 +153,18 @@ class Loginrecord(models.Model):
 	logincount = models.IntegerField(default=0)
 	class Meta:
 		ordering=['-lastlogintime']
+class Homeworksum(models.Model):
+	student_name = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
+	lasttime=models.DateTimeField(auto_now=True)
+	aacount = models.IntegerField(default=0)
+
+	acount = models.IntegerField(default=0)
+	bcount = models.IntegerField(default=0)
+	ccount = models.IntegerField(default=0)
+	dcount = models.IntegerField(default=0)
+	ecount = models.IntegerField(default=0)
+	fcount = models.IntegerField(default=0)
+
 	
 
 

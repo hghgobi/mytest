@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum
+
 # Register your models here.
 @admin.register(Classes)
 class ClassesAdmin(admin.ModelAdmin):
@@ -51,6 +52,10 @@ class ClassnotesAdmin(admin.ModelAdmin):
 @admin.register(Loginrecord)
 class LogintimeAdmin(admin.ModelAdmin):
 	list_display = ('lastlogintime','loginuser','logincount')
+
+@admin.register(Homeworksum)
+class HomeworksumAdmin(admin.ModelAdmin):
+	list_display = ('pk','lasttime','student_name','aacount','acount','bcount','ccount','dcount','ecount','fcount')
 
 
 	

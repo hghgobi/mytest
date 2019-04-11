@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum
 import json
 import random
 import numpy as np
@@ -31,7 +31,8 @@ def Homeworkmessages(request):
     if not teststudent:
         return redirect('../testlogin')
     homeworkmessages = Homework.objects.filter(homeworkstudent__studentname=teststudent)
-    return render(request,'homework.html',{'homeworkmessages':homeworkmessages})
+    homeworkmessagesum = Homeworksum.objects.filter(student_name__studentname=teststudent)
+    return render(request,'homework.html',{'homeworkmessages':homeworkmessages,'homeworkmessagesum':homeworkmessagesum})
 
 def Classmessages(request):
     teststudent=request.session.get("teststudent")
@@ -286,6 +287,26 @@ def Addhomework(request):
     idd=request.POST.get('idd')
     idd=int(idd)
     score=request.POST.get('score')
+    namesss=Students.objects.filter(pk=idd)
+    namessss=namesss[0]
+
+    homeworksum=get_object_or_404(Homeworksum,student_name=namessss)
+    if score == 'A+ 很认真':
+        homeworksum.aacount=int(homeworksum.aacount)+1
+    elif score == 'A':
+        homeworksum.acount=int(homeworksum.acount)+1
+    elif score == 'B':
+        homeworksum.bcount=int(homeworksum.bcount)+1
+    elif score == 'C':
+        homeworksum.ccount=int(homeworksum.ccount)+1
+    elif score == 'D':
+        homeworksum.dcount=int(homeworksum.dcount)+1
+    elif score == '作业不认真乱写':
+        homeworksum.ecount=int(homeworksum.ecount)+1
+    elif score == '作业没交':
+        homeworksum.fcount=int(homeworksum.fcount)+1
+    homeworksum.save()
+
     homeworkname='作业'
     Homework.createhomework(idd,score,homeworkname)
     return render(request,'addhomework.html')
