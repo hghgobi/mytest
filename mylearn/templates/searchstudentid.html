@@ -1,12 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<title>首页</title>
-</head>
-<body>
-
+{% extends 'base2.html' %}  
+{% block content %}
+<style> 
+div{text-align:center} 
+</style> 
 
  <div class="container">
         <div class="row">
@@ -47,9 +43,18 @@
 
                 <p></p><p></p><a href="../../"><font size="5" color="blue" > ——-->>点此返回登陆界面<<——--</font></a>
     </form> 
+     <hr/>
+    <p><font size="5" color="red">欢迎</font></p>
+     <p><font size="5" color="red">访问</font></p>
+      
+        
+         
+    
+<hr/>
    
                     </div>
                 </div>
-            </div>      
-</body>
-</html>
+            </div>  
+
+
+{% endblock %}

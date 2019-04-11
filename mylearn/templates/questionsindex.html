@@ -1,18 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<title>首页</title>
-</head>
-<body>
-
+{% extends 'base2.html' %}  
+{% block content %}
+<style> 
+div{text-align:center} 
+</style> 
 
  <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><a><font size="5">登陆界面</font></a></div>
+                    <div class="panel-heading"><a><font size="5">请先登录</font></a></div>
                     <hr/>
                     <div class="panel-body">
                      <form action="" method="post">
@@ -39,18 +35,18 @@
         </table>
     </form> 
     <hr/>
-    <p><font size="5" color="red">温馨提示：</font></p>
-    <ul>
-    <li><font size="5" color="red">八(7)班学号前6位为201707xx</font></li>
-    <li><font size="5" color="red">八(8)班学号前6位为201708xx</font></li>
-    <li><font size="5" color="red">不知道学号的可以看校牌</font></li>
-    </ul>
-<hr/>
-<hr/>
 <p><font size="5" color="red">不知道学号？</font></p>
 <p></p><p></p><a href="../../searchstudentid"><font size="6" color="blue" > =>>>点此查询学号<<<=</font></a>
+    <hr/>
+    <p><font size="5" color="red">欢迎</font></p>
+     <p><font size="5" color="red">访问</font></p>
+      
+        
+         
+    
+<hr/>
+
                     </div>
                 </div>
             </div>      
-</body>
-</html>
+{% endblock %}
