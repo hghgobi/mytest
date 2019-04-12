@@ -1,16 +1,11 @@
 {% extends 'base2.html' %}	
 {% block content %}
-	<style> 
-p{text-align:left} 
-</style>
-<style> 
-h3{text-align:left} 
-</style>
+	
 	<div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading">资讯列表（一共有{{ page_of_notes.paginator.count }}篇）</div>
+                    <div class="panel-heading">班级动态（一共有{{ page_of_notes.paginator.count }}篇）</div>
                     <div class="panel-body">
                         {% for i in page_of_notes.object_list %}
                             <div class="blog">
@@ -27,6 +22,7 @@ h3{text-align:left}
                             <div class="blog">
                                 <h3>-- 暂无相关讯息 --</h3>
                             </div>
+
                         {% endfor %}
                     </div>
                 </div>
@@ -76,7 +72,8 @@ h3{text-align:left}
                 	
 
 
-            </div>   
+            </div>  
+
 
 {% endblock %}
 
