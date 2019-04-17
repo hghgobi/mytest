@@ -71,7 +71,7 @@ class Exams(models.Model):
 	examtime = models.CharField(max_length=200)
 	examstudent = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
 	class Meta:
-		ordering = ['-examtime']
+		ordering = ['-id']
 
 
 
