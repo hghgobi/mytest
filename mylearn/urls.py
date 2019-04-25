@@ -25,5 +25,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('addclass/',views.Addclass),
                 path('addclasslogin/',views.Addclasslogin),
                 path('searchstudentid/',views.Searchstudent_id),
+                path('answerstudent/',views.Selectstudent),
+
 
 ]

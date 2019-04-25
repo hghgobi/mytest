@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <style> 
+div{text-align:center} 
+</style> 
+ <style> 
+td{text-align:center} 
+</style> 
+ <style>
+#rcorners1 {
+    border-radius: 25px;
+    background: #E8FB02;
+    padding: 20px; 
+    width: 200px;
+    height: 150px;    
+}
+</style> 
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="5">随机提问</font></a></div>
+                    <hr/>
+                    <div class="panel-body">
+                     <form action="" method="post">
+                      <input  type="hidden" name="student" value='A' >
+                    
+                    <a><input type="submit" style="color:red;width:200px;height:50px;font-size:16px" value ='提问A'> </a>  
+
+                
+                   </form> 
+                 <form action="" method="post">
+                      <input  type="hidden" name="student" value='B' >
+                    
+                    <a><input type="submit" style="color:red;width:200px;height:50px;font-size:16px" value ='提问B'> </a>  
+
+                
+                   </form> 
+
+                 {% for i in answerstudent %}
+                
+                <style> 
+                .box{ font-size:210px} 
+                .box .f20{ font-size:300px} 
+                 </style> 
+                 
+ 
+              <div class="box"> 
+               <span id='rcorners1' class="f20" >{{i.studentname}}</span>
+              </div> 
+                {%endfor%}
+  
+   
+
+                    </div>
+                </div>
+            </div>  
+    
+</body>
+</html>
