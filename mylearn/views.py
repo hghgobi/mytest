@@ -360,7 +360,9 @@ def Selectstudent(request):
 
         n=len(studentlista)
 
-        liststudent=random.sample(studentlista,n-1)
+        liststudent=random.sample(studentlista,n)
+        liststudent=random.sample(liststudent,n)
+
         idd=liststudent[0]
         idd=int(idd)
         answerstudent=Students.objects.filter(pk=idd)
