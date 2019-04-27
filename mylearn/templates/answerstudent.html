@@ -27,22 +27,7 @@ td{text-align:center}
                     <div class="panel-heading"><a><font size="5">随机提问</font></a></div>
                     <hr/>
                     <div class="panel-body">
-                     <form action="" method="post">
-                      <input  type="hidden" name="student" value='A' >
-                    
-                    <a><input type="submit" style="color:red;width:600px;height:150px;font-size:100px" value ='提问A'> </a>  
-
-                
-                   </form> 
-                 <form action="" method="post">
-                      <input  type="hidden" name="student" value='B' >
-                    
-                    <a><input type="submit" style="color:red;width:600px;height:150px;font-size:100px" value ='提问B'> </a>  
-
-                
-                   </form> 
-
-                 {% for i in answerstudent %}
+                         {% for i in answerstudent %}
                 
                 <style> 
                 .box{ font-size:210px} 
@@ -54,6 +39,36 @@ td{text-align:center}
                <span id='rcorners1' class="f20" >{{i.studentname}}</span>
               </div> 
                 {%endfor%}
+                     <form action="" method="post">
+                      <input  type="hidden" name="student" value='A' >
+                    
+                    <a><input type="submit" style="color:red;width:600px;height:110px;font-size:90px" value ='A'> </a>  
+
+                
+                   </form> 
+                    <form action="" method="post">
+                      <input  type="hidden" name="student" value='AA' >
+                    
+                    <a><input type="submit" style="color:red;width:600px;height:110px;font-size:90px" value ='AA'> </a>  
+
+                
+                   </form> 
+                 <form action="" method="post">
+                      <input  type="hidden" name="student" value='B' >
+                    
+                    <a><input type="submit" style="color:red;width:600px;height:110px;font-size:90px" value ='B'> </a>  
+
+                
+                   </form> 
+                   <form action="" method="post">
+                      <input  type="hidden" name="student" value='BB' >
+                    
+                    <a><input type="submit" style="color:red;width:600px;height:110px;font-size:90px" value ='BB'> </a>  
+
+                
+                   </form> 
+
+                
   
    
 
