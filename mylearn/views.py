@@ -15,15 +15,6 @@ from comment.models import Comment
 
 
 
-from matplotlib.figure import Figure                      
-from matplotlib.backends.backend_agg import FigureCanvasAgg
-from matplotlib.dates import DateFormatter
-import matplotlib.pyplot as plt
-import datetime
-#import mpld3
-import base64
-from io import BytesIO
-import os,qrcode,image
 
 
 # Create your views here.
@@ -433,102 +424,6 @@ def Addhomework2(request):
     Homework.createhomework(idd,score,homeworkname) 
     return HttpResponse('成功！')
 
-def zuotu1(request):
-    fig=Figure(figsize=(6,6))
-    ax=fig.add_subplot(111)
-    x=[]
-    y=[]
-    now=datetime.datetime.now()
-    delta=datetime.timedelta(days=1)
-    for i in range(10):
-        x.append(now)
-        now+=delta
-        y.append(random.randint(0, 1000))
-    ax.plot_date(x, y, '-')
-    ax.xaxis.set_major_formatter(DateFormatter('%Y-%m-%d'))
-    fig.autofmt_xdate()
-    canvas=FigureCanvasAgg(fig)
-    response=HttpResponse(content_type='image/jpg')
-    canvas.print_jpg(response)
-    plt.close(fig)
-    return response
-def zuotu2(request):
-    fig=Figure(figsize=(6,6))
-    ax = fig.add_subplot() 
-    ax.legend(loc='center left', bbox_to_anchor=(1,0.5))
-    y=[1,4,9,16,25]
-    x=[1,2,3,4,5]
-    ax.plot(x, y, linewidth=2)
-    canvas=FigureCanvasAgg(fig)
-    response=HttpResponse(content_type='image/jpg')
-    canvas.print_jpg(response)
-
-    #html_graph = mpld3.fig_to_html(fig)
-    plt.close(fig)
-
-
-
-    return response
-    #return render(request, 'tupiancs.html', {'html_graph':html_graph})
-    #return render(request,'tupiancs.html',{'canvas':canvas})
-def zuotu3(request):
-    fig=Figure(figsize=(6,6))
-    ax = fig.add_subplot() 
-    ax.legend(loc='center left', bbox_to_anchor=(1,0.5))
-    y=[1,4,9,16,25]
-    x=[1,2,3,4,5]
-    ax.plot(x, y, linewidth=2)
-    sigma_spec=int(0.5)
-    plot_data = multiChart(data,sigma_spec)
-    plt.figure(figsize=(12,9))
-    buffer = BytesIO()
-    plt.savefig(buffer)
-    plot_data = buffer.getvalue()
-    imb = base64.b64encode(plot_data)
-    ims = imb.decode()
-    imd = "data:image/png;base64,"+ims
-    return render(request, "tupiancs.html",{"img":imd})
-def multiChart(data,sigma_spec):
-    plt.figure(figsize=(12,9))
-    plt.subplot(311)
-    plt.title("CTC Array FAB H3PO4 Monitor for BP Lack")
-    plt.plot(data["time"],data["mean"],color="b",marker="*")
-    plt.subplot(312)
-    data["slope_spec"]=0
-    plt.title("$mean{(y2-y1)}$")
-    plt.plot(data["time"],data["slope"],color="b")
-    plt.plot(data["time"],data["slope_spec"],color="r")
-    plt.subplot(313)
-    data["sigma_spec"]=sigma_spec
-    plt.title("3$sigma$")
-    plt.plot(data["time"],data["3sigma"],color="b")
-    plt.plot(data["time"],data["sigma_spec"],color="r")
-    buffer = BytesIO()
-    plt.savefig(buffer)
-    plot_data = buffer.getvalue()
-    return plot_data
-
-def makeQrcode(request):
-    try:
-        url = "1 A"
-        filename = "./static/" + str(base64.b64encode(str(url).encode('utf-8')), 'utf-8')+'.png'
-        if os.path.exists(filename):
-            qrimg_data = open(filename, 'rb').read()
-            return HttpResponse(qrimg_data, content_type="image/png")
-        else:
-            qr = qrcode.QRCode(version=1,
-                               error_correction=qrcode.ERROR_CORRECT_L,
-                               box_size=8,
-                               border=8)
-            qr.add_data(url)
-            qr.make(fit=True)
-            img = qr.make_image()
-            img.save(filename)
-            if os.path.exists(filename):
-                qrimg_data = open(filename, 'rb').read()
-                return HttpResponse(qrimg_data, content_type="image/png")
-    except Exception as  e:
-        return HttpResponse(str(e))
 
 
 
