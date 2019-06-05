@@ -295,7 +295,7 @@ def Addhomework(request):
     namessss=namesss[0]
 
     homeworksum=get_object_or_404(Homeworksum,student_name=namessss)
-    if score == 'A+ 很认真' or 'A+很认真':
+    if score == 'A+ 很认真':
         homeworksum.aacount=int(homeworksum.aacount)+1
     elif score == 'A':
         homeworksum.acount=int(homeworksum.acount)+1
@@ -404,7 +404,7 @@ def Addhomework2(request):
     namessss=namesss[0]
 
     homeworksum=get_object_or_404(Homeworksum,student_name=namessss)
-    if score == 'A+ 很认真':
+    if score == 'A+很认真':
         homeworksum.aacount=int(homeworksum.aacount)+1
     elif score == 'A':
         homeworksum.acount=int(homeworksum.acount)+1
