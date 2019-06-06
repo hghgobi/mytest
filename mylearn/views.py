@@ -39,7 +39,7 @@ def addclasses(request):
         classlist=Classes.objects.all()
         return render(request,'index.html',{"classlist":classlist})
 
-
+#coding:utf-8
 def Homeworkmessages(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
@@ -62,12 +62,13 @@ def Homeworkmessages(request):
         if homeworkmessages[i].homeworkscore=='作业没交':
             sl[5]+=1
         if homeworkmessages[i].homeworkscore=='作业不认真乱写':
-            sl[6]+=1   
-
+            sl[6]+=1
+    
+   
     plt.switch_backend('agg')
     plt.figure(figsize=(3.5,2.5))
 
-    matplotlib.rcParams['font.sans-serif'] = ["Droid Sans Fallback"]
+    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
     plt.barh(range(7), sl, height=0.7, color='steelblue', alpha=0.8)
     plt.yticks(range(7), ['A+','A','B','C','D','没交','乱写'])
