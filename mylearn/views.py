@@ -67,7 +67,7 @@ def Homeworkmessages(request):
     plt.switch_backend('agg')
     plt.figure(figsize=(3.5,2.5))
 
-    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+    matplotlib.rcParams['font.sans-serif'] = ["Droid Sans Fallback"]
     matplotlib.rcParams['axes.unicode_minus'] = False
     plt.barh(range(7), sl, height=0.7, color='steelblue', alpha=0.8)
     plt.yticks(range(7), ['A+','A','B','C','D','没交','乱写'])
