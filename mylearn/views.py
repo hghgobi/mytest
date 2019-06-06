@@ -70,7 +70,7 @@ def Homeworkmessages(request):
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
-    plt.barh(range(7), sl, height=0.7, color='steelblue', alpha=0.8)
+    plt.barh(range(7), sl, height=0.7, color=['b','g','r','c','y','k','m'], alpha=0.8)
     plt.yticks(range(7), ['A+','A','B','C','D','没交','乱写'])
     plt.xlim(0,50)
     plt.xlabel("累计次数")
