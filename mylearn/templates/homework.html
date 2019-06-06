@@ -7,38 +7,8 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><a><font size="6">作业情况查询结果</font></a></div>
                     <div class="panel-body">
-        <p><font size="2" color="red">总体情况</font></p>  
-                         <table border="1" cellpadding="6">
-        <tr>
-            <td><font size="2">学生姓名</font></td>
-            <td><font size="2">A+很好</font></td>
-            <td><font size="2">&nbsp;&nbsp;A&nbsp;&nbsp;</font></td>
-            <td><font size="2">&nbsp;&nbsp;B&nbsp;&nbsp;</font></td>
-            <td><font size="2">&nbsp;&nbsp;C&nbsp;&nbsp;</font></td>
-            <td><font size="2">&nbsp;&nbsp;D&nbsp;&nbsp;</font></td>
-            <td><font size="2">作业乱写</font></td>
-            <td><font size="2">作业没交</font></td>
-            
-            
-        </tr>
-        {%for i in homeworkmessagesum %}
-            <tr>
-                <td><font size="2" color="black">{{i.student_name}}</font></td>
-                <td><font size="2" color="red">{{i.aacount}}次</font></td>
-                <td><font size="2" color="red">{{i.acount}}次</font></td>
-                <td><font size="2" color="red">{{i.bcount}}次</font></td>
-                <td><font size="2" color="red">{{i.ccount}}次</font></td>
-                <td><font size="2" color="black">{{i.dcount}}次</font></td>
-                <td><font size="2" color="black">{{i.ecount}}次</font></td>
-                <td><font size="2" color="black">{{i.fcount}}次</font></td>
-                
-                
-            </tr>
-        {% empty %}
-        <p><font size="2" color="red"></font></p>
-        {% endfor %}
-    </table> 
-    <hr/>
+        
+    {{ imd | safe}}
     <p><font size="2" color="red">每日情况</font></p>      
 
                      <table border="1" cellpadding="6">

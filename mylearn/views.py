@@ -14,7 +14,17 @@ from comment.models import Comment
 
 
 
+from matplotlib.figure import Figure                      
+from matplotlib.backends.backend_agg import FigureCanvasAgg
+from matplotlib.dates import DateFormatter
+import matplotlib.pyplot as plt
+import datetime
 
+import base64
+from io import BytesIO
+
+import mpl_toolkits.axisartist as axisartist
+import matplotlib
 
 
 # Create your views here.
@@ -36,7 +46,45 @@ def Homeworkmessages(request):
         return redirect('../testlogin')
     homeworkmessages = Homework.objects.filter(homeworkstudent__studentname=teststudent)
     homeworkmessagesum = Homeworksum.objects.filter(student_name__studentname=teststudent)
-    return render(request,'homework.html',{'homeworkmessages':homeworkmessages,'homeworkmessagesum':homeworkmessagesum})
+    summ=len(homeworkmessages)
+    sl=[0,0,0,0,0,0,0]
+    for i in range(summ) :
+        if homeworkmessages[i].homeworkscore=='A+ 很认真' or homeworkmessages[i].homeworkscore=='A+很认真':
+            sl[0]+=1
+        if homeworkmessages[i].homeworkscore=='A':
+            sl[1]+=1
+        if homeworkmessages[i].homeworkscore=='B':
+            sl[2]+=1
+        if homeworkmessages[i].homeworkscore=='C':
+            sl[3]+=1
+        if homeworkmessages[i].homeworkscore=='D':
+            sl[4]+=1
+        if homeworkmessages[i].homeworkscore=='作业没交':
+            sl[5]+=1
+        if homeworkmessages[i].homeworkscore=='作业不认真乱写':
+            sl[6]+=1   
+
+    plt.switch_backend('agg')
+    plt.figure(figsize=(3.5,2.5))
+
+    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.barh(range(7), sl, height=0.7, color='steelblue', alpha=0.8)
+    plt.yticks(range(7), ['A+','A','B','C','D','没交','乱写'])
+    plt.xlim(0,50)
+    plt.xlabel("累计次数")
+    plt.title("作业情况汇总")
+    for x, y in enumerate(sl):
+        plt.text(y + 0.2, x - 0.1, '%s' % y)
+    sio=BytesIO()
+    plt.savefig(sio,format='png')
+    data=base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd=html.format(data)
+
+
+    return render(request,'homework.html',{'homeworkmessages':homeworkmessages,'homeworkmessagesum':homeworkmessagesum,'imd':imd})
 
 def Classmessages(request):
     teststudent=request.session.get("teststudent")
