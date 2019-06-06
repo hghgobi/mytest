@@ -66,7 +66,7 @@ def Homeworkmessages(request):
 
    
     plt.switch_backend('agg')
-    plt.figure(figsize=(4,4))
+    plt.figure(figsize=(3.8,3.8))
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
