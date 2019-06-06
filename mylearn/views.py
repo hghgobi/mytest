@@ -119,6 +119,7 @@ def Exammessages(request):
     plt.plot(dates,scores,c='red')
     plt.title("总体情况")
     fig.autofmt_xdate()
+    plt.ylim(0,120)
 
     plt.ylabel("分数")
     plt.tick_params(axis='both',which='major',labelsize=8)
