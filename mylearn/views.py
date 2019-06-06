@@ -102,7 +102,37 @@ def Exammessages(request):
         return redirect('../testlogin')
     
     exammessages = Exams.objects.filter(examstudent__studentname=teststudent)
-    return render(request,'exam.html',{'exammessages':exammessages}) 
+    sunn=len(exammessages)
+    dates,scores=[],[]
+    for i in range(sunn):
+        
+        #date=datetime.strptime(exammessages[i].examtime,'"%Y.%m.%d"')
+        dates.append(exammessages[i].examtime)
+        scores.append(exammessages[i].examscore)
+    dates.reverse()
+    scores.reverse()
+    plt.switch_backend('agg')
+    fig=plt.figure(figsize=(3.8,3.8))
+
+    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.plot(dates,scores,c='red')
+    plt.title("总体情况")
+    fig.autofmt_xdate()
+
+    plt.ylabel("分数")
+    plt.tick_params(axis='both',which='major',labelsize=8)
+    sio=BytesIO()
+        
+    plt.savefig(sio,format='png')
+    data=base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd=html.format(data)
+
+  
+
+    return render(request,'exam.html',{'exammessages':exammessages,'imd':imd}) 
 
 
 def Daohang(request):
