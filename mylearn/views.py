@@ -63,10 +63,10 @@ def Homeworkmessages(request):
             sl[5]+=1
         if homeworkmessages[i].homeworkscore=='作业不认真乱写':
             sl[6]+=1
-    
+
    
     plt.switch_backend('agg')
-    plt.figure(figsize=(3.5,2.5))
+    plt.figure(figsize=(4,4))
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
@@ -74,7 +74,7 @@ def Homeworkmessages(request):
     plt.yticks(range(7), ['A+','A','B','C','D','没交','乱写'])
     plt.xlim(0,50)
     plt.xlabel("累计次数")
-    plt.title("作业情况汇总")
+    plt.title("作业总体情况")
     for x, y in enumerate(sl):
         plt.text(y + 0.2, x - 0.1, '%s' % y)
     sio=BytesIO()
