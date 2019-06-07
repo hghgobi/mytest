@@ -102,12 +102,12 @@ def Homeworkrank(request):
     for i in rank:
         names.append(i[0])
         scores.append(i[1])
-    scores=scores[0:45]
-    names=names[0:45]
+    scores=scores[40:]
+    names=names[40:]
 
 
     plt.switch_backend('agg')
-    plt.figure(figsize=(4,10))
+    plt.figure(figsize=(4,13))
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
@@ -136,12 +136,12 @@ def Homeworkrank(request):
     for i1 in rank1:
         names1.append(i1[0])
         scores1.append(i1[1])
-    scores1=scores1[0:45]
-    names1=names1[0:45]
+    scores1=scores1[17:]
+    names1=names1[17:]
 
 
     plt.switch_backend('agg')
-    plt.figure(figsize=(4,10))
+    plt.figure(figsize=(4,16))
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
