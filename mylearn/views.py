@@ -25,6 +25,7 @@ from io import BytesIO
 
 import mpl_toolkits.axisartist as axisartist
 import matplotlib
+import math
 
 
 # Create your views here.
@@ -584,8 +585,121 @@ def Addhomework2(request):
 
 
 
+def Zuotu2(request):
+    k=request.POST.get('k')
+    b=request.POST.get('b')
+    aa=request.POST.get('aa')
+    bb=request.POST.get('bb')
+    cc=request.POST.get('cc')
+    kk=request.POST.get('kk')
+    xz=request.POST.get('xz')
+
+    data = {}
+
+    if xz=='1':
+        if k == '' or b=='':
+            data['message'] = '输入类型错误！'
+            data['status']="errors"
+        else:
+            k=float(k)
+            b=float(b)
+            c=abs(k+b)
+            plt.switch_backend('agg')
+            fig=plt.figure(figsize=(3.5,3.8))
+            ax=axisartist.Subplot(fig,111)
+            fig.add_axes(ax)
+            ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            ax.axis["left"]=ax.new_floating_axis(1,0)
+            ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
+            ax.axis["left"].set_axisline_style("->",size=1.5)
+            ax.axis["top"].set_visible(False)
+            ax.axis["right"].set_visible(False)
+            plt.grid()
+            x_values=np.arange(-c,c,1)
+            y_values=[x*k+b for x in x_values]
+
+            plt.plot(x_values,y_values)
+            sio=BytesIO()
+            plt.savefig(sio,format='png')
+            dat=base64.encodebytes(sio.getvalue()).decode()
+            html = ''' <img src="data:image/png;base64,{}"/> '''
+            plt.close()
+            imd=html.format(dat)
+            data['imd'] =imd
+            data['status']="SUCCESS"
+
+    if xz=='2':
+        if aa == '' or bb=='' or cc=='' :
+            data['message'] = '输入类型错误(不能留空，可用0代替）！'
+            data['status']="errors"
+        else:
+            aa=float(aa)
+            bb=float(bb)
+            cc=float(cc)
+            dd=(abs(aa)+abs(bb)+abs(cc))*10
+            plt.switch_backend('agg')
+            fig=plt.figure(figsize=(3.5,5))
+            ax=axisartist.Subplot(fig,111)
+            fig.add_axes(ax)
+            ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            ax.axis["left"]=ax.new_floating_axis(1,0)
+            ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
+            ax.axis["left"].set_axisline_style("->",size=1.5)
+            ax.axis["top"].set_visible(False)
+            ax.axis["right"].set_visible(False)
+            plt.grid()
+            x_values=np.arange(-20,20,0.1)
+            y_values=[aa*pow(x,2)+bb*x+cc for x in x_values]
+
+            plt.plot(x_values,y_values)
+            sio=BytesIO()
+            plt.savefig(sio,format='png')
+            dat=base64.encodebytes(sio.getvalue()).decode()
+            html = ''' <img src="data:image/png;base64,{}"/> '''
+            plt.close()
+            imd=html.format(dat)
+            data['imd'] =imd
+            data['status']="SUCCESS"
+
+    if xz=='3':
+        if kk == '':
+            data['message'] = '输入类型错误！'
+            data['status']="errors"
+        else:
+            kk=float(kk)
+            
+            ee=abs(5*kk)
+            plt.switch_backend('agg')
+            fig=plt.figure(figsize=(3.5,3.8))
+            ax=axisartist.Subplot(fig,111)
+            fig.add_axes(ax)
+            ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            ax.axis["left"]=ax.new_floating_axis(1,0)
+            ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
+            ax.axis["left"].set_axisline_style("->",size=1.5)
+            ax.axis["top"].set_visible(False)
+            ax.axis["right"].set_visible(False)
+            plt.grid()
+            x_values=np.arange(-ee,ee,0.5)
+            y_values=[kk/x for x in x_values]
+
+            plt.plot(x_values,y_values)
+            sio=BytesIO()
+            plt.savefig(sio,format='png')
+            dat=base64.encodebytes(sio.getvalue()).decode()
+            html = ''' <img src="data:image/png;base64,{}"/> '''
+            plt.close()
+            imd=html.format(dat)
+            data['imd'] =imd
+            data['status']="SUCCESS"
 
 
+
+    return JsonResponse(data)
+
+def Zuotu1(request):
+
+    return render(request,'zuotu1.html')
         
         
             

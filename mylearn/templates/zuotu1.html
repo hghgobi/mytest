@@ -1,0 +1,72 @@
+{% extends 'base2.html' %}  
+{% block content %}
+ 
+<style> 
+form{text-align:left;} 
+</style> 
+
+ <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="comment-area">
+
+                    
+                   <br><br>
+                   <a>提示：各常数输入不能为空，输入范围为：负数，正数，0，留空可以用0代替</a> <br>
+                        <form id='zuotu2' onsubmit="return false" action="{% url 'zuotu2' %}" method="POST" style="overflow:hidden">
+                            {% csrf_token %}
+                            
+                           <input   type="radio" value="1" name="xz" checked="checked">一次函数： y=<input type="text" size="1" name="k" value="">x+
+                            <input type="text" size="1" name="b" value="">
+                            <br><br>
+                            <input   type="radio"value="2" name="xz" >二次函数：y=<input type="text" size="1" name="aa" value="">x<SUP>2</SUP>+<input type="text" size="1" name="bb" value="">x+<input type="text" size="1" name="cc" value="">
+
+                            <br><br>
+                            <input   type="radio" value="3" name="xz" >反比例函数：y=<input type="text" size="1" name="kk" value="">/x
+
+                            
+                        <br>
+                            <span id="comment_error" class="text-danger pull-left"></span>
+                            <br><br>
+
+                            <input type="submit" value="画图" class="btn btn-primary" style="float:middle">
+                            
+                        </form>
+                   
+                </div>
+               <ul id="comment_list">
+                   
+                </ul>
+        </div>
+    </div> 
+     </div> 
+    <script type="text/javascript">
+        $("#zuotu2").submit(function(){
+           
+            // 异步提交
+            $.ajax({
+                url: "{% url 'zuotu2' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+                    if(data['status']=="SUCCESS"){
+                        // 插入数据
+                        var comment_html = '<br>' + data['imd'] ;
+                        $("#comment_list").prepend(comment_html);
+                        // 清空编辑框的内容
+                       
+                    }else{
+                        // 显示错误信息
+                        $("#comment_error").text(data['message']);
+                    }                    
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>   
+{% endblock %}
+
