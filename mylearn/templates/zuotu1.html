@@ -15,18 +15,20 @@ form{text-align:left;}
                         <form id='zuotu2' onsubmit="return false" action="{% url 'zuotu2' %}" method="POST" style="overflow:hidden">
                             {% csrf_token %}
                             
-                           <input   type="radio" value="1" name="xz" checked="checked">一次函数： y=<input type="text" size="1" name="k" value="">x+
-                            <input type="text" size="1" name="b" value="">
+                           <input   type="radio" value="1" name="xz" checked="checked">一次函数： y=<input type="text" size="2" name="k" value="">x+
+                            <input type="text" size="2" name="b" value="">
                             <br><br>
-                            <input   type="radio"value="2" name="xz" >二次函数：y=<input type="text" size="1" name="aa" value="">x<SUP>2</SUP>+<input type="text" size="1" name="bb" value="">x+<input type="text" size="1" name="cc" value="">
+                            <input   type="radio"value="2" name="xz" >二次函数：y=<input type="text" size="2" name="aa" value="">x<SUP>2</SUP>+<input type="text" size="2" name="bb" value="">x+<input type="text" size="2" name="cc" value="">
 
                             <br><br>
-                            <input   type="radio" value="3" name="xz" >反比例函数：y=<input type="text" size="1" name="kk" value="">/x
+                            <input   type="radio" value="3" name="xz" >反比例函数：y=<input type="text" size="2" name="kk" value="">/x
 
                             
                         <br>
                             <span id="comment_error" class="text-danger pull-left"></span>
                             <br><br>
+                            微调(选填),自变量x范围:<input type="text" size="2" name="xx1" value="">(负)~<input type="text" size="2" name="xx2" value="">(正)
+                            <br>
 
                             <input type="submit" value="画图" class="btn btn-primary" style="float:middle">
                             

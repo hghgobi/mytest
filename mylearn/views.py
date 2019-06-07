@@ -593,6 +593,8 @@ def Zuotu2(request):
     cc=request.POST.get('cc')
     kk=request.POST.get('kk')
     xz=request.POST.get('xz')
+    xx1=request.POST.get('xx1')
+    xx2=request.POST.get('xx2')
 
     data = {}
 
@@ -615,10 +617,15 @@ def Zuotu2(request):
             ax.axis["top"].set_visible(False)
             ax.axis["right"].set_visible(False)
             plt.grid()
-            x_values=np.arange(-c,c,1)
+            if xx1 and xx2 :
+                xx1=float(xx1)
+                xx2=float(xx2)
+                x_values=np.arange(xx1,xx2,1)
+            else:
+                x_values=np.arange(-c,c,1)
             y_values=[x*k+b for x in x_values]
 
-            plt.plot(x_values,y_values)
+            plt.plot(x_values,y_values,color='m')
             sio=BytesIO()
             plt.savefig(sio,format='png')
             dat=base64.encodebytes(sio.getvalue()).decode()
@@ -648,10 +655,16 @@ def Zuotu2(request):
             ax.axis["top"].set_visible(False)
             ax.axis["right"].set_visible(False)
             plt.grid()
-            x_values=np.arange(-20,20,0.1)
+            if xx1 and xx2 :
+                xx1=float(xx1)
+                xx2=float(xx2)
+                x_values=np.arange(xx1,xx2,0.1)
+            else:
+                x_values=np.arange(-20,20,0.1)
+            
             y_values=[aa*pow(x,2)+bb*x+cc for x in x_values]
 
-            plt.plot(x_values,y_values)
+            plt.plot(x_values,y_values,color='b')
             sio=BytesIO()
             plt.savefig(sio,format='png')
             dat=base64.encodebytes(sio.getvalue()).decode()
@@ -680,10 +693,16 @@ def Zuotu2(request):
             ax.axis["top"].set_visible(False)
             ax.axis["right"].set_visible(False)
             plt.grid()
-            x_values=np.arange(-ee,ee,0.5)
+            if xx1 and xx2 :
+                xx1=float(xx1)
+                xx2=float(xx2)
+                x_values=np.arange(xx1,xx2,0.5)
+            else:
+                x_values=np.arange(-ee,ee,0.5)
+
             y_values=[kk/x for x in x_values]
 
-            plt.plot(x_values,y_values)
+            plt.plot(x_values,y_values,color='r')
             sio=BytesIO()
             plt.savefig(sio,format='png')
             dat=base64.encodebytes(sio.getvalue()).decode()
