@@ -103,7 +103,7 @@ def Homeworkrank(request):
         names.append(i[0])
         scores.append(i[1])
     scores=scores[0:45]
-    names=[0:45]
+    names=names[0:45]
 
 
     plt.switch_backend('agg')
@@ -136,8 +136,8 @@ def Homeworkrank(request):
     for i1 in rank1:
         names1.append(i1[0])
         scores1.append(i1[1])
-    scores1=[0:45]
-    names1=[0:45]
+    scores1=scores1[0:45]
+    names1=names1[0:45]
 
 
     plt.switch_backend('agg')
