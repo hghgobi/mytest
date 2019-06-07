@@ -102,10 +102,12 @@ def Homeworkrank(request):
     for i in rank:
         names.append(i[0])
         scores.append(i[1])
+    scores=scores[0:45]
+    names=[0:45]
 
 
     plt.switch_backend('agg')
-    plt.figure(figsize=(4,20))
+    plt.figure(figsize=(4,10))
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
@@ -122,13 +124,44 @@ def Homeworkrank(request):
     plt.close()
     imd=html.format(data)
 
+    rank1={}
     
-    
-    return render(request,'zuoyepaihang.html',{'imd':imd})
+    for a1 in range(summ):
+        rank1[msag[a1].student_name]=msag[a1].acount
+
+    rank1=sorted(rank1.items(), key=lambda e:e[1], reverse=False)
+
+    scores1=[]
+    names1=[]
+    for i1 in rank1:
+        names1.append(i1[0])
+        scores1.append(i1[1])
+    scores1=[0:45]
+    names1=[0:45]
+
+
+    plt.switch_backend('agg')
+    plt.figure(figsize=(4,10))
+
+    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.barh(range(len(scores1)), scores1, height=0.7, color='b', alpha=0.8)
+    plt.yticks(range(len(scores1)), names1)
+    plt.xlabel("累计次数")
+    plt.title("作业A排行榜")
+    for x1, y1 in enumerate(scores1):
+        plt.text(y1 + 0.2, x1 - 0.1, '%s' % y1)
+    sio1=BytesIO()
+    plt.savefig(sio1,format='png')
+    data1=base64.encodebytes(sio1.getvalue()).decode()
+    html1 = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imdd=html1.format(data1)
+
+
+    return render(request,'zuoyepaihang.html',{'imd':imd,'imdd':imdd})
 
         
-
-
 
 def Classmessages(request):
     teststudent=request.session.get("teststudent")
