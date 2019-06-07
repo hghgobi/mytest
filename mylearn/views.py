@@ -87,6 +87,49 @@ def Homeworkmessages(request):
 
     return render(request,'homework.html',{'homeworkmessages':homeworkmessages,'homeworkmessagesum':homeworkmessagesum,'imd':imd})
 
+def Homeworkrank(request):
+    msag=Homeworksum.objects.all()
+    summ=len(msag)
+    rank={}
+    
+    for a in range(summ):
+        rank[msag[a].student_name]=msag[a].aacount
+
+    rank=sorted(rank.items(), key=lambda e:e[1], reverse=False)
+
+    scores=[]
+    names=[]
+    for i in rank:
+        names.append(i[0])
+        scores.append(i[1])
+
+
+    plt.switch_backend('agg')
+    plt.figure(figsize=(4,10))
+
+    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.barh(range(len(scores)), scores, height=0.7, color='r', alpha=0.8)
+    plt.yticks(range(len(scores)), names)
+    plt.xlabel("累计次数")
+    plt.title("作业A+排行榜")
+    for x, y in enumerate(scores):
+        plt.text(y + 0.2, x - 0.1, '%s' % y)
+    sio=BytesIO()
+    plt.savefig(sio,format='png')
+    data=base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd=html.format(data)
+
+    
+    
+    return render(request,'zuoyepaihang.html',{'imd':imd})
+
+        
+
+
+
 def Classmessages(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
