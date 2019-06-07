@@ -105,7 +105,7 @@ def Homeworkrank(request):
 
 
     plt.switch_backend('agg')
-    plt.figure(figsize=(4,10))
+    plt.figure(figsize=(4,20))
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
