@@ -592,40 +592,68 @@ def Zuotu2(request):
     bb=request.POST.get('bb')
     cc=request.POST.get('cc')
     kk=request.POST.get('kk')
-    xz=request.POST.get('xz')
+    xz1=request.POST.get('xz1')
+    xz2=request.POST.get('xz2')
+    xz3=request.POST.get('xz3')
     xx1=request.POST.get('xx1')
     xx2=request.POST.get('xx2')
+    xx3=request.POST.get('xx3')
 
     data = {}
+    
+      
+       
+    if xz1=='1'and xz2=='2' and xz3=='3' :
+        data['message'] = '不能同时画3种函数图象'
+        data['status']="errors"
+        return JsonResponse(data)
 
-    if xz=='1':
-        if k == '' or b=='':
-            data['message'] = '输入类型错误！'
-            data['status']="errors"
-        else:
+
+    elif xz1=='1'and xz2=='2' :
+       
+
+        if k and b and aa and bb and cc:
             k=float(k)
             b=float(b)
-            c=abs(k+b)
+            aa=float(aa)
+            bb=float(bb)
+            cc=float(cc)
+            c=abs(k)+abs(b)
             plt.switch_backend('agg')
             fig=plt.figure(figsize=(3.5,3.8))
             ax=axisartist.Subplot(fig,111)
             fig.add_axes(ax)
-            ax.axis["bottom"]=ax.new_floating_axis(0,0)
-            ax.axis["left"]=ax.new_floating_axis(1,0)
+            #ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            #ax.axis["left"]=ax.new_floating_axis(1,0)
             ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
             ax.axis["left"].set_axisline_style("->",size=1.5)
-            ax.axis["top"].set_visible(False)
-            ax.axis["right"].set_visible(False)
+            #ax.axis["top"].set_visible(False)
+            #ax.axis["right"].set_visible(False)
             plt.grid()
-            if xx1 and xx2 :
+            if xx1 and xx2 and xx3:
                 xx1=float(xx1)
                 xx2=float(xx2)
-                x_values=np.arange(xx1,xx2,1)
+                xx3=float(xx3)
+                x_values=np.arange(xx1,xx2,xx3)
+            elif xx1 and xx2 :
+                xx1=float(xx1)
+                xx2=float(xx2)
+                x_values=np.arange(xx1,xx2,0.2)
+            elif xx3:
+               
+                xx3=float(xx3)
+                x_values=np.arange(-c,c,xx3)
+
             else:
-                x_values=np.arange(-c,c,1)
+                x_values=np.arange(-c,c,0.1)
             y_values=[x*k+b for x in x_values]
+            y_values1=[aa*pow(x,2)+bb*x+cc for x in x_values]
+            
 
             plt.plot(x_values,y_values,color='m')
+            plt.plot(x_values,y_values1,color='r')
+            
+
             sio=BytesIO()
             plt.savefig(sio,format='png')
             dat=base64.encodebytes(sio.getvalue()).decode()
@@ -634,37 +662,58 @@ def Zuotu2(request):
             imd=html.format(dat)
             data['imd'] =imd
             data['status']="SUCCESS"
+        else:
+            data['message'] = '输入类型错误！'
+            data['status']="errors"
 
-    if xz=='2':
-        if aa == '' or bb=='' or cc=='' :
+        return JsonResponse(data)
+
+            
+
+    elif xz1=='1'and xz3=='3' :
+        if aa == '' or bb=='' or cc=='' or kk=='':
             data['message'] = '输入类型错误(不能留空，可用0代替）！'
             data['status']="errors"
         else:
-            aa=float(aa)
-            bb=float(bb)
-            cc=float(cc)
-            dd=(abs(aa)+abs(bb)+abs(cc))*10
+            k=float(k)
+            b=float(b)
+            kk=float(kk)
+            dd=abs(k)+abs(b)
             plt.switch_backend('agg')
             fig=plt.figure(figsize=(3.5,5))
             ax=axisartist.Subplot(fig,111)
             fig.add_axes(ax)
-            ax.axis["bottom"]=ax.new_floating_axis(0,0)
-            ax.axis["left"]=ax.new_floating_axis(1,0)
+            #ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            #ax.axis["left"]=ax.new_floating_axis(1,0)
             ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
             ax.axis["left"].set_axisline_style("->",size=1.5)
-            ax.axis["top"].set_visible(False)
-            ax.axis["right"].set_visible(False)
+            #ax.axis["top"].set_visible(False)
+            #ax.axis["right"].set_visible(False)
             plt.grid()
+            if xx1 and xx2 and xx3:
+                xx1=float(xx1)
+                xx2=float(xx2)
+                xx3=float(xx3)
+                x_values=np.arange(xx1,xx2,xx3)
             if xx1 and xx2 :
                 xx1=float(xx1)
                 xx2=float(xx2)
-                x_values=np.arange(xx1,xx2,0.1)
+                x_values=np.arange(xx1,xx2,0.2)
+            if xx3:
+               
+                xx3=float(xx3)
+                x_values=np.arange(-dd,dd,xx3)
+
             else:
-                x_values=np.arange(-20,20,0.1)
+                x_values=np.arange(-dd,dd,0.1)
+
+                
+            y_values=[x*k+b for x in x_values]
             
-            y_values=[aa*pow(x,2)+bb*x+cc for x in x_values]
+            y_values1=[kk/x for x in x_values]
 
             plt.plot(x_values,y_values,color='b')
+            plt.plot(x_values,y_values1,color='r')
             sio=BytesIO()
             plt.savefig(sio,format='png')
             dat=base64.encodebytes(sio.getvalue()).decode()
@@ -673,36 +722,55 @@ def Zuotu2(request):
             imd=html.format(dat)
             data['imd'] =imd
             data['status']="SUCCESS"
+        return JsonResponse(data)
+            
 
-    if xz=='3':
-        if kk == '':
+    elif xz2=='2' and xz3=='3':
+        if kk == '' or aa=='' or bb=='' or cc=='':
             data['message'] = '输入类型错误！'
             data['status']="errors"
         else:
             kk=float(kk)
+            aa=float(aa)
+            bb=float(bb)
+            cc=float(cc)
             
             ee=abs(5*kk)
             plt.switch_backend('agg')
             fig=plt.figure(figsize=(3.5,3.8))
             ax=axisartist.Subplot(fig,111)
             fig.add_axes(ax)
-            ax.axis["bottom"]=ax.new_floating_axis(0,0)
-            ax.axis["left"]=ax.new_floating_axis(1,0)
+            #ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            #ax.axis["left"]=ax.new_floating_axis(1,0)
             ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
             ax.axis["left"].set_axisline_style("->",size=1.5)
-            ax.axis["top"].set_visible(False)
-            ax.axis["right"].set_visible(False)
+            #ax.axis["top"].set_visible(False)
+            #ax.axis["right"].set_visible(False)
             plt.grid()
-            if xx1 and xx2 :
+            if xx1 and xx2 and xx3:
                 xx1=float(xx1)
                 xx2=float(xx2)
-                x_values=np.arange(xx1,xx2,0.5)
+                xx3=float(xx3)
+                x_values=np.arange(xx1,xx2,xx3)
+            elif xx1 and xx2 :
+                xx1=float(xx1)
+                xx2=float(xx2)
+                x_values=np.arange(xx1,xx2,0.2)
+            elif xx3:
+               
+                xx3=float(xx3)
+                x_values=np.arange(-ee,ee,xx3)
+
             else:
-                x_values=np.arange(-ee,ee,0.5)
+                x_values=np.arange(-ee,ee,0.1)
+
+
 
             y_values=[kk/x for x in x_values]
+            y_values1=[aa*pow(x,2)+bb*x+cc for x in x_values]
 
-            plt.plot(x_values,y_values,color='r')
+            plt.plot(x_values,y_values,'r',x_values,y_values1,'b')
+            #plt.plot(x_values,y_values1,color='b')
             sio=BytesIO()
             plt.savefig(sio,format='png')
             dat=base64.encodebytes(sio.getvalue()).decode()
@@ -711,10 +779,182 @@ def Zuotu2(request):
             imd=html.format(dat)
             data['imd'] =imd
             data['status']="SUCCESS"
+        return JsonResponse(data)
+           
+
+    elif xz1=='1':
+        if k == '' or b=='':
+            data['message'] = '输入类型错误！'
+            data['status']="errors"
+        else:
+            k=float(k)
+            b=float(b)
+           
+            c=abs(k)+abs(b)
+            plt.switch_backend('agg')
+            fig=plt.figure(figsize=(3.5,3.8))
+            ax=axisartist.Subplot(fig,111)
+            fig.add_axes(ax)
+            #ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            #ax.axis["left"]=ax.new_floating_axis(1,0)
+            ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
+            ax.axis["left"].set_axisline_style("->",size=1.5)
+            #ax.axis["top"].set_visible(False)
+            #ax.axis["right"].set_visible(False)
+            plt.grid()
+            if xx1 and xx2 :
+                xx1=float(xx1)
+                xx2=float(xx2)
+                if xx3 :
+                    xx3=float(xx3)
+                    x_values=np.arange(xx1,xx2,xx3)
+                else:
+                    x_values=np.arange(xx1,xx2,0.2) 
+            
+            elif xx3:
+               
+                xx3=float(xx3)
+                x_values=np.arange(-c,c,xx3)
+
+            else:
+                x_values=np.arange(-c,c,0.1)
+
+            y_values=[x*k+b for x in x_values]
+            
+            
+
+            plt.plot(x_values,y_values,color='m')
+            
+            
+
+            sio=BytesIO()
+            plt.savefig(sio,format='png')
+            dat=base64.encodebytes(sio.getvalue()).decode()
+            html = ''' <img src="data:image/png;base64,{}"/> '''
+            plt.close()
+            imd=html.format(dat)
+            data['imd'] =imd
+            data['status']="SUCCESS"
+        return JsonResponse(data)
+            
+
+    elif xz3=='3' :
+        if  kk=='':
+            data['message'] = '输入类型错误(不能留空，可用0代替）！'
+            data['status']="errors"
+        else:
+           
+            kk=float(kk)
+            dd=abs(kk)*10
+            plt.switch_backend('agg')
+            fig=plt.figure(figsize=(3.5,5))
+            ax=axisartist.Subplot(fig,111)
+            fig.add_axes(ax)
+            #ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            #ax.axis["left"]=ax.new_floating_axis(1,0)
+            ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
+            ax.axis["left"].set_axisline_style("->",size=1.5)
+            #ax.axis["top"].set_visible(False)
+            #ax.axis["right"].set_visible(False)
+            plt.grid()
+            if xx1 and xx2 and xx3:
+                xx1=float(xx1)
+                xx2=float(xx2)
+                xx3=float(xx3)
+                x_values=np.arange(xx1,xx2,xx3)
+            elif xx1 and xx2 :
+                xx1=float(xx1)
+                xx2=float(xx2)
+                x_values=np.arange(xx1,xx2,0.2)
+            elif xx3:
+               
+                xx3=float(xx3)
+                x_values=np.arange(-dd,dd,xx3)
+
+            else:
+                x_values=np.arange(-dd,dd,0.1)
+            
+                
+            
+            
+            y_values=[kk/x for x in x_values]
+
+            plt.plot(x_values,y_values,color='b')
+            
+            sio=BytesIO()
+            plt.savefig(sio,format='png')
+            dat=base64.encodebytes(sio.getvalue()).decode()
+            html = ''' <img src="data:image/png;base64,{}"/> '''
+            plt.close()
+            imd=html.format(dat)
+            data['imd'] =imd
+            data['status']="SUCCESS"
+        return JsonResponse(data)
+            
+
+    elif xz2=='2' :
+        if  aa=='' or bb=='' or cc=='':
+            data['message'] = '输入类型错误！'
+            data['status']="errors"
+        else:
+            
+            aa=float(aa)
+            bb=float(bb)
+            cc=float(cc)
+            
+            ee=abs(aa)+abs(bb)+abs(cc)
+            plt.switch_backend('agg')
+            fig=plt.figure(figsize=(3.5,3.8))
+            ax=axisartist.Subplot(fig,111)
+            fig.add_axes(ax)
+            #ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            #ax.axis["left"]=ax.new_floating_axis(1,0)
+            ax.axis["bottom"].set_axisline_style("-|>",size=1.5)
+            ax.axis["left"].set_axisline_style("->",size=1.5)
+            #ax.axis["top"].set_visible(False)
+            #ax.axis["right"].set_visible(False)
+            plt.grid()
+            if xx1 and xx2 and xx3:
+                xx1=float(xx1)
+                xx2=float(xx2)
+                xx3=float(xx3)
+                x_values=np.arange(xx1,xx2,xx3)
+            elif xx1 and xx2 :
+                xx1=float(xx1)
+                xx2=float(xx2)
+                x_values=np.arange(xx1,xx2,0.2)
+            elif xx3:
+               
+                xx3=float(xx3)
+                x_values=np.arange(-ee,ee,xx3)
+
+            else:
+                x_values=np.arange(-ee,ee,0.1)
+           
+
+            
+            y_values=[aa*pow(x,2)+bb*x+cc for x in x_values]
+
+            plt.plot(x_values,y_values,'r')
+            #plt.plot(x_values,y_values1,color='b')
+            sio=BytesIO()
+            plt.savefig(sio,format='png')
+            dat=base64.encodebytes(sio.getvalue()).decode()
+            html = ''' <img src="data:image/png;base64,{}"/> '''
+            plt.close()
+            imd=html.format(dat)
+            data['imd'] =imd
+            data['status']="SUCCESS"
+        return JsonResponse(data)
+            
+    else:
+        data['message'] = '不能为空'
+        data['status']="errors"
+        return JsonResponse(data)
 
 
+         
 
-    return JsonResponse(data)
 
 def Zuotu1(request):
 
