@@ -1,6 +1,16 @@
-{% extends 'base2.html' %}  
-{% block content %}
- 
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+<body bgcolor="#b8fec0">
 <style> 
 form{text-align:left;} 
 </style> 
@@ -11,7 +21,7 @@ form{text-align:left;}
 
                     
                    <br><br>
-                   <a>提示：各常数输入不能为空，输入范围为：负数，正数，0，留空可以用0代替</a> <br>
+                   <a><font size="5">提示：各常数输入不能为空，输入范围为：负数，正数，0，留空可以用0代替</font></a> <br>
                         <form id='zuotu2' onsubmit="return false" action="{% url 'zuotu2' %}" method="POST" style="overflow:hidden">
                             {% csrf_token %}
                             
@@ -75,5 +85,16 @@ form{text-align:left;}
             return false;
         });
     </script>   
-{% endblock %}
+<div class="footer">
+    <div class="website-info">
+        <p>浙ICP备19013564号 Copyright©2019 35925.top 版权所有</p>
+        <p>意见反馈或联系我（569258059@qq.com）</p>
+    </div>
+</div> 
+
+</body>
+
+
+</html>
+
 

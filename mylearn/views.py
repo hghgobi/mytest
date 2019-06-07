@@ -586,6 +586,13 @@ def Addhomework2(request):
 
 
 def Zuotu2(request):
+    userr='作图网站登录次数'
+
+    loginrecord=get_object_or_404(Loginrecord,loginuser=userr)
+
+    loginrecord.logincount =int(loginrecord.logincount)+1
+    loginrecord.save()
+
     k=request.POST.get('k')
     b=request.POST.get('b')
     aa=request.POST.get('aa')
