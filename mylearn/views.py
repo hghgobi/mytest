@@ -127,6 +127,10 @@ def Homeworkmessages(request):
     return render(request, 'homework.html',
                   {'homeworkmessages': homeworkmessages, 'homeworkmessagesum': homeworkmessagesum, 'imd': imd})
 def Homeworkrank(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+
     msag=Homeworksum.objects.all()
     summ=len(msag)
     rank={}
