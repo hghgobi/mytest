@@ -208,7 +208,7 @@ def Homeworkrank(request):
         scoresss=0
         for i in range(sunns):
             scoresss+=int(examrank[i].examscore)
-        examranks[name]=scoresss/sunns
+        examranks[name]=int(scoresss/sunns)
     examranks=sorted(examranks.items(), key=lambda e:e[1], reverse=False)
 
     scores3=[]
