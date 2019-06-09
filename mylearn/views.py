@@ -41,7 +41,7 @@ def addclasses(request):
         return render(request,'index.html',{"classlist":classlist})
 
 #coding:utf-8
-def Homeworkmessages(request):
+def Homeworkmessages1(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
@@ -88,6 +88,44 @@ def Homeworkmessages(request):
 
     return render(request,'homework.html',{'homeworkmessages':homeworkmessages,'homeworkmessagesum':homeworkmessagesum,'imd':imd})
 
+
+def Homeworkmessages(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    homeworkmessages = Homework.objects.filter(homeworkstudent__studentname=teststudent)
+    homeworkmessagesum = Homeworksum.objects.filter(student_name__studentname=teststudent)
+
+    sl=[]
+    sl.append(homeworkmessagesum[0].aacount)
+    sl.append(homeworkmessagesum[0].acount)
+    sl.append(homeworkmessagesum[0].bcount)
+    sl.append(homeworkmessagesum[0].ccount)
+    sl.append(homeworkmessagesum[0].dcount)
+    sl.append(homeworkmessagesum[0].ecount)
+    sl.append(homeworkmessagesum[0].fcount)
+
+    plt.switch_backend('agg')
+    plt.figure(figsize=(3.6, 3.6))
+
+    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.barh(range(7), sl, height=0.7, color=['b', 'g', 'r', 'c', 'y', 'k', 'm'], alpha=0.8)
+    plt.yticks(range(7), ['A+', 'A', 'B', 'C', 'D', '没交', '乱写'])
+    plt.xlim(0, 50)
+    plt.xlabel("累计次数")
+    plt.title("作业总体情况")
+    for x, y in enumerate(sl):
+        plt.text(y + 0.2, x - 0.1, '%s' % y)
+    sio = BytesIO()
+    plt.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd = html.format(data)
+
+    return render(request, 'homework.html',
+                  {'homeworkmessages': homeworkmessages, 'homeworkmessagesum': homeworkmessagesum, 'imd': imd})
 def Homeworkrank(request):
     msag=Homeworksum.objects.all()
     summ=len(msag)
