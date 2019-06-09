@@ -202,48 +202,48 @@ def Homeworkrank(request):
     imdd=html1.format(data1)
 
 
-    stlist=[6,20,16,1,32,27,9,19,22,5,3,10,17,15,12,14,2,4,31,13,18,24,25,11,8,7,56,60,54,70,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,78,55,62,23,28,75,57,72,73,82,69,81,26]
-    examranks={}
-    for i in stlist :
-        stname = Students.objects.filter(pk=i)
-        name=stname[0].studentname
-        examrank=Exams.objects.filter(examstudent__studentname=name)
-        sunns=len(examrank)
-        scoresss=0
-        for i in range(sunns):
-            scoresss+=int(examrank[i].examscore)
-        examranks[name]=int(scoresss/sunns)
-    examranks=sorted(examranks.items(), key=lambda e:e[1], reverse=False)
+    # stlist=[6,20,16,1,32,27,9,19,22,5,3,10,17,15,12,14,2,4,31,13,18,24,25,11,8,7,56,60,54,70,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,78,55,62,23,28,75,57,72,73,82,69,81,26]
+    # examranks={}
+    # for i in stlist :
+    #     stname = Students.objects.filter(pk=i)
+    #     name=stname[0].studentname
+    #     examrank=Exams.objects.filter(examstudent__studentname=name)
+    #     sunns=len(examrank)
+    #     scoresss=0
+    #     for i in range(sunns):
+    #         scoresss+=int(examrank[i].examscore)
+    #     examranks[name]=int(scoresss/sunns)
+    # examranks=sorted(examranks.items(), key=lambda e:e[1], reverse=False)
+    #
+    # scores3=[]
+    # names3=[]
+    # for iii in examranks:
+    #     names3.append(iii[0])
+    #     scores3.append(iii[1])
+    # scores3=scores3[20:]
+    # names3=names3[20:]
+    #
+    #
+    # plt.switch_backend('agg')
+    # plt.figure(figsize=(4,13))
+    #
+    # matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
+    # matplotlib.rcParams['axes.unicode_minus'] = False
+    # plt.barh(range(len(scores3)), scores3, height=0.7, color='b', alpha=0.8)
+    # plt.yticks(range(len(scores3)), names3)
+    # plt.xlabel("平均分")
+    # plt.title("考试平均分排行榜")
+    # for x3, y3 in enumerate(scores3):
+    #     plt.text(y3 + 0.2, x3 - 0.1, '%s' % y3)
+    # sio3=BytesIO()
+    # plt.savefig(sio3,format='png')
+    # data3=base64.encodebytes(sio3.getvalue()).decode()
+    # html3 = ''' <img src="data:image/png;base64,{}"/> '''
+    # plt.close()
+    # imd3=html3.format(data3)
 
-    scores3=[]
-    names3=[]
-    for iii in examranks:
-        names3.append(iii[0])
-        scores3.append(iii[1])
-    scores3=scores3[20:]
-    names3=names3[20:]
 
-
-    plt.switch_backend('agg')
-    plt.figure(figsize=(4,13))
-
-    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
-    matplotlib.rcParams['axes.unicode_minus'] = False
-    plt.barh(range(len(scores3)), scores3, height=0.7, color='b', alpha=0.8)
-    plt.yticks(range(len(scores3)), names3)
-    plt.xlabel("平均分")
-    plt.title("考试平均分排行榜")
-    for x3, y3 in enumerate(scores3):
-        plt.text(y3 + 0.2, x3 - 0.1, '%s' % y3)
-    sio3=BytesIO()
-    plt.savefig(sio3,format='png')
-    data3=base64.encodebytes(sio3.getvalue()).decode()
-    html3 = ''' <img src="data:image/png;base64,{}"/> '''
-    plt.close()
-    imd3=html3.format(data3)
-
-
-    return render(request,'zuoyepaihang.html',{'imd':imd,'imdd':imdd,'imd3':imd3})
+    return render(request,'zuoyepaihang.html',{'imd':imd,'imdd':imdd})
 
         
 
