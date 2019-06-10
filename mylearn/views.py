@@ -26,7 +26,7 @@ from io import BytesIO
 import mpl_toolkits.axisartist as axisartist
 import matplotlib
 import math
-
+import time
 
 # Create your views here.
 def addclasses(request):
@@ -1051,7 +1051,19 @@ def Zuotu1(request):
     return render(request,'zuotu1.html')
         
         
-            
+def homeworkg(request):
+
+    homewm=Homework.objects.filter(homeworkscore='A+')
+
+
+    return render(request,'homeworkg.html',{'homewm':homewm })
+def homeworkg2(request):
+
+    homewm=Homework.objects.filter(homeworkscore='A')
+
+
+    return render(request,'homeworkg2.html',{'homewm':homewm })
+
 
             
         

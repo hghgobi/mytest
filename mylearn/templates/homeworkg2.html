@@ -1,0 +1,36 @@
+{% extends 'base2.html' %}
+{% block content %}
+
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">作业情况查询结果</font></a></div>
+                    <div class="panel-body">
+
+                     <table border="1" cellpadding="6">
+        <tr>
+            <td><font size="4">时间</font></td>
+            <td><font size="4">学生姓名</font></td>
+            <td><font size="4">完成情况</font></td>
+
+
+        </tr>
+        {%for i in homewm %}
+            <tr>
+                 <td><font size="3" color="red">{{i.homeworktime}}</font></td>
+                <td><font size="3" color="red">{{i.homeworkstudent}}</font></td>
+                <td><font size="3" color="red">{{i.homeworkscore}}</font></td>
+
+            </tr>
+        {% empty %}
+        <p><font size="2" color="red">暂无相关信息</font></p>
+        {% endfor %}
+    </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+{% endblock %}
+
