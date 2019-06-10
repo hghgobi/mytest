@@ -31,8 +31,8 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('zyph/',views.Homeworkrank),
                 path('zuotu1/',views.Zuotu1),
                 path('zuotu2/',views.Zuotu2,name='zuotu2'),
-                path('hwaa/',views.homeworkg),
-                path('hwa/',views.homeworkg2),
+                path('hwg/',views.homeworkg),
+
 
 
 ]

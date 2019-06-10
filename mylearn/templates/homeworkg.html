@@ -16,7 +16,19 @@
             
             
         </tr>
-        {%for i in homewm %}
+
+        {%for i in homewmaa %}
+            <tr>
+                 <td><font size="3" color="red">{{i.homeworktime}}</font></td>
+                <td><font size="3" color="red">{{i.homeworkstudent}}</font></td>
+                <td><font size="3" color="red">{{i.homeworkscore}}</font></td>
+
+            </tr>
+        {% empty %}
+        <p><font size="2" color="red">暂无相关信息</font></p>
+        {% endfor %}
+
+                         {%for i in homewma %}
             <tr>
                  <td><font size="3" color="red">{{i.homeworktime}}</font></td>
                 <td><font size="3" color="red">{{i.homeworkstudent}}</font></td>

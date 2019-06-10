@@ -18,7 +18,8 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.dates import DateFormatter
 import matplotlib.pyplot as plt
-import datetime
+
+import  datetime
 
 import base64
 from io import BytesIO
@@ -27,6 +28,8 @@ import mpl_toolkits.axisartist as axisartist
 import matplotlib
 import math
 import time
+from django.db.models import Q
+
 
 # Create your views here.
 def addclasses(request):
@@ -1052,17 +1055,12 @@ def Zuotu1(request):
         
         
 def homeworkg(request):
+    now=datetime.datetime.now()
+    start=now-datetime.timedelta(hours=10,minutes=1,seconds=1)
+    homewmaa=Homework.objects.filter(Q(homeworktime__gt=start)&Q(homeworkscore='A+'))
+    homewma = Homework.objects.filter(Q(homeworktime__gt=start) & Q(homeworkscore='A'))
 
-    homewm=Homework.objects.filter(homeworkscore='A+')
-
-
-    return render(request,'homeworkg.html',{'homewm':homewm })
-def homeworkg2(request):
-
-    homewm=Homework.objects.filter(homeworkscore='A')
-
-
-    return render(request,'homeworkg2.html',{'homewm':homewm })
+    return render(request,'homeworkg.html',{'homewmaa':homewmaa,'homewma':homewma })
 
 
             
