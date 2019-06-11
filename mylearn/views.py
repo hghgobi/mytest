@@ -1103,7 +1103,7 @@ def weixin_main(request):
             return HttpResponse(echostr)
         else:
             return HttpResponse("error")
-    elif request.method == 'POST':
+    else :
         msg = parse_message(request.body)
         if msg.type == 'text':
             reply = create_reply('这是条文字消息', msg)
@@ -1115,6 +1115,5 @@ def weixin_main(request):
             reply = create_reply('这是条其他类型消息', msg)
         response = HttpResponse(reply.render(), content_type="application/xml")
         return response
-    else:
-        logger.info('--------------------------------')
+
 
