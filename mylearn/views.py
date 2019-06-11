@@ -34,9 +34,13 @@ from django.db.models import Q
 import hashlib
 from django.utils.encoding import smart_str
 from django.views.decorators.csrf import csrf_exempt
-from wechatpy import parse_message
+from wechatpy import parse_message,create_reply
 from wechatpy.replies import TextReply
 from wechatpy import WeChatClient
+from wechatpy.exceptions import InvalidSignatureException
+
+from wechatpy.utils import check_signature
+
 
 
 # Create your views here.
