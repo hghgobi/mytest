@@ -1056,11 +1056,15 @@ def Zuotu1(request):
         
 def homeworkg(request):
     now=datetime.datetime.now()
-    start=now-datetime.timedelta(hours=10,minutes=1,seconds=1)
+    start=now-datetime.timedelta(hours=168,minutes=0,seconds=0)
     homewmaa=Homework.objects.filter(Q(homeworktime__gt=start)&Q(homeworkscore='A+'))
-    homewma = Homework.objects.filter(Q(homeworktime__gt=start) & Q(homeworkscore='A'))
+    # homewmaa = Homework.objects.filter(Q(homeworktime__in=[-1:])
 
-    return render(request,'homeworkg.html',{'homewmaa':homewmaa,'homewma':homewma })
+    homewma = Homework.objects.filter(Q(homeworktime__gt=start) & Q(homeworkscore='A'))
+    now=now.strftime('%Y-%m-%d %H:%M:%S')
+    start=start.strftime('%Y-%m-%d %H:%M:%S')
+
+    return render(request,'homeworkg.html',{'homewmaa':homewmaa,'homewma':homewma,'now':now,'start':start})
 
 
             
