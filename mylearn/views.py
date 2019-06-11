@@ -34,6 +34,9 @@ from django.db.models import Q
 import hashlib
 from django.utils.encoding import smart_str
 from django.views.decorators.csrf import csrf_exempt
+from wechatpy import parse_message
+from wechatpy.replies import TextReply
+from wechatpy import WeChatClient
 
 
 # Create your views here.
@@ -1096,6 +1099,18 @@ def weixin_main(request):
             return HttpResponse(echostr)
         else:
             return HttpResponse("error")
+    elif request.method == 'POST':
+        msg = parse_message(request.body)
+        if msg.type == 'text':
+            reply = create_reply('这是条文字消息', msg)
+        elif msg.type == 'image':
+            reply = create_reply('这是条图片消息', msg)
+        elif msg.type == 'voice':
+            reply = create_reply('这是条语音消息', msg)
+        else:
+            reply = create_reply('这是条其他类型消息', msg)
+        response = HttpResponse(reply.render(), content_type="application/xml")
+        return response
     else:
-        othercontent = "999"
-        return HttpResponse(othercontent)
+        logger.info('--------------------------------')
+
