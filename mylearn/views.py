@@ -40,6 +40,7 @@ from wechatpy import WeChatClient
 from wechatpy.exceptions import InvalidSignatureException
 
 from wechatpy.utils import check_signature
+from wechatpy.pay import logger
 
 
 
@@ -1081,29 +1082,53 @@ def homeworkg(request):
 
             
         
-
+token = 'hghgobi7727'
 
 @csrf_exempt
 def weixin_main(request):
-    if request.method=='GET':
-        signature = str(request.GET.get('signature',None))
-        timestamp =str(request.GET.get('timestamp',None))
-        nonce = str(request.GET.get('nonce',None))
-        echostr= str(request.GET.get('echostr',None))
+    # if request.method=='GET':
+    #     signature = str(request.GET.get('signature',None))
+    #     timestamp =str(request.GET.get('timestamp',None))
+    #     nonce = str(request.GET.get('nonce',None))
+    #     echostr= str(request.GET.get('echostr',None))
+    #
+    #     token = 'hghgobi7727'
+    #
+    #     hashlist = [token,timestamp,nonce]
+    #     hashlist.sort()
+    #     hashstr = ''
+    #     for i in hashlist:
+    #         hashstr+=i
+    #     hashstr = hashlib.sha1(hashstr.encode(encoding="UTF-8")).hexdigest()
+    #     if hashstr == signature:
+    #         return HttpResponse(echostr)
+    #     else:
+    #         return HttpResponse("error")
+    # else :
+    #     msg = parse_message(request.body)
+    #     if msg.type == 'text':
+    #         reply = create_reply('这是条文字消息', msg)
+    #     elif msg.type == 'image':
+    #         reply = create_reply('这是条图片消息', msg)
+    #     elif msg.type == 'voice':
+    #         reply = create_reply('这是条语音消息', msg)
+    #     else:
+    #         reply = create_reply('这是条其他类型消息', msg)
+    #     response = HttpResponse(reply.render(), content_type="application/xml")
+    #     return response
+    if request.method == 'GET':
+        signature = request.GET.get('signature', '')
+        timestamp = request.GET.get('timestamp', '')
+        nonce = request.GET.get('nonce', '')
+        echo_str = request.GET.get('echostr', '')
+        try:
+            check_signature(token, signature, timestamp, nonce)
+        except InvalidSignatureException:
+            echo_str = '错误的请求'
+        response = HttpResponse(echo_str)
+        return response
 
-        token = 'hghgobi7727'
-
-        hashlist = [token,timestamp,nonce]
-        hashlist.sort()
-        hashstr = ''
-        for i in hashlist:
-            hashstr+=i
-        hashstr = hashlib.sha1(hashstr.encode(encoding="UTF-8")).hexdigest()
-        if hashstr == signature:
-            return HttpResponse(echostr)
-        else:
-            return HttpResponse("error")
-    else :
+    elif request.method == 'POST':
         msg = parse_message(request.body)
         if msg.type == 'text':
             reply = create_reply('这是条文字消息', msg)
@@ -1115,5 +1140,4 @@ def weixin_main(request):
             reply = create_reply('这是条其他类型消息', msg)
         response = HttpResponse(reply.render(), content_type="application/xml")
         return response
-
 
