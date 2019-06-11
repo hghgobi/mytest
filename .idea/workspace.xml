@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="1087" lean-forward="true" selection-start-line="1087" selection-end-line="1087" />
+            <state relative-caret-position="459">
+              <caret line="1093" column="17" lean-forward="true" selection-start-line="1093" selection-start-column="17" selection-end-line="1093" selection-end-column="17" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -133,9 +133,8 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="817" />
-    <option name="y" value="52" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="955" />
     <option name="width" value="1034" />
     <option name="height" value="1047" />
   </component>
@@ -251,10 +250,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="955" y="0" width="1034" height="1047" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.31954888" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.6084337" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -342,8 +341,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="1087" lean-forward="true" selection-start-line="1087" selection-end-line="1087" />
+        <state relative-caret-position="459">
+          <caret line="1093" column="17" lean-forward="true" selection-start-line="1093" selection-start-column="17" selection-end-line="1093" selection-end-column="17" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
