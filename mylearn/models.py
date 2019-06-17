@@ -167,6 +167,23 @@ class Homeworksum(models.Model):
 	class Meta:
 		ordering=['-lasttime']
 
+class TXL(models.Model):
+	name=models.CharField(max_length=200)
+	company=models.CharField(max_length=200)
+	major=models.CharField(max_length=200)
+	gdtime=models.CharField(max_length=200)
+	phone1=models.BigIntegerField()
+	phone2=models.BigIntegerField()
+	addtime = models.DateTimeField(auto_now_add=True)
+	class Meta:
+		ordering=['-addtime']
+	@classmethod
+	def createms(cls,name,company,major,gdtime,phone1,phone2):
+		addms = cls(name=name,company=company,major=major,gdtime=gdtime,phone1=phone1,phone2=phone2)
+		addms.save()
+		return addms
+
+
 	
 
 

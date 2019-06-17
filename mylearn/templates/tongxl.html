@@ -1,0 +1,121 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+<body bgcolor="#b8fec0">
+<style>
+table{text-align:center}
+</style>
+<body bgcolor="#b8fec0">
+<style>
+div{text-align:center}
+</style>
+
+    <form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="name"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;单位:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="company"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;专业:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="major"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">毕业时间:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="gdtime"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">手机长号:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="phone1"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">手机短号:</font></td>
+                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="phone2"></td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="添加信息" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+<a><font size="3" color="red">短号没有请留空</font></a>
+<a><font size="5" color="red">{{ error}}</font></a>
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">华中师大校友台州(通讯录)</font></a></div>
+                    <div class="panel-body">
+
+
+
+                     <table border="1" cellpadding="6">
+        <tr>
+            <td><font size="4"> 序号</font></td>
+            <td><font size="4"> 姓名</font></td>
+            <td><font size="4">  单位</font></td>
+            <td><font size="4">  专业</font></td>
+            <td><font size="4">毕业时间</font></td>
+            <td><font size="4">长号</font></td>
+            <td><font size="4">短号</font></td>
+
+
+
+        </tr>
+        {%for i in mss %}
+            <tr>
+                <td><font size="3" color="red">{{i.pk}}</font></td>
+                <td><font size="3" color="red">{{i.name}}</font></td>
+                <td><font size="3" color="red">{{i.company}}</font></td>
+                <td><font size="3" color="red">{{i.major}}</font></td>
+                <td><font size="3" color="red">{{i.gdtime}}</font></td>
+                <td><font size="3" color="red">{{i.phone1}}</font></td>
+                <td><font size="3" color="red">{{i.phone2}}</font></td>
+            </tr>
+        {% empty %}
+        <p><font size="2" color="red">暂无相关信息</font></p>
+        {% endfor %}
+    </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+
+
+
+
+
+
+<div class="footer">
+    <div class="website-info">
+        <p>浙ICP备19013564号 Copyright©2019 35925.top 版权所有</p>
+        <p>意见反馈或联系我（569258059@qq.com）</p>
+    </div>
+</div>
+
+</body>
+
+
+</html>

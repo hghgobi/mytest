@@ -33,6 +33,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('zuotu2/',views.Zuotu2,name='zuotu2'),
                 path('hwg/',views.homeworkg),
                 path('wx/',views.weixin_main,name='weixin_main'),
+                path('tzccnu/',views.Addtxl),
 
 
 

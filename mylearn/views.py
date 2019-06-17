@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL
 import json
 import random
 import numpy as np
@@ -1227,4 +1227,42 @@ class TextMsg(Msg):
         </xml>
         """
         return XmlForm.format(**self.__dict)
+
+def Addtxl(request):
+    if request.method=='GET':
+        mss=TXL.objects.all()
+        if mss :
+            return render(request, 'tongxl.html', {'mss': mss})
+        else:
+            return render(request, 'tongxl.html')
+    if request.method=='POST':
+        mss = TXL.objects.all()
+        name=request.POST.get('name')
+        if name=='':
+            return render(request, 'tongxl.html', {'error': '姓名不能为空！','mss': mss})
+        company= request.POST.get('company')
+        major=request.POST.get('major')
+        gdtime= request.POST.get('gdtime')
+        phone1= request.POST.get('phone1')
+        if phone1.isdigit():
+            pass
+        else:
+            return render(request, 'tongxl.html', {'error': '长号类型错误！', 'mss': mss})
+
+        phone2= request.POST.get('phone2')
+        if phone2.isdigit():
+            pass
+        else:
+            phone2=int(0)
+        TXL.createms(name,company,major,gdtime,phone1,phone2)
+        mss = TXL.objects.all()
+        return render(request, 'tongxl.html', {'mss': mss})
+
+
+
+
+
+
+
+
 
