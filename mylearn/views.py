@@ -1228,7 +1228,11 @@ class TextMsg(Msg):
         """
         return XmlForm.format(**self.__dict)
 
+
 def Addtxl(request):
+    return HttpResponse('因隐私问题，暂停通讯录服务，以后有需要再开放')
+
+def Addtxl2(request):
     if request.method=='GET':
         mss=TXL.objects.all()
         if mss :
