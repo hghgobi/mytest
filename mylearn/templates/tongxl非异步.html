@@ -19,7 +19,7 @@ table{text-align:center}
 div{text-align:center}
 </style>
 
-    <form id="addtxl" onsubmit="return false" action="{% url 'txlyibu' %}" method="POST" style="overflow:hidden">
+    <form action="" method="post">
         <table>
             <tbody>
                 <tr>
@@ -57,11 +57,8 @@ div{text-align:center}
             </tbody>
         </table>
     </form>
-<ul>
-    <li><font color="blue" size="4">（1.短号没有请留空.</font></li>
-    <li><font color="blue" size="4">（2.需要修改信息的，只要将修改的信息再提交一次即可.</font></li>
-</ul>
-<a><font id="error" size="5" color="red">{{ error}}</font></a>
+<a><font size="3" color="red">短号没有请留空</font></a>
+<a><font size="5" color="red">{{ error}}</font></a>
 
 
 <div class="container">
@@ -74,7 +71,7 @@ div{text-align:center}
 
 
                      <table id="num" border="1" cellpadding="6">
-        <tr >
+        <tr>
             <td><font size="4"> 序号</font></td>
 
             <td><font size="4"> 姓名</font></td>
@@ -87,8 +84,6 @@ div{text-align:center}
 
 
         </tr>
-
-
         {%for i in mss %}
             <tr >
                 <td><font size="3" color="red">  </font></td>
@@ -103,7 +98,6 @@ div{text-align:center}
         {% empty %}
         <p><font size="2" color="red">暂无相关信息</font></p>
         {% endfor %}
-
     </table>
                     </div>
                 </div>
@@ -120,40 +114,6 @@ div{text-align:center}
 		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
 	    }
     }
-    </script>
-
-
-<script type="text/javascript">
-        $("#addtxl").submit(function(){
-
-            // 异步提交
-            $.ajax({
-                url: "{% url 'txlyibu' %}",
-                type: 'POST',
-                data: $(this).serialize(),
-                cache: false,
-                success: function(data){
-                    console.log(data);
-
-
-                    if(data['status']=="success"){
-                    alert("提交成功！");
-             setTimeout(function () {
-                    window.parent.location.reload();
-                }, 200);
-
-
-                    }else{
-                        // 显示错误信息
-                        $("#error").text(data['error']);
-                    }
-                },
-                error: function(xhr){
-                    console.log(xhr);
-                }
-            });
-            return false;
-        });
     </script>
 
 

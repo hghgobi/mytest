@@ -35,5 +35,6 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('wx/',views.weixin_main,name='weixin_main'),
                 path('tzccnu/',views.Addtxl),
                path('tzccnu22/', views.Addtxl2),
+               path('txlyibu/', views.Addtxl22,name='txlyibu'),
 
                ]

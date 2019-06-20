@@ -1068,8 +1068,10 @@ def Zuotu1(request):
         
         
 def homeworkg(request):
-    now=datetime.datetime.now()
-    start=now-datetime.timedelta(hours=168,minutes=0,seconds=0)
+    # now=datetime.datetime.now()
+    now0=Homework.objects.latest()
+    now=now0.homeworktime
+    start=now-datetime.timedelta(hours=120,minutes=0,seconds=0)
     homewmaa=Homework.objects.filter(Q(homeworktime__gt=start)&Q(homeworkscore='A+'))
     # homewmaa = Homework.objects.filter(Q(homeworktime__in=[-1:])
 
@@ -1232,7 +1234,7 @@ class TextMsg(Msg):
 def Addtxl(request):
     return HttpResponse('因隐私问题，暂停通讯录服务，以后有需要再开放')
 
-def Addtxl2(request):
+def Addtxl3(request):   #非异步提交
     if request.method=='GET':
         mss=TXL.objects.all()
         if mss :
@@ -1261,6 +1263,44 @@ def Addtxl2(request):
         TXL.createms(name,company,major,gdtime,phone1,phone2)
         mss = TXL.objects.all()
         return render(request, 'tongxl.html', {'mss': mss})
+
+def Addtxl2(request): #通讯录异步提交1
+    mss=TXL.objects.all()
+    if mss :
+        return render(request,'tongxl.html',{'mss':mss})
+    else:
+        return render(request,'tongxl.html')
+def Addtxl22(request):
+    data={}
+    name=request.POST.get('name')
+    if name:
+        pass
+    else:
+        data['error']='姓名不能为空'
+        data['status']='error'
+        return JsonResponse(data)
+    company=request.POST.get('company')
+    major=request.POST.get('major')
+    gdtime=request.POST.get('gdtime')
+    phone1=request.POST.get('phone1')
+    if phone1.isdigit():
+        pass
+    else:
+        data['error']='手机号只能是数字'
+        data['status']='error'
+        return JsonResponse(data)
+    phone2=request.POST.get('phone2')
+    if phone2.isdigit():
+        pass
+    else:
+        phone2=int(0)
+    TXL.createms(name, company, major, gdtime, phone1, phone2)
+    data['status'] = 'success'
+    return JsonResponse(data)
+
+
+
+
 
 
 

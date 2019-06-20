@@ -39,6 +39,7 @@ class Homework(models.Model):
 	homeworkstudent = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
 	class Meta:
 		ordering = ['-homeworktime']
+		get_latest_by=['homeworktime']
 	@classmethod
 	def createhomework(cls,idd,score,homeworkname):
 		name = Students.objects.filter(pk=idd)
@@ -179,9 +180,18 @@ class TXL(models.Model):
 		ordering=['-addtime']
 	@classmethod
 	def createms(cls,name,company,major,gdtime,phone1,phone2):
-		addms = cls(name=name,company=company,major=major,gdtime=gdtime,phone1=phone1,phone2=phone2)
-		addms.save()
-		return addms
+		names=TXL.objects.filter(name=name)
+		if names :
+			names.delete()
+			addms = cls(name=name, company=company, major=major, gdtime=gdtime, phone1=phone1, phone2=phone2)
+			addms.save()
+			return addms
+		else:
+			addms = cls(name=name, company=company, major=major, gdtime=gdtime, phone1=phone1, phone2=phone2)
+			addms.save()
+			return addms
+
+
 
 
 	
