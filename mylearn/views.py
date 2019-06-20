@@ -777,7 +777,7 @@ def Zuotu2(request):
             
 
     elif xz1=='1'and xz3=='3' :
-        if aa == '' or bb=='' or cc=='' or kk=='':
+        if k == '' or b=='' or kk=='':
             data['message'] = '输入类型错误(不能留空，可用0代替）！'
             data['status']="errors"
         else:
@@ -801,17 +801,17 @@ def Zuotu2(request):
                 xx2=float(xx2)
                 xx3=float(xx3)
                 x_values=np.arange(xx1,xx2,xx3)
-            if xx1 and xx2 :
+            elif xx1 and xx2 :
                 xx1=float(xx1)
                 xx2=float(xx2)
-                x_values=np.arange(xx1,xx2,0.2)
-            if xx3:
+                x_values=np.arange(xx1,xx2,1)
+            elif xx3:
                
                 xx3=float(xx3)
                 x_values=np.arange(-dd,dd,xx3)
 
             else:
-                x_values=np.arange(-dd,dd,0.1)
+                x_values=np.arange(-dd,dd,1)
 
                 
             y_values=[x*k+b for x in x_values]
@@ -971,14 +971,14 @@ def Zuotu2(request):
             elif xx1 and xx2 :
                 xx1=float(xx1)
                 xx2=float(xx2)
-                x_values=np.arange(xx1,xx2,0.2)
+                x_values=np.arange(xx1,xx2,1)
             elif xx3:
                
                 xx3=float(xx3)
                 x_values=np.arange(-dd,dd,xx3)
 
             else:
-                x_values=np.arange(-dd,dd,0.1)
+                x_values=np.arange(-dd,dd,1)
             
                 
             
@@ -1028,14 +1028,14 @@ def Zuotu2(request):
             elif xx1 and xx2 :
                 xx1=float(xx1)
                 xx2=float(xx2)
-                x_values=np.arange(xx1,xx2,0.2)
+                x_values=np.arange(xx1,xx2,1)
             elif xx3:
                
                 xx3=float(xx3)
                 x_values=np.arange(-ee,ee,xx3)
 
             else:
-                x_values=np.arange(-ee,ee,0.1)
+                x_values=np.arange(-ee,ee,1)
            
 
             
