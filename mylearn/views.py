@@ -861,14 +861,14 @@ def Zuotu2(request):
             elif xx1 and xx2 :
                 xx1=float(xx1)
                 xx2=float(xx2)
-                x_values=np.arange(xx1,xx2,0.2)
+                x_values=np.arange(xx1,xx2,1)
             elif xx3:
                
                 xx3=float(xx3)
                 x_values=np.arange(-ee,ee,xx3)
 
             else:
-                x_values=np.arange(-ee,ee,0.1)
+                x_values=np.arange(-ee,ee,1)
 
 
 
