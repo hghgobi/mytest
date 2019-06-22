@@ -1298,7 +1298,8 @@ def Addtxl22(request):
     data['status'] = 'success'
     return JsonResponse(data)
 
-
+def CS(request):
+    return render(request,'cesi.html')
 
 
 

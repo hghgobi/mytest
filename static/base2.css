@@ -1,5 +1,5 @@
 * {
-    margin: 0;
+    margin:0;
     padding: 0;
 }
 div.nav {
@@ -7,10 +7,10 @@ div.nav {
     border-bottom: 1px solid #ccc;
     padding: 1px;
 }
-div.nav a{
+div.nav li{
     text-decoration: none;
     color: #001;
-    padding: 1px 10px;
+    padding: 10px ;
 }
 div.nav a.logo {
     display: inline-block;
@@ -28,4 +28,9 @@ div.website-info {
 }
 div.website-info p {
     margin-bottom: 0;
+}
+
+a:active
+{
+background-color:yellow;
 }

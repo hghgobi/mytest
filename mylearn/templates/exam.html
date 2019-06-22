@@ -8,23 +8,27 @@
                     <div class="panel-heading"><a><font size="6">考试成绩查询结果</font></a></div>
                     <div class="panel-body">
                         {{ imd | safe }}
-                      <table border="1" cellpadding="6">
+                      <table id="num" class="table table-bordered" >
 
          <tr>
-            <td><font size="4">考试时间</font></td>
-            <td><font size="4">学生姓名</font></td>
-            <td><font size="4">考试内容</font></td>
-            <td><font size="4">考试成绩</font></td>
+             <td ><font size="4">序号</font></td>
+            <td class="warning"><font size="4">考试时间</font></td>
+            <td class="warning"><font size="4">学生姓名</font></td>
+            <td class="warning"><font size="4">考试内容</font></td>
+            <td class="warning"> <font size="4">考试成绩</font></td>
             
             
         </tr>
         {%for i in exammessages %}
-            <tr>
-                <td><font size="3" color="red">{{i.examtime}}</font></td>
-                <td><font size="3" color="red">{{i.examstudent}}</font></td>
-                <td><font size="3" color="red">{{i.examname}}</font></td>
-                <td><font size="3" color="red">{{i.examscore}}</font></td>
+            <tr  >
+                <td> <font size="3" color="red"></font></td>
+                <td class="active"><font size="3" color="red">{{i.examtime}}</font></td>
+                <td class="danger"><font size="3" color="red">{{i.examstudent}}</font></td>
+                <td class="active"><font size="3" color="red">{{i.examname}}</font></td>
+                <td class="danger"><font size="3" color="red">{{i.examname}}</font></td>
             </tr>
+
+
         {% empty %}
         <p><font size="5" color="red">暂无相关信息</font></p>
         {% endfor %}
@@ -33,6 +37,14 @@
                 </div>
             </div>    
             </div> 
-            </div>      
+<script language="javascript" type="text/javascript">
+	    window.onload = function(){
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	    }
+    }
+    </script>
 {% endblock %}
 
