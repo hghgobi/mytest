@@ -10,20 +10,20 @@
 
                      <table id="num" class="table table-bordered">
         <tr>
-            <td><font size="4">序号</font></td>
-            <td><font size="4">时间</font></td>
-            <td><font size="4">学生姓名</font></td>
-            <td><font size="4">完成等级</font></td>
+            <td style="vertical-align: middle;"><font size="4">序号</font></td>
+            <td style="vertical-align: middle;"><font size="4">时间</font></td>
+            <td style="vertical-align: middle;"><font size="4">学生姓名</font></td>
+            <td style="vertical-align: middle;"><font size="4">完成等级</font></td>
             
             
         </tr>
 
         {%for i in homewmaa %}
             <tr>
-                <td><font size="3" color="red"></font></td>
-                 <td><font size="3" color="red">{{i.homeworktime}}</font></td>
-                <td><font size="3" color="red">{{i.homeworkstudent}}</font></td>
-                <td><font size="3" color="red">{{i.homeworkscore}}</font></td>
+                <td style="vertical-align: middle;"><font size="3" color="red"></font></td>
+                 <td style="vertical-align: middle;"><font size="3" color="red">{{i.homeworktime}}</font></td>
+                <td style="vertical-align: middle;"><font size="3" color="red">{{i.homeworkstudent}}</font></td>
+                <td style="vertical-align: middle;"><font size="3" color="red">{{i.homeworkscore}}</font></td>
 
             </tr>
         {% empty %}
@@ -32,10 +32,10 @@
 
                          {%for i in homewma %}
             <tr>
-                <td><font size="3" color="red"></font></td>
-                 <td><font size="3" color="red">{{i.homeworktime}}</font></td>
-                <td><font size="3" color="red">{{i.homeworkstudent}}</font></td>
-                <td><font size="3" color="red">{{i.homeworkscore}}</font></td>
+                <td style="vertical-align: middle;"><font size="3" color="red"></font></td>
+                 <td style="vertical-align: middle;"><font size="3" color="red">{{i.homeworktime}}</font></td>
+                <td style="vertical-align: middle;"><font size="3" color="red">{{i.homeworkstudent}}</font></td>
+                <td style="vertical-align: middle;"> <font size="3" color="red">{{i.homeworkscore}}</font></td>
 
             </tr>
         {% empty %}
