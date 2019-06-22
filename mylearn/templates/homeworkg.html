@@ -8,8 +8,9 @@
                     <div class="panel-heading"><a><font size="6">作业之星({{ start |safe }}--{{ now |safe }})</font></a></div>
                     <div class="panel-body">
 
-                     <table border="1" cellpadding="6">
+                     <table id="num" class="table table-bordered">
         <tr>
+            <td><font size="4">序号</font></td>
             <td><font size="4">时间</font></td>
             <td><font size="4">学生姓名</font></td>
             <td><font size="4">完成等级</font></td>
@@ -19,6 +20,7 @@
 
         {%for i in homewmaa %}
             <tr>
+                <td><font size="3" color="red"></font></td>
                  <td><font size="3" color="red">{{i.homeworktime}}</font></td>
                 <td><font size="3" color="red">{{i.homeworkstudent}}</font></td>
                 <td><font size="3" color="red">{{i.homeworkscore}}</font></td>
@@ -30,6 +32,7 @@
 
                          {%for i in homewma %}
             <tr>
+                <td><font size="3" color="red"></font></td>
                  <td><font size="3" color="red">{{i.homeworktime}}</font></td>
                 <td><font size="3" color="red">{{i.homeworkstudent}}</font></td>
                 <td><font size="3" color="red">{{i.homeworkscore}}</font></td>
@@ -43,6 +46,15 @@
                 </div>
             </div> 
             </div> 
-            </div>        
+            </div>
+<script language="javascript" type="text/javascript">
+	    window.onload = function(){
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	    }
+    }
+    </script>
 {% endblock %}
 
