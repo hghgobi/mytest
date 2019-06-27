@@ -288,13 +288,13 @@ def Exammessages(request):
     dates.reverse()
     scores.reverse()
     plt.switch_backend('agg')
-    fig=plt.figure(figsize=(3.8,3.8))
+    fig=plt.figure(figsize=(3.3,3.3))
 
     matplotlib.rcParams['font.sans-serif'] = ['SimHei']
     matplotlib.rcParams['axes.unicode_minus'] = False
     plt.plot(dates,scores,c='red')
     plt.title("总体情况")
-    fig.autofmt_xdate()
+    fig.autofmt_xdate(rotation = 85)
     plt.ylim(0,120)
 
     plt.ylabel("分数")
