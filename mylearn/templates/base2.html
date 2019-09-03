@@ -11,34 +11,15 @@
     <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
 </head>
 <body bgcolor="#b8fec0">
-<style> 
+<style>
 div{text-align:center  }
-</style> 
+</style>
 
 
 <div class="nav">
- <ul class="nav nav-tabs">
-       <li><a  href='../../'   class="btn btn-primary " ><font size="4" color="black">首页</font> </a></li>
-       <li> <a href="../../exam" class="btn btn-info " ><font size="4" color="black">考试</font></a></li>
-	    <li><a href="../../homework" class="btn btn-success" ><font size="4" color="black">作业</font></a></li>
-       <li> <a href="../../zyph" class="btn btn-warning" ><font size="4" color="black">排行</font></a></li>
+ <ul class="nav nav-pills nav-stacked">
+       <li><a  href='../../'   class="btn btn-primary " ><font size="5" color="red">返回首页</font> </a></li>
 
-       <li class="dropdown"> <a   data-toggle="dropdown" class="btn btn-danger"><font size="4" color="black">其他</font><span class="caret"></span></a>
-        <ul class="dropdown-menu">
-            <li><a href="../../zuotu1" class="btn btn-primary"><font size="4" color="black">画函数图象</font></a></li>
-
-            <li><a href="../../onlinetestrank" class="btn btn-primary"><font size="4" color="black">在线测试排行</font></a></li>
-
-            <li><a href="../../onlinetest" class="btn btn-info"><font size="4" color="black">在线测试</font></a></li>
-
-
-            <li><a href="../../logout" class="btn btn-success"><font size="4" color="red">注销</font></a></li>
-
-
-        </ul>
-
-        </li>
-        <li> <a href="../../hwg" class="btn btn-success " ><font size="4" color="black">作业之星(最近五天)</font></a></li>
     </ul>
 
 </div>
@@ -46,6 +27,13 @@ div{text-align:center  }
 
 
     {% block content %}{% endblock %}
+<div class="nav">
+ <ul class="nav nav-pills nav-stacked">
+       <li><a  href='../../'   class="btn btn-primary " ><font size="5" color="red">返回首页</font> </a></li>
+
+    </ul>
+
+</div>
 <div class="footer">
     <div class="website-info">
         <p>浙ICP备19013564号 Copyright©2019 35925.top 版权所有</p>

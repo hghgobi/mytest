@@ -363,6 +363,20 @@ def Indexs(request):
 
     loginrecord.logincount =int(loginrecord.logincount)+1
     loginrecord.save()
+    # notes_all_list = Classnotes.objects.all()
+    # paginator = Paginator(notes_all_list,6)
+    # page_num = request.GET.get('page',1)
+    # page_of_notes = paginator.get_page(page_num)
+    # currentr_page_num = page_of_notes.number
+    # page_range = list(range(max(currentr_page_num - 2,1),currentr_page_num)) + \
+    #              list(range(currentr_page_num,min(currentr_page_num + 2,paginator.num_pages)+1))
+
+    return render(request,'base3.html')
+def Classnewslist(request):
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+
     notes_all_list = Classnotes.objects.all()
     paginator = Paginator(notes_all_list,6)
     page_num = request.GET.get('page',1)
@@ -372,6 +386,7 @@ def Indexs(request):
                  list(range(currentr_page_num,min(currentr_page_num + 2,paginator.num_pages)+1))
 
     return render(request,'base.html',{'page_of_notes':page_of_notes,'page_range':page_range})
+
 def Classnoteslist(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:

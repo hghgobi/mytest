@@ -37,5 +37,6 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('tzccnu22/', views.Addtxl2),
                path('txlyibu/', views.Addtxl22,name='txlyibu'),
                path('cs', views.CS),
+               path('classnotes/',views.Classnewslist),
 
                ]
