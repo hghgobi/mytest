@@ -190,6 +190,22 @@ class TXL(models.Model):
 			addms = cls(name=name, company=company, major=major, gdtime=gdtime, phone1=phone1, phone2=phone2)
 			addms.save()
 			return addms
+class guoguanname(models.Model):
+	name = models.CharField(max_length=100)
+	#coursescore = models.IntegerField()
+	idd = models.IntegerField()
+
+	def __str__(self):
+		return self.name
+
+class guoguan(models.Model):
+	student_name = models.ForeignKey(Students, on_delete=models.DO_NOTHING)
+	guoguan_name = models.ForeignKey(guoguanname, on_delete=models.DO_NOTHING)
+	ornot = models.CharField(max_length=100)
+	time = models.DateTimeField(auto_now_add=True)
+
+	class Meta:
+		ordering=['-time']
 
 
 

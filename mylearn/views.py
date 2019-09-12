@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname
 import json
 import random
 import numpy as np
@@ -1097,153 +1097,166 @@ def homeworkg(request):
     return render(request,'homeworkg.html',{'homewmaa':homewmaa,'homewma':homewma,'now':now,'start':start})
 
 
+def Guoguan(request, idd):
+    teststudent = request.session.get("teststudent")
+    idd = idd
+    if not teststudent:
+        return redirect('../testlogin')
+    name = guoguanname.objects.filter(idd=idd)[0]
+    guoguanrank = guoguan.objects.filter(guoguan_name__idd=idd)
+
+    return render(request, 'guoguan.html',{'guoguanrank': guoguanrank,'name':name})
             
-        
-token = 'hghgobi7727'
-
-@csrf_exempt
-def weixin_main(request):
-    # if request.method=='GET':
-    #     signature = str(request.GET.get('signature',None))
-    #     timestamp =str(request.GET.get('timestamp',None))
-    #     nonce = str(request.GET.get('nonce',None))
-    #     echostr= str(request.GET.get('echostr',None))
-    #
-    #     token = 'hghgobi7727'
-    #
-    #     hashlist = [token,timestamp,nonce]
-    #     hashlist.sort()
-    #     hashstr = ''
-    #     for i in hashlist:
-    #         hashstr+=i
-    #     hashstr = hashlib.sha1(hashstr.encode(encoding="UTF-8")).hexdigest()
-    #     if hashstr == signature:
-    #         return HttpResponse(echostr)
-    #     else:
-    #         return HttpResponse("error")
-    # else :
-    #     msg = parse_message(request.body)
-    #     if msg.type == 'text':
-    #         reply = create_reply('这是条文字消息', msg)
-    #     elif msg.type == 'image':
-    #         reply = create_reply('这是条图片消息', msg)
-    #     elif msg.type == 'voice':
-    #         reply = create_reply('这是条语音消息', msg)
-    #     else:
-    #         reply = create_reply('这是条其他类型消息', msg)
-    #     response = HttpResponse(reply.render(), content_type="application/xml")
-    #     return response
-    if request.method == 'GET':
-        signature = request.GET.get('signature', '')
-        timestamp = request.GET.get('timestamp', '')
-        nonce = request.GET.get('nonce', '')
-        echo_str = request.GET.get('echostr', '')
-        try:
-            check_signature(token, signature, timestamp, nonce)
-        except InvalidSignatureException:
-            echo_str = '错误的请求'
-        response = HttpResponse(echo_str)
-        return response
-
-    # elif request.method == 'POST':
-    #     msg = parse_message(request.body)
-    #     if msg.type == 'text':
-    #         reply = create_reply('这是条文字消息', msg)
-    #     elif msg.type == 'image':
-    #         reply = create_reply('这是条图片消息', msg)
-    #     elif msg.type == 'voice':
-    #         reply = create_reply('这是条语音消息', msg)
-    #     else:
-    #         reply = create_reply('这是条其他类型消息', msg)
-    #     response = HttpResponse(reply.render(), content_type="application/xml")
-    #     return response
-    else:
-        othercontent= autoreply(request)
-        return HttpResponse(othercontent)
-
-import xml.etree.ElementTree as ET
-
-def autoreply(request):
-    try:
-        webData = request.body
-        xmlData = ET.fromstring(webData)
-
-        msg_type = xmlData.find('MsgType').text
-        ToUserName = xmlData.find('ToUserName').text
-        FromUserName = xmlData.find('FromUserName').text
-        CreateTime = xmlData.find('CreateTime').text
-        MsgType = xmlData.find('MsgType').text
-        MsgId = xmlData.find('MsgId').text
-
-        toUser = FromUserName
-        fromUser = ToUserName
-
-        if msg_type == 'text':
-            content = "您好,欢迎来到Python大学习!希望我们可以一起进步!"
-            replyMsg = TextMsg(toUser, fromUser, content)
-            print ('成功了!!!!!!!!!!!!!!!!!!!')
-            print (replyMsg)
-            return replyMsg.send()
-
-        elif msg_type == 'image':
-            content = "图片已收到,谢谢"
-            replyMsg = TextMsg(toUser, fromUser, content)
-            return replyMsg.send()
-        elif msg_type == 'voice':
-            content = "语音已收到,谢谢"
-            replyMsg = TextMsg(toUser, fromUser, content)
-            return replyMsg.send()
-        elif msg_type == 'video':
-            content = "视频已收到,谢谢"
-            replyMsg = TextMsg(toUser, fromUser, content)
-            return replyMsg.send()
-        elif msg_type == 'shortvideo':
-            content = "小视频已收到,谢谢"
-            replyMsg = TextMsg(toUser, fromUser, content)
-            return replyMsg.send()
-        elif msg_type == 'location':
-            content = "位置已收到,谢谢"
-            replyMsg = TextMsg(toUser, fromUser, content)
-            return replyMsg.send()
-        else:
-            msg_type == 'link'
-            content = "链接已收到,谢谢"
-            replyMsg = TextMsg(toUser, fromUser, content)
-            return replyMsg.send()
-    except Argment:
-        return  Argment
 
 
 
 
-class Msg(object):
-    def __init__(self, xmlData):
-        self.ToUserName = xmlData.find('ToUserName').text
-        self.FromUserName = xmlData.find('FromUserName').text
-        self.CreateTime = xmlData.find('CreateTime').text
-        self.MsgType = xmlData.find('MsgType').text
-        self.MsgId = xmlData.find('MsgId').text
 
-import time
-class TextMsg(Msg):
-    def __init__(self, toUserName, fromUserName, content):
-        self.__dict = dict()
-        self.__dict['ToUserName'] = toUserName
-        self.__dict['FromUserName'] = fromUserName
-        self.__dict['CreateTime'] = int(time.time())
-        self.__dict['Content'] = content
-
-    def send(self):
-        XmlForm = """
-        <xml>
-        <ToUserName><![CDATA[{ToUserName}]]></ToUserName>
-        <FromUserName><![CDATA[{FromUserName}]]></FromUserName>
-        <CreateTime>{CreateTime}</CreateTime>
-        <MsgType><![CDATA[text]]></MsgType>
-        <Content><![CDATA[{Content}]]></Content>
-        </xml>
-        """
-        return XmlForm.format(**self.__dict)
+#
+#
+# @csrf_exempt
+# def weixin_main(request):
+#     # if request.method=='GET':
+#     #     signature = str(request.GET.get('signature',None))
+#     #     timestamp =str(request.GET.get('timestamp',None))
+#     #     nonce = str(request.GET.get('nonce',None))
+#     #     echostr= str(request.GET.get('echostr',None))
+#     #
+#     #     token = 'hghgobi7727'
+#     #
+#     #     hashlist = [token,timestamp,nonce]
+#     #     hashlist.sort()
+#     #     hashstr = ''
+#     #     for i in hashlist:
+#     #         hashstr+=i
+#     #     hashstr = hashlib.sha1(hashstr.encode(encoding="UTF-8")).hexdigest()
+#     #     if hashstr == signature:
+#     #         return HttpResponse(echostr)
+#     #     else:
+#     #         return HttpResponse("error")
+#     # else :
+#     #     msg = parse_message(request.body)
+#     #     if msg.type == 'text':
+#     #         reply = create_reply('这是条文字消息', msg)
+#     #     elif msg.type == 'image':
+#     #         reply = create_reply('这是条图片消息', msg)
+#     #     elif msg.type == 'voice':
+#     #         reply = create_reply('这是条语音消息', msg)
+#     #     else:
+#     #         reply = create_reply('这是条其他类型消息', msg)
+#     #     response = HttpResponse(reply.render(), content_type="application/xml")
+#     #     return response
+#     if request.method == 'GET':
+#         signature = request.GET.get('signature', '')
+#         timestamp = request.GET.get('timestamp', '')
+#         nonce = request.GET.get('nonce', '')
+#         echo_str = request.GET.get('echostr', '')
+#         try:
+#             check_signature(token, signature, timestamp, nonce)
+#         except InvalidSignatureException:
+#             echo_str = '错误的请求'
+#         response = HttpResponse(echo_str)
+#         return response
+#
+#     # elif request.method == 'POST':
+#     #     msg = parse_message(request.body)
+#     #     if msg.type == 'text':
+#     #         reply = create_reply('这是条文字消息', msg)
+#     #     elif msg.type == 'image':
+#     #         reply = create_reply('这是条图片消息', msg)
+#     #     elif msg.type == 'voice':
+#     #         reply = create_reply('这是条语音消息', msg)
+#     #     else:
+#     #         reply = create_reply('这是条其他类型消息', msg)
+#     #     response = HttpResponse(reply.render(), content_type="application/xml")
+#     #     return response
+#     else:
+#         othercontent= autoreply(request)
+#         return HttpResponse(othercontent)
+#
+# import xml.etree.ElementTree as ET
+#
+# def autoreply(request):
+#     try:
+#         webData = request.body
+#         xmlData = ET.fromstring(webData)
+#
+#         msg_type = xmlData.find('MsgType').text
+#         ToUserName = xmlData.find('ToUserName').text
+#         FromUserName = xmlData.find('FromUserName').text
+#         CreateTime = xmlData.find('CreateTime').text
+#         MsgType = xmlData.find('MsgType').text
+#         MsgId = xmlData.find('MsgId').text
+#
+#         toUser = FromUserName
+#         fromUser = ToUserName
+#
+#         if msg_type == 'text':
+#             content = "您好,欢迎来到Python大学习!希望我们可以一起进步!"
+#             replyMsg = TextMsg(toUser, fromUser, content)
+#             print ('成功了!!!!!!!!!!!!!!!!!!!')
+#             print (replyMsg)
+#             return replyMsg.send()
+#
+#         elif msg_type == 'image':
+#             content = "图片已收到,谢谢"
+#             replyMsg = TextMsg(toUser, fromUser, content)
+#             return replyMsg.send()
+#         elif msg_type == 'voice':
+#             content = "语音已收到,谢谢"
+#             replyMsg = TextMsg(toUser, fromUser, content)
+#             return replyMsg.send()
+#         elif msg_type == 'video':
+#             content = "视频已收到,谢谢"
+#             replyMsg = TextMsg(toUser, fromUser, content)
+#             return replyMsg.send()
+#         elif msg_type == 'shortvideo':
+#             content = "小视频已收到,谢谢"
+#             replyMsg = TextMsg(toUser, fromUser, content)
+#             return replyMsg.send()
+#         elif msg_type == 'location':
+#             content = "位置已收到,谢谢"
+#             replyMsg = TextMsg(toUser, fromUser, content)
+#             return replyMsg.send()
+#         else:
+#             msg_type == 'link'
+#             content = "链接已收到,谢谢"
+#             replyMsg = TextMsg(toUser, fromUser, content)
+#             return replyMsg.send()
+#     except Argment:
+#         return  Argment
+#
+#
+#
+#
+# class Msg(object):
+#     def __init__(self, xmlData):
+#         self.ToUserName = xmlData.find('ToUserName').text
+#         self.FromUserName = xmlData.find('FromUserName').text
+#         self.CreateTime = xmlData.find('CreateTime').text
+#         self.MsgType = xmlData.find('MsgType').text
+#         self.MsgId = xmlData.find('MsgId').text
+#
+# import time
+# class TextMsg(Msg):
+#     def __init__(self, toUserName, fromUserName, content):
+#         self.__dict = dict()
+#         self.__dict['ToUserName'] = toUserName
+#         self.__dict['FromUserName'] = fromUserName
+#         self.__dict['CreateTime'] = int(time.time())
+#         self.__dict['Content'] = content
+#
+#     def send(self):
+#         XmlForm = """
+#         <xml>
+#         <ToUserName><![CDATA[{ToUserName}]]></ToUserName>
+#         <FromUserName><![CDATA[{FromUserName}]]></FromUserName>
+#         <CreateTime>{CreateTime}</CreateTime>
+#         <MsgType><![CDATA[text]]></MsgType>
+#         <Content><![CDATA[{Content}]]></Content>
+#         </xml>
+#         """
+#         return XmlForm.format(**self.__dict)
 
 
 def Addtxl(request):

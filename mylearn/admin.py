@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan
 
 # Register your models here.
 @admin.register(Classes)
@@ -60,6 +60,12 @@ class HomeworksumAdmin(admin.ModelAdmin):
 @admin.register(TXL)
 class TXLAdmin(admin.ModelAdmin):
 	list_display = ('pk','addtime','name','company','major','gdtime','phone1','phone2')
+@admin.register(guoguan)
+class guoguanAdmin(admin.ModelAdmin):
+	list_display = ('guoguan_name','student_name','ornot','time')
+@admin.register(guoguanname)
+class guoguannameAdmin(admin.ModelAdmin):
+	list_display = ('idd','name')
 
 
 	

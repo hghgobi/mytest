@@ -32,11 +32,12 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                 path('zuotu1/',views.Zuotu1),
                 path('zuotu2/',views.Zuotu2,name='zuotu2'),
                 path('hwg/',views.homeworkg),
-                path('wx/',views.weixin_main,name='weixin_main'),
+                # path('wx/',views.weixin_main,name='weixin_main'),
                 path('tzccnu/',views.Addtxl),
                path('tzccnu22/', views.Addtxl2),
                path('txlyibu/', views.Addtxl22,name='txlyibu'),
                path('cs', views.CS),
                path('classnotes/',views.Classnewslist),
+               path('jcgg/<int:idd>',views.Guoguan,name="guoguan"),
 
                ]
