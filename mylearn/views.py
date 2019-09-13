@@ -1106,7 +1106,41 @@ def Guoguan(request, idd):
     guoguanrank = guoguan.objects.filter(guoguan_name__idd=idd)
 
     return render(request, 'guoguan.html',{'guoguanrank': guoguanrank,'name':name})
-            
+def addguoguan(request):
+    teststudent = request.session.get("teststudent")
+
+    if not teststudent:
+        return redirect('../testlogin')
+    if request.method == "GET":
+        return render(request,'addchuanguan.html')
+    if request.method == "POST":
+        idd = request.POST.get('idd')
+        idd = int(idd)
+        contentid = request.POST.get('contentid')
+        contentid = int(contentid)
+        namesss = Students.objects.filter(pk=idd)
+        namesss = namesss[0]
+
+        ornot = guoguan.objects.filter(Q(student_name__studentname=namesss) & Q(guoguan_name__idd=contentid))
+
+
+        # ornot = get_object_or_404(guoguan, guoguan_name__idd=contentid)
+        for i in range(len(ornot)):
+            # ornot[i].student_name=ornot[i].student_name
+            # ornot[i].guoguan_name=ornot[i].guoguan_name
+            ornot[i].ornot = '是'
+            # ornot[i].time=ornot[i].time
+            ornot[i].save()
+
+        # guoguan.addgg(namesss,contentid)
+
+        return render(request, 'addchuanguan.html')
+
+def guoguanlist(request):
+    return render(request,'guoguandetail.html')
+
+
+
 
 
 

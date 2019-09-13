@@ -1,5 +1,6 @@
 from django.db import models
 from ckeditor_uploader.fields import RichTextUploadingField
+from django.db.models import Q
 
 # Create your models here.
 class Classes(models.Model):
@@ -202,10 +203,19 @@ class guoguan(models.Model):
 	student_name = models.ForeignKey(Students, on_delete=models.DO_NOTHING)
 	guoguan_name = models.ForeignKey(guoguanname, on_delete=models.DO_NOTHING)
 	ornot = models.CharField(max_length=100)
-	time = models.DateTimeField(auto_now_add=True)
+	time = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		ordering=['-time']
+	@classmethod
+	def addgg(cls,namesss,contentid):
+		ms = guoguan.objects.filter(Q(student_name__studentname=namesss) & Q(guoguan_name__idd=contentid))
+		ms.delete()
+		namect=guoguanname.objects.filter(idd=contentid)[0]
+		addms = cls(student_name=namesss,guoguan_name=namect,ornot="jghhj")
+		addms.save()
+		return addms
+
 
 
 

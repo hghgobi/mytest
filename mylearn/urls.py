@@ -39,5 +39,8 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('cs', views.CS),
                path('classnotes/',views.Classnewslist),
                path('jcgg/<int:idd>',views.Guoguan,name="guoguan"),
+               path('addgg/',views.addguoguan),
+               path('jcgglist/',views.guoguanlist),
+
 
                ]

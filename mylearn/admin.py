@@ -24,7 +24,7 @@ class ExamsAdmin(admin.ModelAdmin):
 
 @admin.register(Students)
 class StudentsAdmin(admin.ModelAdmin):
-	list_display = ['studentid','studentclass','studentname']
+	list_display = ['pk','studentid','studentclass','studentname']
 
 @admin.register(Classnotes)
 class ClassnotesAdmin(admin.ModelAdmin):
