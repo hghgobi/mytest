@@ -1137,7 +1137,15 @@ def addguoguan(request):
         return render(request, 'addchuanguan.html')
 
 def guoguanlist(request):
-    return render(request,'guoguandetail.html')
+    teststudent = request.session.get("teststudent")
+
+    if not teststudent:
+        return redirect('../testlogin')
+
+    ggms = guoguan.objects.filter(student_name__studentname=teststudent)
+
+
+    return render(request,'guoguandetail.html',{"ggms":ggms})
 
 
 
