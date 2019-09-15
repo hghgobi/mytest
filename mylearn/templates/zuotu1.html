@@ -24,14 +24,21 @@ form{text-align:left;}
                    <a><font size="5">提示：各常数输入不能为空，输入范围为：负数，正数，0，留空可以用0代替</font></a> <br>
                         <form id='zuotu2' onsubmit="return false" action="{% url 'zuotu2' %}" method="POST" style="overflow:hidden">
                             {% csrf_token %}
-                            
-                           <input   type="checkbox" value="1" name="xz1" >一次函数： y=<input type="text" size="6" name="k" value="">x+
+                            <a>一次函数</a>
+                            <br><br>
+                           <input   type="checkbox" value="1" name="xz1" > y=<input type="text" size="6" name="k" value="">x+
                             <input type="text" size="6" name="b" value="">
                             <br><br>
-                            <input   type="checkbox"value="2" name="xz2" >二次函数：y=<input type="text" size="6" name="aa" value="">x<SUP>2</SUP>+<input type="text" size="6" name="bb" value="">x+<input type="text" size="6" name="cc" value="">
+                            <a>二次函数</a>
+                            <br><br>
+                            <input   type="checkbox"value="2" name="xz2" >一般式：y=<input type="text" size="4" name="aa" value="">x<SUP>2</SUP>+<input type="text" size="4" name="bb" value="">x+<input type="text" size="4" name="cc" value="">
+                            <br><br>
+                            <input   type="checkbox"value="4" name="xz4" >顶点式：y=<input type="text" size="4" name="aaa" value="">(x-<input type="text" size="4"name="hhh" value="">)<SUP>2</SUP>+<input type="text" size="4" name="kkk" value="">
 
                             <br><br>
-                            <input   type="checkbox" value="3" name="xz3" >反比例函数：y=<input type="text" size="6" name="kk" value="">/x
+                            <a>反比例函数</a>
+                            <br><br>
+                            <input   type="checkbox" value="3" name="xz3" >y=<input type="text" size="6" name="kk" value="">/x
 
                             
                         <br>

@@ -713,12 +713,16 @@ def Zuotu2(request):
     bb=request.POST.get('bb')
     cc=request.POST.get('cc')
     kk=request.POST.get('kk')
+    aaa = request.POST.get('aaa')
+    hhh = request.POST.get('hhh')
+    kkk = request.POST.get('kkk')
     xz1=request.POST.get('xz1')
     xz2=request.POST.get('xz2')
     xz3=request.POST.get('xz3')
     xx1=request.POST.get('xx1')
     xx2=request.POST.get('xx2')
     xx3=request.POST.get('xx3')
+    xz4 = request.POST.get('xz4')
 
     data = {}
     
@@ -890,6 +894,7 @@ def Zuotu2(request):
             y_values=[kk/x for x in x_values]
             y_values1=[aa*pow(x,2)+bb*x+cc for x in x_values]
 
+
             plt.plot(x_values,y_values,'r',x_values,y_values1,'b')
             #plt.plot(x_values,y_values1,color='b')
             sio=BytesIO()
@@ -1022,8 +1027,9 @@ def Zuotu2(request):
             aa=float(aa)
             bb=float(bb)
             cc=float(cc)
-            
-            ee=abs(aa)+abs(bb)+abs(cc)
+            hhh= -1 * (bb / (2 * aa))
+            ee=-1*(bb/(2*aa))+7
+            ee1 = -1 * (bb / (2 * aa)) - 6
             plt.switch_backend('agg')
             fig=plt.figure(figsize=(3.5,3.8))
             ax=axisartist.Subplot(fig,111)
@@ -1047,16 +1053,17 @@ def Zuotu2(request):
             elif xx3:
                
                 xx3=float(xx3)
-                x_values=np.arange(-ee,ee,xx3)
+                x_values=np.arange(ee1,ee,xx3)
 
             else:
-                x_values=np.arange(-ee,ee,1)
+                x_values=np.arange(ee1,ee,1)
            
 
             
             y_values=[aa*pow(x,2)+bb*x+cc for x in x_values]
 
             plt.plot(x_values,y_values,'r')
+            plt.vlines(hhh, min(y_values) - 5, max(y_values) + 3, colors="b", linestyles="dashed")
             #plt.plot(x_values,y_values1,color='b')
             sio=BytesIO()
             plt.savefig(sio,format='png')
@@ -1066,6 +1073,62 @@ def Zuotu2(request):
             imd=html.format(dat)
             data['imd'] =imd
             data['status']="SUCCESS"
+        return JsonResponse(data)
+
+    elif xz4 == '4':
+        if aaa == '' or hhh == '' or kkk == '':
+            data['message'] = '输入类型错误！'
+            data['status'] = "errors"
+        else:
+
+            aaa = float(aaa)
+            hhh = float(hhh)
+            kkk = float(kkk)
+
+            ee =  hhh + 6
+            ee1 = hhh - 5
+            plt.switch_backend('agg')
+            fig = plt.figure(figsize=(3.5, 3.8))
+            ax = axisartist.Subplot(fig, 111)
+            fig.add_axes(ax)
+            # ax.axis["bottom"]=ax.new_floating_axis(0,0)
+            # ax.axis["left"]=ax.new_floating_axis(1,0)
+            ax.axis["bottom"].set_axisline_style("-|>", size=1.5)
+            ax.axis["left"].set_axisline_style("->", size=1.5)
+            # ax.axis["top"].set_visible(False)
+            # ax.axis["right"].set_visible(False)
+            plt.grid()
+            if xx1 and xx2 and xx3:
+                xx1 = float(xx1)
+                xx2 = float(xx2)
+                xx3 = float(xx3)
+                x_values = np.arange(xx1, xx2, xx3)
+            elif xx1 and xx2:
+                xx1 = float(xx1)
+                xx2 = float(xx2)
+                x_values = np.arange(xx1, xx2, 1)
+            elif xx3:
+
+                xx3 = float(xx3)
+                x_values = np.arange(-ee, ee, xx3)
+
+            else:
+                x_values = np.arange(ee1, ee, 1)
+
+            y_values = [aaa * pow(x-hhh, 2)  + kkk for x in x_values]
+
+            plt.plot(x_values, y_values, 'r')
+            plt.vlines(hhh, min(y_values)-5, max(y_values)+3, colors="b", linestyles="dashed")
+
+            # plt.plot(x_values,y_values1,color='b')
+            sio = BytesIO()
+            plt.savefig(sio, format='png')
+            dat = base64.encodebytes(sio.getvalue()).decode()
+            html = ''' <img src="data:image/png;base64,{}"/> '''
+            plt.close()
+            imd = html.format(dat)
+            data['imd'] = imd
+            data['status'] = "SUCCESS"
         return JsonResponse(data)
             
     else:
