@@ -12,20 +12,22 @@
 
          <tr>
              <td style="vertical-align: middle;" ><font size="4">序号</font></td>
-            <td class="warning" style="vertical-align: middle;"><font size="4">时间</font></td>
+
             <td class="warning" style="vertical-align: middle;"><font size="4">内容</font></td>
             <td class="warning" style="vertical-align: middle;"><font size="4">姓名</font></td>
             <td class="warning" style="vertical-align: middle;"> <font size="4">是否过关</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">时间</font></td>
             
             
         </tr>
         {%for i in guoguanrank %}
             <tr  >
                 <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
-                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
+
                 <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.guoguan_name}}</font></td>
                 <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.student_name}}</font></td>
                 <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.ornot}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
             </tr>
 
 
@@ -47,5 +49,11 @@
 	    }
     }
     </script>
+     <script language="javascript" type="text/javascript">
+function myrefresh(){
+window.location.reload();
+}
+setTimeout('myrefresh()',10000);
+  </script>
 {% endblock %}
 

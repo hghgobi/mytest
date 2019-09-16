@@ -861,6 +861,7 @@ def Zuotu2(request):
             cc=float(cc)
             
             ee=abs(5*kk)
+            hhh = -1 * (bb / (2 * aa))
             plt.switch_backend('agg')
             fig=plt.figure(figsize=(3.5,3.8))
             ax=axisartist.Subplot(fig,111)
@@ -893,6 +894,7 @@ def Zuotu2(request):
 
             y_values=[kk/x for x in x_values]
             y_values1=[aa*pow(x,2)+bb*x+cc for x in x_values]
+            plt.vlines(hhh, min(y_values1) - 5, max(y_values1) + 3, colors="b", linestyles="dashed")
 
 
             plt.plot(x_values,y_values,'r',x_values,y_values1,'b')
