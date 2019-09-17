@@ -44,6 +44,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('rankqa/',views.Rankq),
                path('rankqb/',views.RankqB),
                path('addrankq/',views.addrankq),
+                path('addrankqb/',views.addrankqb),
 
 
                ]

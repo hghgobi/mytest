@@ -1233,20 +1233,25 @@ def Rankq(request):
         scores.append(i[1])
 
     plt.switch_backend('agg')
-    plt.figure(figsize=(4, 13))
+    plt.figure(figsize=(24,12), dpi= 80,frameon=False)
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
-    plt.barh(range(len(scores)), scores, height=0.7, color='r', alpha=0.8)
-    plt.yticks(range(len(scores)), names,alpha=3)
-    plt.xlabel("总分")
+
+
+    plt.bar(range(len(scores)), scores, color='r', alpha=0.8)
+    plt.xticks(range(len(scores)), names,rotation=45,alpha=3)
+
+    plt.ylabel("总分")
     plt.title("积分排行榜")
+    plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+    plt.grid(linestyle='-.')
     for x, y in enumerate(scores):
         plt.text(y + 0.2, x - 0.1, '%s' % y)
     sio = BytesIO()
     plt.savefig(sio, format='png')
     data = base64.encodebytes(sio.getvalue()).decode()
-    html = ''' <img src="data:image/png;base64,{}"/> '''
+    html = ''' <img src="data:image/png;base64,{}" align="left"/> '''
     plt.close()
     imd = html.format(data)
     rankms2 = rankq.objects.filter(fenlei='A')
@@ -1273,20 +1278,26 @@ def RankqB(request):
         scores.append(i[1])
 
     plt.switch_backend('agg')
-    plt.figure(figsize=(4, 13))
+    plt.figure(figsize=(24,12), dpi= 80,frameon=False)
 
     matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
     matplotlib.rcParams['axes.unicode_minus'] = False
-    plt.barh(range(len(scores)), scores, height=0.7, color='r', alpha=0.8)
-    plt.yticks(range(len(scores)), names,alpha=3)
-    plt.xlabel("总分")
+
+
+    plt.bar(range(len(scores)), scores, color='r', alpha=0.8)
+    plt.xticks(range(len(scores)), names,rotation=45)
+
+    plt.ylabel("总分")
     plt.title("积分排行榜")
+    # plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+    plt.grid(linestyle='-.')
     for x, y in enumerate(scores):
-        plt.text(y + 0.2, x - 0.1, '%s' % y)
+        plt.text( x - 0.1,y + 0.2, '%s' % y)
+        # plt.text(x, y + 100, '%s' % round(y, 1), ha='center')
     sio = BytesIO()
     plt.savefig(sio, format='png')
     data = base64.encodebytes(sio.getvalue()).decode()
-    html = ''' <img src="data:image/png;base64,{}"/> '''
+    html = ''' <img src="data:image/png;base64,{}" align="left"/> '''
     plt.close()
     imd = html.format(data)
     rankms2 = rankq.objects.filter(fenlei='B')
@@ -1311,6 +1322,25 @@ def addrankq(request):
         ms.score+=score
         ms.save()
         return render(request, 'addrankq.html')
+
+def addrankqb(request):
+    teststudent = request.session.get("teststudent")
+
+    if not teststudent:
+        return redirect('../testlogin')
+    if request.method == "GET":
+        return render(request,'addrankqb.html')
+    if request.method == "POST":
+        idd = request.POST.get('idd')
+        idd = int(idd)
+        score = request.POST.get('score')
+        score = int(score)
+        namesss = Students.objects.filter(pk=idd)
+        namesss = namesss[0]
+        ms = get_object_or_404(rankq,student_name__studentname=namesss)
+        ms.score+=score
+        ms.save()
+        return render(request, 'addrankqb.html')
 #
 #
 # @csrf_exempt
