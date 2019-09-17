@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname
 import json
 import random
 import numpy as np
@@ -1213,12 +1213,104 @@ def guoguanlist(request):
     return render(request,'guoguandetail.html',{"ggms":ggms})
 
 
+def Rankq(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
 
+    rankms = rankq.objects.filter(fenlei = 'A')
+    summ = len(rankms)
+    rank = {}
+    for a in range(summ):
+        rank[rankms[a].student_name] = rankms[a].score
 
+    rank = sorted(rank.items(), key=lambda e: e[1], reverse=False)
 
+    scores = []
+    names = []
+    for i in rank:
+        names.append(i[0])
+        scores.append(i[1])
 
+    plt.switch_backend('agg')
+    plt.figure(figsize=(4, 13))
 
+    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.barh(range(len(scores)), scores, height=0.7, color='r', alpha=0.8)
+    plt.yticks(range(len(scores)), names,alpha=3)
+    plt.xlabel("总分")
+    plt.title("积分排行榜")
+    for x, y in enumerate(scores):
+        plt.text(y + 0.2, x - 0.1, '%s' % y)
+    sio = BytesIO()
+    plt.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd = html.format(data)
+    rankms2 = rankq.objects.filter(fenlei='A')
 
+    return render(request,'rankqA.html',{"imd":imd,"rankms2":rankms2})
+
+def RankqB(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+
+    rankms = rankq.objects.filter(fenlei = 'B')
+    summ = len(rankms)
+    rank = {}
+    for a in range(summ):
+        rank[rankms[a].student_name] = rankms[a].score
+
+    rank = sorted(rank.items(), key=lambda e: e[1], reverse=False)
+
+    scores = []
+    names = []
+    for i in rank:
+        names.append(i[0])
+        scores.append(i[1])
+
+    plt.switch_backend('agg')
+    plt.figure(figsize=(4, 13))
+
+    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.barh(range(len(scores)), scores, height=0.7, color='r', alpha=0.8)
+    plt.yticks(range(len(scores)), names,alpha=3)
+    plt.xlabel("总分")
+    plt.title("积分排行榜")
+    for x, y in enumerate(scores):
+        plt.text(y + 0.2, x - 0.1, '%s' % y)
+    sio = BytesIO()
+    plt.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd = html.format(data)
+    rankms2 = rankq.objects.filter(fenlei='B')
+
+    return render(request,'rankqB.html',{"imd":imd,"rankms2":rankms2})
+
+def addrankq(request):
+    teststudent = request.session.get("teststudent")
+
+    if not teststudent:
+        return redirect('../testlogin')
+    if request.method == "GET":
+        return render(request,'addrankq.html')
+    if request.method == "POST":
+        idd = request.POST.get('idd')
+        idd = int(idd)
+        score = request.POST.get('score')
+        score = int(score)
+        namesss = Students.objects.filter(pk=idd)
+        namesss = namesss[0]
+        ms = get_object_or_404(rankq,student_name__studentname=namesss)
+        ms.score+=score
+        ms.save()
+        return render(request, 'addrankq.html')
 #
 #
 # @csrf_exempt

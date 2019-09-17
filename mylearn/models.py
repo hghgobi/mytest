@@ -216,6 +216,17 @@ class guoguan(models.Model):
 		addms.save()
 		return addms
 
+class rankq(models.Model):
+	student_name = models.ForeignKey(Students, on_delete=models.DO_NOTHING)
+	fenlei = models.CharField(max_length=100)
+	score = models.IntegerField()
+	time = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		ordering = ['score']
+
+
+
 
 
 
