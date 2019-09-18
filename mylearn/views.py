@@ -1171,6 +1171,54 @@ def Guoguan(request, idd):
     guoguanrank = guoguan.objects.filter(guoguan_name__idd=idd)
 
     return render(request, 'guoguan.html',{'guoguanrank': guoguanrank,'name':name})
+
+def Guoguanpic(request,iddd):
+    teststudent = request.session.get("teststudent")
+    idd=iddd
+    if not teststudent:
+        return redirect('../testlogin')
+
+    name = guoguanname.objects.filter(idd=idd)[0]
+    guoguanrank = guoguan.objects.filter(guoguan_name__idd=idd)
+    summ = len(guoguanrank)
+    rank = {}
+    for a in range(summ):
+        if guoguanrank[a].ornot=="是":
+            rank[guoguanrank[a].student_name] = 100
+        else:
+            rank[guoguanrank[a].student_name] = 0
+    rank = sorted(rank.items(), key=lambda e: e[1], reverse=False)
+
+    scores = []
+    names = []
+    for i in rank:
+        names.append(i[0])
+        scores.append(i[1])
+    plt.switch_backend('agg')
+    plt.figure(figsize=(24,12), dpi= 80,frameon=False)
+
+    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
+    matplotlib.rcParams['axes.unicode_minus'] = False
+
+
+    plt.bar(range(len(scores)), scores, color='r', alpha=0.8)
+    plt.xticks(range(len(scores)), names,rotation=45,alpha=3,size=20)
+
+    plt.ylabel("100过关")
+    plt.title(name)
+    plt.subplots_adjust(left=0.1, right=0.9, top=0.9, bottom=0.1)
+    plt.grid(linestyle='-.')
+    for x, y in enumerate(scores):
+        plt.text(y + 0.2, x - 0.1, '%s' % y)
+    sio = BytesIO()
+    plt.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}" align="left"/> '''
+    plt.close()
+    imd = html.format(data)
+    rankms2 = rankq.objects.filter(fenlei='A')
+
+    return render(request,'rankqpic.html',{"imd":imd})
 def addguoguan(request):
     teststudent = request.session.get("teststudent")
 
@@ -1257,6 +1305,8 @@ def Rankq(request):
     rankms2 = rankq.objects.filter(fenlei='A')
 
     return render(request,'rankqA.html',{"imd":imd,"rankms2":rankms2})
+
+
 
 def RankqB(request):
     teststudent = request.session.get("teststudent")
