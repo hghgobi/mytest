@@ -1202,7 +1202,7 @@ def Guoguanpic(request,iddd):
 
 
     plt.bar(range(len(scores)), scores, color='r', alpha=0.8)
-    plt.xticks(range(len(scores)), names,rotation=90,alpha=3,size=40)
+    plt.xticks(range(len(scores)), names,rotation=75,alpha=3,size=25)
 
     plt.ylabel("100过关")
     plt.title(name)
