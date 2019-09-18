@@ -1202,7 +1202,7 @@ def Guoguanpic(request,iddd):
 
 
     plt.bar(range(len(scores)), scores, color='r', alpha=0.8)
-    plt.xticks(range(len(scores)), names,rotation=90,alpha=3,size=20)
+    plt.xticks(range(len(scores)), names,rotation=60,alpha=3,size=20)
 
     plt.ylabel("100过关")
     plt.title(name)
@@ -1288,7 +1288,7 @@ def Rankq(request):
 
 
     plt.bar(range(len(scores)), scores, color='r', alpha=0.8)
-    plt.xticks(range(len(scores)), names,rotation=90,alpha=3,size=20)
+    plt.xticks(range(len(scores)), names,rotation=60,alpha=3,size=20)
 
     plt.ylabel("总分")
     plt.title("积分排行榜")
