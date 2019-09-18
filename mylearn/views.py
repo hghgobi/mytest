@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail
 import json
 import random
 import numpy as np
@@ -1317,10 +1317,12 @@ def addrankq(request):
         score = request.POST.get('score')
         score = int(score)
         namesss = Students.objects.filter(pk=idd)
-        namesss = namesss[0]
-        ms = get_object_or_404(rankq,student_name__studentname=namesss)
+        namessss = namesss[0]
+        ms = get_object_or_404(rankq,student_name__studentname=namessss)
         ms.score+=score
         ms.save()
+        detail = "A-"+ "__加__"+str(score)+"分;"
+        addrankqdetail.addd(detail=detail,name=namessss)
         return render(request, 'addrankq.html')
 
 def addrankqb(request):
@@ -1336,10 +1338,12 @@ def addrankqb(request):
         score = request.POST.get('score')
         score = int(score)
         namesss = Students.objects.filter(pk=idd)
-        namesss = namesss[0]
-        ms = get_object_or_404(rankq,student_name__studentname=namesss)
+        namessss = namesss[0]
+        ms = get_object_or_404(rankq,student_name__studentname=namessss)
         ms.score+=score
         ms.save()
+        detail = "B-"+ "__加__"+str(score)+"分;"
+        addrankqdetail.addd(detail=detail,name=namessss)
         return render(request, 'addrankqb.html')
 #
 #

@@ -225,6 +225,22 @@ class rankq(models.Model):
 	class Meta:
 		ordering = ['score']
 
+class addrankqdetail(models.Model):
+	name = models.ForeignKey(Students, on_delete=models.DO_NOTHING)
+	detail = models.CharField(max_length=200)
+	time = models.DateField(auto_now_add=True)
+
+	class Meta:
+		ordering = ['time']
+
+
+	@classmethod
+	def addd(cls,detail,name):
+
+		addms = cls(detail=detail,name=name)
+		addms.save()
+		return addms
+
 
 
 
