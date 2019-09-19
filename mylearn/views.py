@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework
 import json
 import random
 import numpy as np
@@ -1395,6 +1395,72 @@ def addrankqb(request):
         detail = "B-"+ "__加__"+str(score)+"分;"
         addrankqdetail.addd(detail=detail,name=namessss)
         return render(request, 'addrankqb.html')
+
+
+def badhomeworkms(request):
+    teststudent = request.session.get("teststudent")
+
+    if not teststudent:
+        return redirect('../testlogin')
+    if request.method == "GET":
+        return render(request, 'badhomeworkms.html')
+    if request.method == "POST":
+        time0 = request.POST.get('time0')
+        stu_id = request.POST.get('stu_id')
+        ornot = request.POST.get('ornot')
+        if time0 :
+            ms = badhomework.objects.filter(time0=time0)
+            return render(request, 'badhomeworkms.html',{"ms":ms})
+        elif stu_id :
+            ms = badhomework.objects.filter(stu_id=stu_id)
+            return render(request, 'badhomeworkms.html',{"ms":ms})
+        elif ornot :
+            ms = badhomework.objects.filter(ornot=ornot)
+            return render(request, 'badhomeworkms.html',{"ms":ms})
+        else:
+            ms="错误"
+            return render(request, 'badhomeworkms.html', {"ms": ms})
+
+def addhwbad(request):
+    teststudent = request.session.get("teststudent")
+
+    if not teststudent:
+        return redirect('../testlogin')
+    if request.method == "GET":
+        return render(request,'addhwbad.html')
+
+    if request.method == "POST":
+        time0 = request.POST.get('time0')
+        name = request.POST.get('name')
+        ms = request.POST.get('ms')
+        stu_id = request.POST.get('stu_id')
+        ornot = request.POST.get('ornot')
+        idd = int(stu_id)
+        namesss = Students.objects.filter(pk=idd)
+        namessss = namesss[0]
+        badhomework.addbadhomework(time0=time0,name=name,stu_id=stu_id,student_name=namessss,ornot=ornot,ms=ms)
+
+        return render(request, 'addhwbad.html')
+
+def xiugaihwms(request):
+    teststudent = request.session.get("teststudent")
+
+    if not teststudent:
+        return redirect('../testlogin')
+    if request.method == "GET":
+        return render(request,'xiugaihwms.html')
+
+    if request.method == "POST":
+        time0 = request.POST.get('time0')
+        stu_id = request.POST.get('stu_id')
+        ornot = request.POST.get('ornot')
+
+        xiugai = get_object_or_404(badhomework,time0=time0,stu_id=stu_id)
+        xiugai.ornot=ornot
+        xiugai.save()
+
+        return render(request, 'xiugaihwms.html')
+
 #
 #
 # @csrf_exempt

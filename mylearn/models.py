@@ -242,6 +242,24 @@ class addrankqdetail(models.Model):
 		return addms
 
 
+class badhomework(models.Model):
+	time0 = models.CharField(max_length=100)
+	name = models.CharField(max_length=200)
+	stu_id = models.CharField(max_length=100)
+	student_name = models.ForeignKey(Students, on_delete=models.DO_NOTHING)
+	ms = models.CharField(max_length=200)
+	ornot = models.CharField(max_length=200)
+	time = models.DateField(auto_now=True)
+
+	class Meta:
+		ordering = ['time']
+
+	@classmethod
+	def addbadhomework(cls,time0,name,stu_id,student_name,ornot,ms):
+
+		addms = cls(time0=time0,name=name,stu_id=stu_id,student_name=student_name,ornot=ornot,ms=ms)
+		addms.save()
+		return addms
 
 
 

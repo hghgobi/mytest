@@ -46,6 +46,9 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('addrankq/',views.addrankq),
                 path('addrankqb/',views.addrankqb),
                 path('rankqpic/<int:iddd>',views.Guoguanpic),
+               path('badhwms/', views.badhomeworkms),
+               path('addhwbad/', views.addhwbad),
+               path('xiugaihwms/', views.xiugaihwms),
 
 
                ]
