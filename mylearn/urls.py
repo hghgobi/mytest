@@ -49,6 +49,9 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('badhwms/', views.badhomeworkms),
                path('addhwbad/', views.addhwbad),
                path('xiugaihwms/', views.xiugaihwms),
+               path('homeworwbadmss/', views.badhomeworkms2),
+
+
 
 
                ]

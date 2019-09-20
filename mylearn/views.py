@@ -322,19 +322,24 @@ def Onlinetestlogin(request):
 
 
     if request.method == "POST":
-        user = request.POST.get('user')
-        pwd = request.POST.get('pwd')
-        if not  pwd.isdigit():
-            return render(request,'questionsindex.html',{'errors':'学号错误！'})
-
-
-        teststudent=Students.objects.filter(studentname=user,studentid=pwd)
+        phone = request.POST.get('phone')
+        # pwd = request.POST.get('pwd')
+        if not  phone.isdigit():
+            return render(request,'questionsindex.html',{'errors':'手机号类型错误！'})
+        # teststudent = Searchstudentid.objects.filter(phone=phone)
+        try:
+            teststudent = get_object_or_404(Searchstudentid,phone=phone)
+        except:
+            return render(request, 'questionsindex.html', {'errors': '手机号错误，或不存在！请微信群联系数学老师。'})
+        user = teststudent.student
+        print(teststudent)
+        # teststudent=Students.objects.filter(studentname=user,studentid=pwd)
 
         if teststudent:
             request.session["teststudent"]=user
             return redirect('../indexs')
         else:
-            return render(request,'questionsindex.html',{'errors':'姓名或学号错误，请重新输入！'})
+            return render(request,'questionsindex.html',{'errors':'手机号错误，或不存在！请微信群联系数学老师。'})
       
     return render(request,'questionsindex.html')
 def Searchstudent_id(request):
@@ -357,8 +362,10 @@ def Searchstudent_id(request):
 
 def Indexs(request):
     teststudent=request.session.get("teststudent")
+    print(teststudent)
     if not teststudent:
         return redirect('../testlogin')
+
     loginrecord=get_object_or_404(Loginrecord,loginuser=teststudent)
 
     loginrecord.logincount =int(loginrecord.logincount)+1
@@ -1420,6 +1427,14 @@ def badhomeworkms(request):
         else:
             ms="错误"
             return render(request, 'badhomeworkms.html', {"ms": ms})
+def badhomeworkms2(request):
+    teststudent = request.session.get("teststudent")
+
+    if not teststudent:
+        return redirect('../testlogin')
+    ms = badhomework.objects.filter(student_name__studentname=teststudent)
+    return render(request, 'badhomeworkms2.html', {"ms": ms})
+
 
 def addhwbad(request):
     teststudent = request.session.get("teststudent")
