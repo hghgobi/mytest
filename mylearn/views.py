@@ -1458,10 +1458,7 @@ def addhwbad(request):
         return render(request, 'addhwbad.html')
 
 def xiugaihwms(request):
-    teststudent = request.session.get("teststudent")
-
-    if not teststudent:
-        return redirect('../testlogin')
+ 
     if request.method == "GET":
         return render(request,'xiugaihwms.html')
 
