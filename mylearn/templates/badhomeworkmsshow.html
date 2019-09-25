@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">作业需补做名单</font></a></div>
+                    <div class="panel-body">
+
+                     <table id="num" class="table table-bordered">
+        <tr>
+            <th style="vertical-align: middle;"><font size="4">序号</font></th>
+            <th style="vertical-align: middle;"><font size="4">时间</font></th>
+            <th style="vertical-align: middle;"><font size="4">ID</font></th>
+            <th style="vertical-align: middle;"><font size="4">姓名</font></th>
+            <th style="vertical-align: middle;"><font size="4">补做情况</font></th>
+
+
+        </tr>
+
+        {%for i in ms %}
+            <tr>
+                <td style="vertical-align: middle;"><font size="3" color="red"></font></td>
+                 <td style="vertical-align: middle;"><font size="3" color="black">{{i.time0}}</font></td>
+                <td style="vertical-align: middle;"><font size="3" color="red">{{i.stu_id}}</font></td>
+                <td style="vertical-align: middle;"><font size="3" color="black">{{i.student_name}}</font></td>
+                <td style="vertical-align: middle;"><font size="3" color="red">{{i.ornot}}</font></td>
+
+            </tr>
+        {% empty %}
+        <p><font size="2" color="red">暂无相关信息</font></p>
+        {% endfor %}
+
+    </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+<script language="javascript" type="text/javascript">
+	    window.onload = function(){
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	    }
+    }
+    </script>
+
+   <script language="javascript" type="text/javascript">
+function myrefresh(){
+window.location.reload();
+}
+setTimeout('myrefresh()',5000);
+  </script>
+</body>
+</html>

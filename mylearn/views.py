@@ -1435,6 +1435,14 @@ def badhomeworkms2(request):
     ms = badhomework.objects.filter(student_name__studentname=teststudent)
     return render(request, 'badhomeworkms2.html', {"ms": ms})
 
+def badhomeworkmsshow(request,time0):
+    time0 = time0
+    ms = badhomework.objects.filter(time0=time0)
+    return render(request, 'badhomeworkmsshow.html', {"ms": ms})
+
+
+
+
 
 def addhwbad(request):
     teststudent = request.session.get("teststudent")
@@ -1458,7 +1466,7 @@ def addhwbad(request):
         return render(request, 'addhwbad.html')
 
 def xiugaihwms(request):
- 
+
     if request.method == "GET":
         return render(request,'xiugaihwms.html')
 
