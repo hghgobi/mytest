@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname
 import json
 import random
 import numpy as np
@@ -29,6 +29,7 @@ import matplotlib
 import math
 import time
 from django.db.models import Q
+from random import shuffle
 
 
 import hashlib
@@ -529,6 +530,76 @@ def Showquestions(request):
 
             
             return render(request,'questions3.html',{'showscores':showscores,'score':score,'correctpercent':correctpercent,'testall':testall})
+
+def Showwkqs(request,id0,id1):
+    id0 = id0
+    id1 = id1
+    if request.method == 'GET':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../testlogin')
+        qs = Wkqs.objects.filter(zid=id0 ,jid = id1)
+        qslist = []
+        for i in qs:
+            qslist.append(i.pk)
+        shuffle(qslist)
+        a = qslist[0]
+        ts = len(qslist)
+        del qslist[0]
+
+        showquestions = Wkqs.objects.filter(pk=a)
+        context = {'qslist':qslist,'showquestions': showquestions, 'ts': ts, 'yzts': 1,
+                  'correctamount': 0}
+        return render(request, 'showwkqs.html', context)
+    if request.method == 'POST':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../testlogin')
+        questionanswer = request.POST.get('questionanswer')
+        studentanswer = request.POST.get('studentanswer')
+        qslist=request.POST.get('qslist')
+        correctamount=request.POST.get('correctamount')
+        ts = request.POST.get('ts')
+        yzts=request.POST.get('yzts')
+        correctamount=int(correctamount)
+        ts = int(ts)
+        yzts = int(yzts)
+
+
+
+
+        if studentanswer==questionanswer:
+            correctamount+=1
+            mss = "恭喜你上一题答对了！"
+        else:
+
+            mss="真可惜上一题没答对！"
+        if yzts==ts:
+            if correctamount>=ts-1:
+                ornot = "已通过本节预习测试"
+                ms = "恭喜你通过预习测试！请前往预习别的内容！"
+                Yuxiname.addyxname(id0, id1,teststudent,ornot)
+
+            else:
+                ms = "预习测试不通过，请再看一遍微课，然后再次测试，祝你成功！"
+
+
+            return render(request,'yuxi.html',{'ms':ms})
+        yzts+=1
+
+        qslist=list(eval(qslist))#将html传来的‘list’字符串转化为list
+        a=qslist[0]
+        del qslist[0]
+        showquestions = Wkqs.objects.filter(pk=a)
+        context = {'qslist':qslist,'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
+                    'correctamount': correctamount,'mss':mss}
+        return render(request, 'showwkqs.html', context)
+def yuxiname(request,id0,id1):
+    id0 = id0
+    id1 = id1
+    ms = Yuxiname.objects.filter(zid=id0,jid=id1)
+    return render(request,'yuxiname.html',{'ms':ms,'id0':id0,'id1':id1})
+
 
 def Onlinetestrank(request):
     teststudent=request.session.get("teststudent")
@@ -1145,6 +1216,63 @@ def Zuotu2(request):
         data['status']="errors"
         return JsonResponse(data)
 
+def FC(request):
+    a = []
+    for i in range(-30, 30, 1):
+        a.append(i)
+    # print(a)
+    a.remove(0)
+    shuffle(a)
+    # fc = []
+    html=''''''
+
+    for i in range(len(a)):
+        num = -30
+        while (num <= 30):
+            if num == 0:
+                num += 1
+            elif a[i] % num == 0:
+                b = int(a[i] / num)
+                c = b + num
+                d = a[i]
+                if c > 0 and d > 0:
+                    e =  "+" + str(c) + "x+" + str(d) + "=" + str(0)
+                    html0 = '''<a>x<SUP>2</SUP>%s&nbsp;&nbsp;&nbsp;&nbsp;</a>''' % e
+                    html = html + html0
+                    # fc.append(e)
+                elif c < 0 and d > 0:
+                    e = str(c) + "x+" + str(d) + "=" + str(0)
+                    html0 = '''<a>x<SUP>2</SUP>%s&nbsp;&nbsp;&nbsp;&nbsp;</a>''' % e
+                    html = html + html0
+                elif c > 0 and d < 0:
+                    e =  "+" + str(c) + "x" + str(d) + "=" + str(0)
+                    html0 = '''<a>x<SUP>2</SUP>%s&nbsp;&nbsp;&nbsp;&nbsp;</a>''' % e
+                    html = html + html0
+                elif c == 0 and d < 0:
+                    e = str(d) + "=" + str(0)
+                    html0 = '''<a>x<SUP>2</SUP>%s&nbsp;&nbsp;&nbsp;&nbsp;</a>''' % e
+                    html = html + html0
+                elif c == 0 and d > 0:
+                    e = "+" + str(d) + "=" + str(0)
+                    html0 = '''<a>x<SUP>2</SUP>%s&nbsp;&nbsp;&nbsp;&nbsp;</a>''' % e
+                    html = html + html0
+                elif c < 0 and d == 0:
+                    e = str(c) + "x" + "=" + str(0)
+                    html0 = '''<a>x<SUP>2</SUP>%s&nbsp;&nbsp;&nbsp;&nbsp;</a>''' % e
+                    html = html + html0
+                elif c > 0 and d == 0:
+                    e =  "+" + str(c) + "x" + "=" + str(0)
+                    html0 = '''<a>x<SUP>2</SUP>%s&nbsp;&nbsp;&nbsp;&nbsp;</a>''' % e
+                    html = html + html0
+                else:
+                    e =  str(c) + "x" + str(d) + "=" + str(0)
+                    html0 = '''<a>x<SUP>2</SUP>%s&nbsp;&nbsp;&nbsp;&nbsp;</a>''' % e
+                    html = html + html0
+                num += 1
+            else:
+                num += 1
+    # print("生成了" + str(len(fc)) + "个方程：")
+    return render(request,'fangcheng.html',{"html":html})
 
          
 

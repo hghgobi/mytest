@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname
 
 # Register your models here.
 @admin.register(Classes)
@@ -31,23 +31,31 @@ class ClassnotesAdmin(admin.ModelAdmin):
 	list_display = ['pk','notetime','notename','noteupdatetime','readed_num']
 
 @admin.register(onlinetestgrade)
-class ClassnotesAdmin(admin.ModelAdmin):
+class onlinetestgradeAdmin(admin.ModelAdmin):
 	list_display = ['pk','gradename']
 
 @admin.register(onlinetestlist)
-class ClassnotesAdmin(admin.ModelAdmin):
+class onlinetestlistAdmin(admin.ModelAdmin):
 	list_display = ['pk','listgrade','listname']
 
 @admin.register(Questions)
-class ClassnotesAdmin(admin.ModelAdmin):
+class QuestionsAdmin(admin.ModelAdmin):
 	list_display = ['questionid','questiongrade','questiontestlist','questiontext','questionanswer']
 
+@admin.register(Wkqs)
+class WkqsAdmin(admin.ModelAdmin):
+	list_display = ['zid','jid','questiontext','questionanswer']
+
+@admin.register(Yuxiname)
+class YuxinameAdmin(admin.ModelAdmin):
+	list_display = ['zid','jid','name','time','ornot']
+
 @admin.register(Scores)
-class ClassnotesAdmin(admin.ModelAdmin):
+class ScoresAdmin(admin.ModelAdmin):
 	list_display = ['scoreupdatetime','scoreid','scorename','testscore','correctpercent','testamount']
 
 @admin.register(Searchstudentid)
-class ClassnotesAdmin(admin.ModelAdmin):
+class SearchstudentidAdmin(admin.ModelAdmin):
 	list_display = ['phone','student','studentid']
 @admin.register(Loginrecord)
 class LogintimeAdmin(admin.ModelAdmin):

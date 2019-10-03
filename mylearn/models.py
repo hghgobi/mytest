@@ -106,7 +106,11 @@ class Questions(models.Model):
 	questionanswer = models.CharField(max_length=50)
 	questiongrade = models.ForeignKey(onlinetestgrade,on_delete=models.DO_NOTHING)
 	questiontestlist = models.ForeignKey(onlinetestlist,on_delete=models.DO_NOTHING)
-
+class Wkqs(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	questiontext = models.ImageField(upload_to='questions')
+	questionanswer = models.CharField(max_length=50)
 
 class Scores(models.Model):
 	testscore = models.IntegerField()
@@ -260,7 +264,22 @@ class badhomework(models.Model):
 		addms = cls(time0=time0,name=name,stu_id=stu_id,student_name=student_name,ornot=ornot,ms=ms)
 		addms.save()
 		return addms
+class Yuxiname(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	name = models.CharField(max_length=200)
+	ornot = models.CharField(max_length=200)
+	time = models.DateField(auto_now=True)
 
+	class Meta:
+		ordering = ['time']
+
+	@classmethod
+	def addyxname(cls,zid,jid,name,ornot):
+
+		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot)
+		addms.save()
+		return addms
 
 
 

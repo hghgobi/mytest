@@ -51,6 +51,9 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('addhwbad/', views.addhwbad),
                path('xiugaihwms/', views.xiugaihwms),
                path('homeworwbadmss/', views.badhomeworkms2),
+               path('fangcheng/', views.FC),
+               path('wktest/<int:id0>/<int:id1>', views.Showwkqs),
+               path('yuxiname/<int:id0>/<int:id1>', views.yuxiname),
 
 
 

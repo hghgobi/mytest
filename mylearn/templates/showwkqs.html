@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta charset="UTF-8">
+
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, null, document.URL);
+    });
+   </script>
+	<title>在线测试</title>
+
+
+
+</head>
+<body bgcolor="#b8fec0">
+<div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
+
+    <p></p><p></p><p></p><p></p><p></p><p></p>
+    <a ><font size="4"> 共{{ts}}题--目前做第{{yzts}}题--做对{{correctamount}}题</font></a>
+{% for i in showquestions %}
+<img id =6 src="{{i.questiontext.url}}" width="100%" height="20%"/><br/>
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                     <form id="checkbox" action="" method="post">
+    <input  type="checkbox" name="studentanswer" size="5" value="A">A
+    <input  type="checkbox" name="studentanswer" size="5" value="B">B
+    <input  type="checkbox" name="studentanswer" size="5" value="C">C
+    <input  type="checkbox" name="studentanswer" size="5" value="D">D
+    <input  type="hidden" name="questionanswer" value={{i.questionanswer}} >
+    <input  type="hidden" name="questionlist" value={{i.questiontestlist}} >
+    <input  type="hidden" name="ts" value={{ts}} >
+    <input  type="hidden" name="yzts" value={{yzts}} >
+    <input  type="hidden" name="qslist" value='{{qslist}}'>
+    <input  type="hidden" name="correctamount" value={{correctamount}} >
+
+
+
+    <input id="tj" type="submit" name="tijiao" size="5" value="提交答案">
+
+
+
+
+</form>
+
+{%endfor%}
+
+<hr/>
+<hr/>
+{{mss}}
+</body>
+</html>
