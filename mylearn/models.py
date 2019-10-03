@@ -272,12 +272,23 @@ class Yuxiname(models.Model):
 	time = models.DateField(auto_now=True)
 
 	class Meta:
-		ordering = ['time']
+		ordering = ['-time']
 
 	@classmethod
 	def addyxname(cls,zid,jid,name,ornot):
 
 		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot)
+		addms.save()
+
+class Newnames(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	name = models.CharField(max_length=200)
+
+	@classmethod
+	def addname(cls,zid,jid,name):
+
+		addms = cls(zid=zid,jid=jid,name=name)
 		addms.save()
 		return addms
 

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames
 import json
 import random
 import numpy as np
@@ -579,6 +579,10 @@ def Showwkqs(request,id0,id1):
                 ornot = "已通过本节预习测试"
                 ms = "恭喜你通过预习测试！请前往预习别的内容！"
                 Yuxiname.addyxname(id0, id1,teststudent,ornot)
+                try:
+                    Newnames.objects.filter(zid=id0,jid=id1,name=teststudent).delete()
+                except:
+                    pass
 
             else:
                 ms = "预习测试不通过，请再看一遍微课，然后再次测试，祝你成功！"
@@ -598,7 +602,26 @@ def yuxiname(request,id0,id1):
     id0 = id0
     id1 = id1
     ms = Yuxiname.objects.filter(zid=id0,jid=id1)
-    return render(request,'yuxiname.html',{'ms':ms,'id0':id0,'id1':id1})
+    mss = Newnames.objects.filter(zid=id0,jid=id1)
+    n = len(mss)
+    return render(request,'yuxiname.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss,'n':n})
+def Zuji(request):
+    ms = Loginrecord.objects.all()
+    return render(request,'zuji.html',{'ms':ms})
+def Addnames(request,id0,id1):
+    zid = id0
+    jid = id1
+    nameid = [20,16,32,27,9,19,22,5,10,17,15,12,14,31,13,18,24,25,11,8,7,56,60,54,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,55,62,23,75,57,72,26,69,73,29]
+    for i in range(len(nameid)):
+        id = nameid[i]
+        try:
+
+            names =Students.objects.filter(pk = id)
+            name = names[0]
+            Newnames.addname(zid=zid, jid=jid, name=name)
+        except:
+            pass
+    return HttpResponse("成功！")
 
 
 def Onlinetestrank(request):
