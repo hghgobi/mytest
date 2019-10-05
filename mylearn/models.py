@@ -264,21 +264,42 @@ class badhomework(models.Model):
 		addms = cls(time0=time0,name=name,stu_id=stu_id,student_name=student_name,ornot=ornot,ms=ms)
 		addms.save()
 		return addms
+
+
 class Yuxiname(models.Model):
 	zid = models.IntegerField()
 	jid = models.IntegerField()
 	name = models.CharField(max_length=200)
 	ornot = models.CharField(max_length=200)
 	time = models.DateField(auto_now=True)
+	count = models.IntegerField(default=0)
 
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addyxname(cls,zid,jid,name,ornot):
+	def addyxname(cls,zid,jid,name,ornot,count):
 
-		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot)
+		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot,count=count)
 		addms.save()
+
+class Yuxitestcount(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	name = models.CharField(max_length=200)
+	time = models.DateField(auto_now=True)
+	count = models.IntegerField(default=0)
+
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addyxcount(cls,zid,jid,name,count):
+
+		addms = cls(zid=zid,jid=jid,name=name,count=count)
+		addms.save()
+
+
 
 class Newnames(models.Model):
 	zid = models.IntegerField()

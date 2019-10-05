@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount
 import json
 import random
 import numpy as np
@@ -537,20 +537,33 @@ def Showwkqs(request,id0,id1):
     if request.method == 'GET':
         teststudent = request.session.get("teststudent")
         if not teststudent:
-            return redirect('../testlogin')
-        qs = Wkqs.objects.filter(zid=id0 ,jid = id1)
-        qslist = []
-        for i in qs:
-            qslist.append(i.pk)
-        shuffle(qslist)
-        a = qslist[0]
-        ts = len(qslist)
-        del qslist[0]
+            return redirect('../../testlogin')
+        if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
+            try:
+                count =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
+                nnn = count.count+1
+                Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                Yuxitestcount.addyxcount(id0, id1,teststudent,nnn)
+            except:
+                Yuxitestcount.addyxcount(zid=id0, jid=id1, name=teststudent, count=1)
 
-        showquestions = Wkqs.objects.filter(pk=a)
-        context = {'qslist':qslist,'showquestions': showquestions, 'ts': ts, 'yzts': 1,
-                  'correctamount': 0}
-        return render(request, 'showwkqs.html', context)
+            qs = Wkqs.objects.filter(zid=id0 ,jid = id1)
+            qslist = []
+            for i in qs:
+                qslist.append(i.pk)
+            shuffle(qslist)
+            a = qslist[0]
+            ts = len(qslist)
+            del qslist[0]
+
+            showquestions = Wkqs.objects.filter(pk=a)
+            context = {'qslist':qslist,'showquestions': showquestions, 'ts': ts, 'yzts': 1,
+                      'correctamount': 0}
+            return render(request, 'showwkqs.html', context)
+        else:
+            ms = '已通过本节预习测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'yuxi.html', {'ms': ms})
+
     if request.method == 'POST':
         teststudent = request.session.get("teststudent")
         if not teststudent:
@@ -578,7 +591,10 @@ def Showwkqs(request,id0,id1):
             if correctamount>=ts-1:
                 ornot = "已通过本节预习测试"
                 ms = "恭喜你通过预习测试！请前往预习别的内容！"
-                Yuxiname.addyxname(id0, id1,teststudent,ornot)
+                counts =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
+                nnnn = counts.count
+
+                Yuxiname.addyxname(id0, id1,teststudent,ornot,nnnn)
                 try:
                     Newnames.objects.filter(zid=id0,jid=id1,name=teststudent).delete()
                 except:
