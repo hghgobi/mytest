@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems
 import json
 import random
 import numpy as np
@@ -363,7 +363,7 @@ def Searchstudent_id(request):
 
 def Indexs(request):
     teststudent=request.session.get("teststudent")
-    print(teststudent)
+
     if not teststudent:
         return redirect('../testlogin')
 
@@ -371,6 +371,12 @@ def Indexs(request):
 
     loginrecord.logincount =int(loginrecord.logincount)+1
     loginrecord.save()
+    try:
+        n='未读'
+        m=get_object_or_404(Leavems,name=teststudent,ornot=n)
+        m.ornot = '已读'
+        m.save()
+        return redirect('../teacherms')
     # notes_all_list = Classnotes.objects.all()
     # paginator = Paginator(notes_all_list,6)
     # page_num = request.GET.get('page',1)
@@ -378,8 +384,11 @@ def Indexs(request):
     # currentr_page_num = page_of_notes.number
     # page_range = list(range(max(currentr_page_num - 2,1),currentr_page_num)) + \
     #              list(range(currentr_page_num,min(currentr_page_num + 2,paginator.num_pages)+1))
+    except:
+        return render(request, 'base3.html')
 
-    return render(request,'base3.html')
+
+
 def Classnewslist(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
@@ -555,11 +564,18 @@ def Showwkqs(request,id0,id1):
             a = qslist[0]
             ts = len(qslist)
             del qslist[0]
+            showquestionss = get_object_or_404(Wkqs, pk=a)
+            if showquestionss.category == 0:
+                showquestions = Wkqs.objects.filter(pk=a)
+                context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
+                           'correctamount': 0}
+                return render(request, 'showwkqs.html', context)
 
-            showquestions = Wkqs.objects.filter(pk=a)
-            context = {'qslist':qslist,'showquestions': showquestions, 'ts': ts, 'yzts': 1,
-                      'correctamount': 0}
-            return render(request, 'showwkqs.html', context)
+            else:
+                showquestions = Wkqs.objects.filter(pk=a)
+                context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
+                           'correctamount': 0}
+                return render(request, 'showwkqs2.html', context)
         else:
             ms = '已通过本节预习测试，无需重复测试！可前往尚未测试的'
             return render(request, 'yuxi.html', {'ms': ms})
@@ -577,9 +593,14 @@ def Showwkqs(request,id0,id1):
         correctamount=int(correctamount)
         ts = int(ts)
         yzts = int(yzts)
-
-
-
+        if studentanswer:
+            studentanswer=studentanswer.replace(" ", "")
+            studentanswer=studentanswer.replace("。",".")
+            studentanswer = studentanswer.replace("，", ".")
+            studentanswer = studentanswer.replace(",", ".")
+        else:
+            pass
+        print(studentanswer)
 
         if studentanswer==questionanswer:
             correctamount+=1
@@ -610,10 +631,19 @@ def Showwkqs(request,id0,id1):
         qslist=list(eval(qslist))#将html传来的‘list’字符串转化为list
         a=qslist[0]
         del qslist[0]
+        showquestionss = get_object_or_404(Wkqs,pk=a)
         showquestions = Wkqs.objects.filter(pk=a)
-        context = {'qslist':qslist,'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
-                    'correctamount': correctamount,'mss':mss}
-        return render(request, 'showwkqs.html', context)
+
+        if showquestionss.category==0:
+            context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
+                       'correctamount': correctamount, 'mss': mss}
+            return render(request, 'showwkqs.html', context)
+
+        else:
+            context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
+                       'correctamount': correctamount, 'mss': mss}
+            return render(request, 'showwkqs2.html', context)
+
 def yuxiname(request,id0,id1):
     id0 = id0
     id1 = id1
@@ -1864,6 +1894,37 @@ def Addtxl22(request):
 
 def CS(request):
     return render(request,'cesi.html')
+
+
+def leavems(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    ms = Leavems.objects.filter(name=teststudent)
+    return render(request,'leavems.html',{'ms':ms,'teststudent':teststudent})
+
+def addteacherms(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    if request.method=='GET':
+        return render(request,'addteacherms.html')
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        text = request.POST.get('text')
+        ornot = request.POST.get('ornot')
+        category = request.POST.get('category')
+
+        try:
+            n = '未读'
+            m = get_object_or_404(Leavems, name=teststudent, ornot=n)
+            m.ornot = '已读'
+            m.save()
+            Leavems.addms(name, text, category, ornot)
+        except:
+            Leavems.addms(name,text,category,ornot)
+        return render(request,'addteacherms.html')
+
 
 
 

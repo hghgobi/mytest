@@ -21,7 +21,7 @@
 </head>
 <body bgcolor="#b8fec0">
 <style>
-div{text-align:right  }
+div{text-align:right }
 </style>
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
 
@@ -36,22 +36,23 @@ div{text-align:right  }
                     <div class="panel-heading"></div>
                     <div class="panel-body">
                      <form id="checkbox" action="" method="post">
-    <input  type="checkbox" name="studentanswer" size="5" value="A">A
-     <input  type="checkbox" name="studentanswer" size="5" value="B">B
-     <input  type="checkbox" name="studentanswer" size="5" value="C">C
-     <input  type="checkbox" name="studentanswer" size="5" value="D">D
+    <input  type="text" name="studentanswer" size="5" value="">
     <input  type="hidden" name="questionanswer" value={{i.questionanswer}} >
     <input  type="hidden" name="questionlist" value={{i.questiontestlist}} >
     <input  type="hidden" name="ts" value={{ts}} >
     <input  type="hidden" name="yzts" value={{yzts}} >
     <input  type="hidden" name="qslist" value='{{qslist}}'>
     <input  type="hidden" name="correctamount" value={{correctamount}} >
-     <input id="tj" type="submit" name="tijiao" size="5" value="提交答案">
+
+
+
+    <input id="tj" type="submit" name="tijiao" size="5" value="提交答案">
+
+
 
 
 </form>
 <img id =6 src="{{i.questiontext.url}}" width="100%" height="20%"/><br/>
-
 {%endfor%}
 
 <hr/>

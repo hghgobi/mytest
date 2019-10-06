@@ -1,0 +1,53 @@
+{% extends 'base2.html' %}
+{% block content %}
+
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">数学老师给{{teststudent}}同学/家长的留言</font></a></div>
+                    <div class="panel-body">
+
+                      <table id="num" class="table table-bordered" >
+
+         <tr>
+             <td style="vertical-align: middle;" ><font size="4">序号</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">留言时间</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">内容</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">状态</font></td>
+
+
+
+        </tr>
+        {%for i in ms %}
+            <tr  >
+                <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
+                <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.text}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.ornot}}</font></td>
+
+            </tr>
+
+
+        {% empty %}
+        <p><font size="5" color="red">暂无相关留言</font></p>
+        {% endfor %}
+
+    </table>
+     </div>
+                </div>
+            </div>
+            </div>
+<script language="javascript" type="text/javascript">
+	    window.onload = function(){
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	    }
+    }
+    </script>
+
+
+{% endblock %}
+

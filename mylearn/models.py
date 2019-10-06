@@ -109,6 +109,7 @@ class Questions(models.Model):
 class Wkqs(models.Model):
 	zid = models.IntegerField()
 	jid = models.IntegerField()
+	category = models.IntegerField(default=0)
 	questiontext = models.ImageField(upload_to='questions')
 	questionanswer = models.CharField(max_length=50)
 
@@ -253,7 +254,7 @@ class badhomework(models.Model):
 	student_name = models.ForeignKey(Students, on_delete=models.DO_NOTHING)
 	ms = models.CharField(max_length=200)
 	ornot = models.CharField(max_length=200)
-	time = models.DateField(auto_now=True)
+	time = models.DateTimeField(auto_now=True)
 
 	class Meta:
 		ordering = ['time']
@@ -271,7 +272,7 @@ class Yuxiname(models.Model):
 	jid = models.IntegerField()
 	name = models.CharField(max_length=200)
 	ornot = models.CharField(max_length=200)
-	time = models.DateField(auto_now=True)
+	time = models.DateTimeField(auto_now=True)
 	count = models.IntegerField(default=0)
 
 	class Meta:
@@ -287,7 +288,7 @@ class Yuxitestcount(models.Model):
 	zid = models.IntegerField()
 	jid = models.IntegerField()
 	name = models.CharField(max_length=200)
-	time = models.DateField(auto_now=True)
+	time = models.DateTimeField(auto_now=True)
 	count = models.IntegerField(default=0)
 
 	class Meta:
@@ -313,7 +314,21 @@ class Newnames(models.Model):
 		addms.save()
 		return addms
 
+class Leavems(models.Model):
+	name = models.CharField(max_length=50)
+	text = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	category = models.CharField(max_length=50)
+	ornot = models.CharField(max_length=50)
 
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addms(cls,name,text,category,ornot):
+
+		addms = cls(name=name,text=text,category=category,ornot=ornot)
+		addms.save()
 
 
 	

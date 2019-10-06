@@ -1,0 +1,64 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+<body bgcolor="#b8fec0">
+<style>
+table{text-align:center}
+</style>
+<body bgcolor="#b8fec0">
+<style>
+div{text-align:center}
+</style>
+
+    <form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;姓名:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="name"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留言类型:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="category"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;留言内容:</font></td>
+                    <td><input type="text" style="color:red;width:900px;height:30px;font-size:16px" name="text"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">状态</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="ornot" value="未读"></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="添加留言" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+
+
+
+<div class="footer">
+    <div class="website-info">
+        <p>浙ICP备19013564号 Copyright©2019 35925.top 版权所有</p>
+        <p>意见反馈或联系我（569258059@qq.com）</p>
+    </div>
+</div>
+
+</body>
+
+
+</html>
