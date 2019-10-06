@@ -1,5 +1,12 @@
 {% extends 'base2.html' %}
 {% block content %}
+    <script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, null, document.URL);
+    });
+   </script>
 <a><font size="5">{{ ms }}</font></a>
 <ul>
 	<hr/>
