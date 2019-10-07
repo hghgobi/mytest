@@ -4,10 +4,13 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 	<meta charset="UTF-8">
+     <link rel="stylesheet" href="{% static 'jsq.css' %}">
+
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
 
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-    <link rel="stylesheet" href="{% static 'jsq.css' %}">
+
     <script language="javascript">
     //防止页面后退
     history.pushState(null, null, document.URL);
@@ -37,7 +40,7 @@ div{text-align:right }
                     <div class="panel-heading"></div>
                     <div class="panel-body">
                      <form id="checkbox" action="" method="post">
-    <input id="display0" type="text" style="color:red;width:120px;height:50px;font-size:16px" name="studentanswer" value="">
+    <input id="display0" type="text" style="color:red;width:120px;height:25px;font-size:16px" name="studentanswer" value="">
 
     <input  type="hidden" name="questionanswer" value={{i.questionanswer}} >
     <input  type="hidden" name="questionlist" value={{i.questiontestlist}} >
