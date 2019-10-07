@@ -1,0 +1,73 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'jsq.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+</head>
+<body >
+<input id="display0"  type="text" value="" >
+
+<table id="calculater" onClick="calculater()">
+
+<tr>
+<td class="numberkey" >1</td>
+<td class="numberkey" >2</td>
+<td class="numberkey" >3</td>
+<td class="numberkey" >-</td>
+<td class="numberkey"  id="deletesign">.</td>
+</tr>
+<tr>
+<td class="numberkey" >4</td>
+<td class="numberkey" >5</td>
+<td class="numberkey" >6</td>
+<td class="numberkey" >A</td>
+<td class="numberkey" onclick="resultscalcaulte()" >清空</td>
+</tr>
+<tr>
+<td class="numberkey" >7</td>
+<td class="numberkey" >8</td>
+<td class="numberkey" >7</td>
+<td class="numberkey" >B</td>
+<td rowspan="3" id="equality" >提交答案</td>
+</tr>
+<tr >
+<td class="numberkey" >9</td>
+<td class="numberkey" >0</td>
+<td class="numberkey" >D</td>
+<td class="numberkey" >C</td>
+</tr>
+
+<script language="javascript" type="text/javascript">
+
+
+var calresults="";
+var results="";
+function calculater(){
+
+
+if (event.srcElement.innerText=="清空") {
+
+results="";
+
+return;
+
+}
+
+results+=event.srcElement.innerText;
+
+$("#display0").val(results)
+
+}
+
+function resultscalcaulte(){
+$("#display0").val("")
+
+}
+
+
+</script>
+</body>
+</html>

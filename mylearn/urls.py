@@ -58,6 +58,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('loginrecord/', views.Zuji),
                path('teacherms/', views.leavems),
                path('addteacherms/', views.addteacherms),
+               path('jsq/', views.inputms),
 
 
 

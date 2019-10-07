@@ -1926,7 +1926,8 @@ def addteacherms(request):
         return render(request,'addteacherms.html')
 
 
-
+def inputms(request):
+    return render(request,'jsq.html')
 
 
 

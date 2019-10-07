@@ -1,4 +1,4 @@
-
+{% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +7,7 @@
 
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <link rel="stylesheet" href="{% static 'jsq.css' %}">
     <script language="javascript">
     //防止页面后退
     history.pushState(null, null, document.URL);
@@ -36,7 +37,7 @@ div{text-align:right }
                     <div class="panel-heading"></div>
                     <div class="panel-body">
                      <form id="checkbox" action="" method="post">
-    <input  type="text" style="color:red;width:120px;height:50px;font-size:16px" name="studentanswer" value="">
+    <input id="display0" type="text" style="color:red;width:120px;height:50px;font-size:16px" name="studentanswer" value="">
 
     <input  type="hidden" name="questionanswer" value={{i.questionanswer}} >
     <input  type="hidden" name="questionlist" value={{i.questiontestlist}} >
@@ -47,7 +48,7 @@ div{text-align:right }
 
 
 
-    <input id="tj" type="submit" name="tijiao" style="color:red;width:120px;height:50px;font-size:16px"  value="提交答案">
+    <input id="tj" type="submit" name="tijiao"  value="">
 
 
 
@@ -59,5 +60,67 @@ div{text-align:right }
 <hr/>
 <hr/>
 {{mss}}
+ <table id="calculater" onClick="calculater()">
+
+<tr>
+<td class="numberkey" >1</td>
+<td class="numberkey" >2</td>
+<td class="numberkey" >3</td>
+<td class="numberkey" >-</td>
+<td class="numberkey"  id="deletesign">.</td>
+</tr>
+<tr>
+<td class="numberkey" >4</td>
+<td class="numberkey" >5</td>
+<td class="numberkey" >6</td>
+<td class="numberkey" >A</td>
+<td class="numberkey" onclick="resultscalcaulte()" >清空</td>
+</tr>
+<tr>
+<td class="numberkey" >7</td>
+<td class="numberkey" >8</td>
+<td class="numberkey" >7</td>
+<td class="numberkey" >B</td>
+<td rowspan="3" id="equality" >提交答案</td>
+</tr>
+<tr >
+<td class="numberkey" >9</td>
+<td class="numberkey" >0</td>
+<td class="numberkey" >D</td>
+<td class="numberkey" >C</td>
+</tr>
+
+<script language="javascript" type="text/javascript">
+
+var calresults="";
+var results="";
+var form = document.getElementById('checkbox');
+function calculater(){
+
+
+if (event.srcElement.innerText=="清空") {
+
+results="";
+
+return;
+
+}
+else if (event.srcElement.innerText=="提交答案"){
+form.submit();
+}
+
+results+=event.srcElement.innerText;
+
+$("#display0").val(results)
+
+}
+
+function resultscalcaulte(){
+$("#display0").val("")
+
+}
+
+
+</script>
 </body>
 </html>
