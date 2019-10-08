@@ -569,7 +569,7 @@ def Showwkqs(request,id0,id1):
                 showquestions = Wkqs.objects.filter(pk=a)
                 context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
                            'correctamount': 0}
-                return render(request, 'showwkqs.html', context)
+                return render(request, 'showwkqs2.html', context)
 
             else:
                 showquestions = Wkqs.objects.filter(pk=a)
@@ -633,18 +633,18 @@ def Showwkqs(request,id0,id1):
         qslist=list(eval(qslist))#将html传来的‘list’字符串转化为list
         a=qslist[0]
         del qslist[0]
-        showquestionss = get_object_or_404(Wkqs,pk=a)
+        # showquestionss = get_object_or_404(Wkqs,pk=a)
         showquestions = Wkqs.objects.filter(pk=a)
-
-        if showquestionss.category==0:
-            context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
-                       'correctamount': correctamount, 'mss': mss}
-            return render(request, 'showwkqs.html', context)
-
-        else:
-            context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
-                       'correctamount': correctamount, 'mss': mss}
-            return render(request, 'showwkqs2.html', context)
+        #
+        # if showquestionss.category==0:
+        #     context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
+        #                'correctamount': correctamount, 'mss': mss}
+        #     return render(request, 'showwkqs.html', context)
+        #
+        # else:
+        context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
+                   'correctamount': correctamount, 'mss': mss}
+        return render(request, 'showwkqs2.html', context)
 
 def yuxiname(request,id0,id1):
     id0 = id0
