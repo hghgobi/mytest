@@ -604,10 +604,12 @@ def Showwkqs(request,id0,id1):
 
         if studentanswer==questionanswer:
             correctamount+=1
-            mss = "恭喜你上一题答对了！"
+            mss ='''<a><font color="blue">恭喜你上一题答对了！</font></a>'''
+
         else:
 
-            mss="真可惜上一题没答对！"
+            mss='''<a><font color="red">真可惜上一题没答对！</font></a>'''
+
         if yzts==ts:
             if correctamount>=ts-1:
                 ornot = "已通过本节预习测试"

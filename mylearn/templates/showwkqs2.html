@@ -58,9 +58,9 @@ padding-left: 2px;
 
 cursor: pointer;
 
-width: 40px;
+width: 80px;
 
-height: 30px;
+height: 60px;
 
 border: solid 1px #FFFFFF;
 
@@ -120,8 +120,8 @@ background: #EA6F30;
 div{text-align:right }
 </style>
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
-
-    <p></p><p></p><p></p><p></p><p></p><p></p>
+    {{mss|safe}}
+    <p></p>
     <a ><font size="4"> 共{{ts}}题--目前做第{{yzts}}题--做对{{correctamount}}题</font></a>
 {% for i in showquestions %}
 
@@ -154,7 +154,6 @@ div{text-align:right }
 
 <hr/>
 <hr/>
-{{mss}}
  <table id="calculater" onClick="calculater()">
 
 <tr>
