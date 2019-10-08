@@ -16,13 +16,61 @@
    </script>
 	<title>在线测试</title>
 <style type="text/css">
+* {
+    margin:0;
+    padding: 0;
+}
+#kuang{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 5px #2371D3;
+
+border-spacing: 0px;
+
+}
+#pic{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 2px #2371D3;
+
+border-spacing: 0px;
+
+}
+#display0{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 2px #EE0000;
+
+border-spacing: 0px;
+
+}
+#ts{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 3px #FFFFF;
+
+border-spacing: 0px;
+
+}
 #calculater{
 
 margin: auto;
 
 margin-top: 0px;
 
-border: solid 4px #2371D3;
+border: solid 5px #2371D3;
 
 border-spacing: 0px;
 
@@ -67,7 +115,48 @@ font-weight: bold;
 font-family: 黑体;
 
 }
+.ts{
 
+cursor: pointer;
+
+width: 180px;
+
+height: 20px;
+
+border: solid 1px #FFFFF;
+
+background: #F0F8FF;
+
+color: #ffffff;
+
+text-align: center;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+.tm{
+
+cursor: pointer;
+
+width: 180px;
+
+height: 20px;
+
+border: solid 1px #FFFFF;
+
+background: #00FF00;
+
+color: #000000;
+
+text-align: left;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
 #equality{
 
 cursor: pointer;
@@ -111,10 +200,10 @@ background: #EA6F30;
 <style>
 div{text-align:right }
 </style>
-
+<div id="kuang">
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
-    {{mss|safe}}<p></p>
-    <a ><font size="4"> 共{{ts}}题--目前做第{{yzts}}题--做对{{correctamount}}题</font></a>
+    <p id="ts" class="ts">{{mss|safe}}</p>
+    <a class="tm" ><font size="4"> 共{{ts}}题--目前做第{{yzts}}题--做对{{correctamount}}题</font></a>
 {% for i in showquestions %}
 
  <div class="container">
@@ -141,7 +230,7 @@ div{text-align:right }
 
 
 </form>
-<img id =6 src="{{i.questiontext.url}}" width="100%" height="20%"/><br/>
+<img id="pic" src="{{i.questiontext.url}}" width="100%" height="20%"/>
 {%endfor%}
 
  <table id="calculater" onClick="calculater()">
@@ -173,7 +262,7 @@ div{text-align:right }
 <td class="numberkey" >D</td>
 <td class="numberkey" >C</td>
 </tr>
-
+</div>
 <script language="javascript" type="text/javascript">
 
 var calresults="";

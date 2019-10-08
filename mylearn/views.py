@@ -564,18 +564,20 @@ def Showwkqs(request,id0,id1):
             a = qslist[0]
             ts = len(qslist)
             del qslist[0]
-            showquestionss = get_object_or_404(Wkqs, pk=a)
-            if showquestionss.category == 0:
-                showquestions = Wkqs.objects.filter(pk=a)
-                context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
-                           'correctamount': 0}
-                return render(request, 'showwkqs2.html', context)
+            # showquestionss = get_object_or_404(Wkqs, pk=a)
+            # if showquestionss.category == 0:
+            showquestions = Wkqs.objects.filter(pk=a)
+            mss = '''<a><font color="green">请开始你的表演！</font></a>'''
+            context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
+                       'correctamount': 0,'mss':mss}
 
-            else:
-                showquestions = Wkqs.objects.filter(pk=a)
-                context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
-                           'correctamount': 0}
-                return render(request, 'showwkqs2.html', context)
+            return render(request, 'showwkqs2.html', context)
+
+            # else:
+            #     showquestions = Wkqs.objects.filter(pk=a)
+            #     context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
+            #                'correctamount': 0}
+            #     return render(request, 'showwkqs2.html', context)
         else:
             ms = '已通过本节预习测试，无需重复测试！可前往尚未测试的'
             return render(request, 'yuxi.html', {'ms': ms})
