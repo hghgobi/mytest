@@ -21,7 +21,7 @@
             
         </tr>
         {%for i in ms %}
-            <tr  >
+            <tr id="hys" >
                 <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
                 <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}</font></td>
                 <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.ornot}}</font></td>
@@ -55,6 +55,7 @@
 {% empty %}
 <p><font size="5" color="red">已全部通过！</font></p>
 {% endfor %}
+
 
 {% endblock %}
 
