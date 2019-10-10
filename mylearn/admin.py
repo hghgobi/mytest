@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs
 
 # Register your models here.
 @admin.register(Classes)
@@ -98,3 +98,7 @@ class NewnamesAdmin(admin.ModelAdmin):
 @admin.register(Leavems)
 class LeavemsAdmin(admin.ModelAdmin):
 	list_display = ('name','time','category','ornot','text')
+
+@admin.register(Xxqs)
+class XxqsAdmin(admin.ModelAdmin):
+	list_display = ('num0','num1','yunsuan','answer')

@@ -53,6 +53,17 @@ border: solid 2px #EE0000;
 border-spacing: 0px;
 
 }
+#tms{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 2px #EE0000;
+
+border-spacing: 0px;
+
+}
 #ts{
 
 margin: auto;
@@ -80,7 +91,7 @@ border-spacing: 0px;
 
 width: 100%;
 
-height: 30px;
+height: 50px;
 
 border-bottom: solid 4px #2371D3;
 
@@ -98,9 +109,9 @@ padding-left: 2px;
 
 cursor: pointer;
 
-width: 80px;
+width: 130px;
 
-height: 40px;
+height: 100px;
 
 border: solid 1px #FFFFFF;
 
@@ -115,6 +126,7 @@ font-weight: bold;
 font-family: 黑体;
 
 }
+
 .ts{
 
 cursor: pointer;
@@ -167,9 +179,9 @@ height: 100%;
 
 background: #2371D3;
 
-border: solid 1px #FFFFFF;
+border: solid 1px #000000;
 
-color: #ffffff;
+color: #000000;
 
 text-align: center;
 
@@ -198,25 +210,24 @@ background: #EA6F30;
 </head>
 <body bgcolor="#b8fec0">
 <style>
-div{text-align:right }
+div{text-align:center }
 </style>
 <div id="kuang">
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
-    <p id="ts" class="ts">{{mss|safe}}</p>
-    <a class="tm" ><font size="4"> 共{{ts}}题--目前做第{{yzts}}题--做对{{correctamount}}题</font></a>
+    <a class="tm" ><font size="4"> 共{{ts}}题--目前做第{{yzts}}题--做对{{correctamount}}题</font></a>{{mss|safe}}
 {% for i in showquestions %}
-
  <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
                 <div class="panel panel-default">
                     <div class="panel-heading"></div>
                     <div class="panel-body">
-                     <form id="checkbox" action="" method="post">
-    <input id="display0" type="text" style="color:red;width:120px;height:30px;font-size:16px" name="studentanswer" value="">
 
-    <input  type="hidden" name="questionanswer" value={{i.questionanswer}} >
-    <input  type="hidden" name="questionlist" value={{i.questiontestlist}} >
+                     <form id="checkbox" action="" method="post">
+                         <p  id="tms" style=" color:red;width:320px;height:120px;font-size:100px">{{i.num0}}&times{{i.num1}}</p>
+
+    <input id="display" type="text" style="color:black;width:320px;height:100px;font-size:80px" name="studentanswer" value="">
+    <input  type="hidden" name="questionanswer" value={{i.answer}} >
     <input  type="hidden" name="ts" value={{ts}} >
     <input  type="hidden" name="yzts" value={{yzts}} >
     <input  type="hidden" name="qslist" value='{{qslist}}'>
@@ -225,44 +236,33 @@ div{text-align:right }
 
 
 <!--    <input id="tj" type="submit" name="tijiao"  value="">-->
-
-
-
-
 </form>
-<img id="pic" src="{{i.questiontext.url}}" width="100%" height="20%"/>
 {%endfor%}
 
- <table id="calculater" onClick="calculater()">
+ <table id="calculater" style="font-size:60px" onClick="calculater()">
 
 <tr>
 <td class="numberkey" >1</td>
 <td class="numberkey" >2</td>
 <td class="numberkey" >3</td>
-<td class="numberkey" >-</td>
-<td class="numberkey"  id="deletesign">.</td>
 </tr>
 <tr>
 <td class="numberkey" >4</td>
 <td class="numberkey" >5</td>
 <td class="numberkey" >6</td>
-<td class="numberkey" >A</td>
-<td class="numberkey" onclick="resultscalcaulte()" >清空</td>
 </tr>
 <tr>
 <td class="numberkey" >7</td>
 <td class="numberkey" >8</td>
-<td class="numberkey" >7</td>
-<td class="numberkey" >B</td>
-<td rowspan="3" id="equality" >提交答案</td>
+<td class="numberkey" >9</td>
 </tr>
 <tr >
-<td class="numberkey" >9</td>
 <td class="numberkey" >0</td>
-<td class="numberkey" >D</td>
-<td class="numberkey" >C</td>
+<td class="numberkey" onclick="resultscalcaulte()" >清空</td>
+<td rowspan="3" id="equality" >提交答案</td>
 </tr>
-</div>
+ </table>
+
 <script language="javascript" type="text/javascript">
 
 var calresults="";
@@ -272,23 +272,24 @@ function calculater(){
 if (event.srcElement.innerText=="清空") {
 
 results="";
+
 return;
+
 }
 else if (event.srcElement.innerText=="提交答案"){
 form.submit();
 }
-
+else{
 results+=event.srcElement.innerText;
 
-$("#display0").val(results)
-
+$("#display").val(results);
+}
 }
 
 function resultscalcaulte(){
-$("#display0").val("")
+$("#display").val("");
 
 }
-
 
 </script>
 </body>

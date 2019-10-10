@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs
 import json
 import random
 import numpy as np
@@ -1932,6 +1932,80 @@ def addteacherms(request):
 
 def inputms(request):
     return render(request,'jsq.html')
+
+
+def xxtest(request):
+    if request.method=="GET":
+        QS = Xxqs.objects.all()
+        qslist = []
+        for i in QS:
+            qslist.append(i.pk)
+        shuffle(qslist)
+        a = qslist[0]
+        ts = len(qslist)
+        del qslist[0]
+        # showquestionss = get_object_or_404(Wkqs, pk=a)
+        # if showquestionss.category == 0:
+        showquestions = Xxqs.objects.filter(pk=a)
+        context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
+                   'correctamount': 0}
+        yunsuan = get_object_or_404(Xxqs,pk=a)
+        if yunsuan.yunsuan==1:
+            return render(request, 'xxqs1.html', context)
+        elif yunsuan.yunsuan==2:
+            return render(request, 'xxqs2.html', context)
+        elif yunsuan.yunsuan==3:
+            return render(request, 'xxqs3.html', context)
+        else:
+            return render(request, 'xxqs4.html', context)
+
+    if request.method == 'POST':
+        questionanswer = request.POST.get('questionanswer')
+        studentanswer = request.POST.get('studentanswer')
+        qslist=request.POST.get('qslist')
+        correctamount=request.POST.get('correctamount')
+        ts = request.POST.get('ts')
+        yzts=request.POST.get('yzts')
+        correctamount=int(correctamount)
+        ts = int(ts)
+        yzts = int(yzts)
+
+        if studentanswer==questionanswer:
+            correctamount+=1
+            mss ='''<a><font color="blue">上一题答对了</font></a>'''
+
+        else:
+
+            mss='''<a><font color="red">上一题没答对</font></a>'''
+
+        yzts+=1
+
+        qslist=list(eval(qslist))#将html传来的‘list’字符串转化为list
+        a=qslist[0]
+        del qslist[0]
+        # showquestionss = get_object_or_404(Wkqs,pk=a)
+        showquestions = Xxqs.objects.filter(pk=a)
+        #
+        # if showquestionss.category==0:
+        #     context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
+        #                'correctamount': correctamount, 'mss': mss}
+        #     return render(request, 'showwkqs.html', context)
+        #
+        # else:
+        context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
+                   'correctamount': correctamount, 'mss': mss}
+        yunsuan = get_object_or_404(Xxqs,pk=a)
+        if yunsuan.yunsuan==1:
+            return render(request, 'xxqs1.html', context)
+        elif yunsuan.yunsuan==2:
+            return render(request, 'xxqs2.html', context)
+        elif yunsuan.yunsuan==3:
+            return render(request, 'xxqs3.html', context)
+        else:
+            return render(request, 'xxqs4.html', context)
+
+
+
 
 
 

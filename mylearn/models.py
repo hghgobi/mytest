@@ -330,8 +330,11 @@ class Leavems(models.Model):
 		addms = cls(name=name,text=text,category=category,ornot=ornot)
 		addms.save()
 
-
-	
+class Xxqs(models.Model):
+	num0 = models.IntegerField()
+	num1 = models.IntegerField()
+	yunsuan = models.IntegerField()
+	answer = models.IntegerField(default=0)
 
 
 
