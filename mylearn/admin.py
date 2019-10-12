@@ -101,4 +101,4 @@ class LeavemsAdmin(admin.ModelAdmin):
 
 @admin.register(Xxqs)
 class XxqsAdmin(admin.ModelAdmin):
-	list_display = ('num0','num1','yunsuan','answer')
+	list_display = ('num0','num1','yunsuan','answer','ornot')

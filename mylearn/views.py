@@ -561,6 +561,7 @@ def Showwkqs(request,id0,id1):
             for i in qs:
                 qslist.append(i.pk)
             shuffle(qslist)
+            qslist = qslist[:10]
             a = qslist[0]
             ts = len(qslist)
             del qslist[0]
@@ -2005,6 +2006,43 @@ def xxtest(request):
             return render(request, 'xxqs4.html', context)
 
 
+
+def xxtest2(request):
+    if request.method=="GET":
+        QS = Xxqs.objects.all()
+        answer = []
+        ornot = []
+        tm = []
+        for i in QS:
+            if i.yunsuan==1:
+                html = '''<div style="font-size:100px">%s+%s</div>'''%(i.num0,i.num1)
+                tm.append(html)
+                ornot.append(i.ornot)
+                answer.append(i.answer)
+            elif i.yunsuan==2:
+                html = '''<div style="font-size:100px">%s-%s</div>'''%(i.num0,i.num1)
+                tm.append(html)
+                ornot.append(i.ornot)
+                answer.append(i.answer)
+            elif i.yunsuan==3:
+                html = '''<div style="font-size:100px">%s &times %s</div>'''%(i.num0,i.num1)
+                tm.append(html)
+                ornot.append(i.ornot)
+                answer.append(i.answer)
+            else:
+                html = '''<div style="font-size:100px">%s &divide %s</div>'''%(i.num0,i.num1)
+                tm.append(html)
+                ornot.append(i.ornot)
+                answer.append(i.answer)
+
+            # num0.append(i.num0)
+            # num1.append(i.num1)
+            # answer.append(i.answer)
+            # ornot.append(i.ornot)
+            # yunsuan.append(i.yunsuan)
+            ts = len(answer)
+    # return render(request,'xxtest.html',{'num0':json.dumps(num0),'num1':json.dumps(num1),'answer':json.dumps(answer),'ornot':json.dumps(ornot),'yunsuan':json.dumps(yunsuan),'ts':ts,'yzts': 0,'correctamount': 0})
+    return render(request, 'xxtest.html',{'answer': json.dumps(answer),'tm':json.dumps(tm),'ts':ts,'yzts': 0,'correctamount': 0,'ornot':json.dumps(ornot)})
 
 
 

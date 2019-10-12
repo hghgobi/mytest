@@ -1,0 +1,329 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+	<meta  charset="UTF-8"  name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+      history.pushState(null, null, document.URL);
+    });
+   </script>
+
+	<title>在线测试</title>
+<style type="text/css">
+* {
+    margin:0;
+    padding: 0;
+}
+#kuang{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 5px #2371D3;
+
+border-spacing: 0px;
+
+}
+#pic{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 2px #2371D3;
+
+border-spacing: 0px;
+
+}
+#display0{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 2px #EE0000;
+
+border-spacing: 0px;
+
+}
+#tms{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 2px #EE0000;
+
+border-spacing: 0px;
+
+}
+#ts{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 3px #FFFFF;
+
+border-spacing: 0px;
+
+}
+#calculater{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 5px #2371D3;
+
+border-spacing: 0px;
+
+}
+
+#display{
+
+width: 100%;
+
+height: 50px;
+
+border-bottom: solid 4px #2371D3;
+
+font-weight: bold;
+
+color: #193D83;
+
+font-family: 黑体;
+
+padding-left: 2px;
+
+}
+
+.numberkey{
+
+cursor: pointer;
+
+width: 120px;
+
+height: 90px;
+
+border: solid 1px #FFFFFF;
+
+background: #2371D3;
+
+color: #ffffff;
+
+text-align: center;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+
+.ts{
+
+cursor: pointer;
+
+width: 180px;
+
+height: 20px;
+
+border: solid 1px #FFFFF;
+
+background: #F0F8FF;
+
+color: #ffffff;
+
+text-align: center;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+.tm{
+
+cursor: pointer;
+
+width: 180px;
+
+height: 20px;
+
+border: solid 1px #FFFFF;
+
+background: #00FF00;
+
+color: #000000;
+
+text-align: left;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+#equality{
+
+cursor: pointer;
+
+width: 40px;
+
+height: 100%;
+
+background: #2371D3;
+
+border: solid 1px #000000;
+
+color: #000000;
+
+text-align: center;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+
+.numberkey:hover{
+
+background: #EA6F30;
+
+}
+
+#equality:hover{
+
+background: #EA6F30;
+
+}
+
+#start{display:block;text-align: center;}
+#ms{display:none;}
+
+
+</style>
+
+
+</head>
+<body bgcolor="#b8fec0">
+<style>
+div{text-align:center }
+</style>
+<div id="kuang">
+<div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
+
+
+    <div align="center">  <button id="start" onclick="start()" style="font-size:50px;">点此开始答题</button></div>
+    <div id="ms" >
+        <a>共</a><a id="sum"></a><a>题，</a><a>已做</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
+    </div>
+    <div id="yunsuan1" ></div>
+
+    <input id="display" type="text" style="color:black;width:320px;height:100px;font-size:80px" name="studentanswer" value="">
+
+<table id="calculater" style="font-size:50px" onClick="calculater()">
+
+<tr>
+<td class="numberkey" >1</td>
+<td class="numberkey" >2</td>
+<td class="numberkey" >3</td>
+</tr>
+<tr>
+<td class="numberkey" >4</td>
+<td class="numberkey" >5</td>
+<td class="numberkey" >6</td>
+</tr>
+<tr>
+<td class="numberkey" >7</td>
+<td class="numberkey" >8</td>
+<td class="numberkey" >9</td>
+</tr>
+<tr >
+<td class="numberkey" >0</td>
+<td class="numberkey" onclick="resultscalcaulte()" >清空</td>
+<td rowspan="3" id="equality" >提交答案</td>
+</tr>
+ </table>
+    <script language="javascript" type="text/javascript">
+var answer= {{answer|safe}};
+var tm= {{tm|safe}};
+var ts={{ts}};
+var yzts= {{yzts}};
+var correctamount= {{correctamount}};
+var ornot = {{ornot|safe}}
+var touch=0;
+var calresults="";
+var results="";
+var studentanswer="";
+var form = document.getElementById('checkbox');
+var yunsuan1=document.getElementById("yunsuan1");
+function start(){
+
+        document.getElementById("start").style.display="none";
+        document.getElementById("ms").style.display="block";
+        yunsuan1.innerHTML = tm[0];
+        document.getElementById("sum").innerText=ts;
+        document.getElementById("yzts").innerText=yzts;
+        document.getElementById("correctamount").innerText=correctamount;
+
+}
+function calculater(){
+    touch+=1;
+    results+=event.srcElement.innerText;
+    $("#display").val(results);
+
+    if (touch>=ornot[0])
+        {   sleep(200);
+            yunsuan1.innerHTML = "";
+            yzts+=1;
+            document.getElementById("yzts").innerText=yzts;
+            studentanswer=results;
+            tm.shift();
+            ornot.shift();
+            if(studentanswer==answer[0])
+            {
+                correctamount+=1;
+                document.getElementById("correctamount").innerText=correctamount;
+
+                }
+
+            else
+                {
+
+                 }
+            answer.shift();
+            yunsuan1.innerHTML = tm[0];
+            touch=0;
+            $("#display").val("");
+            results="";
+            return;
+        }
+    else
+        {
+
+        return;
+        }
+
+
+}
+
+</script>
+    <script>
+        function sleep(delay) {
+	//delay表示的毫秒数
+  var start = (new Date()).getTime();
+  while ((new Date()).getTime() - start < delay) {
+    continue;
+  }
+}
+
+    </script>
+</body>
+</html>

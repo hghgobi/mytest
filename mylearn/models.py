@@ -335,6 +335,7 @@ class Xxqs(models.Model):
 	num1 = models.IntegerField()
 	yunsuan = models.IntegerField()
 	answer = models.IntegerField(default=0)
+	ornot = models.IntegerField(default=0)
 
 
 
