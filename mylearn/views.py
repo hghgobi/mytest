@@ -564,13 +564,14 @@ def Showwkqs(request,id0,id1):
             qslist = qslist[:10]
             a = qslist[0]
             ts = len(qslist)
+            wk = a
             del qslist[0]
             # showquestionss = get_object_or_404(Wkqs, pk=a)
             # if showquestionss.category == 0:
             showquestions = Wkqs.objects.filter(pk=a)
             mss = '''<a><font color="green">请开始你的表演！</font></a>'''
             context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': 1,
-                       'correctamount': 0,'mss':mss}
+                       'correctamount': 0,'mss':mss,'wk':wk}
 
             return render(request, 'showwkqs2.html', context)
 
@@ -594,6 +595,7 @@ def Showwkqs(request,id0,id1):
         ts = request.POST.get('ts')
         yzts=request.POST.get('yzts')
         correctamount=int(correctamount)
+        wk = request.POST.get('wk')
         ts = int(ts)
         yzts = int(yzts)
         if studentanswer:
@@ -610,6 +612,9 @@ def Showwkqs(request,id0,id1):
             mss ='''<a><font color="blue">恭喜你上一题答对了！</font></a>'''
 
         else:
+            wrong = get_object_or_404(Wkqs,pk=wk)
+            wrong.wrongcount+=1
+            wrong.save()
 
             mss='''<a><font color="red">真可惜上一题没答对！</font></a>'''
 
@@ -635,6 +640,7 @@ def Showwkqs(request,id0,id1):
 
         qslist=list(eval(qslist))#将html传来的‘list’字符串转化为list
         a=qslist[0]
+        wk = a
         del qslist[0]
         # showquestionss = get_object_or_404(Wkqs,pk=a)
         showquestions = Wkqs.objects.filter(pk=a)
@@ -646,7 +652,7 @@ def Showwkqs(request,id0,id1):
         #
         # else:
         context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
-                   'correctamount': correctamount, 'mss': mss}
+                   'correctamount': correctamount, 'mss': mss,'wk':wk}
         return render(request, 'showwkqs2.html', context)
 
 def yuxiname(request,id0,id1):

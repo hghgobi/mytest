@@ -44,7 +44,7 @@ class QuestionsAdmin(admin.ModelAdmin):
 
 @admin.register(Wkqs)
 class WkqsAdmin(admin.ModelAdmin):
-	list_display = ['zid','jid','category','questiontext','questionanswer']
+	list_display = ['wrongcount','zid','jid','category','questiontext','questionanswer']
 
 @admin.register(Yuxiname)
 class YuxinameAdmin(admin.ModelAdmin):
