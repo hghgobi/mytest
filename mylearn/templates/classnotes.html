@@ -23,11 +23,10 @@ div{text-align:center}
                      {% endfor %}
 
         </div>
-    </div>   
+    </div>
      </div>
-    </div>  
-     </div>
-     
+    </div>
+
 <style> 
 a{text-align:left} 
 </style>
@@ -76,7 +75,7 @@ li{text-align:left}
         </div>
     </div> 
 
-    <script type="text/javascript">
+<script type="text/javascript">
         $("#comment_form").submit(function(){
            
             // 异步提交
@@ -106,6 +105,16 @@ li{text-align:left}
             });
             return false;
         });
-    </script>   
+    </script>
+       <script  type="text/javascript">
+
+                function changeFrameHeight(){
+                    var ifm= document.getElementById("iframepage");
+                    ifm.height=document.documentElement.clientHeight;
+                                    }
+                window.οnresize=function(){
+                     changeFrameHeight();
+                                }
+        </script>
 {% endblock %}
 
