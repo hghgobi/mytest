@@ -2054,8 +2054,8 @@ def xxtest2(request):
 
 def getpic(request):
     pic = []
-    picss = Wkqs.objects.filter(zid=23,jid=1)
-    print(len(picss))
+    picss = Wkqs.objects.filter(zid=24,jid=2)
+    # print(len(picss))
 
     # for i in picss:
     #
