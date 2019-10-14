@@ -61,7 +61,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('jsq/', views.inputms),
                path('xxqs/', views.xxtest),
                path('xxtest/', views.xxtest2),
-               # path('getpic/', views.getpic),
+               path('getpic/', views.getpic),
 
 
 

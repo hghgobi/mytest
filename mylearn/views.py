@@ -30,6 +30,7 @@ import math
 import time
 from django.db.models import Q
 from random import shuffle
+import cv2
 
 
 
@@ -2053,9 +2054,9 @@ def xxtest2(request):
     return render(request, 'xxtest.html',{'answer': json.dumps(answer),'tm':json.dumps(tm),'ts':ts,'yzts': 0,'correctamount': 0,'ornot':json.dumps(ornot)})
 
 
-# def getpic(request):
-#     pic = []
-#     picss = Wkqs.objects.filter(zid=24,jid=2)
+def getpic(request):
+    pic = []
+    picss = Wkqs.objects.filter(zid=24,jid=2)
 #     # print(len(picss))
 #
 #     # for i in picss:
@@ -2064,20 +2065,20 @@ def xxtest2(request):
 #     #     aa = "E:/14_env/mytest"+a
 #     #     print(aa)
 #     # img = cv2.imread("E:/14_env/mytest/media/questions/54B_7TErtgm.png")
-#     for i in picss:
-#         a = i.questiontext.url
-#         # aa = "home/mytest" + a
-#         # print(aa)
-#         img = cv2.imread(a)
-#         try:
-#             aaa = base64.b64encode(cv2.imencode('.jpg',img)[1]).decode()
-#             html = ''' <img src="data:image/png;base64,{}" width="100%" height="50%"/> '''
-#             imd = html.format(aaa)
-#             pic.append(imd)
-#         except:
-#             pass
-#
-#     return render(request,'testpic.html',{'pic':json.dumps(pic)})
+    for i in picss:
+        a = i.questiontext.url
+        aa = "/home/mytest" + a
+        # print(aa)
+        img = cv2.imread(aa)
+        try:
+            aaa = base64.b64encode(cv2.imencode('.jpg',img)[1]).decode()
+            html = ''' <img src="data:image/png;base64,{}" width="100%" height="50%"/> '''
+            imd = html.format(aaa)
+            pic.append(imd)
+        except:
+            pass
+
+    return render(request,'testpic.html',{'pic':json.dumps(pic)})
 
 
 
