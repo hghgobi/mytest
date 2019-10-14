@@ -2065,9 +2065,9 @@ def getpic(request):
     # img = cv2.imread("E:/14_env/mytest/media/questions/54B_7TErtgm.png")
     for i in picss:
         a = i.questiontext.url
-        aa = "home/mytest" + a
-        print(aa)
-        img = cv2.imread(aa)
+        # aa = "home/mytest" + a
+        # print(aa)
+        img = cv2.imread(a)
         try:
             aaa = base64.b64encode(cv2.imencode('.jpg',img)[1]).decode()
             html = ''' <img src="data:image/png;base64,{}" width="100%" height="50%"/> '''
