@@ -30,7 +30,7 @@ import math
 import time
 from django.db.models import Q
 from random import shuffle
-import cv2
+
 
 
 
