@@ -1,0 +1,438 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta  charset="UTF-8"  name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+
+	<title>在线测试</title>
+<style type="text/css">
+* {
+    margin:0;
+    padding: 0;
+}
+#kuang{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 5px #2371D3;
+
+border-spacing: 0px;
+display:none;
+}
+#pic{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 2px #2371D3;
+
+border-spacing: 0px;
+
+}
+#display0{
+border: solid 2px #000000;
+border-spacing: 0px;
+background: #90EE90;
+}
+#display1{
+border: solid 2px #000000;
+border-spacing: 0px;
+background: #FFFFF;
+}
+#ts{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 3px #FFFFF;
+
+border-spacing: 0px;
+
+}
+#calculater{
+
+margin: auto;
+
+margin-top: 0px;
+
+border: solid 5px #2371D3;
+
+border-spacing: 0px;
+display:none
+}
+
+#display{
+
+width: 100%;
+
+height: 30px;
+
+border-bottom: solid 4px #2371D3;
+
+font-weight: bold;
+
+color: #193D83;
+
+font-family: 黑体;
+
+padding-left: 2px;
+
+}
+
+.numberkey{
+
+cursor: pointer;
+
+width: 80px;
+
+height: 40px;
+
+border: solid 1px #FFFFFF;
+
+background: #2371D3;
+
+color: #ffffff;
+
+text-align: center;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+.ts{
+
+cursor: pointer;
+
+width: 180px;
+
+height: 20px;
+
+border: solid 1px #FFFFF;
+
+background: #F0F8FF;
+
+color: #000000
+
+text-align: center;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+.tm{
+
+cursor: pointer;
+
+width: 180px;
+
+height: 20px;
+
+border: solid 1px #FFFFF;
+
+background: #00FF00;
+
+color: #000000;
+
+text-align: left;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+#equality{
+
+cursor: pointer;
+
+width: 40px;
+
+height: 100%;
+
+background: #2371D3;
+
+border: solid 1px #FFFFFF;
+
+color: #ffffff;
+
+text-align: center;
+
+font-weight: bold;
+
+font-family: 黑体;
+
+}
+
+.numberkey:hover{
+
+background: #EA6F30;
+
+}
+
+#equality:hover{
+
+background: #EA6F30;
+
+}
+#display0{display:none;text-align:right;}
+#display1{display:none;text-align:right;}
+
+#startts{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px;
+  height: 100px;
+  background: #00FF00;
+  margin-top: 250px;
+  font-size:60px;
+
+}
+#addtxl{display:none}
+#testrm{display:none}
+</style>
+
+
+</head>
+<body bgcolor="#b8fec0">
+
+<button id="startts" type="button" class="btn btn-success" onclick="startgo()">开始测试</button>
+
+<div id="kuang">
+<div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
+    <p id="ts"  class="ts">我在做题！我在进步！</p>
+    <div id="ms" >
+        <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
+        <a>--通过测试需要答对</a><a id="limit"></a><a>题</a>
+    </div>
+<input  id="display0" type="text" style="color:red;width:80px;height:30px;font-size:16px" name="studentanswer1" value="">
+<input  id="display1" type="text" style="color:red;width:80px;height:30px;font-size:16px" name="studentanswer2" value="">
+
+
+<img id="pic" src="" width="100%" height="20%"/>
+
+ <table id="calculater" onClick="calculater()">
+
+<tr>
+<td class="numberkey" >1</td>
+<td class="numberkey" >2</td>
+<td class="numberkey" >3</td>
+<td class="numberkey" >-</td>
+<td class="numberkey"  id="deletesign">.</td>
+</tr>
+<tr>
+<td class="numberkey" >4</td>
+<td class="numberkey" >5</td>
+<td class="numberkey" >6</td>
+<td class="numberkey" >A</td>
+<td class="numberkey" onclick="resultscalcaulte()" >清空</td>
+</tr>
+<tr>
+<td class="numberkey" >7</td>
+<td class="numberkey" >8</td>
+<td class="numberkey" >7</td>
+<td class="numberkey" >B</td>
+<td rowspan="3" id="equality" >提交答案</td>
+</tr>
+<tr >
+<td class="numberkey" >9</td>
+<td class="numberkey" >0</td>
+<td class="numberkey" >D</td>
+<td class="numberkey" >C</td>
+</tr>
+<tr >
+<td id="select" class="numberkey" >选择</td>
+<td id="select" class="numberkey" >跳过</td>
+<td id="select" class="numberkey" >/</td>
+<td id="select" class="numberkey" >V</td>
+</tr>
+ </table>
+</div>
+</div>
+<div id="testrm">
+    <img id="pics" src="" width="100%" height="20%"/>
+</div>
+
+<script language="javascript" type="text/javascript">
+
+
+
+var calresults="";
+var results="";
+var form = document.getElementById('checkbox');
+var select=1;
+var qstext={{qstext|safe}};
+var qsanswer1={{qsanswer1|safe}};
+var qsanswer2={{qsanswer2|safe}};
+var testrm={{testrm|safe}};
+var qsid = {{qsid|safe}};
+var qsamount = {{qsamount}};
+var zid = {{zid}};
+var jid = {{jid}};
+var limit = {{limit|safe}};
+var chance = limit[1];
+var correct=0;
+var had=1;
+var time1 = new Date();
+var form = document.getElementById('wrong');
+   function startgo()
+    { document.getElementById("display0").style.display="block";
+     document.getElementById("display1").style.display="block";
+     document.getElementById("kuang").style.display="block";
+     document.getElementById("testrm").style.display="block";
+     document.getElementById("startts").style.display="none";
+     document.getElementById("calculater").style.display="block";
+     document.getElementById("sum").innerText=qsamount;
+     document.getElementById("correctamount").innerText=correct;
+     document.getElementById("yzts").innerText=had;
+     document.getElementById("limit").innerText=limit[0];
+     document.getElementById("pic").src=qstext[0];
+     document.getElementById("pics").src=testrm[0];
+
+    }
+
+
+
+function calculater(){
+if (event.srcElement.innerText=="清空") {
+
+results="";
+return;
+}
+else if (event.srcElement.innerText=="提交答案"){
+  var a=document.getElementById("display0").value;
+  var b=document.getElementById("display1").value;
+  if(qsanswer1[0]==a&&qsanswer2[0]==b){
+    correct+=1;
+    document.getElementById("correctamount").innerText=correct;
+    had+=1;
+    chance = limit[1];
+    document.getElementById("yzts").innerText=had;
+    qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
+    document.getElementById("pic").src=qstext[0];
+    $("#display0").val("");
+    $("#display1").val("");
+    results=""; alert("恭喜你，答对了！");
+        if(correct>=limit[0]){
+        alert("恭喜你，通过测试！");
+        var time2 = new Date();
+        var tim = time2.getTime()-time1.getTime();
+        var time = Math.floor(tim/1000);
+          $.ajax({
+        url:"{% url 'wktest' %}",
+        type:"post",
+        data: {"time":time,"zid":zid,"jid":jid},
+        cache: false,
+        success: function(data){
+                 console.log(data);
+
+                },
+        error: function(xhr){
+                    console.log(xhr);
+                }
+
+
+
+        });
+        urls="http://35925.top/yuxiname/"+zid+"/"+jid
+        window.location.href = urls
+
+
+    }
+    return;
+
+  }
+  else{     $("#display0").val("");
+            $("#display1").val("");
+            results="";
+<!--  $("#wrong1").val(qsid[0]);form.submit();-->
+  $.ajax({
+        url:"{% url 'wrong' %}",
+        type:"post",
+        data: {"id":qsid[0]},
+        cache: false,
+        success: function(data){
+                 console.log(data);
+
+                },
+        error: function(xhr){
+                    console.log(xhr);
+                }
+
+
+
+        });
+        chance=chance-1;
+          if(chance<=0){ alert("此题没机会了！转入下一题");
+                            had+=1;
+                         if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
+                         document.getElementById("yzts").innerText=had;
+                         qstext.shift();qsanswer1.shift();qsid.shift();
+                         document.getElementById("pic").src=qstext[0];
+                        $("#display0").val("");
+
+                        results="";  chance = limit[1];return;
+
+
+        }
+        else{
+        var msss="做错了！请重新做！画图、打草稿！此题还有"+chance+"次机会！"
+        alert(msss);
+        return;}
+
+   }
+
+}
+else if (event.srcElement.innerText=="跳过"){    had+=1;
+                                                 if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
+                                                 document.getElementById("yzts").innerText=had;
+                                                 qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
+                                                 document.getElementById("pic").src=qstext[0];
+                                                   $("#display0").val("");
+                                                   $("#display1").val("");
+                                                    results=""; chance = limit[1];return;
+
+                                                }
+else if(event.srcElement.innerText=="选择") {
+
+if(select==1){ select=2;results="";document.getElementById("display1").style.background="#90EE90";document.getElementById("display0").style.background="#FFFFFF";return;}
+  else if(select==2){select=1;results="";document.getElementById("display0").style.background="#90EE90";document.getElementById("display1").style.background="#FFFFFF";return;}
+
+}
+else{
+    if(select==1){ results+=event.srcElement.innerText;
+
+                    $("#display0").val(results);return;
+                    }
+     else{results+=event.srcElement.innerText;
+
+            $("#display1").val(results);return;}
+
+}
+<!--var ms=$('#display0').val();-->
+<!--var ms1=$('#display1').val();-->
+<!--console.log(ms);-->
+<!--console.log(ms1);-->
+<!--return;-->
+}
+
+function resultscalcaulte(){
+if(select==1){ $("#display0").val(""); return;}
+  else if(select==2){$("#display1").val("");return;}
+
+
+}
+
+
+</script>
+</body>
+</html>

@@ -113,7 +113,26 @@ class Wkqs(models.Model):
 	questiontext = models.ImageField(upload_to='questions')
 	questionanswer = models.CharField(max_length=50)
 	wrongcount = models.IntegerField(default=0)
+class Wkqs2(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	questiontext = models.ImageField(upload_to='questions')
+	questionanswer1 = models.CharField(max_length=50)
+	questionanswer2 = models.CharField(max_length=50)
+	wrongcount = models.IntegerField(default=0)
+	category = models.IntegerField(default=0)
 
+class Testrm(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	testrm = models.ImageField(upload_to='questions')
+
+
+class Wktestlimit(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	limit = models.IntegerField()
+	chances = models.IntegerField()
 
 class Scores(models.Model):
 	testscore = models.IntegerField()
@@ -276,14 +295,15 @@ class Yuxiname(models.Model):
 	ornot = models.CharField(max_length=200)
 	time = models.DateTimeField(auto_now=True)
 	count = models.IntegerField(default=0)
+	costtime = models.IntegerField(default=0)
 
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addyxname(cls,zid,jid,name,ornot,count):
+	def addyxname(cls,zid,jid,name,ornot,count,costtime):
 
-		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot,count=count)
+		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot,count=count,costtime=costtime)
 		addms.save()
 
 class Yuxitestcount(models.Model):
@@ -292,6 +312,7 @@ class Yuxitestcount(models.Model):
 	name = models.CharField(max_length=200)
 	time = models.DateTimeField(auto_now=True)
 	count = models.IntegerField(default=0)
+
 
 	class Meta:
 		ordering = ['-time']

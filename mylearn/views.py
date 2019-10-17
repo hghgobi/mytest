@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm
 import json
 import random
 import numpy as np
@@ -543,7 +543,7 @@ def Showquestions(request):
             
             return render(request,'questions3.html',{'showscores':showscores,'score':score,'correctpercent':correctpercent,'testall':testall})
 
-def Showwkqs(request,id0,id1):
+def Showwkqs3(request,id0,id1):
     id0 = id0
     id1 = id1
     if request.method == 'GET':
@@ -657,6 +657,166 @@ def Showwkqs(request,id0,id1):
         context = {'qslist': qslist, 'showquestions': showquestions, 'ts': ts, 'yzts': yzts,
                    'correctamount': correctamount, 'mss': mss,'wk':wk}
         return render(request, 'showwkqs2.html', context)
+def Showwkqs(request,id0,id1):
+    id0 = id0
+    id1 = id1
+    if request.method == 'GET':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../../testlogin')
+        if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
+            try:
+                count =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
+                nnn = count.count+1
+                Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                Yuxitestcount.addyxcount(id0, id1,teststudent,nnn)
+            except:
+                Yuxitestcount.addyxcount(zid=id0, jid=id1, name=teststudent, count=1)
+
+            qsids = []
+
+            qs = Wkqs.objects.filter(zid=id0 ,jid = id1)
+            for e in qs:
+                qsids.append(e.pk)
+            wklm = Wktestlimit.objects.filter(zid=id0, jid=id1)
+            limit = []
+            shuffle(qsids)
+
+            for j in wklm:
+                limit.append(j.limit)
+                limit.append(j.chances)
+
+            qstext = []
+            qsanswer1 = []
+            qsid = []
+
+            qsamount = len(qs)
+            zid=id0
+            jid=id1
+            testrm=[]
+            testrms = Testrm.objects.filter(zid=id0, jid=id1)
+            for f in testrms:
+                testrm.append(f.testrm.url)
+            for i in range(len(qsids)):
+                id00 = qsids[i]
+                qss = get_object_or_404(Wkqs,pk=id00)
+                qstext.append(qss.questiontext.url)
+                qsanswer1.append(qss.questionanswer)
+                qsid.append(qss.pk)
+
+            return render(request, 'showwkqs3.html',
+                          {'testrm':json.dumps(testrm),'qstext': json.dumps(qstext), 'qsanswer1': json.dumps(qsanswer1),
+                            'qsid': qsid, 'qsamount': json.dumps(qsamount),
+                           'zid': zid, 'jid': jid, 'limit': json.dumps(limit)})
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'yuxi.html', {'ms': ms})
+
+
+
+
+def Showwkqs2(request,id0,id1):
+    id0 = id0
+    id1 = id1
+    if request.method == 'GET':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../../testlogin')
+        if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
+            try:
+                count =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
+                nnn = count.count+1
+                Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                Yuxitestcount.addyxcount(id0, id1,teststudent,nnn)
+            except:
+                Yuxitestcount.addyxcount(zid=id0, jid=id1, name=teststudent, count=1)
+
+            qsids = []
+
+            qs = Wkqs2.objects.filter(zid=id0 ,jid = id1)
+            for e in qs:
+                qsids.append(e.pk)
+            wklm = Wktestlimit.objects.filter(zid=id0, jid=id1)
+            limit = []
+            shuffle(qsids)
+
+            for j in wklm:
+                limit.append(j.limit)
+                limit.append(j.chances)
+            qstext = []
+            qsanswer1 = []
+            qsanswer2 = []
+            qsid = []
+            categorys = []
+            qsamount = len(qs)
+            zid=id0
+            jid=id1
+            testrm=[]
+            testrms = Testrm.objects.filter(zid=id0, jid=id1)
+            for f in testrms:
+                testrm.append(f.testrm.url)
+            for i in range(len(qsids)):
+                id00 = qsids[i]
+                qss = get_object_or_404(Wkqs2,pk=id00)
+                qstext.append(qss.questiontext.url)
+                qsanswer1.append(qss.questionanswer1)
+                qsanswer2.append(qss.questionanswer2)
+                qsid.append(qss.pk)
+                categorys.append(qss.category)
+            if categorys[0]==3:
+                return render(request,'showqs3.html',{'testrm':json.dumps(testrm),'qstext':json.dumps(qstext),'qsanswer1':json.dumps(qsanswer1),'qsanswer2':json.dumps(qsanswer2),'qsid':qsid,'qsamount':json.dumps(qsamount),'zid':zid,'jid':jid,'limit':json.dumps(limit)})
+            else:
+                return render(request, 'showqs4.html',
+                              {'testrm':json.dumps(testrm),'qstext': json.dumps(qstext), 'qsanswer1': json.dumps(qsanswer1),
+                               'qsanswer2': json.dumps(qsanswer2), 'qsid': qsid, 'qsamount': json.dumps(qsamount),
+                               'zid': zid, 'jid': jid, 'limit': json.dumps(limit)})
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'yuxi.html', {'ms': ms})
+
+
+def Testresult(request):
+    if request.method == 'POST':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../testlogin')
+
+        costtime = request.POST.get('time')
+        id0 = request.POST.get('zid')
+        id1 = request.POST.get('jid')
+        if Newnames.objects.filter(zid=id0, jid=id1, name=teststudent):
+            pass
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'yuxi.html', {'ms': ms})
+
+        counts =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
+        nnnn = counts.count
+        ornot = "已通过本节测试"
+        Yuxiname.addyxname(id0, id1,teststudent,ornot,nnnn,costtime)
+        try:
+            Newnames.objects.filter(zid=id0,jid=id1,name=teststudent).delete()
+        except:
+            pass
+        data = {}
+        data['status'] = 'success'
+        return JsonResponse(data)
+
+def showqserror(request):
+    id=request.POST.get('id')
+    try:
+        ms = get_object_or_404(Wkqs2,pk=id)
+        ms.wrongcount+=1
+        ms.save()
+    except:
+        ms = get_object_or_404(Wkqs, pk=id)
+        ms.wrongcount += 1
+        ms.save()
+    data={}
+    data['status'] = 'success'
+    return JsonResponse(data)
+
+
 
 def yuxiname(request,id0,id1):
     id0 = id0

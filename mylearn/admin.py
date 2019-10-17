@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm
 
 # Register your models here.
 @admin.register(Classes)
@@ -45,10 +45,20 @@ class QuestionsAdmin(admin.ModelAdmin):
 @admin.register(Wkqs)
 class WkqsAdmin(admin.ModelAdmin):
 	list_display = ['wrongcount','zid','jid','category','questiontext','questionanswer']
+@admin.register(Wkqs2)
+class Wkqs2Admin(admin.ModelAdmin):
+	list_display = ['wrongcount','zid','jid','category','questiontext','questionanswer1','questionanswer2']
 
+@admin.register(Testrm)
+class TestrmAdmin(admin.ModelAdmin):
+	list_display = ['zid','jid','testrm']
+
+@admin.register(Wktestlimit)
+class WktestlimitAdmin(admin.ModelAdmin):
+	list_display = ['zid','jid','limit','chances']
 @admin.register(Yuxiname)
 class YuxinameAdmin(admin.ModelAdmin):
-	list_display = ['zid','jid','name','time','ornot','count']
+	list_display = ['zid','jid','name','time','ornot','count','costtime']
 
 @admin.register(Yuxitestcount)
 class YuxitestcontAdmin(admin.ModelAdmin):
