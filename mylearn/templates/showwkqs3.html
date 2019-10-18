@@ -311,11 +311,7 @@ else if (event.srcElement.innerText=="提交答案"){
     document.getElementById("correctamount").innerText=correct;
     had+=1;
     chance = limit[1];
-    document.getElementById("yzts").innerText=had;
-    qstext.shift();qsanswer1.shift();qsid.shift();
-    document.getElementById("pic").src=qstext[0];
-    $("#display0").val("");
-    results=""; alert("恭喜你，答对了！");
+    alert("恭喜你，答对了！");
         if(correct>=limit[0]){
         alert("恭喜你，通过测试！");
         var time2 = new Date();
@@ -341,6 +337,13 @@ else if (event.srcElement.innerText=="提交答案"){
         window.location.href = urls
 
     }
+        else if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
+    else{document.getElementById("yzts").innerText=had;
+    qstext.shift();qsanswer1.shift();qsid.shift();
+    document.getElementById("pic").src=qstext[0];
+    $("#display0").val("");
+    $("#display1").val("");
+    results=""; }
     return;
 
   }

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/yuxiname.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/yuxiname.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/showqs3.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/showqs3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/showqs4.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/showqs4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/showwkqs3.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/showwkqs3.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +17,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3482">
+            <state relative-caret-position="-388">
               <caret line="744" column="39" selection-start-line="744" selection-start-column="39" selection-end-line="744" selection-end-column="39" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
@@ -29,11 +26,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-928">
-              <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+            <state relative-caret-position="542">
+              <caret line="320" column="33" lean-forward="true" selection-start-line="320" selection-start-column="33" selection-end-line="320" selection-end-column="33" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -42,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/showqs3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2898">
-              <caret line="347" column="30" selection-start-line="347" selection-start-column="30" selection-end-line="347" selection-end-column="30" />
+            <state relative-caret-position="288">
+              <caret line="356" column="3" lean-forward="true" selection-start-line="356" selection-start-column="3" selection-end-line="356" selection-end-column="3" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -59,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/showqs4.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1992">
-              <caret line="348" lean-forward="true" selection-start-line="348" selection-end-line="348" />
+            <state relative-caret-position="-2128">
+              <caret line="343" lean-forward="true" selection-start-line="343" selection-end-line="343" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -214,13 +211,13 @@
         <option value="$PROJECT_DIR$/mylearn/models.py" />
         <option value="$PROJECT_DIR$/mylearn/admin.py" />
         <option value="$PROJECT_DIR$/mylearn/views.py" />
-        <option value="$PROJECT_DIR$/mylearn/templates/showwkqs3.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/showqs4.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/showqs3.html" />
+        <option value="$PROJECT_DIR$/mylearn/templates/showwkqs3.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="443" />
     <option name="y" value="127" />
     <option name="width" value="964" />
@@ -352,7 +349,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12170706" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -767,7 +763,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3482">
+        <state relative-caret-position="-388">
           <caret line="744" column="39" selection-start-line="744" selection-start-column="39" selection-end-line="744" selection-end-column="39" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
@@ -775,22 +771,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/showqs3.html">
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2898">
-          <caret line="347" column="30" selection-start-line="347" selection-start-column="30" selection-end-line="347" selection-end-column="30" />
+        <state relative-caret-position="542">
+          <caret line="320" column="33" lean-forward="true" selection-start-line="320" selection-start-column="33" selection-end-line="320" selection-end-column="33" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/showqs4.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1992">
-          <caret line="348" lean-forward="true" selection-start-line="348" selection-end-line="348" />
+        <state relative-caret-position="-2128">
+          <caret line="343" lean-forward="true" selection-start-line="343" selection-end-line="343" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -799,13 +794,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs3.html">
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/showqs3.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-928">
-          <caret line="337" lean-forward="true" selection-start-line="337" selection-end-line="337" />
+        <state relative-caret-position="288">
+          <caret line="356" column="3" lean-forward="true" selection-start-line="356" selection-start-column="3" selection-end-line="356" selection-end-column="3" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
