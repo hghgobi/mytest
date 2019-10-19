@@ -350,7 +350,7 @@ else if (event.srcElement.innerText=="提交答案"){
 
                                                                                             alert("恭喜你，答对了！");
                                                                                             if(correct>=limit[0]){
-                                                                                                                    alert("恭喜你，通过测试！");
+                                                                                                                    
                                                                                                                     $("#zid").val(zid);
                                                                                                                     $("#jid").val(jid);
                                                                                                                     form2.submit();
@@ -385,25 +385,25 @@ else if (event.srcElement.innerText=="提交答案"){
 
 
                                                         });
-                                                        chance=chance-1;
-                                                        if(chance==0){
-                                                                        had+=1;
-                                                                        if(had>qsamount){alert("通过失败！请重新测试！");results="";$("#display0").val("");$("#display1").val(""); window.location.reload();}
-                                                                        else{alert("答错了！此题没机会了！进入下一题！");
-                                                                        document.getElementById("yzts").innerText=had;
-                                                                        qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
-                                                                         document.getElementById("pic").src=qstext[0];
+<!--                                                        chance=chance-1;-->
+<!--                                                        if(chance==0){-->
+<!--                                                                        had+=1;-->
+<!--                                                                        if(had>qsamount){alert("通过失败！请重新测试！");results="";$("#display0").val("");$("#display1").val(""); window.location.reload();}-->
+<!--                                                                        -->
+<!--                                                                        document.getElementById("yzts").innerText=had;-->
+<!--                                                                        qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();-->
+<!--                                                                         document.getElementById("pic").src=qstext[0];-->
                                                                         $("#display0").val("");$("#display1").val("");
 
 
-                                                                        results="";  chance = limit[1];}return;
+                                                                        results="";
 
 
-                                                                         }
-                                                        else{   results="";$("#display0").val("");$("#display1").val("");
-                                                                var msss="做错了！请重新做！画图、打草稿！此题还有"+chance+"次机会！"
+<!--                                                                         }-->
+
+                                                                var msss="做错了！请重新做！画图、打草稿！"
                                                                 alert(msss);
-                                                                return;}
+                                                                return;
                                                       }
 
                                                   }
