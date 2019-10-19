@@ -12,15 +12,15 @@ from django.core.paginator import Paginator
 from django.contrib.contenttypes.models import ContentType
 from comment.models import Comment
 
+import time
+
 
 
 from matplotlib.figure import Figure                      
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.dates import DateFormatter
 import matplotlib.pyplot as plt
-
-import  datetime
-
+import datetime
 import base64
 from io import BytesIO
 
@@ -722,14 +722,16 @@ def Showwkqs2(request,id0,id1):
         teststudent = request.session.get("teststudent")
         if not teststudent:
             return redirect('../../testlogin')
+        timess = int(time.time())
         if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
             try:
                 count =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
+
                 nnn = count.count+1
                 Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-                Yuxitestcount.addyxcount(id0, id1,teststudent,nnn)
+                Yuxitestcount.addyxcount(id0, id1,teststudent,nnn,timess)
             except:
-                Yuxitestcount.addyxcount(zid=id0, jid=id1, name=teststudent, count=1)
+                Yuxitestcount.addyxcount(id0, id1,teststudent,1,timess)
 
             qsids = []
 
@@ -779,9 +781,10 @@ def Showwkqs2(request,id0,id1):
         if not teststudent:
             return redirect('../testlogin')
 
-        costtime = request.POST.get('time')
+        # costtime = request.POST.get('time')
         id0 = request.POST.get('zid')
         id1 = request.POST.get('jid')
+
         if Newnames.objects.filter(zid=id0, jid=id1, name=teststudent):
             pass
         else:
@@ -790,6 +793,11 @@ def Showwkqs2(request,id0,id1):
 
         counts =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
         nnnn = counts.count
+        time0 = counts.seconds
+        time1 = int(time.time())
+        a = datetime.datetime.utcfromtimestamp(time0)
+        b = datetime.datetime.utcfromtimestamp(time1)
+        costtime =(b-a).seconds
         ornot = "已通过本节测试"
         Yuxiname.addyxname(id0, id1,teststudent,ornot,nnnn,costtime)
         try:

@@ -62,7 +62,7 @@ class YuxinameAdmin(admin.ModelAdmin):
 
 @admin.register(Yuxitestcount)
 class YuxitestcontAdmin(admin.ModelAdmin):
-	list_display = ['zid','jid','name','time','count']
+	list_display = ['zid','jid','name','time','count','seconds']
 
 @admin.register(Scores)
 class ScoresAdmin(admin.ModelAdmin):

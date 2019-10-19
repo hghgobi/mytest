@@ -312,15 +312,17 @@ class Yuxitestcount(models.Model):
 	name = models.CharField(max_length=200)
 	time = models.DateTimeField(auto_now=True)
 	count = models.IntegerField(default=0)
+	seconds = models.BigIntegerField(default=0)
+
 
 
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addyxcount(cls,zid,jid,name,count):
+	def addyxcount(cls,zid,jid,name,count,seconds):
 
-		addms = cls(zid=zid,jid=jid,name=name,count=count)
+		addms = cls(zid=zid,jid=jid,name=name,count=count,seconds=seconds)
 		addms.save()
 
 

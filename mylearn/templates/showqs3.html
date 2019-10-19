@@ -112,7 +112,7 @@ font-family: 黑体;
 
 cursor: pointer;
 
-width: 180px;
+width: 90px;
 
 height: 20px;
 
@@ -210,7 +210,7 @@ background: #EA6F30;
 
 <div id="kuang">
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
-    <p id="ts"  class="ts">我在做题！我在进步！</p>
+    <p id="ts"  class="ts">我思故我在</p>
     <div id="ms" >
         <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
         <a>--通过测试需要答对</a><a id="limit"></a><a>题</a>
@@ -222,7 +222,7 @@ background: #EA6F30;
 <img id="pic" src="" width="100%" height="20%"/>
 
 <form id="checkbox" action="" method="post">
-    <input id="time" type="hidden" name="time" value="" >
+<!--    <input id="time" type="hidden" name="time" value="" >-->
     <input id="zid" type="hidden" name="zid" value="" >
     <input id="jid" type="hidden" name="jid" value="" >
 </form>
@@ -291,7 +291,7 @@ var limit = {{limit|safe}};
 var chance = limit[1];
 var correct=0;
 var had=1;
-var time1 = new Date();
+<!--var time1 = new Date();-->
 var form = document.getElementById('wrong');
    function startgo()
     { document.getElementById("display0").style.display="block";
@@ -318,106 +318,97 @@ results="";
 return;
 }
 else if (event.srcElement.innerText=="提交答案"){
-  var a=document.getElementById("display0").value;
-  var b=document.getElementById("display1").value;
-  if(qsanswer1[0]==a&&qsanswer2[0]==b){
-    correct+=1;
-    document.getElementById("correctamount").innerText=correct;
-    had+=1;
-    chance = limit[1];
-    alert("恭喜你，答对了！");
-        if(correct>=limit[0]){
-        var time2 = new Date();
-        var tim = time2.getTime()-time1.getTime();
-        var time = Math.floor(tim/1000);
-        $("#time").val(time);
-        $("#zid").val(zid);
-        $("#jid").val(jid);
-        form2.submit();
+                                                  var a=document.getElementById("display0").value;
+                                                  var b=document.getElementById("display1").value;
+                                                  if(qsanswer1[0]==a&&qsanswer2[0]==b){
+                                                                                        correct+=1;
+                                                                                        document.getElementById("correctamount").innerText=correct;
+                                                                                        had+=1;
+                                                                                        chance = limit[1];
 
-<!--        urls="http://35925.top/yuxiname/"+zid+"/"+jid-->
-<!--        window.location.href = urls-->
+                                                                                        alert("恭喜你，答对了！");
+                                                                                        if(correct>=limit[0]){
+                                                                                                                $("#zid").val(zid);
+                                                                                                                $("#jid").val(jid);
+                                                                                                                form2.submit();
 
+                                                                                                               }
+                                                                                        else if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
+                                                                                        else{document.getElementById("yzts").innerText=had;
+                                                                                            qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
+                                                                                            document.getElementById("pic").src=qstext[0];
+                                                                                            $("#display0").val("");
+                                                                                            $("#display1").val("");
+                                                                                            results=""; }
+                                                                                        return;
 
-    }
-        else if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
-    else{document.getElementById("yzts").innerText=had;
-    qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
-    document.getElementById("pic").src=qstext[0];
-    $("#display0").val("");
-    $("#display1").val("");
-    results=""; }
-    return;
+                                                                                        }
+                                                  else if(qsanswer1[0]==b&&qsanswer2[0]==a){
+                                                                                            correct+=1;
+                                                                                            document.getElementById("correctamount").innerText=correct;
+                                                                                            had+=1;
 
-  }
-  else if(qsanswer1[0]==b&&qsanswer2[0]==a){
-    correct+=1;
-    document.getElementById("correctamount").innerText=correct;
-    had+=1;
-
-    alert("恭喜你，答对了！");
-        if(correct>=limit[0]){
-        alert("恭喜你，通过测试！");
-        var time2 = new Date();
-        var tim = time2.getTime()-time1.getTime();
-        var time = Math.floor(tim/60000);
-        $("#time").val(time);
-        $("#zid").val(zid);
-        $("#jid").val(jid);
-        form2.submit();
-    }
-        else if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
-    else{document.getElementById("yzts").innerText=had;
-    qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
-    document.getElementById("pic").src=qstext[0];
-    $("#display0").val("");
-    $("#display1").val("");
-    results=""; }
-    return;
+                                                                                            alert("恭喜你，答对了！");
+                                                                                            if(correct>=limit[0]){
+                                                                                                                    alert("恭喜你，通过测试！");
+                                                                                                                    $("#zid").val(zid);
+                                                                                                                    $("#jid").val(jid);
+                                                                                                                    form2.submit();
+                                                                                                                    }
+                                                                                            else if(had>qsamount){alert("通过失败！请重新测试！");results="";$("#display0").val("");$("#display1").val(""); window.location.reload();}
+                                                                                            else{document.getElementById("yzts").innerText=had;
+                                                                                                qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
+                                                                                                document.getElementById("pic").src=qstext[0];
+                                                                                                $("#display0").val("");
+                                                                                                $("#display1").val("");
+                                                                                                results=""; }
+                                                                                            return;
 
 
-  }
-  else{     $("#display0").val("");
-            $("#display1").val("");
-            results="";
-<!--  $("#wrong1").val(qsid[0]);form.submit();-->
-  $.ajax({
-        url:"{% url 'wrong' %}",
-        type:"post",
-        data: {"id":qsid[0]},
-        cache: false,
-        success: function(data){
-                 console.log(data);
+                                                                                            }
+                                                  else{     $("#display0").val("");
+                                                            $("#display1").val("");
+                                                            results="";
+                                                      $.ajax({
+                                                        url:"{% url 'wrong' %}",
+                                                        type:"post",
+                                                        data: {"id":qsid[0]},
+                                                        cache: false,
+                                                        success: function(data){
+                                                                 console.log(data);
 
-                },
-        error: function(xhr){
-                    console.log(xhr);
-                }
+                                                                },
+                                                        error: function(xhr){
+                                                                    console.log(xhr);
+                                                                }
 
 
 
-        });
-        chance=chance-1;
-          if(chance<=0){ alert("此题没机会了！转入下一题");
-                            had+=1;
-                         if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
-                         document.getElementById("yzts").innerText=had;
-                         qstext.shift();qsanswer1.shift();qsid.shift();
-                         document.getElementById("pic").src=qstext[0];
-                        $("#display0").val("");
+                                                        });
+                                                        chance=chance-1;
+                                                        if(chance==0){
+                                                                        had+=1;
+                                                                        if(had>qsamount){alert("通过失败！请重新测试！");results="";$("#display0").val("");$("#display1").val(""); window.location.reload();}
+                                                                        else{alert("答错了！此题没机会了！进入下一题！");
+                                                                        document.getElementById("yzts").innerText=had;
+                                                                        qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
+                                                                         document.getElementById("pic").src=qstext[0];
+                                                                        $("#display0").val("");$("#display1").val("");
 
-                        results="";  chance = limit[1];return;
+
+                                                                        results="";  chance = limit[1];}return;
 
 
-        }
-        else{
-        var msss="做错了！请重新做！画图、打草稿！此题还有"+chance+"次机会！"
-        alert(msss);
-        return;}
-   }
+                                                                         }
+                                                        else{   results="";$("#display0").val("");$("#display1").val("");
+                                                                var msss="做错了！请重新做！画图、打草稿！此题还有"+chance+"次机会！"
+                                                                alert(msss);
+                                                                return;}
+                                                      }
 
-}
+                                                  }
 else if (event.srcElement.innerText=="跳过"){    had+=1;
+
                                                  if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
                                                  document.getElementById("yzts").innerText=had;
                                                  qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
