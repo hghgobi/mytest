@@ -199,6 +199,7 @@ background: #EA6F30;
 }
 #addtxl{display:none}
 #testrm{display:none}
+#checkbox{display:none}
 </style>
 
 
@@ -220,7 +221,13 @@ background: #EA6F30;
 
 <img id="pic" src="" width="100%" height="20%"/>
 
- <table id="calculater" onClick="calculater()">
+<form id="checkbox" action="" method="post">
+    <input id="time" type="hidden" name="time" value="" >
+    <input id="zid" type="hidden" name="zid" value="" >
+    <input id="jid" type="hidden" name="jid" value="" >
+</form>
+
+    <table id="calculater" onClick="calculater()">
 
 <tr>
 <td class="numberkey" >1</td>
@@ -267,10 +274,10 @@ background: #EA6F30;
 <script language="javascript" type="text/javascript">
 
 
-
+var form = document.getElementById('checkbox');
 var calresults="";
 var results="";
-var form = document.getElementById('checkbox');
+var form2 = document.getElementById('checkbox');
 var select=1;
 var qstext={{qstext|safe}};
 var qsanswer1={{qsanswer1|safe}};
@@ -320,28 +327,16 @@ else if (event.srcElement.innerText=="提交答案"){
     chance = limit[1];
     alert("恭喜你，答对了！");
         if(correct>=limit[0]){
-        alert("恭喜你，通过测试！");
         var time2 = new Date();
         var tim = time2.getTime()-time1.getTime();
         var time = Math.floor(tim/1000);
-          $.ajax({
-        url:"{% url 'wktest' %}",
-        type:"post",
-        data: {"time":time,"zid":zid,"jid":jid},
-        cache: false,
-        success: function(data){
-                 console.log(data);
+        $("#time").val(time);
+        $("#zid").val(zid);
+        $("#jid").val(jid);
+        form2.submit();
 
-                },
-        error: function(xhr){
-                    console.log(xhr);
-                }
-
-
-
-        });
-        urls="http://35925.top/yuxiname/"+zid+"/"+jid
-        window.location.href = urls
+<!--        urls="http://35925.top/yuxiname/"+zid+"/"+jid-->
+<!--        window.location.href = urls-->
 
 
     }
@@ -366,25 +361,10 @@ else if (event.srcElement.innerText=="提交答案"){
         var time2 = new Date();
         var tim = time2.getTime()-time1.getTime();
         var time = Math.floor(tim/60000);
-          $.ajax({
-        url:"{% url 'wktest' %}",
-        type:"post",
-        data: {"time":time,"zid":zid,"jid":jid},
-        cache: false,
-        success: function(data){
-                 console.log(data);
-
-                },
-        error: function(xhr){
-                    console.log(xhr);
-                }
-
-
-
-        });
-        urls="http://35925.top/yuxiname/"+zid+"/"+jid
-        window.location.href = urls
-
+        $("#time").val(time);
+        $("#zid").val(zid);
+        $("#jid").val(jid);
+        form2.submit();
     }
         else if(had>qsamount){alert("通过失败！请重新测试！"); window.location.reload();}
     else{document.getElementById("yzts").innerText=had;
