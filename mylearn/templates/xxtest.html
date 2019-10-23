@@ -228,7 +228,7 @@ div{text-align:center }
 
     <input id="display" type="text" style="color:black;width:320px;height:100px;font-size:80px" name="studentanswer" value="">
 
-<table id="calculater" style="font-size:50px" onClick="calculater()">
+<table id="calculater" style="font-size:40px" onClick="calculater()">
 
 <tr>
 <td class="numberkey" >1</td>
@@ -246,11 +246,11 @@ div{text-align:center }
 <td class="numberkey" >9</td>
 </tr>
 <tr >
+
 <td class="numberkey" >0</td>
-<td class="numberkey" onclick="resultscalcaulte()" >清空</td>
-<td rowspan="3" id="equality" >提交答案</td>
 </tr>
  </table>
+    <a id="time"></a>
     <script language="javascript" type="text/javascript">
 var answer= {{answer|safe}};
 var tm= {{tm|safe}};
@@ -280,13 +280,8 @@ function calculater(){
     $("#display").val(results);
 
     if (touch>=ornot[0])
-        {   sleep(200);
-            yunsuan1.innerHTML = "";
-            yzts+=1;
-            document.getElementById("yzts").innerText=yzts;
-            studentanswer=results;
-            tm.shift();
-            ornot.shift();
+        {
+
             if(studentanswer==answer[0])
             {
                 correctamount+=1;
@@ -298,6 +293,12 @@ function calculater(){
                 {
 
                  }
+            yunsuan1.innerHTML = "";
+            yzts+=1;
+            document.getElementById("yzts").innerText=yzts;
+            studentanswer=results;
+            tm.shift();
+            ornot.shift();
             answer.shift();
             yunsuan1.innerHTML = tm[0];
             touch=0;
@@ -315,15 +316,40 @@ function calculater(){
 }
 
 </script>
-    <script>
-        function sleep(delay) {
-	//delay表示的毫秒数
-  var start = (new Date()).getTime();
-  while ((new Date()).getTime() - start < delay) {
-    continue;
-  }
-}
+ <script>
+ 	$(document).ready(function(){
+    	var overtime = $.cookie("overtime");
+    	if (overtime==null|| overtime==undefined ||overtime=='undefined'||overtime=='null')
+    	{ var now = new Date().getTime();
+    	  var endtime = 600 * 1000 +now;
+    	  var locksecends=1200;
+    	  $.cookie("overtime",endtime);
 
-    </script>
+    	}
+    	else {
+    		var overtime = $.cookie("overtime");
+    		var now = new Date().getTime();
+    		var locksecends=parseInt((overtime-now)/1000);
+
+    	}
+
+
+        var timeDiv = document.getElementById("time");
+        var timeObj = null;
+        function timer(){
+            if(locksecends <= 0){
+             //倒计时结束，提交表单
+             $("#11").val('1');
+             document.getElementById("checkbox").submit();
+             window.clearInterval(timeObj);
+             $.cookie("overtime",null);
+             return;
+         }
+         var t = Math.floor(locksecends/60) +"分"+locksecends%60+"秒" ;
+         document.getElementById("time").innerHTML = t;
+         locksecends --;
+     }
+         timeObj = window.setInterval(timer,1000);})
+ </script>
 </body>
 </html>
