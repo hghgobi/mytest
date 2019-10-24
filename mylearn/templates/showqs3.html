@@ -354,7 +354,7 @@ else if (event.srcElement.innerText=="提交答案"){
                                                                                             document.getElementById("correctamount").innerText=correct;
                                                                                             had+=1;
 
-                                                                                            window.setTimeout("Message(right)",1000);
+                                                                                            Message(right);window.setTimeout("Deletms()",1000);
                                                                                             if(correct>=limit[0]){
 
                                                                                                                     $("#zid").val(zid);
