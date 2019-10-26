@@ -13,6 +13,7 @@ from django.contrib.contenttypes.models import ContentType
 from comment.models import Comment
 
 import time
+import hashlib
 
 
 
@@ -757,7 +758,7 @@ def Showwkqs1(request,id0,id1):
                 id00 = qsids[i]
                 qss = get_object_or_404(Wkqs,pk=id00)
                 qstext.append(qss.questiontext.url)
-                qsanswer1.append(qss.questionanswer)
+                qsanswer1.append(hashlib.md5(qss.questionanswer.encode()).hexdigest())
                 qsid.append(qss.pk)
                 categorys.append(qss.category)
             # if categorys[0]==3:
@@ -851,8 +852,8 @@ def Showwkqs2(request,id0,id1):
                 id00 = qsids[i]
                 qss = get_object_or_404(Wkqs2,pk=id00)
                 qstext.append(qss.questiontext.url)
-                qsanswer1.append(qss.questionanswer1)
-                qsanswer2.append(qss.questionanswer2)
+                qsanswer1.append(hashlib.md5(qss.questionanswer1.encode()).hexdigest())
+                qsanswer2.append(hashlib.md5(qss.questionanswer2.encode()).hexdigest())
                 qsid.append(qss.pk)
                 categorys.append(qss.category)
             # if categorys[0]==3:

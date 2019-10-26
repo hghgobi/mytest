@@ -6,6 +6,7 @@
 
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+    <script type="text/javascript" src="{% static 'md5.min.js' %}"></script>
 
 
 	<title>在线测试</title>
@@ -319,7 +320,7 @@ results="";
 return;
 }
 else if (event.srcElement.innerText=="提交答案"){
-                                                  var a=document.getElementById("display0").value;
+                                                  var a=md5(document.getElementById("display0").value);
 
                                                   if(qsanswer1[0]==a){
                                                                                         correct+=1;
