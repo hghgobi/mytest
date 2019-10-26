@@ -617,7 +617,7 @@ background: #EA6F30;
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
     <p id="ts"  class="ts">我思故我在</p>
     <div id="ms" >
-        <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
+        <a>共</a><a id="sum"></a><a>题(每题三次机会)，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
         <a>--通过测试需要答对</a><a id="limit"></a><a>题</a>
     </div>
 <input  id="display0" type="text" style="color:red;width:80px;height:30px;font-size:16px" name="studentanswer1" value="">
@@ -790,7 +790,7 @@ else if (event.srcElement.innerText=="跳过"){    had+=1;
                                                  document.getElementById("ts").innerText="";
                                                  if(had>qsamount){Message(not);window.setTimeout("Deletms()",2000); window.location.reload();}
                                                  document.getElementById("yzts").innerText=had;
-                                                 qstext.shift();qsanswer1.shift();qsanswer2.shift();qsid.shift();
+                                                 qstext.shift();qsanswer1.shift();qsid.shift();
                                                  document.getElementById("pic").src=qstext[0];
                                                    $("#display0").val("");
                                                    $("#display1").val("");
