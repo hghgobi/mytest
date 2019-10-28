@@ -684,6 +684,7 @@ var select=1;
 var qstext={{qstext|safe}};
 var qsanswer1={{qsanswer1|safe}};
 var qsanswer2={{qsanswer2|safe}};
+var categorys={{categorys|safe}};
 var qsid = {{qsid|safe}};
 var testrm={{testrm|safe}};
 var qsamount = {{qsamount}};
@@ -780,7 +781,7 @@ else if (event.srcElement.innerText=="提交答案"){
                                                       $.ajax({
                                                         url:"{% url 'wrong' %}",
                                                         type:"post",
-                                                        data: {"id":qsid[0]},
+                                                        data: {"id":qsid[0],"categorys":categorys[0]},
                                                         cache: false,
                                                         success: function(data){
                                                                  console.log(data);

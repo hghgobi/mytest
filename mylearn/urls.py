@@ -54,6 +54,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('fangcheng/', views.FC),
                path('wktest/<int:id0>/<int:id1>', views.Showwkqs1),
                path('wktest1/<int:id0>/<int:id1>', views.Showwkqs2),
+               path('wktest2/<int:id0>/<int:id1>', views.Showwkqs3),
              path('wktest/', views.Testresult,name="wktest"),
 
                path('wrong/', views.showqserror,name="wrong"),

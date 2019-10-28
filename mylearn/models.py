@@ -112,7 +112,7 @@ class Wkqs(models.Model):
 	category = models.IntegerField(default=0)
 	questiontext = models.ImageField(upload_to='questions')
 	questionanswer = models.CharField(max_length=50)
-	wrongcount = models.IntegerField(default=0)
+	wrongcount = models.IntegerField(default=1)
 class Wkqs2(models.Model):
 	zid = models.IntegerField()
 	jid = models.IntegerField()
@@ -120,7 +120,17 @@ class Wkqs2(models.Model):
 	questionanswer1 = models.CharField(max_length=50)
 	questionanswer2 = models.CharField(max_length=50)
 	wrongcount = models.IntegerField(default=0)
-	category = models.IntegerField(default=0)
+	category = models.IntegerField(default=2)
+
+class Wkqs3(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	questiontext = models.ImageField(upload_to='questions')
+	questionanswer1 = models.CharField(max_length=50)
+	questionanswer2 = models.CharField(max_length=50)
+	questionanswer3 = models.CharField(max_length=50)
+	wrongcount = models.IntegerField(default=0)
+	category = models.IntegerField(default=3)
 
 class Testrm(models.Model):
 	zid = models.IntegerField()

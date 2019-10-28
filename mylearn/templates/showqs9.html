@@ -6,7 +6,7 @@
 
 	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
-        <script type="text/javascript" >
+    <script type="text/javascript" >
         /*
  * JavaScript MD5
  * https://github.com/blueimp/JavaScript-MD5
@@ -451,6 +451,11 @@ border: solid 2px #000000;
 border-spacing: 0px;
 background: #FFFFF;
 }
+#display2{
+border: solid 2px #000000;
+border-spacing: 0px;
+background: #FFFFF;
+}
 #ts{
 
 margin: auto;
@@ -615,17 +620,15 @@ background: #EA6F30;
 
 <div id="kuang">
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
-
     <div id="ms" >
-        <a>共</a><a id="sum"></a><a>题(每题三次机会)，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
+        <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
         <a>--通过测试需要答对</a><a id="limit"></a><a>题</a>
     </div>
-
-
 <img id="pic" src="" width="100%" height="20%"/>
 <p id="ts"  class="ts">我思故我在</p>
 <input  id="display0" type="text" style="color:red;width:80px;height:30px;font-size:16px" name="studentanswer1" value="">
-
+<input  id="display1" type="text" style="color:red;width:80px;height:30px;font-size:16px" name="studentanswer2" value="">
+<input  id="display2" type="text" style="color:red;width:80px;height:30px;font-size:16px" name="studentanswer3" value="">
 <form id="checkbox" action="" method="post">
 <!--    <input id="time" type="hidden" name="time" value="" >-->
     <input id="zid" type="hidden" name="zid" value="" >
@@ -662,6 +665,7 @@ background: #EA6F30;
 <td class="numberkey" >跳过</td>
 </tr>
 <tr >
+<td id="select" class="numberkey" >选择</td>
 <td id="select" class="numberkey" >A</td>
 <td id="select" class="numberkey" >B</td>
 <td id="select" class="numberkey" >C</td>
@@ -684,8 +688,8 @@ var results="";
 var form2 = document.getElementById('checkbox');
 var select=1;
 var qstext={{qstext|safe}};
+var qsanswer={{qsanswer|safe}};
 var categorys={{categorys|safe}};
-var qsanswer1={{qsanswer1|safe}};
 var qsid = {{qsid|safe}};
 var testrm={{testrm|safe}};
 var qsamount = {{qsamount}};
@@ -705,6 +709,8 @@ function Message(msss){ document.getElementById("ts").innerText=msss;
 function Deletms(){document.getElementById("ts").innerText="";}
    function startgo()
     { document.getElementById("display0").style.display="block";
+     document.getElementById("display1").style.display="block";
+     document.getElementById("display2").style.display="block";
      document.getElementById("kuang").style.display="block";
      document.getElementById("startts").style.display="none";
      document.getElementById("calculater").style.display="block";
@@ -728,8 +734,30 @@ return;
 }
 else if (event.srcElement.innerText=="提交答案"){
                                                   var a=md5(document.getElementById("display0").value);
+                                                  var b=md5(document.getElementById("display1").value);
+                                                  var c=md5(document.getElementById("display2").value);
+                                                  if(qsanswer[0].includes(a)==false||qsanswer[0].includes(b)==false||qsanswer[0].includes(c)==false){     $("#display0").val("");
+                                                            $("#display1").val("");
+                                                            $("#display2").val("");
 
-                                                  if(qsanswer1[0]==a){
+                                                            results="";
+                                                      $.ajax({
+                                                        url:"{% url 'wrong' %}",
+                                                        type:"post",
+                                                        data: {"id":qsid[0],"categorys":categorys[0]},
+                                                        cache: false,
+                                                        success: function(data){
+                                                                 console.log(data);
+
+                                                                },
+                                                        error: function(xhr){
+                                                                    console.log(xhr);
+                                                                }
+                                                                 });
+                                                                Message(wrong);window.setTimeout("Deletms()",1000);
+                                                                return;
+                                                      }
+                                                  else{
                                                                                         correct+=1;
                                                                                         document.getElementById("correctamount").innerText=correct;
                                                                                         had+=1;
@@ -744,83 +772,58 @@ else if (event.srcElement.innerText=="提交答案"){
                                                                                                                }
                                                                                         else if(had>qsamount){Message(not);window.setTimeout("Deletms()",1000); window.location.reload();}
                                                                                         else{document.getElementById("yzts").innerText=had;
-                                                                                            qstext.shift();qsanswer1.shift();qsid.shift();
+                                                                                            qstext.shift();qsanswer.shift();qsid.shift();
                                                                                             document.getElementById("pic").src=qstext[0];
                                                                                             $("#display0").val("");
-                                                                                            chance = limit[1];
+                                                                                            $("#display1").val("");
+                                                                                            $("#display2").val("");
                                                                                             results=""; }
                                                                                         return;
 
                                                                                         }
 
-                                                  else{     $("#display0").val("");
-                                                            $("#display1").val("");
-                                                            results="";
-                                                      $.ajax({
-                                                        url:"{% url 'wrong' %}",
-                                                        type:"post",
-                                                        data: {"id":qsid[0],"categorys":categorys[0]},
-                                                        cache: false,
-                                                        success: function(data){
-                                                                 console.log(data);
 
-                                                                },
-                                                        error: function(xhr){
-                                                                    console.log(xhr);
-                                                                }
-
-
-
-                                                        });
-                                                        chance=chance-1;
-                                                        if(chance>=1){ Message(wrong);window.setTimeout("Deletms()",1000);
-                                                                      return;}
-                                                        else{had+=1;
-                                                             document.getElementById("ts").innerText="";
-                                                             if(had>qsamount){Message(not);window.setTimeout("Deletms()",2000); window.location.reload();}
-                                                             document.getElementById("yzts").innerText=had;
-                                                             qstext.shift();qsanswer1.shift();qsid.shift();
-                                                             document.getElementById("pic").src=qstext[0];
-                                                             $("#display0").val("");
-
-                                                              results="";chance = limit[1]; return;
-                                                        }
-
-                                                      }
 
                                                   }
 else if (event.srcElement.innerText=="跳过"){    had+=1;
                                                  document.getElementById("ts").innerText="";
                                                  if(had>qsamount){Message(not);window.setTimeout("Deletms()",2000); window.location.reload();}
                                                  document.getElementById("yzts").innerText=had;
-                                                 qstext.shift();qsanswer1.shift();qsid.shift();
+                                                 qstext.shift();qsanswer.shift();qsid.shift();
                                                  document.getElementById("pic").src=qstext[0];
                                                    $("#display0").val("");
                                                    $("#display1").val("");
+                                                   $("#display2").val("");
                                                     results="";chance = limit[1]; return;
 
                                                 }
+else if(event.srcElement.innerText=="选择") {
 
+if(select==1){ select=2;results="";document.getElementById("display1").style.background="#90EE90";document.getElementById("display0").style.background="#FFFFFF";return;}
+else if(select==2){select=3;results="";document.getElementById("display2").style.background="#90EE90";document.getElementById("display1").style.background="#FFFFFF";return;}
+else if(select==3){select=1;results="";document.getElementById("display0").style.background="#90EE90";document.getElementById("display2").style.background="#FFFFFF";return;}
+}
 else{
     if(select==1){ results+=event.srcElement.innerText;
 
                     $("#display0").val(results);return;
                     }
+    if(select==2){ results+=event.srcElement.innerText;
+
+                    $("#display1").val(results);return;
+                    }
      else{results+=event.srcElement.innerText;
 
-            $("#display1").val(results);return;}
+            $("#display2").val(results);return;}
 
 }
-<!--var ms=$('#display0').val();-->
-<!--var ms1=$('#display1').val();-->
-<!--console.log(ms);-->
-<!--console.log(ms1);-->
-<!--return;-->
+
 }
 
 function resultscalcaulte(){
 if(select==1){ $("#display0").val(""); return;}
   else if(select==2){$("#display1").val("");return;}
+  else{$("#display2").val("");return;}
 
 
 }
