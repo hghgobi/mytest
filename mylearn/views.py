@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4
 import json
 import random
 import numpy as np
@@ -997,6 +997,100 @@ def Showwkqs3(request,id0,id1):
         return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1, 'mss': mss, 'n': n})
 
 
+def  Jfc(request,id0,id1):
+    id0 = id0
+    id1 = id1
+    if request.method == 'GET':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../../testlogin')
+        timess = int(time.time())
+        if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
+            try:
+                count =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
+
+                nnn = count.count+1
+                Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                Yuxitestcount.addyxcount(id0, id1,teststudent,nnn,timess)
+            except:
+                Yuxitestcount.addyxcount(id0, id1,teststudent,1,timess)
+
+            qsids = []
+
+            qs = Wkqs4.objects.filter(zid=id0 ,jid = id1)
+            for e in qs:
+                qsids.append(e.pk)
+            wklm = Wktestlimit.objects.filter(zid=id0, jid=id1)
+            limit = []
+            shuffle(qsids)
+
+            for j in wklm:
+                limit.append(j.limit)
+                limit.append(j.chances)
+            qstext = []
+            qsanswer = []
+            qsid = []
+            qsamount = len(qs)
+            zid=id0
+            jid=id1
+            testrm=[]
+            testrms = Testrm.objects.filter(zid=id0, jid=id1)
+            for f in testrms:
+                testrm.append(f.testrm.url)
+            for i in range(len(qsids)):
+                aaaa=[]
+                id00 = qsids[i]
+                qss = get_object_or_404(Wkqs4,pk=id00)
+                qstext.append(qss.questiontext)
+                aaaa.append(hashlib.md5(qss.questionanswer1.encode()).hexdigest())
+                aaaa.append(hashlib.md5(qss.questionanswer2.encode()).hexdigest())
+                qsanswer.append(aaaa)
+                qsid.append(qss.pk)
+            # if categorys[0]==3:
+            return render(request,'showqs10.html',{'testrm':json.dumps(testrm),'qstext':json.dumps(qstext),'qsanswer':json.dumps(qsanswer),'qsid':qsid,'qsamount':json.dumps(qsamount),'zid':zid,'jid':jid,'limit':json.dumps(limit)})
+            # else:
+            #     return render(request, 'showqs4.html',
+            #                   {'testrm':json.dumps(testrm),'qstext': json.dumps(qstext), 'qsanswer1': json.dumps(qsanswer1),
+            #                    'qsanswer2': json.dumps(qsanswer2), 'qsid': qsid, 'qsamount': json.dumps(qsamount),
+            #                    'zid': zid, 'jid': jid, 'limit': json.dumps(limit)})
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'yuxi.html', {'ms': ms})
+
+    if request.method == 'POST':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../testlogin')
+
+        # costtime = request.POST.get('time')
+        id0 = request.POST.get('zid')
+        id1 = request.POST.get('jid')
+
+        if Newnames.objects.filter(zid=id0, jid=id1, name=teststudent):
+            pass
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'yuxi.html', {'ms': ms})
+
+        counts =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
+        nnnn = counts.count
+        time0 = counts.seconds
+        time1 = int(time.time())
+        a = datetime.datetime.utcfromtimestamp(time0)
+        b = datetime.datetime.utcfromtimestamp(time1)
+        costtime =(b-a).seconds
+        ornot = "已通过本节测试"
+        Yuxiname.addyxname(id0, id1,teststudent,ornot,nnnn,costtime)
+        try:
+            Newnames.objects.filter(zid=id0,jid=id1,name=teststudent).delete()
+        except:
+            pass
+        ms = Yuxiname.objects.filter(zid=id0, jid=id1)
+        mss = Newnames.objects.filter(zid=id0, jid=id1)
+        n = len(mss)
+        return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1, 'mss': mss, 'n': n})
+
+
 def Testresult(request):
     if request.method == 'POST':
         teststudent = request.session.get("teststudent")
@@ -1747,7 +1841,80 @@ def FC(request):
     # print("生成了" + str(len(fc)) + "个方程：")
     return render(request,'fangcheng.html',{"html":html})
 
-         
+def FC2(request):
+    a = []
+    for i in range(-30, 30, 1):
+        a.append(i)
+    # print(a)
+    a.remove(0)
+    shuffle(a)
+    # fc = []
+    # html=''''''
+
+    for i in range(len(a)):
+        num = -30
+        while (num <= 30):
+            if num == 0:
+                num += 1
+            elif a[i] % num == 0:
+                b = int(a[i] / num)
+                c = b + num
+                d = a[i]
+                if c > 0 and d > 0:
+                    e =  "+" + str(c) + "x+" + str(d) + "=" + str(0)
+                    qstest = '''<a>x<SUP>2</SUP>%s</a>''' % e
+                    qsanswer1 =0-num
+                    qsanswer2 = 0-b
+                    Wkqs4.createfc(0,0,qstest,qsanswer1,qsanswer2)
+                    # fc.append(e)
+                elif c < 0 and d > 0:
+                    e = str(c) + "x+" + str(d) + "=" + str(0)
+                    qstest = '''<a>x<SUP>2</SUP>%s</a>''' % e
+                    qsanswer1 =0-num
+                    qsanswer2 = 0-b
+                    Wkqs4.createfc(0,0,qstest, qsanswer1, qsanswer2)
+                elif c > 0 and d < 0:
+                    e =  "+" + str(c) + "x" + str(d) + "=" + str(0)
+                    qstest = '''<a>x<SUP>2</SUP>%s</a>''' % e
+                    qsanswer1 =0-num
+                    qsanswer2 = 0-b
+                    Wkqs4.createfc(0,0,qstest, qsanswer1, qsanswer2)
+                elif c == 0 and d < 0:
+                    e = str(d) + "=" + str(0)
+                    qstest = '''<a>x<SUP>2</SUP>%s</a>''' % e
+                    qsanswer1 =0-num
+                    qsanswer2 = 0-b
+                    Wkqs4.createfc(0,0,qstest, qsanswer1, qsanswer2)
+                elif c == 0 and d > 0:
+                    e = "+" + str(d) + "=" + str(0)
+                    qstest = '''<a>x<SUP>2</SUP>%s</a>''' % e
+                    qsanswer1 =0-num
+                    qsanswer2 = 0-b
+                    Wkqs4.createfc(0,0,qstest, qsanswer1, qsanswer2)
+                elif c < 0 and d == 0:
+                    e = str(c) + "x" + "=" + str(0)
+                    qstest = '''<a>x<SUP>2</SUP>%s</a>''' % e
+                    qsanswer1 =0-num
+                    qsanswer2 = 0-b
+                    Wkqs4.createfc(0,0,qstest, qsanswer1, qsanswer2)
+                elif c > 0 and d == 0:
+                    e =  "+" + str(c) + "x" + "=" + str(0)
+                    qstest = '''<a>x<SUP>2</SUP>%s</a>''' % e
+                    qsanswer1 =0-num
+                    qsanswer2 = 0-b
+                    Wkqs4.createfc(0,0,qstest, qsanswer1, qsanswer2)
+                else:
+                    e =  str(c) + "x" + str(d) + "=" + str(0)
+                    qstest = '''<a>x<SUP>2</SUP>%s</a>''' % e
+                    qsanswer1 =0-num
+                    qsanswer2 = 0-b
+                    Wkqs4.createfc(0,0,qstest, qsanswer1, qsanswer2)
+                num += 1
+            else:
+                num += 1
+    # print("生成了" + str(len(fc)) + "个方程：")
+    # return render(request,'fangcheng.html',{"html":html})
+    return HttpResponse("SUCESS!")
 
 
 def Zuotu1(request):

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3
+from .models import Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4
 
 # Register your models here.
 @admin.register(Classes)
@@ -52,6 +52,10 @@ class Wkqs2Admin(admin.ModelAdmin):
 @admin.register(Wkqs3)
 class Wkqs3Admin(admin.ModelAdmin):
 	list_display = ['wrongcount','zid','jid','category','questiontext','questionanswer1','questionanswer2','questionanswer3']
+
+@admin.register(Wkqs4)
+class Wkqs4Admin(admin.ModelAdmin):
+	list_display = ['questiontext','questionanswer1','questionanswer2','zid','jid']
 
 @admin.register(Testrm)
 class TestrmAdmin(admin.ModelAdmin):

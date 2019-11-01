@@ -131,6 +131,19 @@ class Wkqs3(models.Model):
 	questionanswer3 = models.CharField(max_length=50)
 	wrongcount = models.IntegerField(default=0)
 	category = models.IntegerField(default=3)
+class Wkqs4(models.Model):
+	zid = models.IntegerField(default=0)
+	jid = models.IntegerField(default=0)
+	questiontext = models.CharField(max_length=500)
+	questionanswer1 = models.CharField(max_length=50)
+	questionanswer2 = models.CharField(max_length=50)
+
+
+	@classmethod
+	def createfc(cls,zid,jid,questiontext,questionanswer1,questionanswer2):
+		addfc = cls(zid=zid,jid=jid,questiontext=questiontext,questionanswer1=questionanswer1,questionanswer2=questionanswer2)
+		addfc.save()
+		return addfc
 
 class Testrm(models.Model):
 	zid = models.IntegerField()
