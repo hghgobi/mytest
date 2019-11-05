@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+<body bgcolor="#b8fec0">
+<style>
+table{text-align:center}
+</style>
+<body bgcolor="#b8fec0">
+<style>
+div{text-align:center}
+</style>
+
+    <form action="" method="post">
+        <table>
+            <tbody>
+                <tr>
+                    <td><font size="5">请输入姓名:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="name"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="查询信息" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+<a><font size="5" color="red">{{ error}}</font></a>
+
+
+
+</body>
+
+
+</html>

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4
+from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -2636,6 +2636,20 @@ def getpic(request):
             pass
 
     return render(request,'testpic.html',{'pic':json.dumps(pic)})
+
+def Xxdatasearch(request):
+    if request.method == "GET":
+        return render(request,"xxdata1.html")
+    if request.method == "POST":
+        name = request.POST.get('name')
+        data = Xxdata.objects.filter(name=name)
+
+        if data:
+            biaoti = data[0].category
+            return render(request, "xxdata2.html", {'data': data,'biaoti':biaoti})
+        else:
+            return render(request, "xxdata1.html", {'error': "姓名输入错误或不存信息,请重新查询！"})
+
 
 
 

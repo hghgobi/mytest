@@ -384,6 +384,18 @@ class Xxqs(models.Model):
 	yunsuan = models.IntegerField()
 	answer = models.IntegerField(default=0)
 	ornot = models.IntegerField(default=0)
+class Xxdata(models.Model):
+	category = models.CharField(max_length=500)
+	name = models.CharField(max_length=500)
+	kaoqin = models.IntegerField()
+	kaohui = models.IntegerField()
+	shijia = models.IntegerField()
+	bingjia = models.IntegerField()
+	hunjia= models.IntegerField()
+	sangjia = models.IntegerField()
+	chanjia = models.IntegerField()
+	hulijia = models.IntegerField()
+	summ = models.IntegerField()
 
 
 
