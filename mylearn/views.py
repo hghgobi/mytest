@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Classes,Courses,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -2650,10 +2650,35 @@ def Xxdatasearch(request):
         else:
             return render(request, "xxdata1.html", {'error': "姓名输入错误或不存信息,请重新查询！"})
 
+def Addxhl2(request): #注册学生
+    mss=XHL.objects.all()
+    if mss :
+        return render(request,'xhl.html',{'mss':mss})
+    else:
+        return render(request,'xhl.html')
 
 
+def Addxhl0(request):
+    data={}
+    name=request.POST.get('name')
+    if name:
+        pass
+    else:
+        data['error']='姓名不能为空'
+        data['status']='error'
+        return JsonResponse(data)
+    classs=request.POST.get('classs')
+    phone=request.POST.get('phone')
+    if phone.isdigit():
+        pass
+    else:
+        data['error']='手机号只能是数字'
+        data['status']='error'
+        return JsonResponse(data)
 
-
+    XHL.createms(name,classs,phone)
+    data['status'] = 'success'
+    return JsonResponse(data)
 
 
 

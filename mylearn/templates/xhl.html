@@ -1,0 +1,151 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+<body bgcolor="#b8fec0">
+<style>
+table{text-align:center}
+</style>
+<body bgcolor="#b8fec0">
+<style>
+div{text-align:center}
+</style>
+
+    <form id="addtxl" onsubmit="return false" action="{% url 'xhlyibu' %}" method="POST" style="overflow:hidden">
+        <table>
+            <tbody>
+                <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;选择班级:</font></td>
+                    <td> <input name="classs" type="radio" value="5" />五班<br>
+                       <input name="classs" type="radio" value="6" />六班 </td>
+                </tr>
+                <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学生姓名:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="name"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">家长手机号:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="phone"></td>
+                </tr>
+
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="注册" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+<ul>
+    <li><font color="blue" size="4">（需要修改信息的，只要将修改的信息再提交一次即可.</font></li>
+</ul>
+<a><font id="error" size="5" color="red">{{ error}}</font></a>
+
+<div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">已注册学生</font></a></div>
+                    <div class="panel-body">
+
+
+
+                     <table id="num" border="1" cellpadding="6">
+        <tr >
+            <td><font size="4"> 序号</font></td>
+
+            <td><font size="4"> 班级</font></td>
+            <td><font size="4">  学生姓名</font></td>
+            <td><font size="4">  时间</font></td>
+
+        </tr>
+
+
+        {%for i in mss %}
+            <tr >
+                <td><font size="3" color="red">  </font></td>
+
+                <td><font size="3" color="red">{{i.classs}}</font></td>
+                <td><font size="3" color="red">{{i.name}}</font></td>
+                <td><font size="3" color="red">{{i.addtime}}</font></td>
+            </tr>
+        {% empty %}
+        <p><font size="2" color="red">暂无相关信息</font></p>
+        {% endfor %}
+
+    </table>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+
+
+<script language="javascript" type="text/javascript">
+	    window.onload = function(){
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	    }
+    }
+    </script>
+
+
+<script type="text/javascript">
+        $("#addtxl").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'xhlyibu' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+
+                    if(data['status']=="success"){
+                    alert("提交成功！");
+             setTimeout(function () {
+                    window.parent.location.reload();
+                }, 200);
+
+
+                    }else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>
+
+
+
+<div class="footer">
+    <div class="website-info">
+        <p>浙ICP备19013564号 Copyright©2019 35925.top 版权所有</p>
+        <p>意见反馈或联系我（569258059@qq.com）</p>
+    </div>
+</div>
+
+</body>
+
+
+</html>

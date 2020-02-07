@@ -397,7 +397,25 @@ class Xxdata(models.Model):
 	hulijia = models.IntegerField()
 	summ = models.IntegerField()
 
-
+class XHL(models.Model):
+	name=models.CharField(max_length=200)
+	classs=models.CharField(max_length=200)
+	phone=models.BigIntegerField()
+	addtime = models.DateTimeField(auto_now_add=True)
+	class Meta:
+		ordering=['-addtime']
+	@classmethod
+	def createms(cls,name,classs,phone):
+		names=XHL.objects.filter(name=name)
+		if names :
+			names.delete()
+			addms = cls(name=name,classs=classs , phone=phone)
+			addms.save()
+			return addms
+		else:
+			addms = cls(name=name,classs=classs , phone=phone)
+			addms.save()
+			return addms
 
 
 
