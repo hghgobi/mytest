@@ -1,0 +1,39 @@
+{% extends 'xhlbase2.html' %}
+{% block content %}
+{% load staticfiles %}
+{% load static %}
+
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor-init.js" %}"></script>
+    <script type="text/javascript" src="{% static "ckeditor/ckeditor/ckeditor.js" %}"></script>
+    
+<style> 
+div{text-align:center} 
+</style>
+{% for i in classnotesdetail %}
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><h2>{{ i.notename }}</h2></div>
+                    <div class="panel-body">
+                     <p>发表日期：{{i.notetime}}
+                     &nbsp;&nbsp;
+                  <span class="glyphicon glyphicon-eye-open"></span>&nbsp;阅读({{ i.readed_num }})</p>
+                     <p>{{ i.notecontent|safe}}</p>
+                     {% endfor %}
+
+        </div>
+    </div>
+     </div>
+    </div>
+
+
+
+&nbsp;&nbsp;&nbsp;&nbsp;<a>{{ user }}，欢迎~</a>
+
+        </div>
+
+
+
+{% endblock %}
+

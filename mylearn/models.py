@@ -89,6 +89,17 @@ class Classnotes(models.Model):
 	class Meta:
 		ordering = ['-id']
 #在线测试
+
+class Classnotes0(models.Model):
+	notename = models.CharField(max_length=200)
+	notecontent = RichTextUploadingField()
+	notetime = models.DateTimeField(auto_now_add=True)
+	noteupdatetime = models.DateTimeField(auto_now=True)
+	readed_num =models.IntegerField(default=0)
+	def __str__(self):
+		return self.notename
+	class Meta:
+		ordering = ['-id']
 class onlinetestgrade(models.Model):
 	gradename= models.CharField(max_length=50)
 	def __str__(self):
@@ -152,6 +163,12 @@ class Testrm(models.Model):
 
 
 class Wktestlimit(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	limit = models.IntegerField()
+	chances = models.IntegerField()
+
+class Wktestlimit0(models.Model):
 	zid = models.IntegerField()
 	jid = models.IntegerField()
 	limit = models.IntegerField()
@@ -329,6 +346,25 @@ class Yuxiname(models.Model):
 		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot,count=count,costtime=costtime)
 		addms.save()
 
+class Yuxiname0(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	name = models.CharField(max_length=200)
+	ornot = models.CharField(max_length=200)
+	time = models.DateTimeField(auto_now=True)
+	count = models.IntegerField(default=0)
+	costtime = models.IntegerField(default=0)
+
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addyxname0(cls,zid,jid,name,ornot,count,costtime):
+
+		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot,count=count,costtime=costtime)
+		addms.save()
+
+
 class Yuxitestcount(models.Model):
 	zid = models.IntegerField()
 	jid = models.IntegerField()
@@ -362,6 +398,37 @@ class Newnames(models.Model):
 		addms.save()
 		return addms
 
+class Newnames0(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	name = models.CharField(max_length=200)
+
+	@classmethod
+	def addname0(cls,zid,jid,name):
+
+		addms = cls(zid=zid,jid=jid,name=name)
+		addms.save()
+		return addms
+
+class Yuxitestcount0(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	name = models.CharField(max_length=200)
+	time = models.DateTimeField(auto_now=True)
+	count = models.IntegerField(default=0)
+	seconds = models.BigIntegerField(default=0)
+
+
+
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addyxcount0(cls,zid,jid,name,count,seconds):
+
+		addms = cls(zid=zid,jid=jid,name=name,count=count,seconds=seconds)
+		addms.save()
+
 class Leavems(models.Model):
 	name = models.CharField(max_length=50)
 	text = models.CharField(max_length=500)
@@ -379,6 +446,8 @@ class Leavems(models.Model):
 		addms.save()
 
 class Xxqs(models.Model):
+	id1 = models.IntegerField()
+	id2 = models.IntegerField()
 	num0 = models.IntegerField()
 	num1 = models.IntegerField()
 	yunsuan = models.IntegerField()

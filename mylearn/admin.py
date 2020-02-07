@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 
 # Register your models here.
 @admin.register(Classes)
@@ -28,6 +28,9 @@ class StudentsAdmin(admin.ModelAdmin):
 
 @admin.register(Classnotes)
 class ClassnotesAdmin(admin.ModelAdmin):
+	list_display = ['pk','notetime','notename','noteupdatetime','readed_num']
+@admin.register(Classnotes0)
+class Classnotes0Admin(admin.ModelAdmin):
 	list_display = ['pk','notetime','notename','noteupdatetime','readed_num']
 
 @admin.register(onlinetestgrade)
@@ -64,12 +67,24 @@ class TestrmAdmin(admin.ModelAdmin):
 @admin.register(Wktestlimit)
 class WktestlimitAdmin(admin.ModelAdmin):
 	list_display = ['zid','jid','limit','chances']
+
+@admin.register(Wktestlimit0)
+class Wktestlimit0Admin(admin.ModelAdmin):
+	list_display = ['zid','jid','limit','chances']
 @admin.register(Yuxiname)
 class YuxinameAdmin(admin.ModelAdmin):
 	list_display = ['zid','jid','name','time','ornot','count','costtime']
 
+@admin.register(Yuxiname0)
+class Yuxiname0Admin(admin.ModelAdmin):
+	list_display = ['zid','jid','name','time','ornot','count','costtime']
+
 @admin.register(Yuxitestcount)
 class YuxitestcontAdmin(admin.ModelAdmin):
+	list_display = ['zid','jid','name','time','count','seconds']
+
+@admin.register(Yuxitestcount0)
+class Yuxitestcont0Admin(admin.ModelAdmin):
 	list_display = ['zid','jid','name','time','count','seconds']
 
 @admin.register(Scores)
@@ -113,13 +128,17 @@ class badhomeworkAdmin(admin.ModelAdmin):
 class NewnamesAdmin(admin.ModelAdmin):
 	list_display = ('zid','jid','name')
 
+@admin.register(Newnames0)
+class Newnames0Admin(admin.ModelAdmin):
+	list_display = ('zid','jid','name')
+
 @admin.register(Leavems)
 class LeavemsAdmin(admin.ModelAdmin):
 	list_display = ('name','time','category','ornot','text')
 
 @admin.register(Xxqs)
 class XxqsAdmin(admin.ModelAdmin):
-	list_display = ('num0','num1','yunsuan','answer','ornot')
+	list_display = ('id1','id2','num0','num1','yunsuan','answer','ornot')
 
 @admin.register(Xxdata)
 class XxdataAdmin(admin.ModelAdmin):
@@ -127,4 +146,4 @@ class XxdataAdmin(admin.ModelAdmin):
 
 @admin.register(XHL)
 class XHLAdmin(admin.ModelAdmin):
-	list_display = ('classs','name','phone','addtime')
+	list_display = ('pk','classs','name','phone','addtime')

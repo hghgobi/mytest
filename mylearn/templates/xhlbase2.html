@@ -1,0 +1,48 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+<body bgcolor="#b8fec0">
+<style>
+div{text-align:center  }
+</style>
+
+
+<div class="nav">
+ <ul class="nav nav-pills nav-stacked">
+       <li><a  href='../../indexs0'   class="btn btn-primary  " ><font size="5" color="red">返回首页</font> </a></li>
+
+    </ul>
+
+</div>
+
+
+
+    {% block content %}{% endblock %}
+<div class="nav">
+ <ul class="nav nav-pills nav-stacked">
+       <li><a  href='../../indexs0'   class="btn btn-primary " ><font size="5" color="red">返回首页</font> </a></li>
+
+    </ul>
+
+</div>
+
+<div class="footer">
+    <div class="website-info">
+        <p> ©2019 35925.top 版权所有&nbsp;&nbsp;&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备19013564号</a></p>
+        <p>意见反馈或联系我（569258059@qq.com）</p>
+    </div>
+</div>
+
+</body>
+
+
+</html>

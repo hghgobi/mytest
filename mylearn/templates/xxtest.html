@@ -232,7 +232,11 @@ div{text-align:center }
         <a>共</a><a id="sum"></a><a>题，</a><a>已做</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
     </div>
     <div id="yunsuan1" ></div>
-
+<form id="checkbox" action="" method="post">
+<!--    <input id="time" type="hidden" name="time" value="" >-->
+    <input id="zid" type="hidden" name="id0" value="" >
+    <input id="jid" type="hidden" name="id1" value="" >
+</form>
     <input id="display" type="text" style="color:black;width:320px;height:100px;font-size:80px" name="studentanswer" value="">
 
 <table id="calculater" style="font-size:40px" onClick="calculater()">
@@ -259,6 +263,8 @@ div{text-align:center }
  </table>
     <a id="time"></a>
     <script language="javascript" type="text/javascript">
+
+var form2 = document.getElementById('checkbox');
 var answer= {{answer|safe}};
 var tm= {{tm|safe}};
 var ts={{ts}};
@@ -268,9 +274,17 @@ var ornot = {{ornot|safe}}
 var touch=0;
 var calresults="";
 var results="";
+var zid = {{zid}};
+var jid = {{jid}};
 var studentanswer = "";
 var form = document.getElementById('checkbox');
 var yunsuan1=document.getElementById("yunsuan1");
+var limit = {{limit|safe}};
+var not = "通过失败，请重新测试！";
+function Deletms(){document.getElementById("yunsuan1").innerText="";}
+function Message(msss){ document.getElementById("yunsuan1").innerText=msss;
+
+                        }
 function start(){
 
         document.getElementById("start").style.display="none";
@@ -320,10 +334,23 @@ function calculater(){
         {    var a =document.getElementById("display").value;
              var b = answer[0];
         if(a==b){ window.setTimeout("Right()",200);
+                  if (correctamount>=limit[0]-1)
+                  {$("#zid").val(zid);
+                  $("#jid").val(jid);
+                  form2.submit();
+                  }
+                  else if (yzts>=ts-1)
+                { alert("通过失败！请重新测试！");  window.setTimeout("Deletms()",1000); window.location.reload();
+                 }
+                 else{}
 
 
                 }
-         else{  window.setTimeout("Wrong()",200);         }
+         else{  window.setTimeout("Wrong()",200);
+         if (yzts>=ts-1)
+        { alert("通过失败！请重新测试！");  window.setTimeout("Deletms()",1000); window.location.reload();
+        }
+                }
 
 
 
@@ -338,25 +365,25 @@ function calculater(){
 }
 
 </script>
- <script>
- 	$(document).ready(function(){
+<!-- <script>-->
+<!-- 	$(document).ready(function(){-->
 
 
-    	  var locksecends=600;
-        var timeDiv = document.getElementById("time");
-        var timeObj = null;
-        function timer(){
-            if(locksecends <= 0){
-             //倒计时结束，提交表单
-             document.getElementById("checkbox").submit();
-             window.clearInterval(timeObj);
-             return;
-         }
-         var t = Math.floor(locksecends/60) +"分"+locksecends%60+"秒" ;
-         document.getElementById("time").innerHTML = t;
-         locksecends --;
-     }
-         timeObj = window.setInterval(timer,1000);})
- </script>
+<!--    	  var locksecends=600;-->
+<!--        var timeDiv = document.getElementById("time");-->
+<!--        var timeObj = null;-->
+<!--        function timer(){-->
+<!--            if(locksecends <= 0){-->
+<!--             //倒计时结束，提交表单-->
+<!--             document.getElementById("checkbox").submit();-->
+<!--             window.clearInterval(timeObj);-->
+<!--             return;-->
+<!--         }-->
+<!--         var t = Math.floor(locksecends/60) +"分"+locksecends%60+"秒" ;-->
+<!--         document.getElementById("time").innerHTML = t;-->
+<!--         locksecends &#45;&#45;;-->
+<!--     }-->
+<!--         timeObj = window.setInterval(timer,1000);})-->
+<!-- </script>-->
 </body>
 </html>
