@@ -77,8 +77,10 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('jsq/', views.inputms),
                path('xxqs/', views.xxtest),
                path('xxtest/<int:id0>/<int:id1>', views.xxtest2),
+               path('xxtest2/<int:id0>/<int:id1>', views.xxtest22),
                path('getpic/', views.getpic),
                path('Xx/', views.Xxdatasearch),
+               path('addqs/<int:yunsuan>', views.addqs2),
 
 
 

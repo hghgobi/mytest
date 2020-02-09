@@ -453,6 +453,56 @@ class Xxqs(models.Model):
 	yunsuan = models.IntegerField()
 	answer = models.IntegerField(default=0)
 	ornot = models.IntegerField(default=0)
+
+class Xxqs2(models.Model):
+	num0 = models.IntegerField()
+	num1 = models.IntegerField()
+	yunsuan = models.IntegerField()
+	answer = models.IntegerField(default=0)
+	ornot = models.IntegerField(default=0)
+
+	@classmethod
+	def addqs(cls,num0,num1,yunsuan,answer,ornot):
+
+		addqs = cls(num0=num0,num1=num1,yunsuan=yunsuan,answer=answer,ornot=ornot)
+		addqs.save()
+class Xxqs22(models.Model):
+	num0 = models.IntegerField()
+	num1 = models.IntegerField()
+	yunsuan = models.IntegerField()
+	answer = models.IntegerField(default=0)
+	ornot = models.IntegerField(default=0)
+
+	@classmethod
+	def addqs2(cls,num0,num1,yunsuan,answer,ornot):
+
+		addqs2 = cls(num0=num0,num1=num1,yunsuan=yunsuan,answer=answer,ornot=ornot)
+		addqs2.save()
+class Xxqs23(models.Model):
+	num0 = models.IntegerField()
+	num1 = models.IntegerField()
+	yunsuan = models.IntegerField()
+	answer = models.IntegerField(default=0)
+	ornot = models.IntegerField(default=0)
+
+	@classmethod
+	def addqs3(cls,num0,num1,yunsuan,answer,ornot):
+
+		addqs3 = cls(num0=num0,num1=num1,yunsuan=yunsuan,answer=answer,ornot=ornot)
+		addqs3.save()
+
+class Xxqs24(models.Model):
+	num0 = models.IntegerField()
+	num1 = models.IntegerField()
+	yunsuan = models.IntegerField()
+	answer = models.IntegerField(default=0)
+	ornot = models.IntegerField(default=0)
+
+	@classmethod
+	def addqs4(cls,num0,num1,yunsuan,answer,ornot):
+
+		addqs4 = cls(num0=num0,num1=num1,yunsuan=yunsuan,answer=answer,ornot=ornot)
+		addqs4.save()
 class Xxdata(models.Model):
 	category = models.CharField(max_length=500)
 	name = models.CharField(max_length=500)

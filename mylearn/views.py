@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -2791,6 +2791,231 @@ def  xxtest2(request,id0,id1):
         mss = Newnames0.objects.filter(zid=id0, jid=id1)
         n = len(mss)
         return render(request, 'xhlyuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1, 'mss': mss, 'n': n})
+
+def  xxtest22(request,id0,id1):
+    id0 = id0
+    id1 = id1
+    if request.method == 'GET':
+        teststudent0 = request.session.get("teststudent0")
+        if not teststudent0:
+            return redirect('../../testlogin0')
+        timess = int(time.time())
+        if Newnames0.objects.filter(zid = id0,jid = id1,name = teststudent0):
+            try:
+                count =get_object_or_404(Yuxitestcount0,zid = id0,jid = id1,name = teststudent0)
+
+                nnn = count.count+1
+                Yuxitestcount0.objects.filter(zid=id0, jid=id1, name=teststudent0).delete()
+                Yuxitestcount0.addyxcount0(id0, id1,teststudent0,nnn,timess)
+            except:
+                Yuxitestcount0.addyxcount0(id0, id1,teststudent0,1,timess)
+
+
+            QS=[]
+            a1=np.random.randint(820,size=40)
+            a2=np.random.randint(1701,size=40)
+            a3=np.random.randint(45,size=10)
+            a4=np.random.randint(116,size=10)
+            for i in range(40):
+                ls=Xxqs2.objects.filter(pk=a1[i])
+                QS.append(ls)
+            for i in range(40):
+                ls=Xxqs22.objects.filter(pk=a2[i])
+                QS.append(ls)
+            for i in range(10):
+                ls=Xxqs23.objects.filter(pk=a3[i])
+                QS.append(ls)
+            for i in range(10):
+                ls=Xxqs24.objects.filter(pk=a4[i])
+                QS.append(ls)
+            random.shuffle(QS)
+            answer = []
+            ornot = []
+            tm = []
+            for g in range(100):
+                gg=QS[g]
+
+                if gg[0].yunsuan == 1:
+                    html = '''<div style="font-size:100px">%s+%s</div>''' % (gg[0].num0, gg[0].num1)
+                    tm.append(html)
+                    ornot.append(gg[0].ornot)
+                    answer.append(gg[0].answer)
+                elif gg[0].yunsuan == 2:
+                    html = '''<div style="font-size:100px">%s-%s</div>''' % (gg[0].num0, gg[0].num1)
+                    tm.append(html)
+                    ornot.append(gg[0].ornot)
+                    answer.append(gg[0].answer)
+                elif gg[0].yunsuan == 3:
+                    html = '''<div style="font-size:100px">%s &times %s</div>''' % (gg[0].num0, gg[0].num1)
+                    tm.append(html)
+                    ornot.append(gg[0].ornot)
+                    answer.append(gg[0].answer)
+                else:
+                    html = '''<div style="font-size:100px">%s &divide %s</div>''' % (gg[0].num0, gg[0].num1)
+                    tm.append(html)
+                    ornot.append(gg[0].ornot)
+                    answer.append(gg[0].answer)
+
+                ts = len(answer)
+            wklm = Wktestlimit0.objects.filter(zid=id0, jid=id1)
+            limit = []
+            for j in wklm:
+                limit.append(j.limit)
+                limit.append(j.chances)
+            return render(request, 'xxtest.html',
+                          {'zid':id0,'jid':id1,'answer': json.dumps(answer), 'tm': json.dumps(tm), 'ts': ts, 'yzts': 0, 'correctamount': 0,
+                           'ornot': json.dumps(ornot),'limit':json.dumps(limit)})
+
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'xhlyuxi.html', {'ms': ms})
+
+    if request.method == 'POST':
+        teststudent0 = request.session.get("teststudent0")
+        if not teststudent0:
+            return redirect('../testlogin0')
+
+        # costtime = request.POST.get('time')
+        id0 = request.POST.get('id0')
+        id1 = request.POST.get('id1')
+
+        if Newnames0.objects.filter(zid=id0, jid=id1, name=teststudent0):
+            pass
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'xhlyuxi.html', {'ms': ms})
+
+        counts =get_object_or_404(Yuxitestcount0,zid = id0,jid = id1,name = teststudent0)
+        nnnn = counts.count
+        time0 = counts.seconds
+        time1 = int(time.time())
+        a = datetime.datetime.utcfromtimestamp(time0)
+        b = datetime.datetime.utcfromtimestamp(time1)
+        costtime =(b-a).seconds
+        ornot = "已通过本节测试"
+        Yuxiname0.addyxname0(id0, id1,teststudent0,ornot,nnnn,costtime)
+        try:
+            Newnames0.objects.filter(zid=id0,jid=id1,name=teststudent0).delete()
+        except:
+            pass
+        ms = Yuxiname0.objects.filter(zid=id0, jid=id1)
+        mss = Newnames0.objects.filter(zid=id0, jid=id1)
+        n = len(mss)
+        return render(request, 'xhlyuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1, 'mss': mss, 'n': n})
+
+def addqs2(request,yunsuan):
+    teststudent0 = request.session.get("teststudent0")
+    if not teststudent0:
+        return redirect('../../testlogin0')
+    else:
+        pass
+    yunsuan=yunsuan
+    if yunsuan==1:
+        for i in range(2, 100):
+            a = i
+
+            for j in range(i, 100):
+
+                b = j
+                c = a + b
+                if c <= 100:
+                    e = a % 10
+                    f = b % 10
+                    if e + f > 10:
+                        num0 = a
+                        num1 = b
+                        answer = c
+                        f = c / 10
+                        if f >= 10:
+                            ornot = 3
+                        elif f >= 1:
+                            ornot = 2
+                        else:
+                            ornot=1
+                        Xxqs2.addqs(num0,num1,yunsuan,answer,ornot)
+
+                    else:
+                        pass
+
+                else:
+                    pass
+    elif yunsuan==2:
+        a = []
+        for i in range(1, 101):
+            a.append(i)
+        a.reverse()
+        for i in range(100):
+            b = a[i]
+            for j in range(1, b):
+                c = j
+                if b - c > 10:
+                    e = b % 10
+                    f = c % 10
+                    if e < f:
+                        num0 = b
+                        num1 = c
+                        answer = b - c
+                        f = answer / 10
+                        if f >= 10:
+                            ornot = 3
+                        elif f >= 1:
+                            ornot = 2
+                        else:
+                            ornot = 1
+                        Xxqs22.addqs2(num0, num1, yunsuan, answer, ornot)
+                    else:
+                        pass
+                else:
+                    pass
+    elif yunsuan==3:
+        for i in range(2, 11):
+            a = i
+            for j in range(i, 11):
+
+                b = j
+                num0 = a
+                num1 = b
+                answer = a * b
+                f = answer / 10
+                if f >= 10:
+                    ornot = 3
+                elif f >= 1:
+                    ornot = 2
+                else:
+                    ornot = 1
+                Xxqs23.addqs3(num0, num1, yunsuan, answer, ornot)
+
+    elif yunsuan==4:
+        a = [4, 6, 8, 10, 12, 14, 16, 18, 20, 9, 12, 15, 18, 21, 24, 27, 30, 16, 20, 24, 28, 32, 36, 40, 25, 30, 35, 40,
+             45, 50, 36, 42, 48, 54, 60, 49, 56, 63, 70, 64, 72, 80, 81, 90, 100]
+        e = []
+        for z in range(1, 11):
+            e.append(z)
+
+        for i in range(len(a)):
+            b = a[i]
+            for j in range(2, 11):
+                c = j
+                d = b / c
+                if d in e:
+
+                    num0 = b
+                    num1 = c
+                    answer = int(d)
+                    f = answer / 10
+                    if f >= 10:
+                        ornot = 3
+                    elif f >= 1:
+                        ornot = 2
+                    else:
+                        ornot = 1
+                    Xxqs24.addqs4(num0, num1, yunsuan, answer, ornot)
+
+                else:
+                    pass
+    else:
+        pass
+    return HttpResponse("成功！")
 
 
 

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 
 # Register your models here.
 @admin.register(Classes)
@@ -139,6 +139,22 @@ class LeavemsAdmin(admin.ModelAdmin):
 @admin.register(Xxqs)
 class XxqsAdmin(admin.ModelAdmin):
 	list_display = ('id1','id2','num0','num1','yunsuan','answer','ornot')
+
+@admin.register(Xxqs2)
+class Xxqs2Admin(admin.ModelAdmin):
+	list_display = ('pk','num0','num1','yunsuan','answer','ornot')
+
+@admin.register(Xxqs22)
+class Xxqs22Admin(admin.ModelAdmin):
+	list_display = ('pk','num0','num1','yunsuan','answer','ornot')
+
+@admin.register(Xxqs23)
+class Xxqs23Admin(admin.ModelAdmin):
+	list_display = ('pk','num0','num1','yunsuan','answer','ornot')
+
+@admin.register(Xxqs24)
+class Xxqs24Admin(admin.ModelAdmin):
+	list_display = ('pk','num0','num1','yunsuan','answer','ornot')
 
 @admin.register(Xxdata)
 class XxdataAdmin(admin.ModelAdmin):
