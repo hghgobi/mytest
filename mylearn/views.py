@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -2856,7 +2856,7 @@ def  xxtest22(request,id0,id1):
                     ornot.append(gg[0].ornot)
                     answer.append(gg[0].answer)
 
-                ts = len(answer)
+            ts = len(answer)
             wklm = Wktestlimit0.objects.filter(zid=id0, jid=id1)
             limit = []
             for j in wklm:
@@ -2902,6 +2902,179 @@ def  xxtest22(request,id0,id1):
         mss = Newnames0.objects.filter(zid=id0, jid=id1)
         n = len(mss)
         return render(request, 'xhlyuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1, 'mss': mss, 'n': n})
+
+def  xxtest23(request):
+    if request.method == 'GET':
+        teststudent0 = request.session.get("teststudent0")
+        if not teststudent0:
+            return redirect('../../testlogin0')
+        timess = int(time.time())
+
+        try:
+            count =get_object_or_404(Yuxitestcount0,zid = 1000,jid = 1000,name = teststudent0)
+
+            nnn = count.count+1
+            Yuxitestcount0.objects.filter(zid=1000, jid=1000, name=teststudent0).delete()
+            Yuxitestcount0.addyxcount0(1000, 1000,teststudent0,nnn,timess)
+        except:
+            Yuxitestcount0.addyxcount0(1000, 1000,teststudent0,1,timess)
+
+
+        QS=[]
+        a1=np.random.randint(820,size=40)
+        a2=np.random.randint(1701,size=40)
+        a3=np.random.randint(45,size=10)
+        a4=np.random.randint(116,size=10)
+        for i in range(40):
+            ls=Xxqs2.objects.filter(pk=a1[i])
+            QS.append(ls)
+        for i in range(40):
+            ls=Xxqs22.objects.filter(pk=a2[i])
+            QS.append(ls)
+        for i in range(10):
+            ls=Xxqs23.objects.filter(pk=a3[i])
+            QS.append(ls)
+        for i in range(10):
+            ls=Xxqs24.objects.filter(pk=a4[i])
+            QS.append(ls)
+        random.shuffle(QS)
+        answer = []
+        ornot = []
+        tm = []
+        for g in range(100):
+            gg=QS[g]
+
+            if gg[0].yunsuan == 1:
+                html = '''<div style="font-size:100px">%s+%s</div>''' % (gg[0].num0, gg[0].num1)
+                tm.append(html)
+                ornot.append(gg[0].ornot)
+                answer.append(gg[0].answer)
+            elif gg[0].yunsuan == 2:
+                html = '''<div style="font-size:100px">%s-%s</div>''' % (gg[0].num0, gg[0].num1)
+                tm.append(html)
+                ornot.append(gg[0].ornot)
+                answer.append(gg[0].answer)
+            elif gg[0].yunsuan == 3:
+                html = '''<div style="font-size:100px">%s &times %s</div>''' % (gg[0].num0, gg[0].num1)
+                tm.append(html)
+                ornot.append(gg[0].ornot)
+                answer.append(gg[0].answer)
+            else:
+                html = '''<div style="font-size:100px">%s &divide %s</div>''' % (gg[0].num0, gg[0].num1)
+                tm.append(html)
+                ornot.append(gg[0].ornot)
+                answer.append(gg[0].answer)
+
+        ts = len(answer)
+        wklm = Wktestlimit0.objects.filter(zid=1000, jid=1000)
+        limit = []
+        for j in wklm:
+            limit.append(j.limit)
+            limit.append(j.chances)
+        return render(request, 'xxtest.html',
+                      {'zid':1000,'jid':1000,'answer': json.dumps(answer), 'tm': json.dumps(tm), 'ts': ts, 'yzts': 0, 'correctamount': 0,
+                       'ornot': json.dumps(ornot),'limit':json.dumps(limit)})
+
+
+
+    if request.method == 'POST':
+        teststudent0 = request.session.get("teststudent0")
+        if not teststudent0:
+            return redirect('../testlogin0')
+        counts =get_object_or_404(Yuxitestcount0,zid = 1000,jid = 1000,name = teststudent0)
+        nnnn = counts.count
+        time0 = counts.seconds
+        time1 = int(time.time())
+        a = datetime.datetime.utcfromtimestamp(time0)
+        b = datetime.datetime.utcfromtimestamp(time1)
+        costtime =(b-a).seconds
+        ss=Rankxhl.objects.filter(name=teststudent0)
+        if ss:
+            time0=get_object_or_404(Rankxhl,name=teststudent0)
+            if costtime<time0.costtime:
+                Rankxhl.objects.filter(name=teststudent0).delete()
+                Rankxhl.addrankxhl(teststudent0,costtime)
+            else:
+                pass
+        else:
+            Rankxhl.addrankxhl(teststudent0, costtime)
+        #
+        #
+        #
+        # try:
+        #     rankms=get_object_or_404(Rankxhl,name=teststudent0)
+        #     if costtime<rankms.costime:
+        #         Rankxhl.object.filter(name=teststudent0).delete()
+        #         Rankxhl.addrankxhl(teststudent0,costtime)
+        #     else:
+        #         pass
+        # except:
+        #     Rankxhl.addrankxhl(teststudent0, costtime)
+        gg=Lasttime.objects.filter(name=teststudent0)
+        if gg:
+            Lasttime.objects.filter(name=teststudent0).delete()
+            Lasttime.addtime(teststudent0, costtime)
+        else:
+            Lasttime.addtime(teststudent0, costtime)
+
+        ms0=costtime
+        ms1=get_object_or_404(Rankxhl,name=teststudent0).costtime
+        ms=Rankxhl.objects.all()
+        return render(request, 'rankxhl.html',{'name':teststudent0,'ms0':ms0,'ms1':ms1,'ms':ms})
+def rankmss(request):
+    teststudent0 = request.session.get("teststudent0")
+    if not teststudent0:
+        return redirect('../../testlogin0')
+    else:
+        pass
+    msag = Rankxhl.objects.all()
+    summ = len(msag)
+    rank = {}
+
+    for a in range(summ):
+        rank[msag[a].name] = msag[a].costtime
+
+    rank = sorted(rank.items(), key=lambda e: e[1], reverse=True)
+
+    scores = []
+    names = []
+    for i in rank:
+        names.append(i[0])
+        scores.append(i[1])
+
+
+    plt.switch_backend('agg')
+    plt.figure(figsize=(4, 13))
+
+    matplotlib.rcParams['font.sans-serif'] = ["SimHei"]
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.barh(range(len(scores)), scores, height=0.7, color='r', alpha=0.8)
+    plt.yticks(range(len(scores)), names)
+    plt.xlabel("用时(秒)")
+    plt.title("100题速算排行榜")
+    for x, y in enumerate(scores):
+        plt.text(y + 0.2, x - 0.1, '%s' % y)
+    sio = BytesIO()
+    plt.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd = html.format(data)
+    try:
+        ms0 = get_object_or_404(Lasttime,name=teststudent0).costtime
+        ms1 = get_object_or_404(Rankxhl,name=teststudent0).costtime
+        ms = Rankxhl.objects.all()
+        return render(request, 'rankxhl.html', {'imd':imd,'ms0': ms0, 'ms1': ms1, 'ms': ms})
+
+    except:
+        ms0='-无数据-'
+        ms1='-无数据-'
+        ms = Rankxhl.objects.all()
+        return render(request, 'rankxhl.html', {'imd':imd,'name':teststudent0,'ms0': ms0, 'ms1': ms1, 'ms': ms})
+
+
+
+
 
 def addqs2(request,yunsuan):
     teststudent0 = request.session.get("teststudent0")

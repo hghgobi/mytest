@@ -1,0 +1,61 @@
+{% extends 'xhlbase2.html' %}
+{% block content %}
+<div class="nav">
+ <ul class="nav nav-pills nav-stacked">
+     <li> <a href="../../ranktest" class="btn btn-warning" ><font size="5" color="black">开始挑战</font></a></li>
+    </ul>
+
+</div>
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">100题速算排行榜</font></a></div>
+                    <div class="panel-body">
+                        <div>
+                            <a><font size="2">{{name}}</font></a>
+                            <br>
+                            <a><font size="4">最好成绩：{{ms1}}秒</font></a>
+                            <br>
+                            <a><font size="4">上次成绩：{{ms0}}秒</font></a>
+                        </div>
+        <table id="num" class="table table-bordered" >
+
+         <tr>
+             <td style="vertical-align: middle;" ><font size="4">排行</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">姓名</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">用时（秒）</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">时间</font></td>
+
+        </tr>
+        {%for i in ms %}
+            <tr id="hys" >
+                <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.costtime}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
+            </tr>
+
+
+        {% empty %}
+        <p><font size="5" color="red">暂无相关信息</font></p>
+        {% endfor %}
+
+    </table> 
+     </div>
+                </div>
+            </div>    
+            </div>
+     {{imd | safe}}
+<script language="javascript" type="text/javascript">
+	    window.onload = function(){
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(i+1) ;
+	    }
+
+    }
+    </script>
+{% endblock %}
+

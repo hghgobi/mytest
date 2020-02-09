@@ -259,6 +259,7 @@ div{text-align:center }
 <tr >
 
 <td class="numberkey" >0</td>
+<td class="numberkey" onclick="resultscalcaulte()" >清空</td>
 </tr>
  </table>
     <a id="time"></a>
@@ -281,6 +282,7 @@ var form = document.getElementById('checkbox');
 var yunsuan1=document.getElementById("yunsuan1");
 var limit = {{limit|safe}};
 var not = "通过失败，请重新测试！";
+
 function Deletms(){document.getElementById("yunsuan1").innerText="";}
 function Message(msss){ document.getElementById("yunsuan1").innerText=msss;
 
@@ -325,6 +327,12 @@ function Wrong(){ yunsuan1.innerHTML = "";
             return;}
 
 function calculater(){
+ if (event.srcElement.innerText=="清空") {
+touch=0;
+results="";
+return;
+}
+else{
     touch+=1;
     results+=event.srcElement.innerText;
     $("#display").val(results);
@@ -361,9 +369,12 @@ function calculater(){
         return;
         }
 
-
+}
 }
 
+function resultscalcaulte(){
+ $("#display").val(""); return;
+}
 </script>
 <!-- <script>-->
 <!-- 	$(document).ready(function(){-->

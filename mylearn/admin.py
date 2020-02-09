@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 
 # Register your models here.
 @admin.register(Classes)
@@ -163,3 +163,11 @@ class XxdataAdmin(admin.ModelAdmin):
 @admin.register(XHL)
 class XHLAdmin(admin.ModelAdmin):
 	list_display = ('pk','classs','name','phone','addtime')
+
+@admin.register(Rankxhl)
+class RankxhlAdmin(admin.ModelAdmin):
+	list_display = ('pk','name','costtime','time')
+
+@admin.register(Lasttime)
+class LasttimeAdmin(admin.ModelAdmin):
+	list_display = ('pk','name','costtime','time')

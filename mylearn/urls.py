@@ -81,6 +81,9 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('getpic/', views.getpic),
                path('Xx/', views.Xxdatasearch),
                path('addqs/<int:yunsuan>', views.addqs2),
+               path('ranktest/', views.xxtest23),
+               path('ranktestresults/', views.rankmss),
+               path('addqs/<int:yunsuan>', views.addqs2),
 
 
 
