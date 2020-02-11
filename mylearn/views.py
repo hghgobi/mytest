@@ -1277,7 +1277,7 @@ def yuxiname0(request,id0,id1):
         plt.plot(dates, scores, c='red')
         plt.title(teststudent + ",100题速算情况")
         fig.autofmt_xdate(rotation=85)
-        plt.ylim(0, 120)
+        plt.ylim(250, 1200)
 
         plt.ylabel("用时（秒）")
         plt.tick_params(axis='both', which='major', labelsize=8)
