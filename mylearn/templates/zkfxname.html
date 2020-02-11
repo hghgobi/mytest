@@ -30,6 +30,17 @@
         </table>
     </form>
 </body>
+<a><font size="6">作业重做名单：</font></a><p></p>
+{%for g in msss%}
+     <a>{{g.name}},</a>
+{% endfor %}
+
+<p></p>
+<a><font size="6">作业未做名单：</font></a><p></p>
+     <a>{{namwz}}</a>
+<p></p>
+
+<p></p>
 <a><font size="6">未预习或者预习测试没通过的还有以下{{n}}位同学：</font></a><p></p>
 {%for j in mss%}
      <a>{{j.name}},</a>

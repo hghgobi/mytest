@@ -3532,5 +3532,17 @@ def zkfxname(request,id0,id1):
     if request.method=='POST':
         mss = Newnames.objects.filter(zid=id0, jid=id1)
         n = len(mss)
-        return render(request, 'zkfxname.html', {'mss': mss, 'n':n})
+        msss=Yuxinamezk.objects.filter(fs = "重做!")
+        namwz=[]
+        nameid = [20,16,32,27,9,19,22,5,10,17,15,12,14,31,13,18,24,25,11,8,7,56,60,54,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,55,62,23,75,57,72,26,69,73,29]
+
+        for nnn in range(nameid):
+            names = Students.objects.filter(pk=nameid[nnn])
+            name = names[0]
+            try:
+                get_object_or_404(Yuxinamezk,name=name)
+            except:
+                namwz.append(name)
+
+        return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz})
 
