@@ -1230,8 +1230,9 @@ def zkfxnametg(request,id0,id1):
     teststudent = request.session.get("teststudent")
     if teststudent:
         try:
-            get_object_or_404(Yuxinamezk, zid=id0, jid=id1, name=teststudent)
-            mss = teststudent + ",恭喜你！已完成本次作业！"
+            ggg=get_object_or_404(Yuxinamezk, zid=id0, jid=id1, name=teststudent)
+
+            mss = teststudent + ',本次作业，'+ggg.ornot+ggg.fs+'!'
         except:
             mss = teststudent + ",你尚未完成本次作业！请抓紧时间完成！"
     else:
@@ -3412,22 +3413,6 @@ def zkfx(request,id0,id1):
         else:
             ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
             return render(request, 'yuxi.html', {'ms': ms})
-        if dd>=int(0.9*float(ts)):
-            fs="优秀"
-        elif dd>=int(0.8*float(ts)):
-            fs="良好"
-        elif dd>=int(0.6*float(ts)):
-            fs="及格"
-        else:
-            fs="不及格"
-        counts = get_object_or_404(Yuxitestcount, zid=id0, jid=id1, name=teststudent)
-        time0 = counts.seconds
-        time1 = int(time.time())
-        a = datetime.datetime.utcfromtimestamp(time0)
-        b = datetime.datetime.utcfromtimestamp(time1)
-        costtime =(b-a).seconds
-        ornot = "通过"
-        Yuxinamezk.addyxname(id0, id1,teststudent,ornot,fs,costtime)
 
         for fff in range(len(wrongs)):
             if wrongs[fff]:
@@ -3436,76 +3421,109 @@ def zkfx(request,id0,id1):
                 jjs.save()
             else:
                 pass
-        try:
-            Newnames.objects.filter(zid=id0,jid=id1,name=teststudent).delete()
-        except:
-            pass
-        ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-        # mss = Newnames.objects.filter(zid=id0, jid=id1)
-        # n = len(mss)
-        return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+        counts = get_object_or_404(Yuxitestcount, zid=id0, jid=id1, name=teststudent)
+        time0 = counts.seconds
+        time1 = int(time.time())
+        a = datetime.datetime.utcfromtimestamp(time0)
+        b = datetime.datetime.utcfromtimestamp(time1)
+        costtime = (b - a).seconds
+
+        if dd>=int(0.9*float(ts)):
+            try:
+                Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+            except:
+                pass
+            fs="优秀"
+
+            ornot = "通过，"
+            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+
+            try:
+                Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+            except:
+                pass
+            ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+
+            return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+
+        elif dd>=int(0.8*float(ts)):
+            try:
+                Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+            except:
+                pass
+            fs="良好"
+
+            ornot = "通过，"
+            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+
+            try:
+                Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+            except:
+                pass
+            ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+
+            return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+
+        elif dd>=int(0.6*float(ts)):
+
+            if costtime>=600:
+                ornot = "通过，"
+                fs="及格"
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+
+                try:
+                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+
+                return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+            else:
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                ornot="不通过，"
+                fs="重做!"
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+                ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
 
 
+                return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+        else:
+            try:
+                Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+            except:
+                pass
+            if costtime>700:
+                ornot = "通过，"
+                fs="及格"
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+
+                try:
+                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+
+                return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+            else:
+                fs = "重做!"
+                ornot = "不通过，"
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+                ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+
+                return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
 
-
-
-
-
-
-
-
-        #     qsids = []
-        #     qs = Wkqs.objects.filter(zid=id0 ,jid = id1)
-        #     for e in qs:
-        #         qsids.append(e.pk)
-        #     wklm = Wktestlimit.objects.filter(zid=id0, jid=id1)
-        #     limit = []
-        #     shuffle(qsids)
-        #
-        #     for j in wklm:
-        #         limit.append(j.limit)
-        #         limit.append(j.chances)
-        #     qstext = []
-        #     qsanswer1 = []
-        #     qsid = []
-        #     categorys = []
-        #     qsamount = len(qs)
-        #     zid=id0
-        #     jid=id1
-        #     testrm=[]
-        #     testrms = Testrm.objects.filter(zid=id0, jid=id1)
-        #     for f in testrms:
-        #         testrm.append(f.testrm.url)
-        #     for i in range(len(qsids)):
-        #         id00 = qsids[i]
-        #         qss = get_object_or_404(Wkqs,pk=id00)
-        #         qstext.append(qss.questiontext.url)
-        #         qsanswer1.append(hashlib.md5(qss.questionanswer.encode()).hexdigest())
-        #         qsid.append(qss.pk)
-        #         categorys.append(qss.category)
-        #     # if categorys[0]==3:
-        #     return render(request,'showqs1.html',{'categorys':json.dumps(categorys),'testrm':json.dumps(testrm),'qstext':json.dumps(qstext),'qsanswer1':json.dumps(qsanswer1),'qsid':qsid,'qsamount':json.dumps(qsamount),'zid':zid,'jid':jid,'limit':json.dumps(limit)})
-        #     # else:
-        #     #     return render(request, 'showqs4.html',
-        #     #                   {'testrm':json.dumps(testrm),'qstext': json.dumps(qstext), 'qsanswer1': json.dumps(qsanswer1),
-        #     #                    'qsanswer2': json.dumps(qsanswer2), 'qsid': qsid, 'qsamount': json.dumps(qsamount),
-        #     #                    'zid': zid, 'jid': jid, 'limit': json.dumps(limit)})
-        # else:
-        #     ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
-        #     return render(request, 'yuxi.html', {'ms': ms})
-
-
-
-# def Uploadhw(request):
-#     if request.method=='GET':
-#         print("请求页面")
-#         return render(request, "uploadhw.html")
-#     if request.method == 'POST':
-#         print("上传中")
-#         a=request.POST.get('data')
-#         print(a)
-#         return HttpResponse('GET receive success, name is ')
 def zkfxname(request,id0,id1):
     id0 = id0
     id1 = id1
