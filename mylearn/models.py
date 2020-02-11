@@ -364,6 +364,24 @@ class Yuxiname0(models.Model):
 		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot,count=count,costtime=costtime)
 		addms.save()
 
+class Yuxinamezk(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	name = models.CharField(max_length=200)
+	ornot = models.CharField(max_length=200)
+	time = models.DateTimeField(auto_now=True)
+	fs = models.CharField(max_length=200)
+	costtime = models.IntegerField(default=0)
+
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addyxname(cls,zid,jid,name,ornot,fs,costtime):
+
+		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot,fs=fs,costtime=costtime)
+		addms.save()
+
 
 class Yuxitestcount(models.Model):
 	zid = models.IntegerField()
@@ -560,9 +578,20 @@ class Lasttime(models.Model):
 		addms = cls(name=name,costtime=costtime)
 		addms.save()
 
+class Zkfx(models.Model):
+	id2 = models.IntegerField()
+	id3 = models.IntegerField()
+	questiontext = models.ImageField(upload_to='questions')
+	questionanswer = models.CharField(max_length=50)
+	wrongcount = models.IntegerField(default=0)
         	
-        	
-
+class Zktishu(models.Model):
+	id0 = models.IntegerField()
+	id1 = models.IntegerField()
+	id2 = models.IntegerField()
+	id3 = models.IntegerField()
+	ts = models.IntegerField()
+	zs = models.IntegerField(default=0)
             	
             	
 

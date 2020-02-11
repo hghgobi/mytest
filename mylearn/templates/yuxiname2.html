@@ -7,16 +7,15 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><a><font size="6">第{{ id0 }}章-第{{id1}}节 通过测试名单</font></a></div>
                     <div class="panel-body">
-
+<p><font size="5" color="red">{{mss}}</font></p>
                       <table id="num" class="table table-bordered" >
 
          <tr>
              <td style="vertical-align: middle;" ><font size="4">序号</font></td>
             <td class="warning" style="vertical-align: middle;"><font size="4">姓名</font></td>
-            <td class="warning" style="vertical-align: middle;"><font size="4">状态</font></td>
-            <td class="warning" style="vertical-align: middle;"><font size="4">时间</font></td>
-             <td class="warning" style="vertical-align: middle;"><font size="4">用时（秒）</font></td>
-             <td class="warning" style="vertical-align: middle;"><font size="4">第几次通过</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">完成情况</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">用时</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">时间</font></td>
 
             
             
@@ -25,9 +24,9 @@
             <tr id="hys" >
                 <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
                 <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}</font></td>
-                <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.ornot}}</font></td>
-                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
+                <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.fs}}</font></td>
                 <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.costtime}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
                 <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.count}}</font></td>
 
             </tr>
@@ -44,7 +43,7 @@
             </div> 
 <script language="javascript" type="text/javascript">
 	    window.onload = function(){
-	    alert("恭喜你！通过本节测试！！！！！");
+
 		    var oTable = document.getElementById("num");
 		    for(var i=0;i<oTable.rows.length;i++){
 		    n=oTable.rows.length;
@@ -53,12 +52,12 @@
 
     }
     </script>
-<a><font size="6">未预习或者预习测试没通过的还有以下{{n}}位同学：</font></a><p></p>
-{%for j in mss%}
-     <a>{{j.name}},</a>
-{% empty %}
-<p><font size="5" color="red">已全部通过！</font></p>
-{% endfor %}
+<!--<a><font size="6">未预习或者预习测试没通过的还有以下{{n}}位同学：</font></a><p></p>-->
+<!--{%for j in mss%}-->
+<!--     <a>{{j.name}},</a>-->
+<!--{% empty %}-->
+<!--<p><font size="5" color="red">已全部通过！</font></p>-->
+<!--{% endfor %}-->
 
 
 {% endblock %}

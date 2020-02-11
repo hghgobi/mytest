@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><a><font size="6">第{{ id0 }}章-第{{id1}}节 通过测试名单</font></a></div>
                     <div class="panel-body">
-
+<p><font size="5" color="red">{{mss}}</font></p>
                       <table id="num" class="table table-bordered" >
 
          <tr>
@@ -51,12 +51,12 @@
 	    }
     }
     </script>
-<a><font size="6">测试还没通过的还有以下{{n}}位同学：</font></a><p></p>
-{%for j in mss%}
-     <a>{{j.name}},</a>
-{% empty %}
-<p><font size="5" color="red">已全部通过！</font></p>
-{% endfor %}
+<!--<a><font size="6">测试还没通过的还有以下{{n}}位同学：</font></a><p></p>-->
+<!--{%for j in mss%}-->
+<!--     <a>{{j.name}},</a>-->
+<!--{% empty %}-->
+<!--<p><font size="5" color="red">已全部通过！</font></p>-->
+<!--{% endfor %}-->
 
 
 {% endblock %}

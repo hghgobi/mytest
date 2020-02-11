@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -323,7 +323,7 @@ def Daohang(request):
 def Onlinetestlogin(request):
     teststudent=request.session.get("teststudent")
     if  teststudent:
-        return redirect('../indexs')
+        return redirect('../../')
 
 
     if request.method == "POST":
@@ -394,43 +394,49 @@ def Searchstudent_id(request):
 
 
 def Indexs(request):
-    teststudent=request.session.get("teststudent")
+    teststudent = request.session.get("teststudent")
+    if teststudent:
+        ms=teststudent+"，欢迎！"
+    else:
+        ms=''
+    return render(request, 'base3.html',{'ms':ms})
+    # teststudent=request.session.get("teststudent")
 
-    if not teststudent:
-        return redirect('../testlogin')
-
-    loginrecord=get_object_or_404(Loginrecord,loginuser=teststudent)
-
-    loginrecord.logincount =int(loginrecord.logincount)+1
-    loginrecord.save()
-    try:
-        n='未读'
-        m=get_object_or_404(Leavems,name=teststudent,ornot=n)
-        m.ornot = '已读'
-        m.save()
-        return redirect('../teacherms')
-    # notes_all_list = Classnotes.objects.all()
-    # paginator = Paginator(notes_all_list,6)
-    # page_num = request.GET.get('page',1)
-    # page_of_notes = paginator.get_page(page_num)
-    # currentr_page_num = page_of_notes.number
-    # page_range = list(range(max(currentr_page_num - 2,1),currentr_page_num)) + \
-    #              list(range(currentr_page_num,min(currentr_page_num + 2,paginator.num_pages)+1))
-    except:
-        return render(request, 'base3.html')
+    # if not teststudent:
+    #     return redirect('../testlogin')
+    #
+    # loginrecord=get_object_or_404(Loginrecord,loginuser=teststudent)
+    #
+    # loginrecord.logincount =int(loginrecord.logincount)+1
+    # loginrecord.save()
+    # try:
+    #     n='未读'
+    #     m=get_object_or_404(Leavems,name=teststudent,ornot=n)
+    #     m.ornot = '已读'
+    #     m.save()
+    #     return redirect('../teacherms')
+    # # notes_all_list = Classnotes.objects.all()
+    # # paginator = Paginator(notes_all_list,6)
+    # # page_num = request.GET.get('page',1)
+    # # page_of_notes = paginator.get_page(page_num)
+    # # currentr_page_num = page_of_notes.number
+    # # page_range = list(range(max(currentr_page_num - 2,1),currentr_page_num)) + \
+    # #              list(range(currentr_page_num,min(currentr_page_num + 2,paginator.num_pages)+1))
+    # except:
+    #     return render(request, 'base3.html')
 
 def Indexs0(request):
-    teststudent=request.session.get("teststudent0")
-
-    if not teststudent:
-        return redirect('../testlogin0')
+    # teststudent=request.session.get("teststudent0")
+    #
+    # if not teststudent:
+    #     return redirect('../testlogin0')
 
     return render(request, 'xhlbase3.html')
 
 def Classnewslist(request):
-    teststudent=request.session.get("teststudent")
-    if not teststudent:
-        return redirect('../testlogin')
+    # teststudent=request.session.get("teststudent")
+    # if not teststudent:
+    #     return redirect('../testlogin')
 
     notes_all_list = Classnotes.objects.all()
     paginator = Paginator(notes_all_list,6)
@@ -442,9 +448,9 @@ def Classnewslist(request):
 
     return render(request,'base.html',{'page_of_notes':page_of_notes,'page_range':page_range})
 def Classnewslist0(request):
-    teststudent0=request.session.get("teststudent0")
-    if not teststudent0:
-        return redirect('../testlogin0')
+    # teststudent0=request.session.get("teststudent0")
+    # if not teststudent0:
+    #     return redirect('../testlogin0')
 
     notes_all_list = Classnotes0.objects.all()
     paginator = Paginator(notes_all_list,6)
@@ -484,31 +490,31 @@ def Learningnews(request):
     exammessages = Exams.objects.filter(examstudent__studentname=teststudent)
     return render(request,'learningnews.html',{'homeworkmessages':homeworkmessages,'exammessages':exammessages})
 def Classnotesdetail(request,notename_pk):
-    teststudent=request.session.get("teststudent")
+    # teststudent=request.session.get("teststudent")
     notename_pk=notename_pk
-    user=teststudent
-    if not teststudent:
-        return redirect('../testlogin')
+    # user=teststudent
+    # if not teststudent:
+    #     return redirect('../testlogin')
     classnotesdetail=Classnotes.objects.filter(id=notename_pk)
     classnotes=get_object_or_404(Classnotes,id=notename_pk)
    
     classnotes.readed_num += 1
     classnotes.save()
 
-    notes_content_type = ContentType.objects.get_for_model(classnotes)
-    comments = Comment.objects.filter(content_type=notes_content_type, object_id=notename_pk)
+    # notes_content_type = ContentType.objects.get_for_model(classnotes)
+    # comments = Comment.objects.filter(content_type=notes_content_type, object_id=notename_pk)
   
-    response = render(request,'classnotes.html',{'classnotesdetail':classnotesdetail,'comments':comments,'user':user,'notename_pk':notename_pk})
+    response = render(request,'classnotes.html',{'classnotesdetail':classnotesdetail,'notename_pk':notename_pk})
    
     return response
-
+# 'comments':comments,'user':user,
 
 def Classnotesdetail0(request, notename_pk):
-    teststudent0 = request.session.get("teststudent0")
+    # teststudent0 = request.session.get("teststudent0")
     notename_pk = notename_pk
-    user = teststudent0
-    if not teststudent0:
-        return redirect('../testlogin0')
+    # user = teststudent0
+    # if not teststudent0:
+    #     return redirect('../testlogin0')
     classnotesdetail = Classnotes0.objects.filter(id=notename_pk)
     classnotes = get_object_or_404(Classnotes0, id=notename_pk)
 
@@ -516,7 +522,7 @@ def Classnotesdetail0(request, notename_pk):
     classnotes.save()
 
     response = render(request, 'xhlclassnotes.html',
-                      {'classnotesdetail': classnotesdetail,  'user': user,
+                      {'classnotesdetail': classnotesdetail,
                        'notename_pk': notename_pk})
 
     return response
@@ -690,8 +696,8 @@ def Showwkqs33(request,id0,id1):
 
         if yzts==ts:
             if correctamount>=ts-1:
-                ornot = "已通过本节预习测试"
-                ms = "恭喜你通过预习测试！请前往预习别的内容！"
+                ornot = "已通过本节测试"
+                ms = "恭喜你通过预习测试！"
                 counts =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
                 nnnn = counts.count
 
@@ -702,7 +708,7 @@ def Showwkqs33(request,id0,id1):
                     pass
 
             else:
-                ms = "预习测试不通过，请再看一遍微课，然后再次测试，祝你成功！"
+                ms = "测试不通过，请再次测试，祝你成功！"
 
 
             return render(request,'yuxi.html',{'ms':ms})
@@ -1058,9 +1064,9 @@ def Showwkqs3(request,id0,id1):
         except:
             pass
         ms = Yuxiname.objects.filter(zid=id0, jid=id1)
-        mss = Newnames.objects.filter(zid=id0, jid=id1)
-        n = len(mss)
-        return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1, 'mss': mss, 'n': n})
+        # mss = Newnames.objects.filter(zid=id0, jid=id1)
+        # n = len(mss)
+        return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
 
 def  Jfc(request,id0,id1):
@@ -1152,9 +1158,9 @@ def  Jfc(request,id0,id1):
         except:
             pass
         ms = Yuxiname.objects.filter(zid=id0, jid=id1)
-        mss = Newnames.objects.filter(zid=id0, jid=id1)
-        n = len(mss)
-        return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1, 'mss': mss, 'n': n})
+        # mss = Newnames.objects.filter(zid=id0, jid=id1)
+        # n = len(mss)
+        return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
 
 
@@ -1216,26 +1222,52 @@ def yuxiname(request,id0,id1):
     id0 = id0
     id1 = id1
     ms = Yuxiname.objects.filter(zid=id0,jid=id1)
-    mss = Newnames.objects.filter(zid=id0,jid=id1)
-    n = len(mss)
-    return render(request,'yuxiname.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss,'n':n})
+    # mss = Newnames.objects.filter(zid=id0,jid=id1)
+    # n = len(mss)
+    return render(request,'yuxiname.html',{'ms':ms,'id0':id0,'id1':id1})
+
+def zkfxnametg(request,id0,id1):
+    teststudent = request.session.get("teststudent")
+    if teststudent:
+        try:
+            get_object_or_404(Yuxinamezk, zid=id0, jid=id1, name=teststudent)
+            mss = teststudent + ",恭喜你！已完成本次作业！"
+        except:
+            mss = teststudent + ",你尚未完成本次作业！请抓紧时间完成！"
+    else:
+        mss=''
+    id0 = id0
+    id1 = id1
+    ms = Yuxinamezk.objects.filter(zid=id0,jid=id1)
+    # mss = Newnames.objects.filter(zid=id0,jid=id1)
+    # n = len(mss)
+    return render(request,'yuxiname2.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss})
 
 def yuxiname0(request,id0,id1):
+    teststudent = request.session.get("teststudent0")
+    if teststudent:
+        try:
+            get_object_or_404(Yuxiname0, zid=id0, jid=id1, name=teststudent)
+            mss = teststudent + ",恭喜你！已完成本次作业！"
+        except:
+            mss = teststudent + ",你尚未完成本次作业！请抓紧时间完成！"
+    else:
+        mss=''
     id0 = id0
     id1 = id1
     ms = Yuxiname0.objects.filter(zid=id0,jid=id1)
-    mss = Newnames0.objects.filter(zid=id0,jid=id1)
-    n = len(mss)
-    return render(request,'xhlyuxiname.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss,'n':n})
+    # mss = Newnames0.objects.filter(zid=id0,jid=id1)
+    # n = len(mss)
+    return render(request,'xhlyuxiname.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss})
 def Zuji(request):
     ms = Loginrecord.objects.all()
     return render(request,'zuji.html',{'ms':ms})
 def Addnames(request,id0,id1):
     zid = id0
     jid = id1
-    nameid = [20,16,32,27,9,19,22,5,10,17,15,12,14,31,13,18,24,25,11,8,7,56,60,54,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,55,62,23,75,57,72,26,69,73,29]
-    for i in range(len(nameid)):
-        id = nameid[i]
+    # nameid = [20,16,32,27,9,19,22,5,10,17,15,12,14,31,13,18,24,25,11,8,7,56,60,54,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,55,62,23,75,57,72,26,69,73,29]
+    for i in range(200):
+        id = i
         try:
 
             names =Students.objects.filter(pk = id)
@@ -3264,5 +3296,224 @@ def Addxhl0(request):
     return JsonResponse(data)
 
 
+def zkfx(request,id0,id1):
+    id0 = id0
+    id1 = id1
+    if request.method == 'GET':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../../testlogin')
+        timess = int(time.time())
+        if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
+            try:
+                count =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
 
+                nnn = count.count+1
+                Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                Yuxitestcount.addyxcount(id0, id1,teststudent,nnn,timess)
+            except:
+                Yuxitestcount.addyxcount(id0, id1,teststudent,1,timess)
+
+            shuxing=Zktishu.objects.filter(id0=id0,id1=id1)
+            id2=shuxing[0].id2
+            id3=shuxing[0].id3
+            ts = shuxing[0].ts
+            qstext = []
+            qsanswer = []
+            qsid = []
+            if id2==0  and id3==0:
+                ts2=0
+                tss=Zkfx.objects.all()
+                for e in tss:
+                    ts2=ts2+1
+                    print(ts2)
+                if ts>ts2:
+                    ts=ts2
+                else:
+                    pass
+                a1=np.random.randint(ts2,size=ts)
+                for i in range(ts):
+                    qs=get_object_or_404(Zkfx,pk=a1[i])
+                    qstext.append(qs.questiontext.url)
+                    qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
+                    qsid.append(a1[i])
+                return render(request, 'showqszk.html',                              {
+                               'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
+                               'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
+            elif id3==0:
+                ts2=0
+                a2=[]
+                tss=Zkfx.objects.filter(id2=id2)
+                for e in tss:
+                    a2.append(e.pk)
+                    ts2=ts2+1
+                if ts>ts2:
+                    ts=ts2
+                else:
+                    pass
+                shuffle(a2)
+                a3=a2[:ts]
+                for jj in range(len(a3)):
+                    qs = get_object_or_404(Zkfx, pk=a3[i])
+                    qstext.append(qs.questiontext.url)
+                    qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
+                    qsid.append(a3[i])
+                return render(request, 'showqszk.html', {
+                    'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
+                    'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
+            elif id2==0:
+                ts3=0
+                a3=[]
+                tss=Zkfx.objects.filter(id3=id3)
+                for e in tss:
+                    a3.append(e.pk)
+                    ts3=ts3+1
+                if ts>ts3:
+                    ts=ts3
+                else:
+                    pass
+                shuffle(a3)
+                a4=a3[:ts]
+                for jj in range(len(a4)):
+                    qs = get_object_or_404(Zkfx, pk=a4[i])
+                    qstext.append(qs.questiontext.url)
+                    qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
+                    qsid.append(a4[i])
+                return render(request, 'showqszk.html', {
+                    'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
+                    'qsamount': json.dumps(ts)})
+            else:
+                return HttpResponse("请求失败！")
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'yuxi.html', {'ms': ms})
+
+    # if request.method=="POST":
+
+    if request.method == 'POST':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../testlogin')
+
+        # costtime = request.POST.get('time')
+        id0 = request.POST.get('zid')
+        id1 = request.POST.get('jid')
+        ts = request.POST.get('ts')
+        dd = request.POST.get('dd')
+        dd=int(dd)
+        wrong = request.POST.get('wrong')
+        wrongs=wrong.split(",")
+        print(wrongs)
+
+        if Newnames.objects.filter(zid=id0, jid=id1, name=teststudent):
+            pass
+        else:
+            ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+            return render(request, 'yuxi.html', {'ms': ms})
+        if dd>=int(0.9*float(ts)):
+            fs="优秀"
+        elif dd>=int(0.8*float(ts)):
+            fs="良好"
+        elif dd>=int(0.6*float(ts)):
+            fs="及格"
+        else:
+            fs="不及格"
+        counts = get_object_or_404(Yuxitestcount, zid=id0, jid=id1, name=teststudent)
+        time0 = counts.seconds
+        time1 = int(time.time())
+        a = datetime.datetime.utcfromtimestamp(time0)
+        b = datetime.datetime.utcfromtimestamp(time1)
+        costtime =(b-a).seconds
+        ornot = "通过"
+        Yuxinamezk.addyxname(id0, id1,teststudent,ornot,fs,costtime)
+
+        for fff in range(len(wrongs)):
+            if wrongs[fff]:
+                jjs = get_object_or_404(Zkfx, pk=wrongs[fff])
+                jjs.wrongcount = jjs.wrongcount + 1
+                jjs.save()
+            else:
+                pass
+        try:
+            Newnames.objects.filter(zid=id0,jid=id1,name=teststudent).delete()
+        except:
+            pass
+        ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+        # mss = Newnames.objects.filter(zid=id0, jid=id1)
+        # n = len(mss)
+        return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+
+
+
+
+
+
+
+
+
+
+
+        #     qsids = []
+        #     qs = Wkqs.objects.filter(zid=id0 ,jid = id1)
+        #     for e in qs:
+        #         qsids.append(e.pk)
+        #     wklm = Wktestlimit.objects.filter(zid=id0, jid=id1)
+        #     limit = []
+        #     shuffle(qsids)
+        #
+        #     for j in wklm:
+        #         limit.append(j.limit)
+        #         limit.append(j.chances)
+        #     qstext = []
+        #     qsanswer1 = []
+        #     qsid = []
+        #     categorys = []
+        #     qsamount = len(qs)
+        #     zid=id0
+        #     jid=id1
+        #     testrm=[]
+        #     testrms = Testrm.objects.filter(zid=id0, jid=id1)
+        #     for f in testrms:
+        #         testrm.append(f.testrm.url)
+        #     for i in range(len(qsids)):
+        #         id00 = qsids[i]
+        #         qss = get_object_or_404(Wkqs,pk=id00)
+        #         qstext.append(qss.questiontext.url)
+        #         qsanswer1.append(hashlib.md5(qss.questionanswer.encode()).hexdigest())
+        #         qsid.append(qss.pk)
+        #         categorys.append(qss.category)
+        #     # if categorys[0]==3:
+        #     return render(request,'showqs1.html',{'categorys':json.dumps(categorys),'testrm':json.dumps(testrm),'qstext':json.dumps(qstext),'qsanswer1':json.dumps(qsanswer1),'qsid':qsid,'qsamount':json.dumps(qsamount),'zid':zid,'jid':jid,'limit':json.dumps(limit)})
+        #     # else:
+        #     #     return render(request, 'showqs4.html',
+        #     #                   {'testrm':json.dumps(testrm),'qstext': json.dumps(qstext), 'qsanswer1': json.dumps(qsanswer1),
+        #     #                    'qsanswer2': json.dumps(qsanswer2), 'qsid': qsid, 'qsamount': json.dumps(qsamount),
+        #     #                    'zid': zid, 'jid': jid, 'limit': json.dumps(limit)})
+        # else:
+        #     ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
+        #     return render(request, 'yuxi.html', {'ms': ms})
+
+
+
+# def Uploadhw(request):
+#     if request.method=='GET':
+#         print("请求页面")
+#         return render(request, "uploadhw.html")
+#     if request.method == 'POST':
+#         print("上传中")
+#         a=request.POST.get('data')
+#         print(a)
+#         return HttpResponse('GET receive success, name is ')
+def zkfxname(request,id0,id1):
+    id0 = id0
+    id1 = id1
+    if request.method == 'GET':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../../testlogin')
+        return render(request,'zkfxname.html')
+    if request.method=='POST':
+        mss = Newnames.objects.filter(zid=id0, jid=id1)
+        n = len(mss)
+        return render(request, 'zkfxname.html', {'mss': mss, 'n':n})
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form id="addtxl"  action="" method="POST" style="overflow:hidden">
+        <table>
+            <tbody>
+
+                <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;id0:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="id0"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">id1:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="id1"></td>
+                </tr>
+
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="查询" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+</body>
+<a><font size="6">未预习或者预习测试没通过的还有以下{{n}}位同学：</font></a><p></p>
+{%for j in mss%}
+     <a>{{j.name}},</a>
+{% empty %}
+<p><font size="5" color="red">已全部通过！</font></p>
+{% endfor %}
+</html>
