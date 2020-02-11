@@ -2845,10 +2845,18 @@ def  xxtest22(request,id0,id1):
 
 
             QS=[]
-            a1=np.random.randint(820,size=40)
-            a2=np.random.randint(1701,size=40)
-            a3=np.random.randint(45,size=10)
-            a4=np.random.randint(116,size=10)
+            a10 = [e1 for e1 in range(1, 821)]
+            a20 = [e2 for e2 in range(1, 1702)]
+            a30 = [e3 for e3 in range(1, 46)]
+            a40 = [e4 for e4 in range(1, 117)]
+            shuffle(a10)
+            shuffle(a20)
+            shuffle(a30)
+            shuffle(a40)
+            a1 = a10[:40]
+            a2 = a20[:40]
+            a3 = a30[:10]
+            a4 = a40[:10]
             for i in range(40):
                 ls=Xxqs2.objects.filter(pk=a1[i])
                 QS.append(ls)
@@ -2954,10 +2962,18 @@ def  xxtest23(request):
 
 
         QS=[]
-        a1=np.random.randint(820,size=40)
-        a2=np.random.randint(1701,size=40)
-        a3=np.random.randint(45,size=10)
-        a4=np.random.randint(116,size=10)
+        a10=[e1 for e1 in range(1,821)]
+        a20=[e2 for e2 in range(1,1702)]
+        a30=[e3 for e3 in range(1,46)]
+        a40=[e4 for e4 in range(1,117)]
+        shuffle(a10)
+        shuffle(a20)
+        shuffle(a30)
+        shuffle(a40)
+        a1=a10[:40]
+        a2=a20[:40]
+        a3=a30[:10]
+        a4=a40[:10]
         for i in range(40):
             ls=Xxqs2.objects.filter(pk=a1[i])
             QS.append(ls)
@@ -2976,6 +2992,7 @@ def  xxtest23(request):
         tm = []
         for g in range(100):
             gg=QS[g]
+            print(gg)
 
             if gg[0].yunsuan == 1:
                 html = '''<div style="font-size:100px">%s+%s</div>''' % (gg[0].num0, gg[0].num1)
