@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -3354,10 +3354,10 @@ def zkfx(request,id0,id1):
                 shuffle(a2)
                 a3=a2[:ts]
                 for jj in range(len(a3)):
-                    qs = get_object_or_404(Zkfx, pk=a3[i])
+                    qs = get_object_or_404(Zkfx, pk=a3[jj])
                     qstext.append(qs.questiontext.url)
-                    qsanswer.append(qs.questionanswer)
-                    qsid.append(a3[i])
+                    qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
+                    qsid.append(a3[jj])
                 return render(request, 'showqszk.html', {
                     'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
                     'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
@@ -3375,10 +3375,10 @@ def zkfx(request,id0,id1):
                 shuffle(a3)
                 a4=a3[:ts]
                 for jj in range(len(a4)):
-                    qs = get_object_or_404(Zkfx, pk=a4[i])
+                    qs = get_object_or_404(Zkfx, pk=a4[jj])
                     qstext.append(qs.questiontext.url)
                     qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
-                    qsid.append(a4[i])
+                    qsid.append(a4[jj])
                 return render(request, 'showqszk.html', {
                     'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
                     'qsamount': json.dumps(ts)})
@@ -3424,6 +3424,9 @@ def zkfx(request,id0,id1):
         a = datetime.datetime.utcfromtimestamp(time0)
         b = datetime.datetime.utcfromtimestamp(time1)
         costtime = (b - a).seconds
+        timelimit=get_object_or_404(Timelimitzk,id0=id0,id1=id1)
+        limit1=timelimit.limit1
+        limit2=timelimit.limit2
 
         if dd>=int(0.9*float(ts)):
             try:
@@ -3463,14 +3466,15 @@ def zkfx(request,id0,id1):
 
         elif dd>=int(0.6*float(ts)):
 
-            if costtime>=600:
+            if costtime>=limit1:
                 ornot = "通过，"
                 fs="及格"
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+
                 try:
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
 
                 try:
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3496,14 +3500,14 @@ def zkfx(request,id0,id1):
                 Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
             except:
                 pass
-            if costtime>700:
+            if costtime>limit2:
                 ornot = "通过，"
                 fs="及格"
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
                 try:
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
 
                 try:
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3513,6 +3517,10 @@ def zkfx(request,id0,id1):
 
                 return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
             else:
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
                 fs = "重做!"
                 ornot = "不通过，"
                 Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
@@ -3521,26 +3529,29 @@ def zkfx(request,id0,id1):
                 return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
 
-def zkfxname(request,id0,id1):
-    id0 = id0
-    id1 = id1
+def zkfxname(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
+    if request.method=='GET':
+        return render(request,'zkfxname.html')
+    if request.method=='POST':
+        id0 = request.POST.get('id0')
+        id1 = request.POST.get('id1')
 
-    mss = Newnames.objects.filter(zid=id0, jid=id1)
-    n = len(mss)
-    msss=Yuxinamezk.objects.filter(fs = "重做!")
-    namwz=[]
-    nameid = [20,16,32,27,9,19,22,5,10,17,15,12,14,31,13,18,24,25,11,8,7,56,60,54,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,55,62,23,75,57,72,26,69,73,29]
+        mss = Newnames.objects.filter(zid=id0, jid=id1)
+        n = len(mss)
+        msss=Yuxinamezk.objects.filter(fs = "重做!")
+        namwz=[]
+        nameid = [20,16,32,27,9,19,22,5,10,17,15,12,14,31,13,18,24,25,11,8,7,56,60,54,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,55,62,23,75,57,72,26,69,73,29]
 
-    for nnn in range(len(nameid)):
-        names = Students.objects.filter(pk=nameid[nnn])
-        name = names[0]
-        try:
-            get_object_or_404(Yuxinamezk,name=name)
-        except:
-            namwz.append(name)
+        for nnn in range(len(nameid)):
+            names = Students.objects.filter(pk=nameid[nnn])
+            name = names[0]
+            try:
+                get_object_or_404(Yuxinamezk,name=name)
+            except:
+                namwz.append(name)
 
-    return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz})
+        return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz})
 

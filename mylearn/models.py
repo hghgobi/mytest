@@ -592,6 +592,13 @@ class Zktishu(models.Model):
 	id3 = models.IntegerField()
 	ts = models.IntegerField()
 	zs = models.IntegerField(default=0)
+
+class Timelimitzk(models.Model):
+	id0 = models.IntegerField()
+	id1 = models.IntegerField()
+	limit1 = models.IntegerField()
+	limit2 = models.IntegerField()
+	limit3 = models.IntegerField(default=0)
             	
             	
 
