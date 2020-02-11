@@ -1259,7 +1259,39 @@ def yuxiname0(request,id0,id1):
     ms = Yuxiname0.objects.filter(zid=id0,jid=id1)
     # mss = Newnames0.objects.filter(zid=id0,jid=id1)
     # n = len(mss)
-    return render(request,'xhlyuxiname.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss})
+    try:
+        exammessages = Yuxiname0.objects.filter(name=teststudent)
+        sunn = len(exammessages)
+        dates, scores = [], []
+        for i in range(sunn):
+            # date=datetime.strptime(exammessages[i].examtime,'"%Y.%m.%d"')
+            dates.append(exammessages[i].time)
+            scores.append(exammessages[i].costtime)
+        dates.reverse()
+        scores.reverse()
+        plt.switch_backend('agg')
+        fig = plt.figure(figsize=(4, 3))
+
+        matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+        matplotlib.rcParams['axes.unicode_minus'] = False
+        plt.plot(dates, scores, c='red')
+        plt.title(teststudent + ",100题速算情况")
+        fig.autofmt_xdate(rotation=85)
+        plt.ylim(0, 120)
+
+        plt.ylabel("用时（秒）")
+        plt.tick_params(axis='both', which='major', labelsize=8)
+        sio = BytesIO()
+
+        plt.savefig(sio, format='png')
+        data = base64.encodebytes(sio.getvalue()).decode()
+        html = ''' <img src="data:image/png;base64,{}"/> '''
+        plt.close()
+        imd = html.format(data)
+
+    except:
+        imd=''
+    return render(request,'xhlyuxiname.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss,'imd':imd})
 def Zuji(request):
     ms = Loginrecord.objects.all()
     return render(request,'zuji.html',{'ms':ms})
@@ -3123,6 +3155,41 @@ def rankmss(request):
         return render(request, 'rankxhl.html', {'imd':imd,'name':teststudent0,'ms0': ms0, 'ms1': ms1, 'ms': ms})
 
 
+def Xhltestms(request):
+    teststudent0 = request.session.get("teststudent0")
+    if not teststudent0:
+        return redirect('../testlogin0')
+
+    exammessages = Yuxiname0.objects.filter(name=teststudent0)
+    sunn = len(exammessages)
+    dates, scores = [], []
+    for i in range(sunn):
+        # date=datetime.strptime(exammessages[i].examtime,'"%Y.%m.%d"')
+        dates.append(exammessages[i].time)
+        scores.append(exammessages[i].costtime)
+    dates.reverse()
+    scores.reverse()
+    plt.switch_backend('agg')
+    fig = plt.figure(figsize=(3.3, 3.3))
+
+    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.plot(dates, scores, c='red')
+    plt.title(teststudent0+",100题速算情况")
+    fig.autofmt_xdate(rotation=85)
+    plt.ylim(0, 120)
+
+    plt.ylabel("用时（秒）")
+    plt.tick_params(axis='both', which='major', labelsize=8)
+    sio = BytesIO()
+
+    plt.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd = html.format(data)
+
+    return render(request, 'exam.html', {'exammessages': exammessages, 'imd': imd})
 
 
 

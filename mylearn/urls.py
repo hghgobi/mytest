@@ -87,7 +87,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('ranktest/', views.xxtest23),
                path('ranktestresults/', views.rankmss),
                path('addqs/<int:yunsuan>', views.addqs2),
-               # path('uploadhw/', views.Uploadhw),
+               path('111/', views.Xhltestms),
 
 
 
