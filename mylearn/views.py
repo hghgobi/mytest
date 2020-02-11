@@ -3321,17 +3321,19 @@ def zkfx(request,id0,id1):
             qstext = []
             qsanswer = []
             qsid = []
+            qsid0 = []
             if id2==0  and id3==0:
                 ts2=0
                 tss=Zkfx.objects.all()
                 for e in tss:
                     ts2=ts2+1
-                    print(ts2)
+                    qsid0.append(e.pk)
                 if ts>ts2:
                     ts=ts2
                 else:
                     pass
-                a1=np.random.randint(ts2,size=ts)
+                shuffle(qsid0)
+                a1=qsid0[:ts]
                 for i in range(ts):
                     qs=get_object_or_404(Zkfx,pk=a1[i])
                     qstext.append(qs.questiontext.url)
@@ -3356,7 +3358,7 @@ def zkfx(request,id0,id1):
                 for jj in range(len(a3)):
                     qs = get_object_or_404(Zkfx, pk=a3[i])
                     qstext.append(qs.questiontext.url)
-                    qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
+                    qsanswer.append(qs.questionanswer)
                     qsid.append(a3[i])
                 return render(request, 'showqszk.html', {
                     'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
