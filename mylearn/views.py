@@ -3307,11 +3307,8 @@ def zkfx(request,id0,id1):
         timess = int(time.time())
         if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
             try:
-                count =get_object_or_404(Yuxitestcount,zid = id0,jid = id1,name = teststudent)
-
-                nnn = count.count+1
                 Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-                Yuxitestcount.addyxcount(id0, id1,teststudent,nnn,timess)
+                Yuxitestcount.addyxcount(id0, id1,teststudent,0,timess)
             except:
                 Yuxitestcount.addyxcount(id0, id1,teststudent,1,timess)
 
