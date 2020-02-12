@@ -3465,7 +3465,7 @@ def zkfx(request,id0,id1):
                     qsid.append(a4[jj])
                 return render(request, 'showqszk.html', {
                     'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
-                    'qsamount': json.dumps(ts)})
+                    'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
             else:
                 return HttpResponse("请求失败！")
         else:
