@@ -3676,15 +3676,11 @@ def zkfxname(request):
         n = len(mss)
         msss=Yuxinamezk.objects.filter(fs = "重做!")
         namwz=[]
-        nameid = [20,16,32,27,9,19,22,5,10,17,15,12,14,31,13,18,24,25,11,8,7,56,60,54,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,55,62,23,75,57,72,26,69,73,29]
-
-        for nnn in range(len(nameid)):
-            names = Students.objects.filter(pk=nameid[nnn])
-            name = names[0]
-            try:
-                get_object_or_404(Yuxinamezk,name=name)
-            except:
-                namwz.append(name)
-
+        nameid = ['梁雨欣', '梁宇昊',  '朱语涵', '颜千', '梁君豪', '吴家辉', '王佳英',  '梁悦然', '梁心怡', '陈茜', '陈柯宇', '张航', '芦美婷', '梁炜兴', '蔡雨航', '梁鑫宇', '马成作', '罗欣', '缪可盈', '应彤彤', '李丞卿', '吴佳欣', '梁嘉妮', '周荣欢', '梁雨轩', '郏琪隆',  '陈优优', '梁航瑜', '徐权俊', '陈依琳', '黄紫怡', '梁晶', '厉涵婷', '周乐', '毛宇迪', '梁旖康', '徐梦婷', '金琦峰', '梁迈之', '吴妙建', '丁雨晴', '李程凯', '陈怡兴', '应璐忆', '王海滔', '韩雨欣', '陈昕妤', '吴嘉乐', '徐纯耀', '沈昊哲', '陈佳意', '梁宇帆', '陈安琪', '廖伟丹', '陈培鑫', '杨奇钢', '徐晨皓', '沈佳雪', '汪可柠', '梁家律']
+        for name in range(len(nameid)):
+            if Newnames.objects.filter(zid=id0, jid=id1,name=nameid[name]):
+                namwz.append(nameid[name])
+            else:
+                pass
         return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz})
 
