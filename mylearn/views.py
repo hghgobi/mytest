@@ -3539,9 +3539,12 @@ def zkfx(request,id0,id1):
                 Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
             except:
                 pass
-            ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+            # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+            paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)
+            return redirect(paths)
 
-            return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+            # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+
 
         elif dd>=int(0.8*float(ts)):
             try:
@@ -3562,9 +3565,11 @@ def zkfx(request,id0,id1):
                 Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
             except:
                 pass
-            ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-
-            return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+            paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)
+            return redirect(paths)
+            # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+            #
+            # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
         elif dd>=int(0.6*float(ts)):
 
@@ -3587,9 +3592,11 @@ def zkfx(request,id0,id1):
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
-                ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-
-                return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)
+                return redirect(paths)
+                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+                #
+                # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
             else:
                 try:
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3601,11 +3608,13 @@ def zkfx(request,id0,id1):
                 costtime2 = timelss2.timels
 
                 Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)
+                return redirect(paths)
 
-                ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-
-
-                return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+                #
+                #
+                # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
         else:
             try:
                 Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3629,9 +3638,11 @@ def zkfx(request,id0,id1):
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
-                ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-
-                return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)
+                return redirect(paths)
+                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+                #
+                # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
             else:
                 try:
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3643,10 +3654,12 @@ def zkfx(request,id0,id1):
                 costtime2 = timelss2.timels
 
                 Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)
+                return redirect(paths)
 
-                ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-
-                return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+                #
+                # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
 
 def zkfxname(request):
