@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -1306,6 +1306,7 @@ def Addnames(request,id0,id1):
             names =Students.objects.filter(pk = id)
             name = names[0]
             Newnames.addname(zid=zid, jid=jid, name=name)
+            Costtimels.addtime(id0=zid, id1=jid,timels=0, name=name)
         except:
             pass
     return HttpResponse("成功！")
@@ -3389,6 +3390,11 @@ def zkfx(request,id0,id1):
         if not teststudent:
             return redirect('../../testlogin')
         timess = int(time.time())
+        timels0=Costtimels.objects.filter(id0=id0,id1=id1,name=teststudent)
+        if timels0:
+            pass
+        else:
+            Costtimels.addtime(id0=id0,id1=id1,timels=0,name=teststudent)
         if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
             try:
                 Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3511,6 +3517,9 @@ def zkfx(request,id0,id1):
         timelimit=get_object_or_404(Timelimitzk,id0=id0,id1=id1)
         limit1=timelimit.limit1
         limit2=timelimit.limit2
+        timelss=get_object_or_404(Costtimels,id0=id0,id1=id1,name=teststudent)
+        timelss.timels=timelss.timels+costtime
+        timelss.save()
 
         if dd>=int(0.9*float(ts)):
             try:
@@ -3520,7 +3529,11 @@ def zkfx(request,id0,id1):
             fs="优秀"
 
             ornot = "通过，"
-            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+            timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+            costtime2=timelss2.timels
+
+            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+            Costtimels.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
 
             try:
                 Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3538,7 +3551,12 @@ def zkfx(request,id0,id1):
             fs="良好"
 
             ornot = "通过，"
-            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+            timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+            costtime2=timelss2.timels
+
+            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+            Costtimels.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+
 
             try:
                 Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3558,7 +3576,12 @@ def zkfx(request,id0,id1):
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                Costtimels.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+
 
                 try:
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3574,7 +3597,11 @@ def zkfx(request,id0,id1):
                     pass
                 ornot="不通过，"
                 fs="重做!"
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+
                 ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
 
 
@@ -3591,7 +3618,12 @@ def zkfx(request,id0,id1):
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                Costtimels.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+
 
                 try:
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3607,7 +3639,11 @@ def zkfx(request,id0,id1):
                     pass
                 fs = "重做!"
                 ornot = "不通过，"
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime)
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+
                 ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
 
                 return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})

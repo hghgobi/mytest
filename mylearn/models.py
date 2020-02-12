@@ -415,6 +415,18 @@ class Newnames(models.Model):
 		addms = cls(zid=zid,jid=jid,name=name)
 		addms.save()
 		return addms
+class Costtimels(models.Model):
+	id0 = models.IntegerField()
+	id1 = models.IntegerField()
+	timels = models.IntegerField()
+	name=models.CharField(max_length=200)
+
+	@classmethod
+	def addtime(cls,id0,id1,timels,name):
+
+		addms = cls(id0=id0,id1=id1,timels=timels,name=name)
+		addms.save()
+		return addms
 
 class Newnames0(models.Model):
 	zid = models.IntegerField()
