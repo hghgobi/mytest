@@ -3552,7 +3552,7 @@ def zkfx(request,id0,id1):
             costtime2=timelss2.timels
 
             Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
-            Costtimels.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+            Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
             try:
                 Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -3577,7 +3577,7 @@ def zkfx(request,id0,id1):
             costtime2=timelss2.timels
 
             Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
-            Costtimels.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+            Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
 
             try:
@@ -3604,7 +3604,7 @@ def zkfx(request,id0,id1):
                 costtime2 = timelss2.timels
 
                 Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
-                Costtimels.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
 
                 try:
@@ -3650,8 +3650,7 @@ def zkfx(request,id0,id1):
                 costtime2 = timelss2.timels
 
                 Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
-                Costtimels.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-
+                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
                 try:
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
