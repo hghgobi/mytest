@@ -3406,6 +3406,7 @@ def zkfx(request,id0,id1):
             id2=shuxing[0].id2
             id3=shuxing[0].id3
             ts = shuxing[0].ts
+            zs = shuxing[0].zs
             qstext = []
             qsanswer = []
             qsid = []
@@ -3419,6 +3420,7 @@ def zkfx(request,id0,id1):
 
                 a1=qsid0[-ts:]
                 shuffle(a1)
+                a1=a1[-zs:]
                 for i in range(ts):
                     qs=get_object_or_404(Zkfx,pk=a1[i])
                     qstext.append(qs.questiontext.url)
