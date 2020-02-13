@@ -3428,7 +3428,7 @@ def zkfx(request,id0,id1):
                     qsid.append(a1[i])
                 return render(request, 'showqszk.html',                              {
                                'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
-                               'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
+                               'qsamount': json.dumps(zs),'id0':id0,'id1':id1})
             elif id2==0  and id3==0:
                 ts2=0
                 tss=Zkfx.objects.all()
