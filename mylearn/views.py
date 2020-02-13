@@ -3410,7 +3410,24 @@ def zkfx(request,id0,id1):
             qsanswer = []
             qsid = []
             qsid0 = []
-            if id2==0  and id3==0:
+            if id2==1  and id3==1:
+                ts2=0
+                tss=Zkfx.objects.all()
+                for e in tss:
+                    ts2=ts2+1
+                    qsid0.append(e.pk)
+
+                a1=qsid0[-ts:]
+                shuffle(a1)
+                for i in range(ts):
+                    qs=get_object_or_404(Zkfx,pk=a1[i])
+                    qstext.append(qs.questiontext.url)
+                    qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
+                    qsid.append(a1[i])
+                return render(request, 'showqszk.html',                              {
+                               'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
+                               'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
+            elif id2==0  and id3==0:
                 ts2=0
                 tss=Zkfx.objects.all()
                 for e in tss:
@@ -3521,7 +3538,7 @@ def zkfx(request,id0,id1):
         timelss.timels=timelss.timels+costtime
         timelss.save()
 
-        if dd>=int(0.9*float(ts)):
+        if dd>=int(0.95*float(ts)):
             try:
                 Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
             except:
@@ -3546,7 +3563,7 @@ def zkfx(request,id0,id1):
             # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
 
-        elif dd>=int(0.8*float(ts)):
+        elif dd>=int(0.85*float(ts)):
             try:
                 Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
             except:
@@ -3571,7 +3588,7 @@ def zkfx(request,id0,id1):
             #
             # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
-        elif dd>=int(0.6*float(ts)):
+        elif dd>=int(0.75*float(ts)):
 
             if costtime>=limit1:
                 ornot = "通过，"
@@ -3674,7 +3691,7 @@ def zkfxname(request):
 
         mss = Newnames.objects.filter(zid=id0, jid=id1)
         n = len(mss)
-        msss=Yuxinamezk.objects.filter(fs = "重做!")
+        msss=Yuxinamezk.objects.filter(id0=id0,id1=id1,fs = "重做!")
         namwz=[]
         nameid = ['梁雨欣', '梁宇昊',  '朱语涵', '颜千', '梁君豪', '吴家辉', '王佳英',  '梁悦然', '梁心怡', '陈茜', '陈柯宇', '张航', '芦美婷', '梁炜兴', '蔡雨航', '梁鑫宇', '马成作', '罗欣', '缪可盈', '应彤彤', '李丞卿', '吴佳欣', '梁嘉妮', '周荣欢', '梁雨轩', '郏琪隆',  '陈优优', '梁航瑜', '徐权俊', '陈依琳', '黄紫怡', '梁晶', '厉涵婷', '周乐', '毛宇迪', '梁旖康', '徐梦婷', '金琦峰', '梁迈之', '吴妙建', '丁雨晴', '李程凯', '陈怡兴', '应璐忆', '王海滔', '韩雨欣', '陈昕妤', '吴嘉乐', '徐纯耀', '沈昊哲', '陈佳意', '梁宇帆', '陈安琪', '廖伟丹', '陈培鑫', '杨奇钢', '徐晨皓', '沈佳雪', '汪可柠', '梁家律']
         for name in range(len(nameid)):
