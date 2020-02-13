@@ -3421,7 +3421,7 @@ def zkfx(request,id0,id1):
                 a1=qsid0[-ts:]
                 shuffle(a1)
                 a1=a1[-zs:]
-                for i in range(ts):
+                for i in range(zs):
                     qs=get_object_or_404(Zkfx,pk=a1[i])
                     qstext.append(qs.questiontext.url)
                     qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
