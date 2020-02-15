@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 
 # Register your models here.
 @admin.register(Classes)
@@ -187,3 +187,7 @@ class ZktishuAdmin(admin.ModelAdmin):
 @admin.register(Timelimitzk)
 class TimelimitzkAdmin(admin.ModelAdmin):
 	list_display = ['id0','id1','limit1','limit2','limit3']
+
+@admin.register(Costtimels)
+class CosttimeAdmin(admin.ModelAdmin):
+	list_display = ['id0','id1','name','timels']
