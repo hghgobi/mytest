@@ -617,7 +617,8 @@ background: #EA6F30;
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
 
     <div id="ms" >
-        <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
+         <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题</a>
+<!--        <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>-->
 <!--        <a>&#45;&#45;通过测试需要答对</a><a id="limit"></a><a>题</a>-->
     </div>
 
@@ -707,7 +708,7 @@ function startgo()
      document.getElementById("startts").style.display="none";
      document.getElementById("calculater").style.display="block";
      document.getElementById("sum").innerText=qsamount;
-     document.getElementById("correctamount").innerText=correct;
+<!--     document.getElementById("correctamount").innerText=correct;-->
      document.getElementById("yzts").innerText=had;
      document.getElementById("pic").src=qstext[0];
     }
@@ -725,17 +726,23 @@ else if (event.srcElement.innerText=="提交答案"){
 
                                                   if(qsanswer1[0]==a){
                                                                                         correct+=1;
-                                                                                        document.getElementById("correctamount").innerText=correct;
+<!--                                                                                        document.getElementById("correctamount").innerText=correct;-->
                                                                                         had+=1;
 
 
-                                                                                        Message(right);window.setTimeout("Deletms()",1000);
+                                                                                        window.setTimeout("Deletms()",1000);
                                                                                         if(had>qsamount){
                                                                                                                 $("#zid").val(zid);
                                                                                                                 $("#jid").val(jid);
                                                                                                                 $("#tss").val(qsamount);
                                                                                                                 $("#dd").val(correct);
                                                                                                                 $("#wrong").val(wrongcount.toString());
+                                                                                                                var s1="做对题数：";
+                                                                                                                var s2=correct.toString();
+                                                                                                                var s3=";点击确定或者关闭，保存数据。";
+                                                                                                                var s4=s1.concat(s2,s3);
+                                                                                                                alert(s4);
+
 
                                                                                                                 form2.submit();
 
@@ -764,6 +771,11 @@ else if (event.srcElement.innerText=="提交答案"){
                                                                                                                 $("#tss").val(qsamount);
                                                                                                                 $("#dd").val(correct);
                                                                                                                 $("#wrong").val(wrongcount.toString());
+                                                                                                                var s1="做对题数：";
+                                                                                                                var s2=correct.toString();
+                                                                                                                var s3=";点击确定或者关闭，保存数据。";
+                                                                                                                var s4=s1.concat(s2,s3);
+                                                                                                                alert(s4);
 
                                                                                                                 form2.submit();}
                                                              document.getElementById("yzts").innerText=had;
@@ -786,6 +798,11 @@ else if (event.srcElement.innerText=="跳过"){    had+=1;
                                                                                                                 $("#tss").val(qsamount);
                                                                                                                 $("#dd").val(correct);
                                                                                                                 $("#wrong").val(wrongcount.toString());
+                                                                                                                var s1="做对题数：";
+                                                                                                                var s2=correct.toString();
+                                                                                                                var s3=";点击确定或者关闭，保存数据。";
+                                                                                                                var s4=s1.concat(s2,s3);
+                                                                                                                alert(s4);
 
                                                                                                                 form2.submit();}
                                                  document.getElementById("yzts").innerText=had;
