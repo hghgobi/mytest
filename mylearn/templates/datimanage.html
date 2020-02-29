@@ -1,0 +1,150 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body bgcolor="#00FF00" style="text-align:center">
+
+
+<button style="color:red;width:60px;height:40px;font-size:20px;background-color:#00FFFF;" onclick="start()">开始</button>
+<button style="color:red;width:60px;height:40px;font-size:20px;background-color:#00FFFF;" onclick="stopp()">结束</button>
+<button style="color:red;width:60px;height:40px;font-size:20px;background-color:#00FFFF;" onclick="tongji()">统计</button>
+<div style="font-size:50px;" id="timer"></div>
+<div style="font-size:50px;" id="yz"></div>
+ <ul id="comment_list">
+ </ul>
+ <ul id="a" style="font-size:20px;">
+ </ul>
+ <ul id="b" style="font-size:20px;">
+ </ul>
+ <ul id="c" style="font-size:20px;">
+ </ul>
+ <ul id="d" style="font-size:20px;">
+ </ul>
+ <ul id="e" style="font-size:20px;">
+ </ul>
+
+<script type="text/javascript">
+
+
+      var maxtime = 10 * 60;
+      var time0=0;
+      function CountDown() {
+        if (maxtime >= 0) {
+          minutes = Math.floor(maxtime / 60);
+          seconds = Math.floor(maxtime % 60);
+          msg =  minutes + "分" + seconds + "秒";
+          document.all["timer"].innerHTML = msg;
+          --maxtime;
+          time0=time0+1000;
+          if(time0>=10000){
+          time0=time0-time0;
+          $.ajax({
+                url: "{% url 'dtcount' %}",
+                type: 'GET',
+                cache: false,
+                success: function(data){
+                    console.log(data);
+                    $("#yz").text(data['count']);
+
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+
+          }
+        }
+        else{clearInterval(timer);}
+      }
+
+        function start(){  maxtime = 10 * 60;//time0=0;
+        $("#yz").text("");
+                  $.ajax({
+                url: "{% url 'dtstart' %}",
+                type: 'GET',
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+<!--            return false;-->
+        timer = setInterval("CountDown()", 1000);}
+      function stopp(){maxtime=maxtime-maxtime;
+                $.ajax({
+                url: "{% url 'dtend' %}",
+                type: 'GET',
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+
+      }
+      function tongji(){
+                      $.ajax({
+                url: "{% url 'dttongji' %}",
+                type: 'GET',
+                cache: false,
+                success: function(data){
+                    console.log(data);
+                 $("#comment_list").text("");
+                 $("#a").text("");
+                 $("#b").text("");
+                 $("#c").text("");
+                 $("#d").text("");
+                 $("#e").text("");
+                var comment_html = '<br>' + data['imd'] ;
+                $("#comment_list").prepend(comment_html);
+                var a1 = '<br>' + data['a'] ;
+                $("#a").prepend(a1);
+                var b1 = '<br>' + data['b'] ;
+                $("#b").prepend(b1);
+                var c1 = '<br>' + data['c'] ;
+                $("#c").prepend(c1);
+                var d1 = '<br>' + data['d'] ;
+                $("#d").prepend(d1);
+                var e1 = '<br>' + data['e'] ;
+                $("#e").prepend(e1);
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+
+      }
+ </script>
+
+
+
+
+<!--<div class="footer">-->
+<!--    <div class="website-info">-->
+<!--        <p>浙ICP备19013564号 Copyright©2019 35925.top 版权所有</p>-->
+<!--        <p>意见反馈或联系我（569258059@qq.com）</p>-->
+<!--    </div>-->
+<!--</div>-->
+
+</body>
+
+
+</html>

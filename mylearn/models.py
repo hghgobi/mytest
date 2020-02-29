@@ -611,10 +611,31 @@ class Timelimitzk(models.Model):
 	limit1 = models.IntegerField()
 	limit2 = models.IntegerField()
 	limit3 = models.IntegerField(default=0)
-            	
-            	
 
-            	
+
+class Dati(models.Model):
+	a = models.IntegerField(default=0)
+	b = models.IntegerField(default=0)
+	c = models.IntegerField(default=0)
+	d = models.IntegerField(default=0)
+	e = models.IntegerField(default=0)
+	@classmethod
+	def adddt(cls, a, b,c,d,e):
+		addms = cls(a=a,b=b,c=c,d=d,e=e)
+		addms.save()
+class Daticontrol(models.Model):
+	onoff = models.IntegerField(default=0)
+	@classmethod
+	def adddt(cls, onoff):
+		addms = cls(onoff=onoff)
+		addms.save()
+class Datirecord(models.Model):
+	name=models.CharField(max_length=50)
+	xx=models.CharField(max_length=50)
+	@classmethod
+	def addrc(cls,name,xx):
+		addms = cls(name=name,xx=xx)
+		addms.save()
 		
 		
 		

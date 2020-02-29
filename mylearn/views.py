@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -2619,6 +2619,183 @@ def Addtxl22(request):
         phone2=int(0)
     TXL.createms(name, company, major, gdtime, phone1, phone2)
     data['status'] = 'success'
+    return JsonResponse(data)
+
+
+def Datilogin(request):
+    teststudent = request.session.get("teststudent")
+    if teststudent:
+        return redirect('../dt')
+    if request.method=='GET':
+        return render(request, 'questionsindex.html')
+    if request.method == "POST":
+        phone = request.POST.get('phone')
+        # pwd = request.POST.get('pwd')
+        if not phone.isdigit():
+            return render(request, 'questionsindex.html', {'errors': '手机号类型错误！'})
+        # teststudent = Searchstudentid.objects.filter(phone=phone)
+        try:
+            teststudent = get_object_or_404(Searchstudentid, phone=phone)
+        except:
+            return render(request, 'questionsindex.html', {'errors': '手机号错误，或不存在！请微信群联系数学老师。'})
+        user = teststudent.student
+        # teststudent=Students.objects.filter(studentname=user,studentid=pwd)
+
+        if teststudent:
+            request.session["teststudent"] = user
+            return redirect('../dt')
+        else:
+            return render(request, 'questionsindex.html', {'errors': '手机号错误，或不存在！请微信群联系数学老师。'})
+
+
+def Datiget(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin1')
+    return render(request, 'dati.html')
+
+
+def Datipost(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin1')
+    data={}
+    xuanx=request.POST.get('as')
+    if xuanx:
+        pass
+    else:
+        data['error']='姓名不能为空'
+        data['status']='success0'
+        return JsonResponse(data)
+    control=Daticontrol.objects.all()
+    onoff=control[0].onoff
+    if onoff==0:
+        datirecord=Datirecord.objects.filter(name=teststudent)
+        if datirecord:
+            data['status']='success1'
+        else:
+            dtdata = get_object_or_404(Dati, pk=1)
+            if xuanx == 'A':
+                dtdata.a += 1
+                dtdata.save()
+            elif xuanx == 'B':
+                dtdata.b += 1
+                dtdata.save()
+            elif xuanx == 'C':
+                dtdata.c += 1
+                dtdata.save()
+            elif xuanx == 'D':
+                dtdata.d += 1
+                dtdata.save()
+            else:
+                dtdata.e += 1
+                dtdata.save()
+            data['status'] = 'success2'
+            Datirecord.addrc(name=teststudent, xx=xuanx)
+    else:
+        data['status']='success3'
+    return JsonResponse(data)
+
+
+def Datimanage(request):
+    return render(request,"datimanage.html")
+
+def Daticount(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin1')
+    data={}
+    datas=Datirecord.objects.all()
+    data['count']="已答题人数："+str(len(datas))
+    return JsonResponse(data)
+def Datistart(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin1')
+    Datirecord.objects.all().delete()
+    sta=get_object_or_404(Daticontrol,pk=1)
+    sta.onoff=0
+    sta.save()
+    zerodata=get_object_or_404(Dati,pk=1)
+    zerodata.a=0
+    zerodata.b=0
+    zerodata.c=0
+    zerodata.d=0
+    zerodata.e=0
+    zerodata.save()
+    data={}
+    return JsonResponse(data)
+
+def Datiend(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin1')
+    staa = get_object_or_404(Daticontrol, pk=1)
+    staa.onoff=1
+    staa.save()
+    data={}
+    return JsonResponse(data)
+
+def Datitongji(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin1')
+    data = {}
+    datatj=get_object_or_404(Dati,pk=1)
+    a=datatj.a
+    b=datatj.b
+    c=datatj.c
+    d=datatj.d
+    e=datatj.e
+    plt.switch_backend('agg')
+    fig = plt.figure(figsize=(8,8))
+
+    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    labels = 'A','B','C','D','不会'
+    sizes = a,b,c,d,e
+    colors = 'lightgreen', 'gold', 'lightskyblue', 'lightcoral','red'
+    explode = 0.1,0.1,0.1,0.1,0.1
+    plt.pie(sizes, explode=explode, labels=labels,
+            colors=colors, autopct='%1.1f%%', shadow=True, startangle=50,labeldistance=0.9,textprops={'fontsize':40,'color':'black'})
+
+
+    plt.axis('equal')
+    plt.legend(loc="upper right", fontsize=20, bbox_to_anchor=(1.11, 1.11), borderaxespad=0.11)
+    sio = BytesIO()
+    plt.savefig(sio, format='png')
+    dat = base64.encodebytes(sio.getvalue()).decode()
+    html = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd = html.format(dat)
+    data['imd'] = imd
+    data['status'] = "SUCCESS"
+    ac="选A有："
+    bc="选B有："
+    cc="选C有："
+    dc="选D有："
+    ec="选不会有："
+
+    datirc1 = Datirecord.objects.filter(xx='a')
+    for i in range(len(datirc1)):
+        ac=ac+str(datirc1[i].name)+","
+    datirc2 = Datirecord.objects.filter(xx='b')
+    for i in range(len(datirc2)):
+        bc=bc+str(datirc1[i].name)+","
+    datirc3 = Datirecord.objects.filter(xx='c')
+    for i in range(len(datirc3)):
+        cc=cc+str(datirc3[i].name)+","
+    datirc4 = Datirecord.objects.filter(xx='d')
+    for i in range(len(datirc4)):
+        dc=dc+str(datirc4[i].name)+","
+    datirc5 = Datirecord.objects.filter(xx='e')
+    for i in range(len(datirc5)):
+        ec=ec+str(datirc5[i].name)+","
+    data['a']=ac
+    data['b']=bc
+    data['c']=cc
+    data['d']=dc
+    data['e']=ec
     return JsonResponse(data)
 
 def CS(request):

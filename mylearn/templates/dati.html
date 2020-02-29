@@ -1,0 +1,86 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+
+<body bgcolor="#00FF00" style="text-align:center">
+
+
+
+    <form  id="addtxl"  onsubmit="return false" action="{% url 'dtp' %}" method="POST" style="overflow:hidden;background-color:#00FF00;">
+        <br><br><br>
+        <label><font size="8"><input  name="as" type="radio" style="width: 50px;height: 50px;" value="A" />A</font></label>
+        <br>
+       <label><font size="8"><input name="as" type="radio" style="width: 50px;height: 50px;" value="B" />B</font></label>
+        <br>
+       <label><font size="8"><input name="as" type="radio" style="width: 50px;height: 50px;" value="C" />C</font></label>
+        <br>
+       <label><font size="8"><input name="as" type="radio" style="width: 50px;height: 50px;" value="D" />D</font></label>
+        <br>
+       <label><input name="as" type="radio" style="width: 50px;height: 50px;" value="E" />不会</label>
+         <br>
+         <br>
+        <label><input type="submit" style="color:red;width:180px;height:50px;font-size:30px;background-color:#00FFFF;" value ="提交选项" ><label>
+    </form>
+
+<script type="text/javascript">
+        $("#addtxl").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'dtp' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+
+                    if(data['status']=="success2"){
+                    alert("提交成功！");
+             setTimeout(function () {
+                    window.parent.location.reload();
+                }, 200);
+
+
+                    }
+                    else if(data['status']=="success0"){
+                    alert("提交失败！请选一个选项！");
+                    }
+                     else if(data['status']=="success1"){
+                    alert("提交失败！你以提交，请勿重复提交！");
+                    }
+                    else if(data['status']=="success3"){
+                    alert("答题还没开始！请耐心等待！");
+                    }
+
+
+                    else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>
+
+
+
+
+
+</body>
+
+
+</html>
