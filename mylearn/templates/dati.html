@@ -54,12 +54,15 @@
                     }
                     else if(data['status']=="success0"){
                     alert("提交失败！请选一个选项！");
+                    window.parent.location.reload();
                     }
                      else if(data['status']=="success1"){
-                    alert("提交失败！你以提交，请勿重复提交！");
+                    alert("你已提交选项，请勿重复提交！");
+                    window.parent.location.reload();
                     }
                     else if(data['status']=="success3"){
                     alert("答题还没开始！请耐心等待！");
+                    window.parent.location.reload();
                     }
 
 
