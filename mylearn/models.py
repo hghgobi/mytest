@@ -625,16 +625,20 @@ class Dati(models.Model):
 		addms.save()
 class Daticontrol(models.Model):
 	onoff = models.IntegerField(default=0)
+	seconds = models.BigIntegerField(default=0)
 	@classmethod
-	def adddt(cls, onoff):
-		addms = cls(onoff=onoff)
+	def adddt(cls, onoff,seconds):
+		addms = cls(onoff=onoff,seconds=seconds)
 		addms.save()
 class Datirecord(models.Model):
 	name=models.CharField(max_length=50)
 	xx=models.CharField(max_length=50)
+	costtime = models.IntegerField(default=0)
+	class Meta:
+		ordering = ['costtime']
 	@classmethod
-	def addrc(cls,name,xx):
-		addms = cls(name=name,xx=xx)
+	def addrc(cls,name,xx,costtime):
+		addms = cls(name=name,xx=xx,costtime=costtime)
 		addms.save()
 		
 		

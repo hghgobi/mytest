@@ -194,11 +194,11 @@ class CosttimeAdmin(admin.ModelAdmin):
 
 @admin.register(Dati)
 class DatiAdmin(admin.ModelAdmin):
-	list_display = ['a','b','c','d','e']
+	list_display = ['pk','a','b','c','d','e']
 @admin.register(Daticontrol)
 class DaticontrolAdmin(admin.ModelAdmin):
-	list_display = ['onoff']
+	list_display = ['pk','onoff','seconds']
 
 @admin.register(Datirecord)
 class DatirecordAdmin(admin.ModelAdmin):
-	list_display = ['name','xx']
+	list_display = ['name','xx','costtime']

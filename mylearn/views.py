@@ -2669,11 +2669,15 @@ def Datipost(request):
         return JsonResponse(data)
     control=Daticontrol.objects.all()
     onoff=control[0].onoff
+    time1=control[0].seconds
+
     if onoff==0:
         datirecord=Datirecord.objects.filter(name=teststudent)
         if datirecord:
             data['status']='success1'
         else:
+            time2 = int(time.time())
+            costtime=time2-time1
             dtdata = get_object_or_404(Dati, pk=1)
             if xuanx == 'A':
                 dtdata.a += 1
@@ -2691,7 +2695,7 @@ def Datipost(request):
                 dtdata.e += 1
                 dtdata.save()
             data['status'] = 'success2'
-            Datirecord.addrc(name=teststudent, xx=xuanx)
+            Datirecord.addrc(name=teststudent, xx=xuanx,costtime=costtime)
     else:
         data['status']='success3'
     return JsonResponse(data)
@@ -2713,8 +2717,10 @@ def Datistart(request):
     if not teststudent:
         return redirect('../testlogin1')
     Datirecord.objects.all().delete()
+    timess = int(time.time())
     sta=get_object_or_404(Daticontrol,pk=1)
     sta.onoff=0
+    sta.seconds=timess
     sta.save()
     zerodata=get_object_or_404(Dati,pk=1)
     zerodata.a=0
@@ -2777,20 +2783,26 @@ def Datitongji(request):
     ec="选不会有："
 
     datirc1 = Datirecord.objects.filter(xx='a')
-    for i in range(len(datirc1)):
-        ac=ac+str(datirc1[i].name)+","
+    if datirc1:
+        for i in range(len(datirc1)):
+            ac=ac+str(datirc1[i].name)+'-'+str(datirc1[i].costtime)+","
+
     datirc2 = Datirecord.objects.filter(xx='b')
-    for i in range(len(datirc2)):
-        bc=bc+str(datirc1[i].name)+","
+    if datirc2:
+        for i in range(len(datirc2)):
+            bc=bc+str(datirc2[i].name)+'-'+str(datirc2[i].costtime)+","
     datirc3 = Datirecord.objects.filter(xx='c')
-    for i in range(len(datirc3)):
-        cc=cc+str(datirc3[i].name)+","
+    if datirc3:
+        for i in range(len(datirc3)):
+            cc=cc+str(datirc3[i].name)+'-'+str(datirc3[i].costtime)+","
     datirc4 = Datirecord.objects.filter(xx='d')
-    for i in range(len(datirc4)):
-        dc=dc+str(datirc4[i].name)+","
+    if datirc4:
+        for i in range(len(datirc4)):
+            dc=dc+str(datirc4[i].name)+'-'+str(datirc4[i].costtime)+","
     datirc5 = Datirecord.objects.filter(xx='e')
-    for i in range(len(datirc5)):
-        ec=ec+str(datirc5[i].name)+","
+    if datirc5:
+        for i in range(len(datirc5)):
+            ec=ec+str(datirc5[i].name)+'-'+str(datirc5[i].costtime)+","
     data['a']=ac
     data['b']=bc
     data['c']=cc
