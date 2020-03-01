@@ -64,8 +64,10 @@
                     alert("答题还没开始！请耐心等待！");
                     window.parent.location.reload();
                     }
-
-
+                    else if(data['status']=="nologin"){
+                   window.location.replace("http://35925.top/testlogin1/");
+                    window.parent.location.reload();
+                    }
                     else{
                         // 显示错误信息
                         $("#error").text(data['error']);

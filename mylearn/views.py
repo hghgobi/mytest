@@ -324,29 +324,35 @@ def Onlinetestlogin(request):
     teststudent=request.session.get("teststudent")
     if  teststudent:
         return redirect('../../')
+    return render(request,'questionsindex.html')
+def Login0(request):
+    data = {}
+    phone = request.POST.get('phone')
+    # pwd = request.POST.get('pwd')
+    if  phone.isdigit():
 
-
-    if request.method == "POST":
-        phone = request.POST.get('phone')
-        # pwd = request.POST.get('pwd')
-        if not  phone.isdigit():
-            return render(request,'questionsindex.html',{'errors':'手机号类型错误！'})
         # teststudent = Searchstudentid.objects.filter(phone=phone)
         try:
-            teststudent = get_object_or_404(Searchstudentid,phone=phone)
+            teststudent = get_object_or_404(Searchstudentid, phone=phone)
         except:
-            return render(request, 'questionsindex.html', {'errors': '手机号错误，或不存在！请微信群联系数学老师。'})
+            data['status'] = "success2"
+            return JsonResponse(data)
         user = teststudent.student
-        print(teststudent)
         # teststudent=Students.objects.filter(studentname=user,studentid=pwd)
 
         if teststudent:
-            request.session["teststudent"]=user
-            return redirect('../indexs')
+            request.session["teststudent"] = user
+            data['status'] = "success3"
+            return JsonResponse(data)
+            # return redirect('../indexs')
         else:
-            return render(request,'questionsindex.html',{'errors':'手机号错误，或不存在！请微信群联系数学老师。'})
-      
-    return render(request,'questionsindex.html')
+            data['status'] = "success4"
+            return JsonResponse(data)
+            # return render(request,'questionsindex.html',{'errors':'手机号错误，或不存在！请微信群联系数学老师。'})
+    else:
+        data['status'] = "success1"
+        return JsonResponse(data)
+
 
 
 def Onlinetestlogin0(request):
@@ -2627,25 +2633,52 @@ def Datilogin(request):
     if teststudent:
         return redirect('../dt')
     if request.method=='GET':
-        return render(request, 'questionsindex.html')
+        return render(request, 'datilogin.html')
     if request.method == "POST":
+        data = {}
         phone = request.POST.get('phone')
         # pwd = request.POST.get('pwd')
-        if not phone.isdigit():
-            return render(request, 'questionsindex.html', {'errors': '手机号类型错误！'})
-        # teststudent = Searchstudentid.objects.filter(phone=phone)
-        try:
-            teststudent = get_object_or_404(Searchstudentid, phone=phone)
-        except:
-            return render(request, 'questionsindex.html', {'errors': '手机号错误，或不存在！请微信群联系数学老师。'})
-        user = teststudent.student
-        # teststudent=Students.objects.filter(studentname=user,studentid=pwd)
+        if phone.isdigit():
 
-        if teststudent:
-            request.session["teststudent"] = user
-            return redirect('../dt')
+            # teststudent = Searchstudentid.objects.filter(phone=phone)
+            try:
+                teststudent = get_object_or_404(Searchstudentid, phone=phone)
+            except:
+                data['status'] = "success2"
+                return JsonResponse(data)
+            user = teststudent.student
+            # teststudent=Students.objects.filter(studentname=user,studentid=pwd)
+
+            if teststudent:
+                request.session["teststudent"] = user
+                data['status'] = "success3"
+                return JsonResponse(data)
+                # return redirect('../indexs')
+            else:
+                data['status'] = "success4"
+                return JsonResponse(data)
+                # return render(request,'questionsindex.html',{'errors':'手机号错误，或不存在！请微信群联系数学老师。'})
         else:
-            return render(request, 'questionsindex.html', {'errors': '手机号错误，或不存在！请微信群联系数学老师。'})
+            data['status'] = "success1"
+            return JsonResponse(data)
+
+        # phone = request.POST.get('phone')
+        # # pwd = request.POST.get('pwd')
+        # if not phone.isdigit():
+        #     return render(request, 'questionsindex.html', {'errors': '手机号类型错误！'})
+        # # teststudent = Searchstudentid.objects.filter(phone=phone)
+        # try:
+        #     teststudent = get_object_or_404(Searchstudentid, phone=phone)
+        # except:
+        #     return render(request, 'questionsindex.html', {'errors': '手机号错误，或不存在！请微信群联系数学老师。'})
+        # user = teststudent.student
+        # # teststudent=Students.objects.filter(studentname=user,studentid=pwd)
+        #
+        # if teststudent:
+        #     request.session["teststudent"] = user
+        #     return redirect('../dt')
+        # else:
+        #     return render(request, 'questionsindex.html', {'errors': '手机号错误，或不存在！请微信群联系数学老师。'})
 
 
 def Datiget(request):
@@ -2657,9 +2690,11 @@ def Datiget(request):
 
 def Datipost(request):
     teststudent = request.session.get("teststudent")
-    if not teststudent:
-        return redirect('../testlogin1')
     data={}
+    if not teststudent:
+        data['status']='nologin'
+        return JsonResponse(data)
+
     xuanx=request.POST.get('as')
     if xuanx:
         pass

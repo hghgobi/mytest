@@ -242,7 +242,7 @@ background: #EA6F30;
 <!--            </tbody>-->
 <!--        </table>-->
 <!--    </form> -->
-     <form id="dl" class="form-horizontal" onsubmit="return false" "{% url 'login' %}" method="post">
+     <form id="dl" class="form-horizontal" onsubmit="return false" "{% url 'testlogin1' %}" method="post">
   <div class="form-group">
 <!--    <label for="inputEmail3" class="col-sm-2 control-label">请输入家长手机号</label>-->
     <div class="col-sm-10">
@@ -267,14 +267,14 @@ background: #EA6F30;
 
             // 异步提交
             $.ajax({
-                url: "{% url 'login' %}",
+                url: "{% url 'testlogin1' %}",
                 type: 'POST',
                 data: $(this).serialize(),
                 cache: false,
                 success: function(data){
                 console.log(data);
                     if(data['status']=="success3"){
-                    window.location.replace("http://35925.top/");
+                    window.location.replace("http://35925.top/dt/");
 
                     }
                     else if(data['status']=="success1"){
