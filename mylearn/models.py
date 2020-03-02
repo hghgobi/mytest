@@ -641,7 +641,14 @@ class Datirecord(models.Model):
 		addms = cls(name=name,xx=xx,costtime=costtime)
 		addms.save()
 		
-		
+class Zbhf(models.Model):
+	id0 = models.IntegerField()
+	id1 = models.IntegerField()
+	ornot = models.IntegerField(default=0)
+	@classmethod
+	def addhf(cls,id0,id1,ornot):
+		addms = cls(id0=id0,id1=id1,ornot=ornot)
+		addms.save()
 		
 
 

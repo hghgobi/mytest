@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -3635,6 +3635,11 @@ def zkfx(request,id0,id1):
             qsanswer = []
             qsid = []
             qsid0 = []
+            try:
+                zbhf=get_object_or_404(Zbhf,id0=id0,id1=id1)
+                ornot=zbhf.ornot
+            except:
+                ornot=0
             if id2==1  and id3==1:
                 ts2=0
                 tss=Zkfx.objects.all()
@@ -3652,7 +3657,7 @@ def zkfx(request,id0,id1):
                     qsid.append(a1[i])
                 return render(request, 'showqszk.html',                              {
                                'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
-                               'qsamount': json.dumps(zs),'id0':id0,'id1':id1})
+                               'qsamount': json.dumps(zs),'id0':id0,'id1':id1,'ornot':ornot})
             elif id2==0  and id3==0:
                 ts2=0
                 tss=Zkfx.objects.all()
@@ -3672,7 +3677,7 @@ def zkfx(request,id0,id1):
                     qsid.append(a1[i])
                 return render(request, 'showqszk.html',                              {
                                'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
-                               'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
+                               'qsamount': json.dumps(ts),'id0':id0,'id1':id1,'ornot':ornot})
             elif id3==0:
                 ts2=0
                 a2=[]
@@ -3693,7 +3698,7 @@ def zkfx(request,id0,id1):
                     qsid.append(a3[jj])
                 return render(request, 'showqszk.html', {
                     'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
-                    'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
+                    'qsamount': json.dumps(ts),'id0':id0,'id1':id1,'ornot':ornot})
             elif id2==0:
                 ts3=0
                 a3=[]
@@ -3714,7 +3719,7 @@ def zkfx(request,id0,id1):
                     qsid.append(a4[jj])
                 return render(request, 'showqszk.html', {
                     'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
-                    'qsamount': json.dumps(ts),'id0':id0,'id1':id1})
+                    'qsamount': json.dumps(ts),'id0':id0,'id1':id1,'ornot':ornot})
             else:
                 return HttpResponse("请求失败！")
         else:

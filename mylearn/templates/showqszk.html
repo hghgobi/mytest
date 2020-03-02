@@ -685,6 +685,7 @@ var form2 = document.getElementById('checkbox');
 var select=1;
 var qstext={{qstext|safe}};
 var qsanswer1={{qsanswer|safe}};
+var ornot={{ornot}};
 var qsid = {{qsid|safe}};
 var qsamount = {{qsamount}};
 var zid = {{id0}};
@@ -699,6 +700,8 @@ var wrong = "做错了！请重新做！画图、打草稿！";
 var not = "通过失败，请重新测试！";
 <!--var time1 = new Date();-->
 var form = document.getElementById('wrong');
+if(ornot==0){var s5="[不会做的可以到钉钉看直播回放！直播回放待上传，请持续关注！]";}
+else {var s5="[不会做的可以到钉钉看直播回放！直播回放已上传，请前往观看！]";}
 function Message(msss){ document.getElementById("ts").innerText=msss;
                         }
 function Deletms(){document.getElementById("ts").innerText="";}
@@ -737,11 +740,13 @@ else if (event.srcElement.innerText=="提交答案"){
                                                                                                                 $("#tss").val(qsamount);
                                                                                                                 $("#dd").val(correct);
                                                                                                                 $("#wrong").val(wrongcount.toString());
+
                                                                                                                 var s1="做对题数：";
                                                                                                                 var s2=correct.toString();
                                                                                                                 var s3=";点击确定或者关闭，保存数据。";
                                                                                                                 var s4=s1.concat(s2,s3);
-                                                                                                                alert(s4);
+                                                                                                                var s6=s4.concat(s5);
+                                                                                                                alert(s6);
 
 
                                                                                                                 form2.submit();
@@ -775,7 +780,8 @@ else if (event.srcElement.innerText=="提交答案"){
                                                                                                                 var s2=correct.toString();
                                                                                                                 var s3=";点击确定或者关闭，保存数据。";
                                                                                                                 var s4=s1.concat(s2,s3);
-                                                                                                                alert(s4);
+                                                                                                                var s6=s4.concat(s5);
+                                                                                                                alert(s6);
 
                                                                                                                 form2.submit();}
                                                              document.getElementById("yzts").innerText=had;
@@ -802,7 +808,8 @@ else if (event.srcElement.innerText=="跳过"){    had+=1;
                                                                                                                 var s2=correct.toString();
                                                                                                                 var s3=";点击确定或者关闭，保存数据。";
                                                                                                                 var s4=s1.concat(s2,s3);
-                                                                                                                alert(s4);
+                                                                                                                var s6=s4.concat(s5);
+                                                                                                                alert(s6);
 
                                                                                                                 form2.submit();}
                                                  document.getElementById("yzts").innerText=had;
