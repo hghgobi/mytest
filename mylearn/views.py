@@ -454,9 +454,9 @@ def Classnewslist(request):
 
     return render(request,'base.html',{'page_of_notes':page_of_notes,'page_range':page_range})
 def Classnewslist0(request):
-    # teststudent0=request.session.get("teststudent0")
-    # if not teststudent0:
-    #     return redirect('../testlogin0')
+    teststudent0=request.session.get("teststudent0")
+    if not teststudent0:
+        return redirect('../testlogin0')
 
     notes_all_list = Classnotes0.objects.all()
     paginator = Paginator(notes_all_list,6)
