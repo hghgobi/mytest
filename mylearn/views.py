@@ -32,7 +32,8 @@ import time
 from django.db.models import Q
 from random import shuffle
 import cv2
-
+import requests
+import urllib
 
 
 
@@ -46,6 +47,28 @@ from wechatpy.exceptions import InvalidSignatureException
 
 from wechatpy.utils import check_signature
 from wechatpy.pay import logger
+
+def Kz(request):
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    headers = {"Host": "kzapi.jktz.gov.cn", "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+               "Origin": "https://kzcdn.jktz.gov.cn", "Connection": "keep-alive",
+               "Accept": "application/json, text/plain, */*", "User-Agent": "JKTZ_Android android_appname:WZYZSPT",
+               "Referer": "https://kzcdn.jktz.gov.cn/", "Accept-Language": "zh-cn"}
+
+    data = {"name": "黄戈横", "idNumber": "450821198909264792", "phone": "13586039185", "phoneBackup": "",
+            "address": "椒江区洪家街道", "addressDetail": "心海金源小区", "goodsCode": "kouzhao", "addressCode": "331002004"}
+
+    url = 'https://kzapi.jktz.gov.cn/kouzhao/sq/miaosha/d11d811d'
+
+    ms = []
+    for i in range(3):
+        datas = urllib.parse.urlencode(data).encode("utf-8")
+        req = urllib.request.Request(url=url, data=datas, headers=headers)
+        res = urllib.request.urlopen(req)
+        ms.append(res.read().decode())
+    return HttpResponse(ms)
 
 
 
