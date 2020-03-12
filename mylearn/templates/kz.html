@@ -1,0 +1,173 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+        <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+<script>
+function province(){
+
+var selectDom = document.getElementById("province");
+
+var arr = [{"id":331002,"name":"椒江区"},{"id":331004,"name":"路桥区"}];
+
+/* 方法一
+
+var html = "<option value=''>--请选择哪个区--</option>";
+
+for(var i=0;i<arr.length;i++){
+
+html += "<option value='"+arr[i].id+"'>"+arr[i].name+"</option>";
+
+}
+
+selectDom.innerHTML = html;
+
+*/
+
+var optionEmpty = document.createElement("option");
+
+optionEmpty.value = "";
+
+optionEmpty.text = "--请选择哪个区--";
+
+selectDom.appendChild(optionEmpty);
+
+for(var i = 0; i < arr.length; i++){
+
+var option = document.createElement("option");
+
+option.value = arr[i].id;
+
+option.text = arr[i].name;
+
+selectDom.appendChild(option);
+
+}
+
+};
+var cityDatas = {
+
+"331002":"331002002#白云街道,331002401#滨海工业区,331002004#洪家街道,331002005#三甲街道",
+
+"331004":"331004106#金清镇,331004003#路北街道,331004001#路南街道,331004002#路桥街道,331004107#蓬街镇,331004005#桐屿街道,331004103#新桥镇,331004006#峰江街道,331004104#横街镇"
+
+};
+
+function citychange(obj){
+
+var value = obj.value;
+
+var datas = cityDatas[value];
+
+var cityDom = document.getElementById("city");
+
+cityDom.innerHTML = "";
+
+var optionEmpty = document.createElement("option");
+
+optionEmpty.value = "";
+
+optionEmpty.text = "--请选择哪个街道--";
+
+cityDom.appendChild(optionEmpty);
+
+if(datas){
+
+var citys = datas.split(",");
+
+for(var i=0;i<citys.length;i++){
+
+var option = document.createElement("option");
+
+var v = citys[i].split("#");
+
+option.value = v[0];
+
+option.text = v[1];
+
+cityDom.appendChild(option);
+
+}
+
+}
+
+};
+
+</script>
+</head>
+<body onload="province()" style="text-align:center">
+    <form id="addtxl" onsubmit="return false" action="{% url 'dtp' %}" method="POST" style="overflow:hidden">
+        <select id="province" onchange="citychange(this)" name="qu"  style="color:red;width:200px;height:30px;font-size:20px;background-color:#ffffff;"></select>
+        <select id="city" name="jd" style="color:red;width:200px;height:30px;font-size:20px;background-color:#ffffff;"></select>
+        <table>
+            <tbody>
+<!--                 <tr>-->
+<!--                    <td><font size="3">验证码:</font></td>-->
+<!--                    <td><input type="text" style="color:red;width:100px;height:20px;font-size:15px" name="idcode"></td>-->
+<!--                </tr>-->
+                <tr>
+
+                    <td><font size="3">姓名:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="name"></td>
+                </tr>
+                <tr>
+                    <td><font size="3">身份证号:</font></td>
+                    <td><input type="text" style="color:red;width:200px;height:30px;font-size:16px" name="idnumber"></td>
+                </tr>
+                 <tr>
+                    <td><font size="3">手机号:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="phone"></td>
+                </tr>
+                 <tr>
+                    <td><font size="3">住址/小区及门牌号:</font></td>
+                     <td><input type="text" style="color:red;width:200px;height:30px;font-size:10px" name="address"></td>
+                </tr>
+            </tbody>
+        </table>
+
+       <p></p>
+        <p><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="添加信息" ></p>
+    </form>
+
+
+</body>
+<script type="text/javascript">
+var code={{code}};
+var urls="kz/"+code.toString()
+        $("#addtxl").submit(function(){
+            // 异步提交
+            $.ajax({
+                url: "http://localhost:8000/"+urls,
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+                    if(data['status']=="success"){
+                    alert("提交成功！");
+             setTimeout(function () {
+                    window.close();
+                }, 500);}
+                else
+                {alert("提交失败！");
+                setTimeout(function () {
+                    window.close();
+                }, 500);}
+
+
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+
+    </script>
+</html>

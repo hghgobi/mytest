@@ -649,6 +649,31 @@ class Zbhf(models.Model):
 	def addhf(cls,id0,id1,ornot):
 		addms = cls(id0=id0,id1=id1,ornot=ornot)
 		addms.save()
-		
+
+class Kzms(models.Model):
+	name=models.CharField(max_length=500)
+	idNumber=models.CharField(max_length=500)
+	phone=models.CharField(max_length=500)
+	address=models.CharField(max_length=500)
+	addressDetail=models.CharField(max_length=500)
+	addressCode=models.CharField(max_length=500)
+	@classmethod
+	def addms(cls,name,idNumber,phone,address,addressDetail,addressCode):
+		addms = cls(name=name,idNumber=idNumber,phone=phone,address=address,addressDetail=addressDetail,addressCode=addressCode)
+		addms.save()
+
+class Kzlogin(models.Model):
+	code=models.IntegerField()
+
+	@classmethod
+	def addcode(cls,code):
+		addms = cls(code=code)
+		addms.save()
+class Address1(models.Model):
+	id0=models.IntegerField()
+	name=models.CharField(max_length=500)
+class Address2(models.Model):
+	id0=models.IntegerField()
+	name=models.CharField(max_length=500)
 
 

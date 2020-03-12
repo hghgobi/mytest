@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 
 # Register your models here.
 @admin.register(Classes)
@@ -205,3 +205,16 @@ class DatirecordAdmin(admin.ModelAdmin):
 @admin.register(Zbhf)
 class ZbhfAdmin(admin.ModelAdmin):
 	list_display = ['id0','id1','ornot']
+
+@admin.register(Kzms)
+class KzmsAdmin(admin.ModelAdmin):
+	list_display = ['name','idNumber','phone','address','addressDetail','addressCode']
+@admin.register(Kzlogin)
+class KzloginAdmin(admin.ModelAdmin):
+	list_display = ['code']
+@admin.register(Address1)
+class Address1Admin(admin.ModelAdmin):
+	list_display = ['id0','name']
+@admin.register(Address2)
+class Address2Admin(admin.ModelAdmin):
+	list_display = ['id0','name']

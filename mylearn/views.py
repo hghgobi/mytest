@@ -1,14 +1,15 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
 from django.core import serializers
 from django.contrib import auth
 from django.core.paginator import Paginator
-
+from random import choice
+import string
 from django.contrib.contenttypes.models import ContentType
 from comment.models import Comment
 
@@ -47,6 +48,70 @@ from wechatpy.exceptions import InvalidSignatureException
 
 from wechatpy.utils import check_signature
 from wechatpy.pay import logger
+
+
+def Kz(request,id0):
+    if request.method=='GET':
+        code=id0
+        get_object_or_404(Kzlogin,code=code)
+        return render(request,"kz.html",{"code":code})
+    if request.method=='POST':
+        data={}
+        code=id0
+        name=request.POST.get('name')
+        idNumber=request.POST.get('idnumber')
+        phone=request.POST.get('phone')
+        addressDetail=request.POST.get('address')
+        qu=request.POST.get('qu')
+        jd=request.POST.get('jd')
+        get_object_or_404(Kzlogin,code=code)
+        Kzlogin.objects.filter(code=code).delete()
+        a=get_object_or_404(Address1,id0=qu)
+        b=get_object_or_404(Address2,id0=jd)
+        address=a.name+b.name
+        addressCode=jd
+        Kzms.addms(name,idNumber,phone,address,addressDetail,addressCode)
+        data['status']='success'
+        return JsonResponse(data)
+
+def Kzgetms(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    datas=[]
+    ms=Kzms.objects.all()
+    for i in range(len(ms)):
+        data = {}
+        data['name']=ms[i].name
+        data['idNumber']=ms[i].idNumber
+        data['phone']=ms[i].phone
+        data['phoneBackup']=""
+        data['address']=ms[i].address
+        data['addressDetail']=ms[i].addressDetail
+        data['goodsCode']='kouzhao'
+        data['addressCode']=ms[i].addressCode
+        datas.append(data)
+    return render(request,'kzgetms.html',{"ms":json.dumps(datas,ensure_ascii=False)})
+
+def Kzurl(request,id0):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    chars = string.digits
+    codes=""
+    for i in range(int(id0)):
+        a = ''.join([choice(chars) for i in range(8)])
+        Kzlogin.addcode(code=a)
+        b="http://35925.top/kz/"+a
+        codes=codes+b+","
+    return HttpResponse(codes)
+
+
+
+
+
+
+
 
 
 
