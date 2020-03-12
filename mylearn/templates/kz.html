@@ -152,11 +152,15 @@ var urls="kz/"+code.toString()
                     if(data['status']=="success"){
                     alert("提交成功！");
              setTimeout(function () {
+                    window.opener = null;
+                    window.open(' ','_self');
                     window.close();
                 }, 500);}
                 else
                 {alert("提交失败！");
                 setTimeout(function () {
+                    window.opener = null;
+                    window.open(' ','_self');
                     window.close();
                 }, 500);}
 
