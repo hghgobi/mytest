@@ -56,19 +56,21 @@ def Kz(request,code):
         get_object_or_404(Kzlogin,code=code)
         return render(request,"kz.html",{"code":code})
     if request.method=='POST':
+        qu=request.POST.get('qu')
+        jd=request.POST.get('jd')
+        qu=int(qu)
+        jd=int(jd)
         data={}
         code=code
         name=request.POST.get('name')
         idNumber=request.POST.get('idnumber')
         phone=request.POST.get('phone')
         addressDetail=request.POST.get('address')
-        qu=request.POST.get('qu')
-        jd=request.POST.get('jd')
         get_object_or_404(Kzlogin,code=code)
         Kzlogin.objects.filter(code=code).delete()
-        a=get_object_or_404(Address1,id0=qu)
-        b=get_object_or_404(Address2,id0=jd)
-        address=a.name+b.name
+        a=Address1.objects.filter(id0=qu)
+        b=Address2.objects.filter(id0=jd)
+        address=str(a[0].name+b[0].name)
         addressCode=jd
         Kzms.addms(name,idNumber,phone,address,addressDetail,addressCode)
         data['status']='success'
