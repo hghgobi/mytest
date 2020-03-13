@@ -107,8 +107,9 @@ def Kzurl(request,id0):
         b="http://35925.top/kz/"+a
         codes=codes+b+'<p></p>'
     codes = codes+'</font></a>'
+    return  render(request,"kzgeturl.html",{"geturl":codes})
 
-    return HttpResponse(codes)
+    # return HttpResponse(codes)
 
 
 
