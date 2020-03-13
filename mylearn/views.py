@@ -54,7 +54,7 @@ def Kz(request,code):
     if request.method=='GET':
         code=code
         get_object_or_404(Kzlogin,code=code)
-        return render(request,"kz.html",{"code":json.dumps(code)})
+        return render(request,"kz.html",{"code":code})
     if request.method=='POST':
         data={}
         code=code
@@ -97,7 +97,7 @@ def Kzurl(request,id0):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
-    chars =string.ascii_letters+string.digits
+    chars =string.digits
     codes='<p>手机号和身份证号要正确</p><a><font size="5">'
     for i in range(int(id0)):
         a = ''.join([choice(chars) for i in range(8)])
