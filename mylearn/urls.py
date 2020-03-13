@@ -97,7 +97,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('ranktestresults/', views.rankmss),
                path('addqs/<int:yunsuan>', views.addqs2),
                path('111/', views.Xhltestms),
-               path('kz/<int:id0>', views.Kz),
+               path('kz/<code>/', views.Kz),
                path('kzgetms/', views.Kzgetms),
                path('kzgeturl/<int:id0>', views.Kzurl),
 

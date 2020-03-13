@@ -663,7 +663,7 @@ class Kzms(models.Model):
 		addms.save()
 
 class Kzlogin(models.Model):
-	code=models.IntegerField()
+	code=models.CharField(max_length=200)
 
 	@classmethod
 	def addcode(cls,code):

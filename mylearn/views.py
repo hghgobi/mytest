@@ -50,14 +50,14 @@ from wechatpy.utils import check_signature
 from wechatpy.pay import logger
 
 
-def Kz(request,id0):
+def Kz(request,code):
     if request.method=='GET':
-        code=id0
+        code=code
         get_object_or_404(Kzlogin,code=code)
         return render(request,"kz.html",{"code":code})
     if request.method=='POST':
         data={}
-        code=id0
+        code=code
         name=request.POST.get('name')
         idNumber=request.POST.get('idnumber')
         phone=request.POST.get('phone')
@@ -97,13 +97,15 @@ def Kzurl(request,id0):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
-    chars = string.digits
-    codes=""
+    chars =string.ascii_letters+string.digits
+    codes='<p>手机号和身份证号要正确</p><a><font size="5">'
     for i in range(int(id0)):
         a = ''.join([choice(chars) for i in range(8)])
         Kzlogin.addcode(code=a)
         b="http://35925.top/kz/"+a
-        codes=codes+b+","
+        codes=codes+b+'<p></p>'
+    codes = codes+'</font></a>'
+
     return HttpResponse(codes)
 
 
