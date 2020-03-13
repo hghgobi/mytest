@@ -54,7 +54,7 @@ def Kz(request,code):
     if request.method=='GET':
         code=code
         get_object_or_404(Kzlogin,code=code)
-        return render(request,"kz.html",{"code":code})
+        return render(request,"kz.html",{"code":json.dumps(code)})
     if request.method=='POST':
         data={}
         code=code
