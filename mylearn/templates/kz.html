@@ -151,20 +151,26 @@ var urls="kz/"+code.toString()
                 success: function(data){
                     console.log(data);
                     if(data['status']=="success"){
-                    alert("提交成功！");
+                    alert("提交成功！数据已保存！");
              setTimeout(function () {
                     window.opener = null;
                     window.open(' ','_self');
                     window.close();
                 }, 500);}
-                else
-                {alert("提交失败！");
+                else if (data['status']=="success1")
+                {alert("数据已保存！无需重复提交，退出即可！");
                 setTimeout(function () {
                     window.opener = null;
                     window.open(' ','_self');
                     window.close();
                 }, 500);}
-
+                else
+                {alert("此链接已失效！请换一个链接重新提交信息！");
+                setTimeout(function () {
+                    window.opener = null;
+                    window.open(' ','_self');
+                    window.close();
+                }, 500);}
 
                 },
                 error: function(xhr){

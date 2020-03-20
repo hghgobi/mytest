@@ -66,15 +66,23 @@ def Kz(request,code):
         idNumber=request.POST.get('idnumber')
         phone=request.POST.get('phone')
         addressDetail=request.POST.get('address')
-        get_object_or_404(Kzlogin,code=code)
-        Kzlogin.objects.filter(code=code).delete()
-        a=Address1.objects.filter(id0=qu)
-        b=Address2.objects.filter(id0=jd)
-        address=str(a[0].name+b[0].name)
-        addressCode=jd
-        Kzms.addms(name,idNumber,phone,address,addressDetail,addressCode)
-        data['status']='success'
-        return JsonResponse(data)
+        if Kzms.objects.filter(idNumber=idNumber):
+            data['status']='success1'
+            return JsonResponse(data)
+        try:
+            get_object_or_404(Kzlogin, code=code)
+            Kzlogin.objects.filter(code=code).delete()
+            a = Address1.objects.filter(id0=qu)
+            b = Address2.objects.filter(id0=jd)
+            address = str(a[0].name + b[0].name)
+            addressCode = jd
+            Kzms.addms(name, idNumber, phone, address, addressDetail, addressCode)
+            data['status'] = 'success'
+            return JsonResponse(data)
+        except:
+            data['status']='success2'
+            return JsonResponse(data)
+
 
 def Kzgetms(request):
     teststudent = request.session.get("teststudent")
