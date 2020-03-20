@@ -53,8 +53,11 @@ from wechatpy.pay import logger
 def Kz(request,code):
     if request.method=='GET':
         code=code
-        get_object_or_404(Kzlogin,code=code)
-        return render(request,"kz.html",{"code":code})
+        try:
+            get_object_or_404(Kzlogin,code=code)
+            return render(request,"kz.html",{"code":code})
+        except:
+            return HttpResponse("此链接已失效！")
     if request.method=='POST':
         qu=request.POST.get('qu')
         jd=request.POST.get('jd')
