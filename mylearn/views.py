@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 import json
 import random
 import numpy as np
@@ -54,7 +54,8 @@ def Kz(request,code):
     if request.method=='GET':
         code=code
         try:
-            get_object_or_404(Kzlogin,code=code)
+            get_object_or_404(Kzlogin1,code=code)
+            Kzlogin1.objects.filter(code=code).delete()
             return render(request,"kz.html",{"code":code})
         except:
             return HttpResponse("此链接已失效！")
@@ -115,10 +116,32 @@ def Kzurl(request,id0):
     for i in range(int(id0)):
         a = ''.join([choice(chars) for i in range(8)])
         Kzlogin.addcode(code=a)
+        Kzlogin1.addcode(code=a)
         b="http://35925.top/kz/"+a
         codes=codes+b+'<p></p>'
     codes = codes+'</font></a>'
     return  render(request,"kzgeturl.html",{"geturl":codes})
+
+def Kzurl2(request):
+    get_object_or_404(Kzonoff,onoff=1)
+    urlsid = Kzlogin1.objects.all()
+    if urlsid:
+        b = "http://35925.top/kz/"
+        # b="http://localhost:8000/kz/"
+        urls=[]
+        for urlid in range(len(urlsid)):
+            url=b+str(urlsid[urlid].code)
+            urlss='''<a href="%s" target="_blank">--->%s .点我<---</a><p></p>'''%(url,urlid+1)
+            urls.append(urlss)
+        return render(request,"kzgeturl2.html",{"url":json.dumps(urls)})
+    else:
+        return HttpResponse("来迟了。请持续关注。。。。")
+
+
+
+
+
+
 
     # return HttpResponse(codes)
 

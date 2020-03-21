@@ -669,6 +669,20 @@ class Kzlogin(models.Model):
 	def addcode(cls,code):
 		addms = cls(code=code)
 		addms.save()
+
+
+class Kzlogin1(models.Model):
+	code = models.IntegerField()
+
+	@classmethod
+	def addcode(cls, code):
+		addms = cls(code=code)
+		addms.save()
+
+class Kzonoff(models.Model):
+	onoff=models.IntegerField()
+
+
 class Address1(models.Model):
 	id0=models.IntegerField()
 	name=models.CharField(max_length=500)

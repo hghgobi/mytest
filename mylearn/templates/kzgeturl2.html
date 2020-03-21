@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>url</title>
+
+
+<script type="text/javascript">
+urls={{url|safe}}
+window.onload=function(){
+var urlsum='';
+for (var i=0;i<urls.length;i++)
+{
+
+   urlsum+= urls[i];
+}
+bg.innerHTML=urlsum;
+}
+</script>
+
+
+</head>
+<body>
+<div id="bg" align="center" style="font-size:30px"></div>
+
+<script language="javascript" type="text/javascript">
+function myrefresh(){
+window.location.reload();
+}
+setTimeout('myrefresh()',1000);
+  </script>
+</body>
+</html>
