@@ -144,7 +144,7 @@ var urls="kz/"+code.toString()
         $("#addtxl").submit(function(){
             // 异步提交
             $.ajax({
-                url: "http://35925.top/"+urls,
+                url: "http://localhost:8000/"+urls,
                 type: 'POST',
                 data: $(this).serialize(),
                 cache: false,
@@ -159,6 +159,13 @@ var urls="kz/"+code.toString()
                 }, 500);}
                 else if (data['status']=="success1")
                 {alert("数据已保存！无需重复提交，退出即可！");
+                setTimeout(function () {
+                    window.opener = null;
+                    window.open(' ','_self');
+                    window.close();
+                }, 500);}
+                 else if (data['status']=="success3")
+                {alert("一个身份证号七天内只能预约一次！请换一个身份证号。");
                 setTimeout(function () {
                     window.opener = null;
                     window.open(' ','_self');

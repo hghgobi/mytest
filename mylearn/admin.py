@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
 
 # Register your models here.
 @admin.register(Classes)
@@ -224,3 +224,7 @@ class Address1Admin(admin.ModelAdmin):
 @admin.register(Address2)
 class Address2Admin(admin.ModelAdmin):
 	list_display = ['id0','name']
+
+@admin.register(Kzidrecord)
+class KzidrecordAdmin(admin.ModelAdmin):
+	list_display = ['time','idNumber']

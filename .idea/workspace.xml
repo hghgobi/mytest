@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/kzgeturl2.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/kzgeturl2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/kz.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/kz.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2140">
-              <caret line="129" column="39" lean-forward="true" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+            <state relative-caret-position="90">
+              <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -25,19 +29,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/templates/xxtest.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3000">
-              <caret line="322" column="39" selection-start-line="322" selection-start-column="12" selection-end-line="322" selection-end-column="39" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/kzgeturl2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="28" column="25" lean-forward="true" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
+            <state relative-caret-position="722">
+              <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -45,11 +40,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/kz.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="468">
-              <caret line="173" selection-start-line="173" selection-end-line="173" />
+            <state relative-caret-position="648">
+              <caret line="171" column="35" lean-forward="true" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
               <folding>
                 <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -66,30 +61,26 @@
         <entry file="file://$PROJECT_DIR$/mylearn/templates/rankqB.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="480">
-              <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+              <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs2.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8010" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs3.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-11520" />
-          </provider>
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="632">
-              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+            <state relative-caret-position="3090">
+              <caret line="106" selection-start-line="106" selection-end-line="106" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -100,10 +91,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="602">
-              <caret line="684" selection-start-line="684" selection-end-line="684" />
+            <state relative-caret-position="302">
+              <caret line="681" column="28" lean-forward="true" selection-start-line="681" selection-start-column="28" selection-end-line="681" selection-end-column="28" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="738">
+              <caret line="228" column="40" lean-forward="true" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,7 +116,7 @@
         <entry file="file://$PROJECT_DIR$/mylearn/templates/kzgeturl.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
-              <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+              <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -213,16 +216,16 @@
         <option value="$PROJECT_DIR$/mylearn/templates/kzgetms.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/dati.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/kzgeturl.html" />
-        <option value="$PROJECT_DIR$/mylearn/templates/kz.html" />
+        <option value="$PROJECT_DIR$/mylearn/urls.py" />
+        <option value="$PROJECT_DIR$/mylearn/templates/kzgeturl2.html" />
         <option value="$PROJECT_DIR$/mylearn/models.py" />
         <option value="$PROJECT_DIR$/mylearn/admin.py" />
-        <option value="$PROJECT_DIR$/mylearn/urls.py" />
         <option value="$PROJECT_DIR$/mylearn/views.py" />
-        <option value="$PROJECT_DIR$/mylearn/templates/kzgeturl2.html" />
+        <option value="$PROJECT_DIR$/mylearn/templates/kz.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="104" />
     <option name="y" value="94" />
     <option name="width" value="1144" />
@@ -610,12 +613,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/xxtest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1038">
-          <caret line="217" column="24" lean-forward="true" selection-start-line="217" selection-start-column="24" selection-end-line="217" selection-end-column="24" />
+        <state relative-caret-position="9660">
+          <caret line="322" column="39" selection-start-line="322" selection-start-column="12" selection-end-line="322" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/rankqB.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="480">
+          <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs2.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs3.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3090">
+          <caret line="106" selection-start-line="106" selection-end-line="106" />
           <folding>
-            <element signature="e#0#32#0" expanded="true" />
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -623,48 +646,34 @@
     <entry file="file://$PROJECT_DIR$/mylearn/templates/kzgeturl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
-          <caret line="14" column="7" lean-forward="true" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
+    <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="632">
-          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
+        <state relative-caret-position="738">
+          <caret line="228" column="40" lean-forward="true" selection-start-line="228" selection-start-column="40" selection-end-line="228" selection-end-column="40" />
           <folding>
-            <element signature="e#0#28#0" expanded="true" />
+            <element signature="e#0#32#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs2.html">
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/kzgeturl2.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8010" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/showwkqs3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11520" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/rankqB.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/xxtest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3000">
-          <caret line="322" column="39" selection-start-line="322" selection-start-column="12" selection-end-line="322" selection-end-column="39" />
+        <state relative-caret-position="722">
+          <caret line="32" column="7" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="684" selection-start-line="684" selection-end-line="684" />
+        <state relative-caret-position="302">
+          <caret line="681" column="28" lean-forward="true" selection-start-line="681" selection-start-column="28" selection-end-line="681" selection-end-column="28" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -673,8 +682,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2140">
-          <caret line="129" column="39" lean-forward="true" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
+        <state relative-caret-position="90">
+          <caret line="72" column="50" lean-forward="true" selection-start-line="72" selection-start-column="50" selection-end-line="72" selection-end-column="50" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
@@ -683,8 +692,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/kz.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="173" selection-start-line="173" selection-end-line="173" />
+        <state relative-caret-position="648">
+          <caret line="171" column="35" lean-forward="true" selection-start-line="171" selection-start-column="35" selection-end-line="171" selection-end-column="35" />
           <folding>
             <element signature="n#style#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -692,16 +701,6 @@
             <element signature="n#style#0;n#input#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#input#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/kzgeturl2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="28" column="25" lean-forward="true" selection-start-line="28" selection-start-column="25" selection-end-line="28" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

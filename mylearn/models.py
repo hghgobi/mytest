@@ -682,6 +682,14 @@ class Kzlogin1(models.Model):
 class Kzonoff(models.Model):
 	onoff=models.IntegerField()
 
+class Kzidrecord(models.Model):
+	idNumber = models.CharField(max_length=500)
+	time=models.DateTimeField(auto_now=True)
+	@classmethod
+	def addcode(cls, idNumber):
+		addms = cls(idNumber=idNumber)
+		addms.save()
+
 
 class Address1(models.Model):
 	id0=models.IntegerField()
