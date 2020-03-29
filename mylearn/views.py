@@ -4030,6 +4030,7 @@ def zkfxname(request):
         id1 = request.POST.get('id1')
 
         mss = Newnames.objects.filter(zid=id0, jid=id1)
+
         n = len(mss)
         msss=Yuxinamezk.objects.filter(zid=id0,jid=id1,fs = "重做!")
         namwz=[]
@@ -4039,5 +4040,17 @@ def zkfxname(request):
                 namwz.append(nameid[name])
             else:
                 pass
-        return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz})
+        hwname = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+        hwnames={}
+        for i in range(len(hwname)):
+            if hwname[i].fs=="优秀":
+                hwnames[hwname[i].name]="A"
+            elif hwname[i].fs=="良好":
+                hwnames[hwname[i].name] = "B"
+            elif hwname[i].fs == "及格":
+                hwnames[hwname[i].name] = "C"
+            else:
+                pass
+        print(hwnames)
+        return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz,"hwnames":json.dumps(hwnames,ensure_ascii=False)})
 
