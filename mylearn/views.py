@@ -514,10 +514,6 @@ def Indexs(request):
     if teststudent:
         ms=teststudent+"，欢迎！"
         teststudent = request.session.get("teststudent")
-
-        if not teststudent:
-            return redirect('../testlogin')
-
         loginrecord = get_object_or_404(Loginrecord, loginuser=teststudent)
 
         loginrecord.logincount = int(loginrecord.logincount) + 1
