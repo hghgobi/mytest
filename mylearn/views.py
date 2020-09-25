@@ -513,18 +513,19 @@ def Indexs(request):
     teststudent = request.session.get("teststudent")
     if teststudent:
         ms=teststudent+"，欢迎！"
+        teststudent = request.session.get("teststudent")
+
+        if not teststudent:
+            return redirect('../testlogin')
+
+        loginrecord = get_object_or_404(Loginrecord, loginuser=teststudent)
+
+        loginrecord.logincount = int(loginrecord.logincount) + 1
+        loginrecord.save()
     else:
         ms=''
     return render(request, 'base3.html',{'ms':ms})
-    # teststudent=request.session.get("teststudent")
 
-    # if not teststudent:
-    #     return redirect('../testlogin')
-    #
-    # loginrecord=get_object_or_404(Loginrecord,loginuser=teststudent)
-    #
-    # loginrecord.logincount =int(loginrecord.logincount)+1
-    # loginrecord.save()
     # try:
     #     n='未读'
     #     m=get_object_or_404(Leavems,name=teststudent,ornot=n)
