@@ -367,6 +367,7 @@ class Yuxiname0(models.Model):
 class Yuxinamezk(models.Model):
 	zid = models.IntegerField()
 	jid = models.IntegerField()
+	bj = models.IntegerField(default=0)
 	name = models.CharField(max_length=200)
 	ornot = models.CharField(max_length=200)
 	time = models.DateTimeField(auto_now=True)
@@ -377,9 +378,9 @@ class Yuxinamezk(models.Model):
 		ordering = ['-time']
 
 	@classmethod
-	def addyxname(cls,zid,jid,name,ornot,fs,costtime):
+	def addyxname(cls,bj,zid,jid,name,ornot,fs,costtime):
 
-		addms = cls(zid=zid,jid=jid,name=name,ornot=ornot,fs=fs,costtime=costtime)
+		addms = cls(bj=bj,zid=zid,jid=jid,name=name,ornot=ornot,fs=fs,costtime=costtime)
 		addms.save()
 
 

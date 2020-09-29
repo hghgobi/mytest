@@ -76,7 +76,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('jiefc/<int:id0>/<int:id1>', views.Jfc),
                #path('xhltest1/<int:id0>/<int:id1>', views.Jfc0),
              path('wktest/', views.Testresult,name="wktest"),
-              path('zkfxnametg/<int:id0>/<int:id1>', views.zkfxnametg),
+              path('zkfxnametg/<int:id0>/<int:id1>/<int:bj>', views.zkfxnametg),
 
                path('wrong/', views.showqserror,name="wrong"),
                path('yuxiname/<int:id0>/<int:id1>', views.yuxiname),

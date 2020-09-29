@@ -617,8 +617,8 @@ background: #EA6F30;
 <div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
 
     <div id="ms" >
-         <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题</a>
-<!--        <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>-->
+<!--         <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题</a>-->
+        <a>共</a><a id="sum"></a><a>题，</a><a>正在做第</a><a id="yzts"></a><a>题，做对</a><a id="correctamount"></a><a>题</a>
 <!--        <a>&#45;&#45;通过测试需要答对</a><a id="limit"></a><a>题</a>-->
     </div>
 
@@ -700,8 +700,8 @@ var wrong = "做错了！请重新做！画图、打草稿！";
 var not = "通过失败，请重新测试！";
 <!--var time1 = new Date();-->
 var form = document.getElementById('wrong');
-if(ornot==0){var s5="[不会做的可以到钉钉看直播回放！直播回放待上传，请持续关注！]";}
-else {var s5="[不会做的可以到钉钉看直播回放！直播回放已上传，请前往观看！]";}
+if(ornot==0){var s5="[我思故我在]";}
+else {var s5="[我思故我在！]";}
 function Message(msss){ document.getElementById("ts").innerText=msss;
                         }
 function Deletms(){document.getElementById("ts").innerText="";}
@@ -711,7 +711,7 @@ function startgo()
      document.getElementById("startts").style.display="none";
      document.getElementById("calculater").style.display="block";
      document.getElementById("sum").innerText=qsamount;
-<!--     document.getElementById("correctamount").innerText=correct;-->
+     document.getElementById("correctamount").innerText=correct;
      document.getElementById("yzts").innerText=had;
      document.getElementById("pic").src=qstext[0];
     }
@@ -729,11 +729,11 @@ else if (event.srcElement.innerText=="提交答案"){
 
                                                   if(qsanswer1[0]==a){
                                                                                         correct+=1;
-<!--                                                                                        document.getElementById("correctamount").innerText=correct;-->
+                                                                                        document.getElementById("correctamount").innerText=correct;
                                                                                         had+=1;
+                                                                                        Message(right);
 
-
-                                                                                        window.setTimeout("Deletms()",1000);
+                                                                                        window.setTimeout("Deletms()",2000);
                                                                                         if(had>qsamount){
                                                                                                                 $("#zid").val(zid);
                                                                                                                 $("#jid").val(jid);
@@ -769,7 +769,9 @@ else if (event.srcElement.innerText=="提交答案"){
                                                             wrongcount.push(qsid[0]);
 
                                                              had+=1;
-                                                             document.getElementById("ts").innerText="";
+                                                             Message(wrong);
+                                                             window.setTimeout("Deletms()",2000);
+<!--                                                             document.getElementById("ts").innerText="";-->
                                                              if(had>qsamount){
                                                                                                                 $("#zid").val(zid);
                                                                                                                 $("#jid").val(jid);

@@ -561,9 +561,9 @@ def Classnewslist(request):
 
     return render(request,'base.html',{'page_of_notes':page_of_notes,'page_range':page_range})
 def Classnewslist0(request):
-    teststudent0=request.session.get("teststudent0")
-    if not teststudent0:
-        return redirect('../testlogin0')
+    # teststudent0=request.session.get("teststudent0")
+    # if not teststudent0:
+    #     return redirect('../testlogin0')
 
     notes_all_list = Classnotes0.objects.all()
     paginator = Paginator(notes_all_list,6)
@@ -1339,7 +1339,7 @@ def yuxiname(request,id0,id1):
     # n = len(mss)
     return render(request,'yuxiname.html',{'ms':ms,'id0':id0,'id1':id1})
 
-def zkfxnametg(request,id0,id1):
+def zkfxnametg(request,id0,id1,bj):
     teststudent = request.session.get("teststudent")
     if teststudent:
         try:
@@ -1352,7 +1352,8 @@ def zkfxnametg(request,id0,id1):
         mss=''
     id0 = id0
     id1 = id1
-    ms = Yuxinamezk.objects.filter(zid=id0,jid=id1)
+    bj = bj
+    ms = Yuxinamezk.objects.filter(zid=id0,jid=id1,bj=bj)
     # mss = Newnames.objects.filter(zid=id0,jid=id1)
     # n = len(mss)
     return render(request,'yuxiname2.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss})
@@ -1412,7 +1413,7 @@ def Addnames(request,id0,id1):
     zid = id0
     jid = id1
     # nameid = [20,16,32,27,9,19,22,5,10,17,15,12,14,31,13,18,24,25,11,8,7,56,60,54,53,68,63,66,58,77,67,47,52,71,65,48,61,59,64,49,51,50,55,62,23,75,57,72,26,69,73,29]
-    for i in range(200):
+    for i in range(335)[190:]:
         id = i
         try:
 
@@ -1428,7 +1429,7 @@ def Addnames0(request,id0,id1):
     zid = id0
     jid = id1
 
-    for i in range(150):
+    for i in range(335)[190:]:
         id = i
         try:
 
@@ -3849,6 +3850,12 @@ def zkfx(request,id0,id1):
         wrong = request.POST.get('wrong')
         wrongs=wrong.split(",")
         print(wrongs)
+        bjname = get_object_or_404(Students,studentname=teststudent)
+        bj0 = bjname.pk
+        if bj0 <= 260:
+            bj = 3
+        else:
+            bj = 4
 
         if Newnames.objects.filter(zid=id0, jid=id1, name=teststudent):
             pass
@@ -3887,7 +3894,7 @@ def zkfx(request,id0,id1):
             timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
             costtime2=timelss2.timels
 
-            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+            Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
             Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
             try:
@@ -3895,7 +3902,7 @@ def zkfx(request,id0,id1):
             except:
                 pass
             # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-            paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)
+            paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)+'/'+str(bj)
             return redirect(paths)
 
             # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
@@ -3912,7 +3919,7 @@ def zkfx(request,id0,id1):
             timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
             costtime2=timelss2.timels
 
-            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+            Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
             Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
 
@@ -3920,7 +3927,7 @@ def zkfx(request,id0,id1):
                 Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
             except:
                 pass
-            paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)
+            paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)+'/'+str(bj)
             return redirect(paths)
             # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
             #
@@ -3939,7 +3946,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
 
@@ -3947,7 +3954,7 @@ def zkfx(request,id0,id1):
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
-                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
                 return redirect(paths)
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 #
@@ -3963,7 +3970,7 @@ def zkfx(request,id0,id1):
                 costtime2 = timelss2.timels
 
                 Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
-                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
                 return redirect(paths)
 
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
@@ -3985,14 +3992,14 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
                 try:
                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
-                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
                 return redirect(paths)
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 #
@@ -4007,8 +4014,8 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
-                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
                 return redirect(paths)
 
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
