@@ -84,7 +84,7 @@ class Classnotes(models.Model):
 	notetime = models.DateTimeField(auto_now_add=True)
 	noteupdatetime = models.DateTimeField(auto_now=True)
 	readed_num =models.IntegerField(default=0)
-	bangji = models.IntegerField(default=0)
+	bandji = models.CharField(max_length=200)
 	def __str__(self):
 		return self.notename
 	class Meta:
