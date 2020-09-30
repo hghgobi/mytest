@@ -432,7 +432,7 @@ def Exammessages(request):
     plt.plot(dates, ranks, c='blue')
     plt.title("个人班级排名变化情况")
     fig.autofmt_xdate(rotation=85)
-    plt.ylim(0, 50)
+    plt.ylim(50,0)
 
     plt.ylabel("分数")
     plt.tick_params(axis='both', which='major', labelsize=8)
