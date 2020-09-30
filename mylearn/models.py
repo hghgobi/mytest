@@ -84,6 +84,7 @@ class Classnotes(models.Model):
 	notetime = models.DateTimeField(auto_now_add=True)
 	noteupdatetime = models.DateTimeField(auto_now=True)
 	readed_num =models.IntegerField(default=0)
+	bans = models.IntegerField()
 
 	def __str__(self):
 		return self.notename
