@@ -72,6 +72,7 @@ class Exams(models.Model):
 	examscore = models.IntegerField()
 	examtime = models.CharField(max_length=200)
 	examstudent = models.ForeignKey(Students,on_delete=models.DO_NOTHING)
+	rank = models.IntegerField()
 	class Meta:
 		ordering = ['-id']
 

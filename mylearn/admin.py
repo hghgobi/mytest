@@ -20,7 +20,7 @@ class ClassingssAdmin(admin.ModelAdmin):
 
 @admin.register(Exams)
 class ExamsAdmin(admin.ModelAdmin):
-	list_display = ['examtime','examname','examstudent','examscore']
+	list_display = ['examtime','examname','examstudent','examscore','rank']
 
 @admin.register(Students)
 class StudentsAdmin(admin.ModelAdmin):

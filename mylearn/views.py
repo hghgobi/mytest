@@ -394,21 +394,23 @@ def Exammessages(request):
     
     exammessages = Exams.objects.filter(examstudent__studentname=teststudent)
     sunn=len(exammessages)
-    dates,scores=[],[]
+    dates,scores,ranks=[],[],[]
     for i in range(sunn):
         
         #date=datetime.strptime(exammessages[i].examtime,'"%Y.%m.%d"')
         dates.append(exammessages[i].examtime)
         scores.append(exammessages[i].examscore)
+        ranks.append(exammessages[i].rank)
     dates.reverse()
     scores.reverse()
+    ranks.reverse()
     plt.switch_backend('agg')
     fig=plt.figure(figsize=(3.3,3.3))
 
     matplotlib.rcParams['font.sans-serif'] = ['SimHei']
     matplotlib.rcParams['axes.unicode_minus'] = False
     plt.plot(dates,scores,c='red')
-    plt.title("总体情况")
+    plt.title("历次考试分数变化情况")
     fig.autofmt_xdate(rotation = 85)
     plt.ylim(0,120)
 
@@ -422,9 +424,29 @@ def Exammessages(request):
     plt.close()
     imd=html.format(data)
 
+    plt.switch_backend('agg')
+    fig = plt.figure(figsize=(3.3, 3.3))
+
+    matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+    matplotlib.rcParams['axes.unicode_minus'] = False
+    plt.plot(dates, ranks, c='blue')
+    plt.title("个人班级排名变化情况")
+    fig.autofmt_xdate(rotation=85)
+    plt.ylim(0, 50)
+
+    plt.ylabel("分数")
+    plt.tick_params(axis='both', which='major', labelsize=8)
+    sio = BytesIO()
+
+    plt.savefig(sio, format='png')
+    data = base64.encodebytes(sio.getvalue()).decode()
+    html2 = ''' <img src="data:image/png;base64,{}"/> '''
+    plt.close()
+    imd2 = html2.format(data)
+
   
 
-    return render(request,'exam.html',{'exammessages':exammessages,'imd':imd}) 
+    return render(request,'exam.html',{'exammessages':exammessages,'imd':imd,'imd2':imd2})
 
 
 def Daohang(request):
