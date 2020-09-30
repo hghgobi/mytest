@@ -547,11 +547,19 @@ def Indexs0(request):
     return render(request, 'xhlbase3.html')
 
 def Classnewslist(request):
-    # teststudent=request.session.get("teststudent")
-    # if not teststudent:
-    #     return redirect('../testlogin')
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    stuname = get_object_or_404(Students,name=teststudent)
+    bj0 = stuname.pk
+    if bj0>=200 and bj0<=249:
+        bj = 3
+    elif bj0>=281 and bj0<=329:
+        bj = 4
+    else:
+        return redirect('../testlogin')
 
-    notes_all_list = Classnotes.objects.all()
+    notes_all_list = Classnotes.objects.filter(bj=bj)
     paginator = Paginator(notes_all_list,6)
     page_num = request.GET.get('page',1)
     page_of_notes = paginator.get_page(page_num)
@@ -3888,7 +3896,7 @@ def zkfx(request,id0,id1):
         else:
             bj = 4
 
-        if Newnames.objects.filter(zid=id0, jid=id1, name=teststudent):
+        if Newnames.objects.filter(zid=id0, jid=id1,bj=bj, name=teststudent):
             pass
         else:
             ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
