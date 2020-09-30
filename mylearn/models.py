@@ -408,12 +408,13 @@ class Yuxitestcount(models.Model):
 class Newnames(models.Model):
 	zid = models.IntegerField()
 	jid = models.IntegerField()
+	bj = models.IntegerField(default=0)
 	name = models.CharField(max_length=200)
 
 	@classmethod
-	def addname(cls,zid,jid,name):
+	def addname(cls,zid,jid,bj,name):
 
-		addms = cls(zid=zid,jid=jid,name=name)
+		addms = cls(zid=zid,jid=jid,bj=bj,name=name)
 		addms.save()
 		return addms
 class Costtimels(models.Model):

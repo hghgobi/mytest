@@ -130,7 +130,7 @@ class badhomeworkAdmin(admin.ModelAdmin):
 
 @admin.register(Newnames)
 class NewnamesAdmin(admin.ModelAdmin):
-	list_display = ('zid','jid','name')
+	list_display = ('bj','zid','jid','name')
 
 @admin.register(Newnames0)
 class Newnames0Admin(admin.ModelAdmin):
