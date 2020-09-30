@@ -1362,11 +1362,16 @@ def zkfxnametg(request,id0,id1,bj):
     # n = len(mss)
     for i in range(len(names)):
         name=names[i]
-        try:
-            get_object_or_404(Yuxinamezk,name=name)
-            names.remove(name)
-        except:
+        ornot = Newnames.objects.filter(zid=id0,jid=id1,name=name)
+        if ornot:
             pass
+        else:
+            names.remove(name)
+        # try:
+        #     get_object_or_404(Newnames,name=name)
+        #     names.remove(name)
+        # except:
+        #     pass
     return render(request,'yuxiname2.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss,'names':names})
 
 def yuxiname0(request,id0,id1):
