@@ -559,7 +559,7 @@ def Classnewslist(request):
     else:
         return redirect('../testlogin')
 
-    notes_all_list = Classnotes.objects.filter(bj=bj)
+    notes_all_list = Classnotes.objects.filter(bjj=bj)
     paginator = Paginator(notes_all_list,6)
     page_num = request.GET.get('page',1)
     page_of_notes = paginator.get_page(page_num)
