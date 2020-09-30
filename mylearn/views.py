@@ -553,13 +553,13 @@ def Classnewslist(request):
     stuname = get_object_or_404(Students,name=teststudent)
     bj0 = stuname.pk
     if bj0>=200 and bj0<=249:
-        bj = 3
+        bjj = 3
     elif bj0>=281 and bj0<=329:
-        bj = 4
+        bjj = 4
     else:
         return redirect('../testlogin')
 
-    notes_all_list = Classnotes.objects.filter(bjj=bj)
+    notes_all_list = Classnotes.objects.filter(bangji=bjj)
     paginator = Paginator(notes_all_list,6)
     page_num = request.GET.get('page',1)
     page_of_notes = paginator.get_page(page_num)
