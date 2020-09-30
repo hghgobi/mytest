@@ -550,7 +550,7 @@ def Classnewslist(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
-    stuname = get_object_or_404(Students,name=teststudent)
+    stuname = get_object_or_404(Students,studentname=teststudent)
     bj0 = stuname.pk
     if bj0>=200 and bj0<=249:
         bjj = 3
@@ -559,7 +559,7 @@ def Classnewslist(request):
     else:
         return redirect('../testlogin')
 
-    notes_all_list = Classnotes.objects.filter(banji=str(bjj))
+    notes_all_list = Classnotes.objects.filter(sty=str(bjj))
     paginator = Paginator(notes_all_list,6)
     page_num = request.GET.get('page',1)
     page_of_notes = paginator.get_page(page_num)
