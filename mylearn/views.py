@@ -1354,9 +1354,20 @@ def zkfxnametg(request,id0,id1,bj):
     id1 = id1
     bj = bj
     ms = Yuxinamezk.objects.filter(zid=id0,jid=id1,bj=bj)
+    if bj==3:
+        names=['梁晨宇','沈柯妤','梁宇轩','陈镐','李航','刘俊轩','罗俊凯','梁栩铭','徐玮涵','蒋承延','张宇麒','梁宸豪','沈宏铭','吴思淼','蒋米墙','蒋佳成','王烁森','吴纪涵','郭晨宇','李宗翰','应昊均','梁乘玮','戴麟懿','罗懿轩','陈佳浩','刘世聪','梁海涛','李亦晴','莫佳颖','梁珂涵','李梦涵','林千欣卡','王倩','谢雨珂','梁馨月','王曼旭','林惠婷','林奕如','罗羽馨','郑文婷','夏艺宵','梁馨予','李琪','陈伊柔','叶潇雅','黄婧娴','梁如妮','陈柯涵','沈珂如','郑芷欣']
+    else:
+        names=['陆宇浩','李聿轩','尚榆皓','梁祖铭','梁隽炜','陈宇航','徐翊然','吴伊豪','梁仁杰','林鹏豪','李秋佟','梁耀晟','廖木村','陈梓烨','蔡锦隆','蒋雨轩','李梓恒','余思成','张徐豪','陈宇珅','罗晨轩','孙鉴','梁杰','周俊皓','梁康鑫','黄炳铨','李欣宜','李佳英','梁瑜珈','颜之依','卢以悦','章涵茜','陶悠然','李超宇','陆可馨','沈佳瑶','何柯瑶','何相遥','林佳璇','许可欣','罗李琦','胡雨诗','蒋依洋','陈敏雪','毛语彤','沈修平','陈俏宏','梁蕙怡','沈琪舒']
     # mss = Newnames.objects.filter(zid=id0,jid=id1)
     # n = len(mss)
-    return render(request,'yuxiname2.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss})
+    for i in range(len(names)):
+        name=names[i]
+        try:
+            get_object_or_404(Yuxinamezk,name=name)
+            names.remove(name)
+        except:
+            pass
+    return render(request,'yuxiname2.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss,'names':names})
 
 def yuxiname0(request,id0,id1):
     teststudent = request.session.get("teststudent0")
