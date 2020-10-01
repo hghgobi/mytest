@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs
 import json
 import random
 import numpy as np
@@ -3932,10 +3932,10 @@ def zkfx(request,id0,id1):
                 studentname=teststudent
                 questionid = wrongs[fff]
                 try:
-                    get_object_or_404(CCuoti,studentname=teststudent,questionid=wrongs[fff])
+                    get_object_or_404(Wrongqs,studentname=teststudent,questionid=wrongs[fff])
                     pass
                 except:
-                    CCuoti.addcuoti(studentname,questionid)
+                    Wrongqs.addcuoti(studentname,questionid)
             else:
                 pass
         counts = get_object_or_404(Yuxitestcount, zid=id0, jid=id1, name=teststudent)
@@ -4098,7 +4098,7 @@ def Killcuoti(request):
         if not teststudent:
             return redirect('../../testlogin')
 
-        cuotiss = CCuoti.objects.filter(studentname=teststudent)
+        cuotiss = Wrongqs.objects.filter(studentname=teststudent)
         if cuotiss:
             pass
         else:
