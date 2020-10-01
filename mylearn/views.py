@@ -3932,10 +3932,10 @@ def zkfx(request,id0,id1):
                 studentname=teststudent
                 questionid = wrongs[fff]
                 try:
-                    get_object_or_404(Cuoti,studentname=teststudent,questionid=wrongs[fff])
+                    get_object_or_404(CCuoti,studentname=teststudent,questionid=wrongs[fff])
                     pass
                 except:
-                    Cuoti.addcuoti(studentname,questionid)
+                    CCuoti.addcuoti(studentname,questionid)
             else:
                 pass
         counts = get_object_or_404(Yuxitestcount, zid=id0, jid=id1, name=teststudent)
@@ -4098,7 +4098,7 @@ def Killcuoti(request):
         if not teststudent:
             return redirect('../../testlogin')
 
-        cuotiss = Cuoti.objects.filter(studentname=teststudent)
+        cuotiss = CCuoti.objects.filter(studentname=teststudent)
         if cuotiss:
             pass
         else:
@@ -4139,7 +4139,7 @@ def Killcuoti(request):
         wrongs=wrong.split(",")
         print(wrongs)
 
-        cuotiss = Cuoti.objects.filter(studentname=teststudent)
+        cuotiss = CCuoti.objects.filter(studentname=teststudent)
         cuotiid = []
         for ss in cuotiss:
             cuotiid.append(ss.questionid)
@@ -4150,7 +4150,7 @@ def Killcuoti(request):
             if ggg in wrongs:
                 pass
             else:
-                Cuoti.objects.filter(studentname=teststudent,questionid=cuotiid[gg]).delete()
+                CCuoti.objects.filter(studentname=teststudent,questionid=cuotiid[gg]).delete()
                 n=n+1
 
         ms = '恭喜你，本次一共消灭了'+str(n)+"道错题！"

@@ -703,7 +703,7 @@ class Address2(models.Model):
 	id0=models.IntegerField()
 	name=models.CharField(max_length=500)
 
-class Cuoti(models.Model):
+class CCuoti(models.Model):
 	studentname = models.CharField(max_length=200)
 	questionid = models.IntegerField()
 	@classmethod
