@@ -378,7 +378,7 @@ class Yuxinamezk(models.Model):
 	costtime = models.IntegerField(default=0)
 
 	class Meta:
-		ordering = ['-time']
+		ordering = ['fs','costtime']
 
 	@classmethod
 	def addyxname(cls,bj,zid,jid,name,ornot,fs,costtime):

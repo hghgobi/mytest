@@ -672,6 +672,7 @@ background: #EA6F30;
 <td id="select" class="numberkey" >C</td>
 </tr>
  </table>
+    <img id="testrm" src="" width="100%" height="20%"/>
 </div>
 </div>
 
@@ -684,6 +685,7 @@ var results="";
 var form2 = document.getElementById('checkbox');
 var select=1;
 var qstext={{qstext|safe}};
+var testrmpc = {{testrmpc|safe}};
 var qsanswer1={{qsanswer|safe}};
 var ornot={{ornot}};
 var qsid = {{qsid|safe}};
@@ -714,6 +716,7 @@ function startgo()
      document.getElementById("correctamount").innerText=correct;
      document.getElementById("yzts").innerText=had;
      document.getElementById("pic").src=qstext[0];
+     document.getElementById("testrm").src=testrmpc[0];
     }
 
 
