@@ -4139,7 +4139,7 @@ def Killcuoti(request):
         wrongs=wrong.split(",")
         print(wrongs)
 
-        cuotiss = CCuoti.objects.filter(studentname=teststudent)
+        cuotiss = Wrongqs.objects.filter(studentname=teststudent)
         cuotiid = []
         for ss in cuotiss:
             cuotiid.append(ss.questionid)
