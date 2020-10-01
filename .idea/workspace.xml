@@ -38,11 +38,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="520">
-              <caret line="3983" column="25" lean-forward="true" selection-start-line="3983" selection-start-column="25" selection-end-line="3983" selection-end-column="25" />
-              <folding>
-                <element signature="e#0#62#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="240">
+              <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -100,8 +97,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="691">
-              <caret line="719" column="21" lean-forward="true" selection-start-line="719" selection-start-column="21" selection-end-line="719" selection-end-column="21" />
+            <state relative-caret-position="661">
+              <caret line="722" column="30" lean-forward="true" selection-start-line="722" selection-start-column="30" selection-end-line="722" selection-end-column="30" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -112,8 +109,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="618">
-              <caret line="240" column="26" lean-forward="true" selection-start-line="240" selection-start-column="26" selection-end-line="240" selection-end-column="26" />
+            <state relative-caret-position="270">
+              <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -161,8 +158,8 @@
       <find>zkf</find>
       <find>zkfxname</find>
       <find>examme</find>
-      <find>Testr</find>
       <find>zkfx</find>
+      <find>Testr</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -225,7 +222,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="90" />
     <option name="y" value="130" />
     <option name="width" value="1469" />
@@ -700,8 +697,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="691">
-          <caret line="719" column="21" lean-forward="true" selection-start-line="719" selection-start-column="21" selection-end-line="719" selection-end-column="21" />
+        <state relative-caret-position="661">
+          <caret line="722" column="30" lean-forward="true" selection-start-line="722" selection-start-column="30" selection-end-line="722" selection-end-column="30" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -710,8 +707,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="618">
-          <caret line="240" column="26" lean-forward="true" selection-start-line="240" selection-start-column="26" selection-end-line="240" selection-end-column="26" />
+        <state relative-caret-position="270">
+          <caret line="9" column="24" lean-forward="true" selection-start-line="9" selection-start-column="24" selection-end-line="9" selection-end-column="24" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
           </folding>
@@ -720,11 +717,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="3983" column="25" lean-forward="true" selection-start-line="3983" selection-start-column="25" selection-end-line="3983" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="8" column="31" lean-forward="true" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
         </state>
       </provider>
     </entry>

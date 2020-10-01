@@ -711,13 +711,13 @@ class Wrongqs(models.Model):
 		addcuoti = cls(studentname=studentname,questionid=questionid)
 		addcuoti.save()
 
-class Sdengji(models.Model):
-	sname = models.CharField(max_length=200)
-	srank = models.CharField(max_length=200)
-
-class Sshuliang(models.Model):
-	zid = models.IntegerField()
-	jid = models.IntegerField()
-	seta = models.IntegerField()
-	setb = models.IntegerField()
-	setc = models.IntegerField()
+# class Sdengji(models.Model):
+# 	sname = models.CharField(max_length=200)
+# 	srank = models.CharField(max_length=200)
+#
+# class Sshuliang(models.Model):
+# 	zid = models.IntegerField()
+# 	jid = models.IntegerField()
+# 	seta = models.IntegerField()
+# 	setb = models.IntegerField()
+# 	setc = models.IntegerField()
