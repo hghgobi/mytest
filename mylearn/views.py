@@ -1369,6 +1369,27 @@ def yuxiname(request,id0,id1):
     # n = len(mss)
     return render(request,'yuxiname.html',{'ms':ms,'id0':id0,'id1':id1})
 
+def rankpaixu(request):
+    teststudent=request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../testlogin')
+    mss = Yuxinamezk.objects.filter(zid=20209,jid=30)
+    for e in mss:
+        if e.fs=='优秀':
+            e.fs='A优秀'
+            e.save()
+        elif e.fs=='良好':
+            e.fs='B良好'
+            e.save()
+        elif e.fs=='及格':
+            e.fs='C及格'
+            e.save()
+        else:
+            e.fs='D重做！'
+            e.save()
+    return HttpResponse('chenggong')
+
+
 def zkfxnametg(request,id0,id1,bj):
     teststudent = request.session.get("teststudent")
     if teststudent:
