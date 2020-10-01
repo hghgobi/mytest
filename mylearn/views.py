@@ -434,7 +434,7 @@ def Exammessages(request):
     fig.autofmt_xdate(rotation=85)
     plt.ylim(50,0)
 
-    plt.ylabel("分数")
+    plt.ylabel("班级排名")
     plt.tick_params(axis='both', which='major', labelsize=8)
     sio = BytesIO()
 
