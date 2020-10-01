@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Cuoti
 import json
 import random
 import numpy as np
@@ -3929,6 +3929,13 @@ def zkfx(request,id0,id1):
                 jjs = get_object_or_404(Zkfx, pk=wrongs[fff])
                 jjs.wrongcount = jjs.wrongcount + 1
                 jjs.save()
+                studentname=teststudent
+                questionid = wrongs[fff]
+                try:
+                    get_object_or_404(Cuoti,studentname=teststudent,questionid=wrongs[fff])
+                    pass
+                except:
+                    Cuoti.addcuoti(studentname,questionid)
             else:
                 pass
         counts = get_object_or_404(Yuxitestcount, zid=id0, jid=id1, name=teststudent)
@@ -4082,6 +4089,82 @@ def zkfx(request,id0,id1):
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 #
                 # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+
+
+def Killcuoti(request):
+
+    if request.method == 'GET':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../../testlogin')
+
+        cuotis = Cuoti.objects.filter(studentname=teststudent)
+        if cuotis:
+            pass
+        else:
+            ms = "恭喜你，错题已清零，每日口算错题都会加进来，请时刻关注！"
+            return render(request, 'yuxi.html', {'ms': ms})
+
+        cuotisum = len(cuotis)
+
+        id2=1
+        id3=1
+        ts = cuotisum
+        zs = cuotisum
+        qstext = []
+        qsanswer = []
+        qsid = []
+        qsid0 = []
+
+        ornot=0
+        for ss in cuotis:
+            qsid0.append(ss.questionid)
+        a1=qsid0
+        shuffle(a1)
+        for i in range(zs):
+            qs=get_object_or_404(Zkfx,pk=a1[i])
+            qstext.append(qs.questiontext.url)
+            qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
+            qsid.append(a1[i])
+        return render(request, 'showqszk.html',                              {
+                       'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
+                       'qsamount': json.dumps(zs),'id0':1,'id1':1,'ornot':ornot})
+
+    if request.method == 'POST':
+        teststudent = request.session.get("teststudent")
+        if not teststudent:
+            return redirect('../testlogin')
+
+        wrong = request.POST.get('wrong')
+        wrongs=wrong.split(",")
+        print(wrongs)
+
+        cuotis = Cuoti.objects.filter(studentname=teststudent)
+        cuotiid = []
+        for ss in cuotis:
+            cuotiid.append(ss.questionid)
+        n = 0
+
+        for gg in range(len(cuotis)):
+            ggg = str(cuotiid[gg])
+            if ggg in wrongs:
+                pass
+            else:
+                Cuoti.objects.filter(studentname=teststudent,questionid=cuotiid[gg]).delete()
+                n=n+1
+
+        ms = '恭喜你，本次一共消灭了'+str(n)+"道错题！"
+        return render(request, 'yuxi.html', {'ms': ms})
+
+
+
+
+
+
+
+
+
+
 
 
 def zkfxname(request):

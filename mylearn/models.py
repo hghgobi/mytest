@@ -703,4 +703,11 @@ class Address2(models.Model):
 	id0=models.IntegerField()
 	name=models.CharField(max_length=500)
 
+class Cuoti(models.Model):
+	studentname = models.CharField(max_length=200)
+	questionid = models.IntegerField()
+	@classmethod
+	def addcuoti(cls,studentname,questionid):
+		addcuoti = cls(studentname=studentname,questionid=questionid)
+		addcuoti.save()
 

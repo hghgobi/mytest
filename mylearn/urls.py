@@ -101,6 +101,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('kzgetms/', views.Kzgetms),
                path('kzgeturl/<int:id0>', views.Kzurl),
                path('kz666/', views.Kzurl2),
+               path('killcuoti/', views.Killcuoti),
 
 
 
