@@ -1373,7 +1373,7 @@ def rankpaixu(request):
     teststudent=request.session.get("teststudent")
     if not teststudent:
         return redirect('../testlogin')
-    mss = Yuxinamezk.objects.filter(zid=20209,jid=30)
+    mss = Yuxinamezk.objects.filter(zid=202010,jid=1)
     for e in mss:
         if e.fs=='优秀':
             e.fs='A优秀'
