@@ -229,6 +229,6 @@ class Address2Admin(admin.ModelAdmin):
 class KzidrecordAdmin(admin.ModelAdmin):
 	list_display = ['time','idNumber']
 
-@admin.register(Cuoti)
+@admin.register(CCuoti)
 class CCuotiAdmin(admin.ModelAdmin):
 	list_display = ['studentname','questionid']
