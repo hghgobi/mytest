@@ -4098,14 +4098,14 @@ def Killcuoti(request):
         if not teststudent:
             return redirect('../../testlogin')
 
-        cuotis = Cuoti.objects.filter(studentname=teststudent)
-        if cuotis:
+        cuotiss = Cuoti.objects.filter(studentname=teststudent)
+        if cuotiss:
             pass
         else:
             ms = "恭喜你，错题已清零，每日口算错题都会加进来，请时刻关注！"
             return render(request, 'yuxi.html', {'ms': ms})
 
-        cuotisum = len(cuotis)
+        cuotisum = len(cuotiss)
 
         id2=1
         id3=1
@@ -4117,7 +4117,7 @@ def Killcuoti(request):
         qsid0 = []
 
         ornot=0
-        for ss in cuotis:
+        for ss in cuotiss:
             qsid0.append(ss.questionid)
         a1=qsid0
         shuffle(a1)
@@ -4139,13 +4139,13 @@ def Killcuoti(request):
         wrongs=wrong.split(",")
         print(wrongs)
 
-        cuotis = Cuoti.objects.filter(studentname=teststudent)
+        cuotiss = Cuoti.objects.filter(studentname=teststudent)
         cuotiid = []
-        for ss in cuotis:
+        for ss in cuotiss:
             cuotiid.append(ss.questionid)
         n = 0
 
-        for gg in range(len(cuotis)):
+        for gg in range(len(cuotiss)):
             ggg = str(cuotiid[gg])
             if ggg in wrongs:
                 pass
