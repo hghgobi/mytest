@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Setamount,Setstrank
 import json
 import random
 import numpy as np
@@ -3979,61 +3979,148 @@ def zkfx(request,id0,id1):
         timelss.timels=timelss.timels+costtime
         timelss.save()
 
-        if dd>=int(0.95*float(ts)):
-            try:
-                Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-            except:
-                pass
-            fs="优秀"
+        samount = get_object_or_404(Setamount,zid=id0,jid=id1)
+        n0 = samount.seta
+        n1 = samount.setb
+        n2 = samount.setc
+        sstu = get_object_or_404(Setstrank,sname=teststudent)
+        mr = sstu.srank
 
-            ornot = "通过，"
-            timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
-            costtime2=timelss2.timels
+        if mr=='A':
+            if dd>=int(n0):
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                fs = "A优秀"
 
-            Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
-            Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
-
-            try:
-                Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-            except:
-                pass
-            # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-            paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)+'/'+str(bj)
-            return redirect(paths)
-
-            # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
-
-
-        elif dd>=int(0.85*float(ts)):
-            try:
-                Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-            except:
-                pass
-            fs="良好"
-
-            ornot = "通过，"
-            timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
-            costtime2=timelss2.timels
-
-            Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
-            Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
-
-
-            try:
-                Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-            except:
-                pass
-            paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)+'/'+str(bj)
-            return redirect(paths)
-            # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-            #
-            # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
-
-        elif dd>=int(0.75*float(ts)):
-
-            if costtime>=limit1:
                 ornot = "通过，"
-                fs="及格"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+
+                try:
+                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
+            else:
+                pass
+        elif mr=='B':
+            if dd>=int(n0):
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                fs = "A优秀"
+
+                ornot = "通过，"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+
+                try:
+                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
+            elif dd>=int(n1):
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                fs = "B良好"
+
+                ornot = "通过，"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+
+                try:
+                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
+
+            else:
+                pass
+        elif mr=='C':
+            if dd >= int(n0):
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                fs = "A优秀"
+
+                ornot = "通过，"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+
+                try:
+                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
+            elif dd >= int(n1):
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                fs = "B良好"
+
+                ornot = "通过，"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+
+                try:
+                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
+
+            elif dd >=int(n2):
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                fs = "C及格"
+
+                ornot = "通过，"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+
+                try:
+                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
+            elif costtime>=limit1:
+                ornot = "通过，"
+                fs="C及格"
 
                 try:
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -4052,71 +4139,173 @@ def zkfx(request,id0,id1):
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
                 return redirect(paths)
-                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-                #
-                # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+
             else:
-                try:
-                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-                except:
-                    pass
-                ornot="不通过，"
-                fs="重做!"
-                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
-                costtime2 = timelss2.timels
+                pass
 
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
-                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
-                return redirect(paths)
-
-                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-                #
-                #
-                # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
         else:
             try:
                 Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
             except:
                 pass
-            if costtime>limit2:
-                ornot = "通过，"
-                fs="及格"
-                try:
-                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-                except:
-                    pass
-                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
-                costtime2 = timelss2.timels
+            ornot = "不通过，"
+            fs = "D重做!"
+            timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+            costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
-                Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+            paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+            return redirect(paths)
 
-                try:
-                    Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-                except:
-                    pass
-                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
-                return redirect(paths)
-                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-                #
-                # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
-            else:
-                try:
-                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-                except:
-                    pass
-                fs = "重做!"
-                ornot = "不通过，"
-                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
-                costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
-                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
-                return redirect(paths)
 
-                # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
-                #
-                # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+
+
+
+#
+# ======================
+#
+#
+#
+#
+#         if dd>=int(0.95*float(ts)):
+#             try:
+#                 Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#             except:
+#                 pass
+#             fs="A优秀"
+#
+#             ornot = "通过，"
+#             timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+#             costtime2=timelss2.timels
+#
+#             Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+#             Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+#
+#             try:
+#                 Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#             except:
+#                 pass
+#             # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+#             paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)+'/'+str(bj)
+#             return redirect(paths)
+#
+#             # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+#
+#
+#         elif dd>=int(0.85*float(ts)):
+#             try:
+#                 Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#             except:
+#                 pass
+#             fs="B良好"
+#
+#             ornot = "通过，"
+#             timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+#             costtime2=timelss2.timels
+#
+#             Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+#             Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+#
+#
+#             try:
+#                 Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#             except:
+#                 pass
+#             paths='../../zkfxnametg/'+str(id0)+'/'+str(id1)+'/'+str(bj)
+#             return redirect(paths)
+#             # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+#             #
+#             # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+#
+#         elif dd>=int(0.75*float(ts)):
+#
+#             if costtime>=limit1:
+#                 ornot = "通过，"
+#                 fs="C及格"
+#
+#                 try:
+#                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#                 except:
+#                     pass
+#                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+#                 costtime2 = timelss2.timels
+#
+#                 Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+#                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+#
+#
+#                 try:
+#                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#                 except:
+#                     pass
+#                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
+#                 return redirect(paths)
+#                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+#                 #
+#                 # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+#             else:
+#                 try:
+#                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#                 except:
+#                     pass
+#                 ornot="不通过，"
+#                 fs="D重做!"
+#                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+#                 costtime2 = timelss2.timels
+#
+#                 Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+#                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
+#                 return redirect(paths)
+#
+#                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+#                 #
+#                 #
+#                 # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+#         else:
+#             try:
+#                 Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#             except:
+#                 pass
+#             if costtime>limit2:
+#                 ornot = "通过，"
+#                 fs="C及格"
+#                 try:
+#                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#                 except:
+#                     pass
+#                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+#                 costtime2 = timelss2.timels
+#
+#                 Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+#                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
+#
+#                 try:
+#                     Newnames.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#                 except:
+#                     pass
+#                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
+#                 return redirect(paths)
+#                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+#                 #
+#                 # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
+#             else:
+#                 try:
+#                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+#                 except:
+#                     pass
+#                 fs = "D重做!"
+#                 ornot = "不通过，"
+#                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+#                 costtime2 = timelss2.timels
+#
+#                 Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+#                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
+#                 return redirect(paths)
+#
+#                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
+#                 #
+#                 # return render(request, 'yuxiname2.html', {'ms': ms, 'id0': id0, 'id1': id1})
 
 
 def Killcuoti(request):

@@ -711,3 +711,13 @@ class Wrongqs(models.Model):
 		addcuoti = cls(studentname=studentname,questionid=questionid)
 		addcuoti.save()
 
+class Setstrank(models.Model):
+	sname = models.CharField(max_length=200)
+	srank = models.CharField(max_length=200)
+
+class Setamount(models.Model):
+	zid = models.IntegerField()
+	jid = models.IntegerField()
+	seta = models.IntegerField()
+	setb = models.IntegerField()
+	setc = models.IntegerField()
