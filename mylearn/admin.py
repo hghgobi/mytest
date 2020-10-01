@@ -233,10 +233,10 @@ class KzidrecordAdmin(admin.ModelAdmin):
 class WrongqsAdmin(admin.ModelAdmin):
 	list_display = ['studentname','questionid']
 
-@admin.register(Setstrank)
-class SetstrankAdmin(admin.ModelAdmin):
-	list_display = ['sname','srank']
-
-@admin.register(Setamount)
-class SetamountAdmin(admin.ModelAdmin):
-	list_display = ['zid','jid','seta','setb','setc']
+# @admin.register(Setstrank)
+# class SetstrankAdmin(admin.ModelAdmin):
+# 	list_display = ['sname','srank']
+#
+# @admin.register(Setamount)
+# class SetamountAdmin(admin.ModelAdmin):
+# 	list_display = ['zid','jid','seta','setb','setc']
