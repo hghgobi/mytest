@@ -4017,10 +4017,11 @@ def zkfx(request,id0,id1):
                 fs = "D重做!"
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
-
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 return redirect(paths)
+
+
         elif mr=='B':
             if dd>=int(n0):
                 try:
@@ -4074,7 +4075,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 return redirect(paths)
         elif mr=='C':
@@ -4172,7 +4173,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 return redirect(paths)
 
@@ -4186,7 +4187,7 @@ def zkfx(request,id0,id1):
             timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
             costtime2 = timelss2.timels
 
-            Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+            Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
             paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
             return redirect(paths)
 
