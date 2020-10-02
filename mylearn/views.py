@@ -3822,6 +3822,7 @@ def zkfx(request,id0,id1):
             shuxing=Zktishu.objects.filter(id0=id0,id1=id1)
             id2=shuxing[0].id2
             id3=shuxing[0].id3
+            id4=shuxing[0].id4
             ts = shuxing[0].ts
             zs = shuxing[0].zs
             qstext = []
@@ -3845,10 +3846,14 @@ def zkfx(request,id0,id1):
                 for e in tss:
                     ts2=ts2+1
                     qsid0.append(e.pk)
-
-                a1=qsid0[-ts:]
+                a111=len(qsid0)
+                n11=a111-zs-1
+                a1=qsid0[-zs:]
+                a11=qsid0[:n11]
+                shuffle(a11)
+                a11=a11[:ts]
+                a1=a1+a11
                 shuffle(a1)
-                a1=a1[-zs:]
                 for i in range(zs):
                     qs=get_object_or_404(Zkfx,pk=a1[i])
                     qstext.append(qs.questiontext.url)
