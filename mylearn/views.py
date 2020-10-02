@@ -3854,6 +3854,7 @@ def zkfx(request,id0,id1):
                 a11=a11[:ts]
                 a1=a1+a11
                 shuffle(a1)
+                zs=len(a1)
                 for i in range(zs):
                     qs=get_object_or_404(Zkfx,pk=a1[i])
                     qstext.append(qs.questiontext.url)
