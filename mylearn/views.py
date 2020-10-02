@@ -3806,13 +3806,13 @@ def zkfx(request,id0,id1):
         teststudent = request.session.get("teststudent")
         if not teststudent:
             return redirect('../../testlogin')
-        timess = int(time.time())
-        timels0=Costtimels.objects.filter(id0=id0,id1=id1,name=teststudent)
-        if timels0:
-            pass
-        else:
-            Costtimels.addtime(id0=id0,id1=id1,timels=0,name=teststudent)
         if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
+            timess = int(time.time())
+            timels0 = Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent)
+            if timels0:
+                pass
+            else:
+                Costtimels.addtime(id0=id0, id1=id1, timels=0, name=teststudent)
             try:
                 Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 Yuxitestcount.addyxcount(id0, id1,teststudent,0,timess)
@@ -3834,7 +3834,6 @@ def zkfx(request,id0,id1):
                 testrms.append(testrm.testrm.url)
             except:
                 pass
-
             try:
                 zbhf=get_object_or_404(Zbhf,id0=id0,id1=id1)
                 ornot=zbhf.ornot
@@ -4224,10 +4223,7 @@ def Killcuoti(request):
             qsid0.append(ss.questionid)
         a1=qsid0
         shuffle(a1)
-        if cuotisum>5:
-            zs = 5
-        else:
-            zs = cuotisum
+        zs = cuotisum
         for i in range(zs):
             qs=get_object_or_404(Zkfx,pk=a1[i])
             qstext.append(qs.questiontext.url)
@@ -4246,6 +4242,7 @@ def Killcuoti(request):
         wrong = request.POST.get('wrong')
         wrongs=wrong.split(",")
         print(wrongs)
+
 
         cuotiss = Wrongqs.objects.filter(studentname=teststudent)
         cuotiid = []

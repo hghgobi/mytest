@@ -183,7 +183,7 @@ class ZkfxAdmin(admin.ModelAdmin):
 
 @admin.register(Zktishu)
 class ZktishuAdmin(admin.ModelAdmin):
-	list_display = ['id0','id1','id2','id3','ts','zs']
+	list_display = ['id0','id1','id2','id3','id4','ts','zs']
 
 @admin.register(Timelimitzk)
 class TimelimitzkAdmin(admin.ModelAdmin):
@@ -232,7 +232,7 @@ class KzidrecordAdmin(admin.ModelAdmin):
 
 @admin.register(Wrongqs)
 class WrongqsAdmin(admin.ModelAdmin):
-	list_display = ['studentname','questionid']
+	list_display = ['pk','studentname','questionid']
 
 @admin.register(Sdengji)
 class SdengjiAdmin(admin.ModelAdmin):

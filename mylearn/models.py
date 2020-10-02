@@ -607,6 +607,7 @@ class Zktishu(models.Model):
 	id1 = models.IntegerField()
 	id2 = models.IntegerField()
 	id3 = models.IntegerField()
+	id4 = models.IntegerField(default=0)
 	ts = models.IntegerField()
 	zs = models.IntegerField(default=0)
 
