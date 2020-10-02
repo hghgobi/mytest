@@ -4009,7 +4009,18 @@ def zkfx(request,id0,id1):
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 return redirect(paths)
             else:
-                pass
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                ornot = "不通过，"
+                fs = "D重做!"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
         elif mr=='B':
             if dd>=int(n0):
                 try:
@@ -4054,7 +4065,18 @@ def zkfx(request,id0,id1):
                 return redirect(paths)
 
             else:
-                pass
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                ornot = "不通过，"
+                fs = "D重做!"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
         elif mr=='C':
             if dd >= int(n0):
                 try:
@@ -4141,7 +4163,18 @@ def zkfx(request,id0,id1):
                 return redirect(paths)
 
             else:
-                pass
+                try:
+                    Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
+                except:
+                    pass
+                ornot = "不通过，"
+                fs = "D重做!"
+                timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
+                costtime2 = timelss2.timels
+
+                Yuxinamezk.addyxname(id0, id1, teststudent, ornot, fs, costtime2)
+                paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                return redirect(paths)
 
         else:
             try:
