@@ -540,9 +540,12 @@ def Indexs(request):
 
         loginrecord.logincount = int(loginrecord.logincount) + 1
         loginrecord.save()
+        cuotis = Wrongqs.objects.filter(studentname=teststudent)
+        cuotiamount = len(cuotis)
     else:
         ms=''
-    return render(request, 'base3.html',{'ms':ms})
+        cuotiamount=0
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount})
 
     # try:
     #     n='未读'
