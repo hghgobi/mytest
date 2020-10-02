@@ -179,7 +179,7 @@ class LasttimeAdmin(admin.ModelAdmin):
 
 @admin.register(Zkfx)
 class ZkfxAdmin(admin.ModelAdmin):
-	list_display = ['wrongcount','questiontext','questionanswer','id2','id3']
+	list_display = ['pk','wrongcount','questiontext','questionanswer','id2','id3']
 
 @admin.register(Zktishu)
 class ZktishuAdmin(admin.ModelAdmin):

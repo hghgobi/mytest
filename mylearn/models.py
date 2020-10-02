@@ -601,8 +601,6 @@ class Zkfx(models.Model):
 	questiontext = models.ImageField(upload_to='questions')
 	questionanswer = models.CharField(max_length=50)
 	wrongcount = models.IntegerField(default=0)
-	class Meta:
-		ordering = ['-pk']
         	
 class Zktishu(models.Model):
 	id0 = models.IntegerField()
