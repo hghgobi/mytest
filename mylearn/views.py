@@ -4227,9 +4227,10 @@ def Killcuoti(request):
             qstext.append(qs.questiontext.url)
             qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
             qsid.append(a1[i])
+        testrms=[]
         return render(request, 'showqszk.html',                              {
                        'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
-                       'qsamount': json.dumps(zs),'id0':1,'id1':1,'ornot':ornot})
+                       'qsamount': json.dumps(zs),'id0':1,'id1':1,'ornot':ornot,'testrmpc':json.dumps(testrms)})
 
     if request.method == 'POST':
         teststudent = request.session.get("teststudent")
