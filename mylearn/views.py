@@ -4214,7 +4214,6 @@ def Killcuoti(request):
         id2=1
         id3=1
         ts = cuotisum
-        zs = cuotisum
         qstext = []
         qsanswer = []
         qsid = []
@@ -4225,6 +4224,10 @@ def Killcuoti(request):
             qsid0.append(ss.questionid)
         a1=qsid0
         shuffle(a1)
+        if cuotisum>5:
+            zs = 5
+        else:
+            zs = cuotisum
         for i in range(zs):
             qs=get_object_or_404(Zkfx,pk=a1[i])
             qstext.append(qs.questiontext.url)
