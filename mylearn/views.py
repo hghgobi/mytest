@@ -4252,7 +4252,7 @@ def Killcuoti(request):
             if ggg in wrongs:
                 pass
             else:
-                CCuoti.objects.filter(studentname=teststudent,questionid=cuotiid[gg]).delete()
+                Wrongqs.objects.filter(studentname=teststudent,questionid=cuotiid[gg]).delete()
                 n=n+1
 
         ms = '恭喜你，本次一共消灭了'+str(n)+"道错题！"
