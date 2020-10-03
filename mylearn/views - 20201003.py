@@ -3858,7 +3858,7 @@ def zkfx(request,id0,id1):
                 for i in range(zs):
                     qs=get_object_or_404(Zkfx,pk=a1[i])
                     qstext.append(qs.questiontext.url)
-                    qsanswer.append(qs.questionanswer)
+                    qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
                     qsid.append(a1[i])
                 return render(request, 'showqszk.html',                              {
                                'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
@@ -4233,7 +4233,7 @@ def Killcuoti(request):
         for i in range(zs):
             qs=get_object_or_404(Zkfx,pk=a1[i])
             qstext.append(qs.questiontext.url)
-            qsanswer.append(qs.questionanswer)
+            qsanswer.append(hashlib.md5(qs.questionanswer.encode()).hexdigest())
             qsid.append(a1[i])
         testrms=[]
         return render(request, 'showqszk.html',                              {
