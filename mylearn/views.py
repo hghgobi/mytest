@@ -3814,10 +3814,12 @@ def zkfx(request,id0,id1):
             else:
                 Costtimels.addtime(id0=id0, id1=id1, timels=0, name=teststudent)
             try:
-                Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
-                Yuxitestcount.addyxcount(id0, id1,teststudent,0,timess)
+                cishus = Yuxitestcount.objects.filter(zid=id0, jid=id1, name=teststudent)
+                cishu = cishus[0].count+1
+                cishus.delete()
+                Yuxitestcount.addyxcount(id0, id1,teststudent,cishu,timess)
             except:
-                Yuxitestcount.addyxcount(id0, id1,teststudent,1,timess)
+                Yuxitestcount.addyxcount(id0, id1,teststudent,0,timess)
 
             shuxing=Zktishu.objects.filter(id0=id0,id1=id1)
             id2=shuxing[0].id2
@@ -3960,6 +3962,7 @@ def zkfx(request,id0,id1):
             ms = '已通过本节测试，无需重复测试！可前往尚未测试的'
             return render(request, 'yuxi.html', {'ms': ms})
 
+
         for fff in range(len(wrongs)):
             if wrongs[fff]:
                 jjs = get_object_or_404(Zkfx, pk=wrongs[fff])
@@ -3993,6 +3996,8 @@ def zkfx(request,id0,id1):
         n2 = samount.setc
         sstu = get_object_or_404(Sdengji,sname=teststudent)
         mr = sstu.srank
+        counts = Yuxitestcount.objects.filter(zid=id0,jid=id1,name=teststudent)
+        count = counts[0].count
 
         if mr=='A':
             if dd>=int(n0):
@@ -4006,7 +4011,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2,count)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
                 try:
@@ -4025,7 +4030,7 @@ def zkfx(request,id0,id1):
                 fs = "D重做!"
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
-                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2,count)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 return redirect(paths)
 
@@ -4042,7 +4047,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2,count)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
                 try:
@@ -4063,7 +4068,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2,count)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
                 try:
@@ -4083,7 +4088,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2,count)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 return redirect(paths)
         elif mr=='C':
@@ -4098,7 +4103,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2,count)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
                 try:
@@ -4119,7 +4124,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2,count)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
                 try:
@@ -4140,7 +4145,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj, id0, id1, teststudent, ornot, fs, costtime2,count)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
                 try:
@@ -4160,7 +4165,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2,count)
                 Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent).delete()
 
 
@@ -4181,7 +4186,7 @@ def zkfx(request,id0,id1):
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
-                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+                Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2,count)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 return redirect(paths)
 
@@ -4195,7 +4200,7 @@ def zkfx(request,id0,id1):
             timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
             costtime2 = timelss2.timels
 
-            Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2)
+            Yuxinamezk.addyxname(bj,id0, id1, teststudent, ornot, fs, costtime2,count)
             paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
             return redirect(paths)
 

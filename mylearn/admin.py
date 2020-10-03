@@ -78,7 +78,7 @@ class YuxinameAdmin(admin.ModelAdmin):
 
 @admin.register(Yuxinamezk)
 class YuxinamezkAdmin(admin.ModelAdmin):
-	list_display = ['bj','zid','jid','name','time','ornot','fs','costtime']
+	list_display = ['bj','zid','jid','name','time','ornot','fs','costtime','count']
 
 @admin.register(Yuxiname0)
 class Yuxiname0Admin(admin.ModelAdmin):

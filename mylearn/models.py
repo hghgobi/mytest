@@ -376,14 +376,15 @@ class Yuxinamezk(models.Model):
 	time = models.DateTimeField(auto_now=True)
 	fs = models.CharField(max_length=200)
 	costtime = models.IntegerField(default=0)
+	count = models.IntegerField(default=0)
 
 	class Meta:
-		ordering = ['fs','costtime']
+		ordering = ['fs','count','costtime']
 
 	@classmethod
-	def addyxname(cls,bj,zid,jid,name,ornot,fs,costtime):
+	def addyxname(cls,bj,zid,jid,name,ornot,fs,costtime,count):
 
-		addms = cls(bj=bj,zid=zid,jid=jid,name=name,ornot=ornot,fs=fs,costtime=costtime)
+		addms = cls(bj=bj,zid=zid,jid=jid,name=name,ornot=ornot,fs=fs,costtime=costtime,count=count)
 		addms.save()
 
 
