@@ -220,7 +220,7 @@ background: #EA6F30;
 
 
 <img id="pic" src="" width="100%" height="20%"/>
-<p id="ts"  class="ts">我思故我在</p>
+<p id="ts"  class="ts">@我思故我在@</p>
 <input  id="display0" type="text" style="color:red;width:80px;height:30px;font-size:16px" name="studentanswer1" value="">
 
 <form id="checkbox" action="" method="post">
@@ -297,8 +297,8 @@ var wrong = "做错了！请重新做！画图、打草稿！";
 var not = "通过失败，请重新测试！";
 <!--var time1 = new Date();-->
 var form = document.getElementById('wrong');
-if(ornot==0){var s5="[我思故我在]";}
-else {var s5="[我思故我在！]";}
+if(ornot==0){var s5="提交后不管通过与否，表格都会有记录，如果没有请联系老师！";}
+else {var s5="提交后不管通过与否，表格都会有记录，如果没有请联系老师！";}
 function Message(msss){ document.getElementById("ts").innerText=msss;
                         }
 function Deletms(){document.getElementById("ts").innerText="";}
