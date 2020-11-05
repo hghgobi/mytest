@@ -155,7 +155,7 @@ class Xxqs22Admin(admin.ModelAdmin):
 
 @admin.register(Xxqs23)
 class Xxqs23Admin(admin.ModelAdmin):
-	list_display = ('pk','num0','num1','yunsuan','answer','ornot')
+	list_display = ('pk','num0','num1','yunsuan','answers','ornot')
 
 @admin.register(Xxqs24)
 class Xxqs24Admin(admin.ModelAdmin):

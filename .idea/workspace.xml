@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mylearn/linshi102.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/linshi102.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="3736" column="37" lean-forward="true" selection-start-line="3736" selection-start-column="37" selection-end-line="3736" selection-end-column="37" />
+              <caret line="3706" column="30" lean-forward="true" selection-start-line="3706" selection-start-column="30" selection-end-line="3706" selection-end-column="30" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -75,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="496" column="33" selection-start-line="496" selection-start-column="32" selection-end-line="496" selection-end-column="33" />
+            <state relative-caret-position="340">
+              <caret line="520" column="46" lean-forward="true" selection-start-line="520" selection-start-column="46" selection-end-line="520" selection-end-column="46" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -205,10 +204,10 @@
         <option value="$PROJECT_DIR$/mylearn/templates/xhlclassnotes.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/base3.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/xhlbase.html" />
-        <option value="$PROJECT_DIR$/mylearn/models.py" />
         <option value="$PROJECT_DIR$/mytest/settings.py" />
         <option value="$PROJECT_DIR$/mylearn/linshi102.py" />
         <option value="$PROJECT_DIR$/mylearn/views.py" />
+        <option value="$PROJECT_DIR$/mylearn/models.py" />
       </list>
     </option>
   </component>
@@ -698,16 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="496" column="33" selection-start-line="496" selection-start-column="32" selection-end-line="496" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/linshi102.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
@@ -718,9 +707,19 @@
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="3736" column="37" lean-forward="true" selection-start-line="3736" selection-start-column="37" selection-end-line="3736" selection-end-column="37" />
+          <caret line="3706" column="30" lean-forward="true" selection-start-line="3706" selection-start-column="30" selection-end-line="3706" selection-end-column="30" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="520" column="46" lean-forward="true" selection-start-line="520" selection-start-column="46" selection-end-line="520" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
           </folding>
         </state>
       </provider>

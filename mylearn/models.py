@@ -518,13 +518,13 @@ class Xxqs23(models.Model):
 	num0 = models.IntegerField()
 	num1 = models.IntegerField()
 	yunsuan = models.IntegerField()
-	answer = models.CharField(max_length=500)
+	answers = models.CharField(max_length=500)
 	ornot = models.IntegerField(default=0)
 
 	@classmethod
 	def addqs3(cls,num0,num1,yunsuan,answer,ornot):
 
-		addqs3 = cls(num0=num0,num1=num1,yunsuan=yunsuan,answer=answer,ornot=ornot)
+		addqs3 = cls(num0=num0,num1=num1,yunsuan=yunsuan,answers=answer,ornot=ornot)
 		addqs3.save()
 
 class Xxqs24(models.Model):
