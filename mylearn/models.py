@@ -577,8 +577,8 @@ class Rankxhl(models.Model):
 	name = models.CharField(max_length=200)
 	time = models.DateTimeField(auto_now=True)
 	costtime = models.IntegerField(default=0)
-	zids = models.IntegerField()
-	jids = models.IntegerField()
+	zid = models.IntegerField()
+	jid = models.IntegerField()
 
 	class Meta:
 		ordering = ['costtime']
