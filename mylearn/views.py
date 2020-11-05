@@ -3728,6 +3728,8 @@ def addqs2(request,yunsuan):
                         Xxqs23.addqs3(num0, num1, yunsuan, answer, ornot)
                         d = d - 1
                     else:
+                        e=0
+                        f=0
                         for i in range(2, abs(b)):
                             while a % i == 0 and b % i == 0:
                                 e = a // i
