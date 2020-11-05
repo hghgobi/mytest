@@ -3686,9 +3686,9 @@ def addqs2(request,yunsuan):
                 c = a * b
                 num0 = a
                 num1 = b
-                answer = c
+                answer = str(c)
                 ornot = 0
-                Xxqs22.addqs(num0, num1, yunsuan, str(answer), ornot)
+                Xxqs22.addqs(num0, num1, yunsuan,answer, ornot)
                 d=d-1
 
 
@@ -3704,13 +3704,15 @@ def addqs2(request,yunsuan):
                     num0 = a
                     num1 = b
                     c=int(a/b)
-                    answer = c
+                    answer = str(c)
                     ornot = 0
-                    Xxqs23.addqs(num0, num1, yunsuan, str(answer), ornot)
+                    Xxqs23.addqs(num0, num1, yunsuan,answer, ornot)
                     d = d - 1
 
                 else:
                     if abs(a) > abs(b):
+                        e=0
+                        f=0
                         for i in range(2, abs(a)):
                             while a % i == 0 and b % i == 0:
                                 e = a // i
@@ -3724,6 +3726,7 @@ def addqs2(request,yunsuan):
                         answer = c
                         ornot = 0
                         Xxqs23.addqs(num0, num1, yunsuan, answer, ornot)
+                        d = d - 1
                     else:
                         for i in range(2, abs(b)):
                             while a % i == 0 and b % i == 0:
@@ -3738,7 +3741,8 @@ def addqs2(request,yunsuan):
                         num0 = a
                         num1 = b
                         Xxqs23.addqs(num0, num1, yunsuan, answer, ornot)
-                    d = d - 1
+                        d = d - 1
+
     else:
         pass
     return HttpResponse("成功！")
