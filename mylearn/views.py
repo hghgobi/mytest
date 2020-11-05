@@ -3688,7 +3688,7 @@ def addqs2(request,yunsuan):
                 num1 = b
                 answer = str(c)
                 ornot = 0
-                Xxqs22.addqs(num0, num1, yunsuan,answer, ornot)
+                Xxqs22.addqs2(num0, num1, yunsuan,answer, ornot)
                 d=d-1
 
 
@@ -3706,7 +3706,7 @@ def addqs2(request,yunsuan):
                     c=int(a/b)
                     answer = str(c)
                     ornot = 0
-                    Xxqs23.addqs(num0, num1, yunsuan,answer, ornot)
+                    Xxqs23.addqs3(num0, num1, yunsuan,answer, ornot)
                     d = d - 1
 
                 else:
@@ -3725,7 +3725,7 @@ def addqs2(request,yunsuan):
                         num1 = b
                         answer = c
                         ornot = 0
-                        Xxqs23.addqs(num0, num1, yunsuan, answer, ornot)
+                        Xxqs23.addqs3(num0, num1, yunsuan, answer, ornot)
                         d = d - 1
                     else:
                         for i in range(2, abs(b)):
@@ -3740,7 +3740,7 @@ def addqs2(request,yunsuan):
                         ornot = 0
                         num0 = a
                         num1 = b
-                        Xxqs23.addqs(num0, num1, yunsuan, answer, ornot)
+                        Xxqs23.addqs3(num0, num1, yunsuan, answer, ornot)
                         d = d - 1
 
     else:
