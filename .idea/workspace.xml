@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/mylearn/linshi102.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/linshi102.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="610">
-              <caret line="3742" column="32" lean-forward="true" selection-start-line="3742" selection-start-column="32" selection-end-line="3742" selection-end-column="32" />
+            <state relative-caret-position="481">
+              <caret line="3694" column="20" lean-forward="true" selection-start-line="3694" selection-start-column="20" selection-end-line="3694" selection-end-column="20" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -27,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/linshi102.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2492">
-              <caret line="149" selection-start-line="149" selection-end-line="149" />
+            <state relative-caret-position="662">
+              <caret line="49" column="33" lean-forward="true" selection-start-line="1" selection-end-line="49" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -77,7 +78,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="820">
+            <state relative-caret-position="100">
               <caret line="496" column="33" selection-start-line="496" selection-start-column="32" selection-end-line="496" selection-end-column="33" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -195,7 +196,6 @@
         <option value="$PROJECT_DIR$/mylearn/templates/exam.html" />
         <option value="$PROJECT_DIR$/mylearn/urls.py" />
         <option value="F:/2020级七年级信息/题目/documentname.py" />
-        <option value="$PROJECT_DIR$/mylearn/linshi102.py" />
         <option value="$PROJECT_DIR$/mylearn/admin.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/showqszk.html" />
         <option value="$USER_HOME$/Desktop/dj.py" />
@@ -207,6 +207,7 @@
         <option value="$PROJECT_DIR$/mylearn/templates/xhlbase.html" />
         <option value="$PROJECT_DIR$/mylearn/models.py" />
         <option value="$PROJECT_DIR$/mytest/settings.py" />
+        <option value="$PROJECT_DIR$/mylearn/linshi102.py" />
         <option value="$PROJECT_DIR$/mylearn/views.py" />
       </list>
     </option>
@@ -680,27 +681,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/linshi102.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2492">
-          <caret line="149" selection-start-line="149" selection-end-line="149" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="92" column="45" lean-forward="true" selection-start-line="92" selection-start-column="45" selection-end-line="92" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="820">
-          <caret line="496" column="33" selection-start-line="496" selection-start-column="32" selection-end-line="496" selection-end-column="33" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -714,10 +698,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="496" column="33" selection-start-line="496" selection-start-column="32" selection-end-line="496" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/linshi102.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="662">
+          <caret line="49" column="33" lean-forward="true" selection-start-line="1" selection-end-line="49" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="610">
-          <caret line="3742" column="32" lean-forward="true" selection-start-line="3742" selection-start-column="32" selection-end-line="3742" selection-end-column="32" />
+        <state relative-caret-position="481">
+          <caret line="3694" column="20" lean-forward="true" selection-start-line="3694" selection-start-column="20" selection-end-line="3694" selection-end-column="20" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
