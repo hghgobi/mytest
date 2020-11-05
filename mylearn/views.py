@@ -3722,7 +3722,7 @@ def addqs2(request,yunsuan):
                         if a * b > 0:
                             c = str(abs(a)) + 'V' + str(abs(b))
                         else:
-                            c = 'V' + str(abs(a)) + 'V' + str(abs(b))
+                            c = '-' + str(abs(a)) + 'V' + str(abs(b))
                         num0 = e
                         num1 = f
                         answer = str(c)
@@ -3737,7 +3737,7 @@ def addqs2(request,yunsuan):
                         if a * b > 0:
                             c = str(abs(a)) + 'V' + str(abs(b))
                         else:
-                            c = 'V' + str(abs(a)) + 'V' + str(abs(b))
+                            c = '-' + str(abs(a)) + 'V' + str(abs(b))
                         answer = str(c)
                         ornot = 0
                         num0 = e
