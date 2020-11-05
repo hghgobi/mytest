@@ -171,7 +171,7 @@ class XHLAdmin(admin.ModelAdmin):
 
 @admin.register(Rankxhl)
 class RankxhlAdmin(admin.ModelAdmin):
-	list_display = ('pk','name','costtime','time')
+	list_display = ('pk','zid','jid','name','costtime','time')
 
 @admin.register(Lasttime)
 class LasttimeAdmin(admin.ModelAdmin):
