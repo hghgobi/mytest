@@ -3430,9 +3430,9 @@ def  xxtest22(request,id0,id1):
 
 def  xxtest23(request):
     if request.method == 'GET':
-        teststudent0 = request.session.get("teststudent0")
+        teststudent0 = request.session.get("teststudent")
         if not teststudent0:
-            return redirect('../../testlogin0')
+            return redirect('../../testlogin')
         timess = int(time.time())
 
         try:
@@ -3646,115 +3646,99 @@ def Xhltestms(request):
 
 
 def addqs2(request,yunsuan):
-    teststudent0 = request.session.get("teststudent0")
+    teststudent0 = request.session.get("teststudent")
     if not teststudent0:
-        return redirect('../../testlogin0')
+        return redirect('../../testlogin')
     else:
         pass
     yunsuan=yunsuan
     if yunsuan==1:
-        for i in range(2, 100):
-            a = i
-
-            for j in range(i, 100):
-
-                b = j
+        d=500
+        while d>0:
+            a = random.randint(-100, 100)
+            b = random.randint(-100, 100)
+            if a > 0 and b > 0:
+                pass
+            else:
                 c = a + b
-                if c <= 100:
-                    e = a % 10
-                    f = b % 10
-                    if e + f > 10:
+                if abs(a) > abs(b):
+                    num0=b
+                    num1=a
+                    answer=c
+                    ornot=0
+                else:
+                    num0 = a
+                    num1 = b
+                    answer = c
+                    ornot = 0
+                Xxqs2.addqs(num0, num1, yunsuan, str(answer), ornot)
+                d = d - 1
+
+
+    elif yunsuan==2:
+        d = 300
+        while d > 0:
+            a = random.randint(-100, 100)
+            b = random.randint(-100, 100)
+            if (a > 0 and b > 0) or a==0 or b==0:
+                pass
+            else:
+                c = a * b
+                num0 = a
+                num1 = b
+                answer = c
+                ornot = 0
+                Xxqs22.addqs(num0, num1, yunsuan, str(answer), ornot)
+                d=d-1
+
+
+    elif yunsuan==3:
+        d = 300
+        while d > 0:
+            a = random.randint(-100, 100)
+            b = random.randint(-100, 100)
+            if (a > 0 and b > 0) or b == 0 or a==0:
+                pass
+            else:
+                if a % b == 0:
+                    num0 = a
+                    num1 = b
+                    c=int(a/b)
+                    answer = c
+                    ornot = 0
+                    Xxqs23.addqs(num0, num1, yunsuan, str(answer), ornot)
+                    d = d - 1
+
+                else:
+                    if abs(a) > abs(b):
+                        for i in range(2, abs(a)):
+                            while a % i == 0 and b % i == 0:
+                                e = a // i
+                                f = b // i
+                        if a*b>0:
+                            c = str(abs(e)) + 'V' + str(abs(f))
+                        else:
+                            c = '-'+str(abs(e)) + 'V' + str(abs(f))
                         num0 = a
                         num1 = b
                         answer = c
-                        f = c / 10
-                        if f >= 10:
-                            ornot = 3
-                        elif f >= 1:
-                            ornot = 2
+                        ornot = 0
+                        Xxqs23.addqs(num0, num1, yunsuan, answer, ornot)
+                    else:
+                        for i in range(2, abs(b)):
+                            while a % i == 0 and b % i == 0:
+                                e = a // i
+                                f = b // i
+                        if a*b>0:
+                            c = str(abs(e)) + 'V' + str(abs(f))
                         else:
-                            ornot=1
-                        Xxqs2.addqs(num0,num1,yunsuan,answer,ornot)
-
-                    else:
-                        pass
-
-                else:
-                    pass
-    elif yunsuan==2:
-        a = []
-        for i in range(1, 101):
-            a.append(i)
-        a.reverse()
-        for i in range(100):
-            b = a[i]
-            for j in range(1, b):
-                c = j
-                if b - c > 10:
-                    e = b % 10
-                    f = c % 10
-                    if e < f:
-                        num0 = b
-                        num1 = c
-                        answer = b - c
-                        f = answer / 10
-                        if f >= 10:
-                            ornot = 3
-                        elif f >= 1:
-                            ornot = 2
-                        else:
-                            ornot = 1
-                        Xxqs22.addqs2(num0, num1, yunsuan, answer, ornot)
-                    else:
-                        pass
-                else:
-                    pass
-    elif yunsuan==3:
-        for i in range(2, 11):
-            a = i
-            for j in range(i, 11):
-
-                b = j
-                num0 = a
-                num1 = b
-                answer = a * b
-                f = answer / 10
-                if f >= 10:
-                    ornot = 3
-                elif f >= 1:
-                    ornot = 2
-                else:
-                    ornot = 1
-                Xxqs23.addqs3(num0, num1, yunsuan, answer, ornot)
-
-    elif yunsuan==4:
-        a = [4, 6, 8, 10, 12, 14, 16, 18, 20, 9, 12, 15, 18, 21, 24, 27, 30, 16, 20, 24, 28, 32, 36, 40, 25, 30, 35, 40,
-             45, 50, 36, 42, 48, 54, 60, 49, 56, 63, 70, 64, 72, 80, 81, 90, 100]
-        e = []
-        for z in range(1, 11):
-            e.append(z)
-
-        for i in range(len(a)):
-            b = a[i]
-            for j in range(2, 11):
-                c = j
-                d = b / c
-                if d in e:
-
-                    num0 = b
-                    num1 = c
-                    answer = int(d)
-                    f = answer / 10
-                    if f >= 10:
-                        ornot = 3
-                    elif f >= 1:
-                        ornot = 2
-                    else:
-                        ornot = 1
-                    Xxqs24.addqs4(num0, num1, yunsuan, answer, ornot)
-
-                else:
-                    pass
+                            c = '-'+str(abs(e)) + 'V' + str(abs(f))
+                        answer = c
+                        ornot = 0
+                        num0 = a
+                        num1 = b
+                        Xxqs23.addqs(num0, num1, yunsuan, answer, ornot)
+                    d = d - 1
     else:
         pass
     return HttpResponse("成功！")

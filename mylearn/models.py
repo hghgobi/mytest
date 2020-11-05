@@ -494,7 +494,7 @@ class Xxqs2(models.Model):
 	num0 = models.IntegerField()
 	num1 = models.IntegerField()
 	yunsuan = models.IntegerField()
-	answer = models.IntegerField(default=0)
+	answer = models.models.CharField(max_length=500)
 	ornot = models.IntegerField(default=0)
 
 	@classmethod
@@ -506,7 +506,7 @@ class Xxqs22(models.Model):
 	num0 = models.IntegerField()
 	num1 = models.IntegerField()
 	yunsuan = models.IntegerField()
-	answer = models.IntegerField(default=0)
+	answer = models.CharField(max_length=500)
 	ornot = models.IntegerField(default=0)
 
 	@classmethod
@@ -518,7 +518,7 @@ class Xxqs23(models.Model):
 	num0 = models.IntegerField()
 	num1 = models.IntegerField()
 	yunsuan = models.IntegerField()
-	answer = models.IntegerField(default=0)
+	answer = models.CharField(max_length=500)
 	ornot = models.IntegerField(default=0)
 
 	@classmethod
@@ -531,7 +531,7 @@ class Xxqs24(models.Model):
 	num0 = models.IntegerField()
 	num1 = models.IntegerField()
 	yunsuan = models.IntegerField()
-	answer = models.IntegerField(default=0)
+	answer = models.CharField(max_length=500)
 	ornot = models.IntegerField(default=0)
 
 	@classmethod
