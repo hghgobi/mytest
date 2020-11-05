@@ -494,7 +494,7 @@ class Xxqs2(models.Model):
 	num0 = models.IntegerField()
 	num1 = models.IntegerField()
 	yunsuan = models.IntegerField()
-	answer = models.models.CharField(max_length=500)
+	answer = models.CharField(max_length=500)
 	ornot = models.IntegerField(default=0)
 
 	@classmethod
