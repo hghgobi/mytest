@@ -410,11 +410,11 @@ def Exammessages(request):
     matplotlib.rcParams['font.sans-serif'] = ['SimHei']
     matplotlib.rcParams['axes.unicode_minus'] = False
     plt.plot(dates,scores,c='red')
-    plt.title("历次考试分数变化情况")
+    plt.title("分数在动，我心在跳，不如行动")
     fig.autofmt_xdate(rotation = 85)
     plt.ylim(0,120)
 
-    plt.ylabel("分数")
+    plt.ylabel("------能量++++++")
     plt.tick_params(axis='both',which='major',labelsize=8)
     sio=BytesIO()
         
@@ -430,11 +430,11 @@ def Exammessages(request):
     matplotlib.rcParams['font.sans-serif'] = ['SimHei']
     matplotlib.rcParams['axes.unicode_minus'] = False
     plt.plot(dates, ranks, c='blue')
-    plt.title("个人班级排名变化情况")
+    plt.title("个人进步曲线图")
     fig.autofmt_xdate(rotation=85)
     plt.ylim(50,0)
 
-    plt.ylabel("班级排名")
+    plt.ylabel("进步->我要一步一步往上爬->")
     plt.tick_params(axis='both', which='major', labelsize=8)
     sio = BytesIO()
 
@@ -1448,6 +1448,28 @@ def zkfxnametg(request,id0,id1,bj):
         # except:
         #     pass
     return render(request,'yuxiname2.html',{'ms':ms,'id0':id0,'id1':id1,'mss':mss,'names':names,'rank':json.dumps(rank)})
+
+
+# def Getwrongs(request,id):
+#     teststudent=request.session.get("teststudent")
+#     if not teststudent:
+#         return redirect('../testlogin')
+#     id = id
+#     name = get_object_or_404(Students,pk=id).studentname
+#     wrongs= Wrongqs.objects.filter(studentname=name)
+#     wrongsid=[]
+#     wrongsurl=[]
+#     if wrongs:
+#         for e in range(wrongs):
+#             wrongsid.append(wrongs[e].questionid)
+#         for j in range(len(wrongsid)):
+#             qus=get_object_or_404(Zkfx,pk=wrongsid[j])
+#             wrongsurl.append(qus.questiontext.url)
+#     else:
+#         pass
+#     return render(request,'getwrongs.html',{'wrongsurl':json.dumps(wrongsurl)})
+
+
 
 def yuxiname0(request,id0,id1):
     teststudent = request.session.get("teststudent0")

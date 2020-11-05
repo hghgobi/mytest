@@ -1,0 +1,31 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta  charset="UTF-8"  name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+	<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+
+
+	<title>作业</title>
+
+
+</head>
+<body bgcolor="#b8fec0">
+
+<button id="startts" type="button" class="btn btn-success" onclick="startgo()">开始测试</button>
+
+
+<div id="Layer1" style="z-index:-100; left:0px; top:0px; width:100%">
+
+<img id="pic" src="" width="100%" height="20%"/>
+</div>
+<script language="javascript" type="text/javascript">
+
+var wrongsurl={{wrongsurl|safe}};
+
+</script>
+</body>
+</html>

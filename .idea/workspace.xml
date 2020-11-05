@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/xhlclassnotes.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/xhlclassnotes.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="1423" column="28" selection-start-line="1423" selection-start-column="28" selection-end-line="1423" selection-end-column="28" />
+            <state relative-caret-position="100">
+              <caret line="657" column="21" selection-start-line="657" selection-start-column="4" selection-end-line="657" selection-end-column="21" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -26,6 +27,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mylearn/templates/xhlclassnotes.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/yuxiname2.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1680">
@@ -47,26 +57,24 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/templates/showqszk 20201003.html">
+        <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+            <state relative-caret-position="506">
+              <caret line="25" column="76" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="76" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/dj.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/templates/showqszk.html">
+        <entry file="file://$USER_HOME$/Desktop/奖励红花/红花奖励.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="13440">
-              <caret line="448" column="9" selection-start-line="448" selection-start-column="9" selection-end-line="448" selection-end-column="9" />
+            <state relative-caret-position="738">
+              <caret line="100" selection-start-line="100" selection-end-line="100" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -85,8 +93,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11640">
-              <caret line="390" column="12" selection-start-line="390" selection-start-column="6" selection-end-line="390" selection-end-column="12" />
+            <state relative-caret-position="17880">
+              <caret line="598" column="10" selection-start-line="598" selection-start-column="6" selection-end-line="598" selection-end-column="10" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -120,15 +128,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>!1</find>
-      <find>Datiget</find>
       <find>Json</find>
       <find>Xxt</find>
       <find>xxtes</find>
@@ -156,6 +162,8 @@
       <find>zk</find>
       <find>yuxinam</find>
       <find>yuxite</find>
+      <find>Stu</find>
+      <find>Wrong</find>
       <find>zkfx</find>
     </findStrings>
   </component>
@@ -165,8 +173,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mylearn/templates/showqs1.html" />
-        <option value="$PROJECT_DIR$/mylearn/templates/showqs9.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/xxdata1.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/xxdata2.html" />
         <option value="$USER_HOME$/Desktop/ev3/data.py" />
@@ -179,7 +185,6 @@
         <option value="$PROJECT_DIR$/mylearn/templates/xhlbase3.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/classnotes.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/xhlyuxiname2.html" />
-        <option value="$PROJECT_DIR$/mylearn/templates/xhlclassnotes.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/uploadhw2.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/uploadhw2 (2).html" />
         <option value="$PROJECT_DIR$/mylearn/templates/uploadhw.html" />
@@ -207,21 +212,24 @@
         <option value="$PROJECT_DIR$/mylearn/templates/exam.html" />
         <option value="$PROJECT_DIR$/mylearn/urls.py" />
         <option value="F:/2020级七年级信息/题目/documentname.py" />
-        <option value="$PROJECT_DIR$/mytest/settings.py" />
         <option value="$PROJECT_DIR$/mylearn/linshi102.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/base3.html" />
-        <option value="$PROJECT_DIR$/mylearn/models.py" />
         <option value="$PROJECT_DIR$/mylearn/admin.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/showqszk.html" />
         <option value="$USER_HOME$/Desktop/dj.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/yuxiname2.html" />
+        <option value="$PROJECT_DIR$/mylearn/models.py" />
+        <option value="$PROJECT_DIR$/mylearn/templates/getwrongs.html" />
+        <option value="$PROJECT_DIR$/mytest/settings.py" />
+        <option value="$USER_HOME$/Desktop/奖励红花/红花奖励.py" />
         <option value="$PROJECT_DIR$/mylearn/views.py" />
+        <option value="$PROJECT_DIR$/mylearn/templates/xhlclassnotes.html" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="143" />
-    <option name="y" value="155" />
+    <option name="x" value="-342" />
+    <option name="y" value="106" />
     <option name="width" value="1549" />
     <option name="height" value="1007" />
   </component>
@@ -233,7 +241,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -271,6 +278,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -363,14 +371,14 @@
     <option name="totallyTimeSpent" value="1090000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20179136" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20073763" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.0845987" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.0845987" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49947312" weight="0.329718" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -393,19 +401,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/xxqs4.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/xhlyuxi.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/xhlclassnotes.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/xhlbase3.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -459,17 +454,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
           <caret line="16" column="7" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/zkfxname.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -610,16 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3240">
-          <caret line="111" selection-start-line="111" selection-end-line="111" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/showqs10.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22170">
@@ -634,38 +608,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/getwrongs.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="21" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mytest/settings.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="28" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="750">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/zkfxname.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="1423" column="28" selection-start-line="1423" selection-start-column="28" selection-end-line="1423" selection-end-column="28" />
+        <state relative-caret-position="960">
+          <caret line="32" column="19" selection-start-line="32" selection-start-column="19" selection-end-line="32" selection-end-column="19" />
           <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/yuxiname2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1680">
-          <caret line="56" selection-start-line="56" selection-end-line="56" />
-          <folding>
-            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#4;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#1;n#tr#0;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#1;n#tr#2;n#tbody#0;n#table#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -682,8 +645,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/showqszk.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="13440">
-          <caret line="448" column="9" selection-start-line="448" selection-start-column="9" selection-end-line="448" selection-end-column="9" />
+        <state relative-caret-position="6150">
+          <caret line="205" selection-start-line="205" selection-end-line="205" />
           <folding>
             <element signature="n#style#0;n#input#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -698,8 +661,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11640">
-          <caret line="390" column="12" selection-start-line="390" selection-start-column="6" selection-end-line="390" selection-end-column="12" />
+        <state relative-caret-position="17880">
+          <caret line="598" column="10" selection-start-line="598" selection-start-column="6" selection-end-line="598" selection-end-column="10" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>
@@ -719,6 +682,62 @@
           <caret line="86" column="30" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/奖励红花/红花奖励.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="100" selection-start-line="100" selection-end-line="100" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="506">
+          <caret line="25" column="76" selection-start-line="25" selection-start-column="59" selection-end-line="25" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="657" column="21" selection-start-line="657" selection-start-column="4" selection-end-line="657" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/xhlclassnotes.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/yuxiname2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1680">
+          <caret line="56" selection-start-line="56" selection-end-line="56" />
+          <folding>
+            <element signature="n#style#0;n#td#0;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#0;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#1;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#2;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#3;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#4;n#tr#1;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
