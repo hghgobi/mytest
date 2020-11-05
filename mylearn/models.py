@@ -577,16 +577,16 @@ class Rankxhl(models.Model):
 	name = models.CharField(max_length=200)
 	time = models.DateTimeField(auto_now=True)
 	costtime = models.IntegerField(default=0)
-	zid = models.IntegerField()
-	jid = models.IntegerField()
+	zidd = models.IntegerField()
+	jidd = models.IntegerField()
 
 	class Meta:
 		ordering = ['costtime']
 
 	@classmethod
-	def addrankxhl(cls,name,costtime,zid,jid):
+	def addrankxhl(cls,name,costtime,zidd,jidd):
 
-		addms = cls(name=name,costtime=costtime,zid=zid,jid=jid)
+		addms = cls(name=name,costtime=costtime,zidd=zidd,jidd=jidd)
 		addms.save()
 class Lasttime(models.Model):
 	name = models.CharField(max_length=200)
