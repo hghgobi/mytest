@@ -4349,7 +4349,7 @@ class Addflowers(request):
         Getflowerrecord.addflower(name,hwname,num,reason)
         ms=name+hwname+reason+str(flower)
         return HttpResponse(ms)
-class Showflowerms(requests):
+class Showflowerms(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
