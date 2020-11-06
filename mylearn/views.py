@@ -4345,6 +4345,10 @@ def Addflowers(request):
         hwname = request.POST.get('hwname')
         reason= request.POST.get('reason')
         flower = request.POST.get('flower')
+        if name=='梁馨月':
+            name='梁馨月01'
+        else:
+            pass
         num=int(flower)
         Getflowerrecord.addflower(name,hwname,num,reason)
         ms=name+hwname+reason+str(flower)
