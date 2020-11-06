@@ -4334,9 +4334,9 @@ def zkfxname(request):
         return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz,"hwnames":json.dumps(hwnames,ensure_ascii=False)})
 
 def Addflowers(request):
-    teststudent = request.session.get("teststudent")
-    if not teststudent:
-        return redirect('../../testlogin')
+    # teststudent = request.session.get("teststudent")
+    # if not teststudent:
+    #     return redirect('../../testlogin')
 
     if request.method=='GET':
         return HttpResponse("错误")
