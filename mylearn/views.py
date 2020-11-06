@@ -4341,7 +4341,7 @@ def Addflowers(request):
     if request.method=='GET':
         return HttpResponse("错误")
     if request.method=='POST':
-        name = teststudent
+        name = requests.POST.get('name')
         hwname = requests.POST.get('hwname')
         reason= requests.POST.get('reason')
         flower = requests.POST.get('flower')
