@@ -103,6 +103,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('kz666/', views.Kzurl2),
                path('killcuoti/', views.Killcuoti),
                path('pxr/', views.rankpaixu),
+               path('flower/', views.Showflowerms),
 
 
 

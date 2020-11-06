@@ -725,3 +725,18 @@ class Sshuliang(models.Model):
 	seta = models.IntegerField()
 	setb = models.IntegerField()
 	setc = models.IntegerField()
+
+class Getflowerrecord(models.Model):
+	name = models.CharField(max_length=200)
+	hwname=models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	flower=models.IntegerField()
+	reason=models.CharField(max_length=200)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addflower(cls,name,hwname,flower,reason):
+
+		addms = cls(name=name,hwname=hwname,flower=flower,reason=reason)
+		addms.save()
