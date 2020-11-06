@@ -4357,7 +4357,7 @@ def Showflowerms(request):
     sum=0
     for i in mss:
         sum=sum+i.flower
-    return render(requests,'flowers.html',{'mss':mss,'sum':sum})
+    return render(request,'flowers.html',{'mss':mss,'sum':sum})
 
 
 
