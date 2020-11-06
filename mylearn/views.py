@@ -4337,9 +4337,10 @@ class Addflowers(requests):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
+    
     if request.method=='GET':
         return HttpResponse("错误")
-    if request.method=='POST':
+    elif request.method=='POST':
         name = teststudent
         hwname = requests.POST.get('hwname')
         reason= requests.POST.get('reason')
