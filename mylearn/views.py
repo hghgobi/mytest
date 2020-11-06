@@ -4333,7 +4333,7 @@ def zkfxname(request):
         print(hwnames)
         return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz,"hwnames":json.dumps(hwnames,ensure_ascii=False)})
 
-class Addflowers(request):
+def Addflowers(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
@@ -4349,7 +4349,7 @@ class Addflowers(request):
         Getflowerrecord.addflower(name,hwname,num,reason)
         ms=name+hwname+reason+str(flower)
         return HttpResponse(ms)
-class Showflowerms(request):
+def Showflowerms(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
