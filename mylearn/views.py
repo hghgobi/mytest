@@ -4333,14 +4333,14 @@ def zkfxname(request):
         print(hwnames)
         return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz,"hwnames":json.dumps(hwnames,ensure_ascii=False)})
 
-class Addflowers(requests):
+class Addflowers(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
-    
+
     if request.method=='GET':
         return HttpResponse("错误")
-    elif request.method=='POST':
+    if request.method=='POST':
         name = teststudent
         hwname = requests.POST.get('hwname')
         reason= requests.POST.get('reason')
