@@ -4334,17 +4334,17 @@ def zkfxname(request):
         return render(request, 'zkfxname.html', {'mss': mss, 'n':n,'msss':msss,'namwz':namwz,"hwnames":json.dumps(hwnames,ensure_ascii=False)})
 
 def Addflowers(request):
-    # teststudent = request.session.get("teststudent")
-    # if not teststudent:
-    #     return redirect('../../testlogin')
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
 
     if request.method=='GET':
         return HttpResponse("错误")
     if request.method=='POST':
-        name = requests.POST.get('name')
-        hwname = requests.POST.get('hwname')
-        reason= requests.POST.get('reason')
-        flower = requests.POST.get('flower')
+        name = request.POST.get('name')
+        hwname = request.POST.get('hwname')
+        reason= request.POST.get('reason')
+        flower = request.POST.get('flower')
         num=int(flower)
         Getflowerrecord.addflower(name,hwname,num,reason)
         ms=name+hwname+reason+str(flower)
