@@ -4363,5 +4363,11 @@ def Showflowerms(request):
         sum=sum+i.flower
     return render(request,'flowers.html',{'mss':mss,'sum':sum})
 
+def Showflowerms2(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    mss=Getflowerrecord.objects.all()
+    return render(request,'flowerrecord.html',{'mss':mss})
 
 
