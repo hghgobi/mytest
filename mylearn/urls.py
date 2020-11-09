@@ -106,6 +106,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('flower/', views.Showflowerms),
                path('flower2/', views.Showflowerms2),
                path('addflower/', views.Addflowers),
+               path('rankget/', views.Rankget),
 
 
 

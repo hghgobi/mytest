@@ -4367,3 +4367,12 @@ def Showflowerms2(request):
     return render(request,'flowerrecord.html',{'mss':mss})
 
 
+def Rankget(request,id0,id1,bj):
+    id0 = id0
+    id1 = id1
+    bj = bj
+    ms = Yuxinamezk.objects.filter(zid=id0,jid=id1,bj=bj)
+    a=[]
+    for i in ms:
+        a.append(i.name)
+    return HttpResponse(str(a))
