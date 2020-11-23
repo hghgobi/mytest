@@ -757,3 +757,4 @@ class Homeworks(models.Model):
 		addms.save()
 class Homeworksid(models.Model):
 	time = models.IntegerField()
+	hwname = models.CharField(max_length=500)

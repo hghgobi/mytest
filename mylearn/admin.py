@@ -253,4 +253,4 @@ class HomeworksAdmin(admin.ModelAdmin):
 
 @admin.register(Homeworksid)
 class HomeworksidAdmin(admin.ModelAdmin):
-	list_display = ['time']
+	list_display = ['time','hwname']
