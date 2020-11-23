@@ -729,8 +729,8 @@ class Sshuliang(models.Model):
 class Getflowerrecord(models.Model):
 	name = models.CharField(max_length=200)
 	hwname=models.CharField(max_length=500)
-	time = models.DateTimeField(auto_now=True)
 	flower=models.IntegerField()
+	time=models.DateTimeField(auto_now=True)
 	reason=models.CharField(max_length=200)
 	class Meta:
 		ordering = ['-time']
@@ -740,3 +740,19 @@ class Getflowerrecord(models.Model):
 
 		addms = cls(name=name,hwname=hwname,flower=flower,reason=reason)
 		addms.save()
+
+class Homeworks(models.Model):
+	name = models.CharField(max_length=500)
+	hwname=models.CharField(max_length=500)
+	time = models.IntegerField()
+	ornot=models.CharField(max_length=200)
+	clas=models.IntegerField()
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addhw(cls,name,hwname,time,ornot,clas):
+		addms = cls(name=name,hwname=hwname,time=time,ornot=ornot,clas=clas)
+		addms.save()
+class Homeworksid(models.Model):
+	time = models.IntegerField()

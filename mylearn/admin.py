@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sdengji,Sshuliang,Getflowerrecord
+from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sdengji,Sshuliang,Getflowerrecord,Homeworks,Homeworksid
 
 
 # Register your models here.
@@ -246,3 +246,11 @@ class SshuliangAdmin(admin.ModelAdmin):
 @admin.register(Getflowerrecord)
 class GetflowerrecordAdmin(admin.ModelAdmin):
 	list_display = ['time','name','hwname','flower','reason']
+
+@admin.register(Homeworks)
+class HomeworksAdmin(admin.ModelAdmin):
+	list_display = ['name','hwname','time','ornot','clas']
+
+@admin.register(Homeworksid)
+class HomeworksidAdmin(admin.ModelAdmin):
+	list_display = ['time']
