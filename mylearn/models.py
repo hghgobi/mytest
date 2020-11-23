@@ -758,3 +758,5 @@ class Homeworks(models.Model):
 class Homeworksid(models.Model):
 	time = models.IntegerField()
 	hwname = models.CharField(max_length=500)
+	class Meta:
+		ordering = ['-time']
