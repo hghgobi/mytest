@@ -4387,7 +4387,7 @@ def Hwmanage(request):
     ids = Homeworksid.objects.all()
     idss = []
     for i in ids:
-        idss.append(i[0].time)
+        idss.append(i.time)
     htmls=[]
     for j in idss:
         try:
