@@ -249,7 +249,7 @@ class GetflowerrecordAdmin(admin.ModelAdmin):
 
 @admin.register(Homeworks)
 class HomeworksAdmin(admin.ModelAdmin):
-	list_display = ['name','hwname','time','ornot','clas']
+	list_display = ['name','hwname','time','ornot','clas','stuid']
 
 @admin.register(Homeworksid)
 class HomeworksidAdmin(admin.ModelAdmin):
