@@ -108,6 +108,9 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('addflower/', views.Addflowers),
                path('rankget/<int:id0>/<int:id1>/<int:bj>', views.Rankget),
                path('hwmanage/', views.Hwmanage),
+               path('<int:time>', views.Hwshow),
+               path('<int:time>/<int:stuid>', views.Hwchange),
+               path('hwadd/<int:time>/<int:clas>', views.Hwaddnames),
 
 
 
