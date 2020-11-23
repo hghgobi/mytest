@@ -4377,17 +4377,27 @@ def Rankget(request,id0,id1,bj):
         a.append(i.name)
     return HttpResponse(str(a))
 
-# def Hwmanage(request):
-#     teststudent = request.session.get("teststudent")
-#     if not teststudent:
-#         return redirect('../../testlogin')
-#     names=['陆宇浩','陶悠然','李佳英','李秋佟','卢以悦','陈俏宏','梁瑜伽','尚榆皓','颜之依','李欣宜','梁晨宇','梁宇轩','刘俊轩','沈柯妤','李航','李亦晴','梁珂涵','陈镐','蒋佳成','张宇麒']
-#     if teststudent not in names:
-#         return HttpResponse("你不是组长，没有权限！")
-#     ids = Homeworksid.objects.all()
-#     idss = []
-#     for i in ids:
-#         idss.append(i[0].time)
-#     for j in idss:
-#         html=''''''
+def Hwmanage(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    names=['陆宇浩','陶悠然','李佳英','李秋佟','卢以悦','陈俏宏','梁瑜伽','尚榆皓','颜之依','李欣宜','梁晨宇','梁宇轩','刘俊轩','沈柯妤','李航','李亦晴','梁珂涵','陈镐','蒋佳成','张宇麒']
+    if teststudent not in names:
+        return HttpResponse("你不是组长，没有权限！")
+    ids = Homeworksid.objects.all()
+    idss = []
+    for i in ids:
+        idss.append(i[0].time)
+    htmls=[]
+    for j in idss:
+        try:
+            gg=get_object_or_404(Homeworksid,time=j)
+            url='http://35925.top/'+str(j)
+            name=gg.hwname
+            html = '''<a href="%s" target="_blank">--->%s -管理作业订正<---</a><p></p>''' % (url, name)
+            htmls.append(html)
+        except:
+            pass
+    return render(request,'hw01.html',{'htmls':json.dumps(htmls)})
+
 
