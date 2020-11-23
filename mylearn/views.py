@@ -4463,7 +4463,12 @@ def Hwaddnames(request,time,clas):
         Homeworks.addhw(name,hwname,time,ornot,clas,stuid)
     return HttpResponse('成功')
 
-
+def Gethwms(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    ms=Homeworks.objects.filter(name=teststudent)
+    return render(request,'gethwms.html',{'ms':ms})
 
 
 
