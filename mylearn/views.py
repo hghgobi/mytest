@@ -4528,10 +4528,10 @@ def Hwshowall(request,time):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
-    ms=Homeworks.objects.filter(time=time,ornot='未订正')
+    ms=get_object_or_404(Homeworks,time=time,ornot='未订正')
     nopass=[]
     for i in ms:
-        nopass.append(i[0].name)
+        nopass.append(i.name)
     mss = Homeworks.objects.filter(time=time, ornot='已订正')
     return render(request,'hwms.html',{'ms':ms,'mss':mss})
 
