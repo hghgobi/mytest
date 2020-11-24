@@ -7,6 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><a><font size="6">作业订正情况</font></a></div>
                     <div class="panel-body">
+                        <p><font size="5" color="red">已订正的有</font></p>
                       <table id="num" class="table table-bordered" >
 
          <tr>
@@ -31,9 +32,37 @@
         {% empty %}
         <p><font size="5" color="red">暂无相关信息</font></p>
         {% endfor %}
-                          <p><font size="5" color="red">未订正的有：{{ms}}</font></p>
 
-    </table> 
+
+    </table>
+                        <p><font size="5" color="red">未订正的有</font></p>
+                        <table id="num1" class="table table-bordered" >
+
+         <tr>
+             <td style="vertical-align: middle;" ><font size="4">序号</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">作业时间</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">学生姓名</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">作业内容</font></td>
+            <td class="warning" style="vertical-align: middle;"> <font size="4">是否订正</font></td>
+
+
+        </tr>
+        {%for i in ms %}
+            <tr  >
+                <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
+                <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.hwname}}</font></td>
+                <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.ornot}}</font></td>
+            </tr>
+
+
+        {% empty %}
+        <p><font size="5" color="red">暂无相关信息</font></p>
+        {% endfor %}
+
+    </table>
+
      </div>
                 </div>
             </div>    
@@ -41,6 +70,15 @@
 <script language="javascript" type="text/javascript">
 	    window.onload = function(){
 		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	    }
+    }
+    </script>
+     <script language="javascript" type="text/javascript">
+	    window.onload = function(){
+		    var oTable = document.getElementById("num1");
 		    for(var i=0;i<oTable.rows.length;i++){
 		    n=oTable.rows.length;
 		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
