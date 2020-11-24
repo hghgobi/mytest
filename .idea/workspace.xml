@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/base3.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/base3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/gethwms.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/gethwms.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -16,11 +12,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="362">
-              <caret line="4491" column="21" lean-forward="true" selection-start-line="4491" selection-start-column="21" selection-end-line="4491" selection-end-column="21" />
+            <state relative-caret-position="302">
+              <caret line="4498" column="17" lean-forward="true" selection-start-line="4498" selection-start-column="17" selection-end-line="4498" selection-end-column="17" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -37,7 +33,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/gethwms.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="360">
@@ -214,12 +210,12 @@
         <option value="$PROJECT_DIR$/mylearn/urls.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/hwms.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/base3.html" />
-        <option value="$PROJECT_DIR$/mylearn/views.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/gethwms.html" />
+        <option value="$PROJECT_DIR$/mylearn/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-535" />
     <option name="y" value="134" />
     <option name="width" value="1319" />
@@ -744,16 +740,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="115" column="55" lean-forward="true" selection-start-line="115" selection-start-column="55" selection-end-line="115" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/hwms.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -768,20 +754,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="4491" column="21" lean-forward="true" selection-start-line="4491" selection-start-column="21" selection-end-line="4491" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/gethwms.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="12" column="13" lean-forward="true" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="812">
+          <caret line="115" column="55" lean-forward="true" selection-start-line="115" selection-start-column="55" selection-end-line="115" selection-end-column="55" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="4498" column="17" lean-forward="true" selection-start-line="4498" selection-start-column="17" selection-end-line="4498" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
