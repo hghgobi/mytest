@@ -70,20 +70,17 @@
 <script language="javascript" type="text/javascript">
 	    window.onload = function(){
 		    var oTable = document.getElementById("num");
+		    var oTable2 = document.getElementById("num1");
 		    for(var i=0;i<oTable.rows.length;i++){
 		    n=oTable.rows.length;
 		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
 	    }
-    }
-    </script>
-     <script language="javascript" type="text/javascript">
-	    window.onload = function(){
-		    var oTable = document.getElementById("num1");
-		    for(var i=0;i<oTable.rows.length;i++){
-		    n=oTable.rows.length;
-		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	        for(var i=0;i<oTable2.rows.length;i++){
+		    n=oTable2.rows.length;
+		    oTable2.rows[i+1].cells[0].innerHTML =(n-i-1) ;
 	    }
     }
     </script>
+  
 {% endblock %}
 
