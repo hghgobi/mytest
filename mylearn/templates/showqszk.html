@@ -282,7 +282,7 @@ background: #EA6F30;
 <script language="javascript" type="text/javascript">
 var music={{music|safe}};
 var n=0;
-var ns={{ns}};
+var ns=music.length;
 var mp3=music[n];
 var mp33=new Audio(mp3);
 var mus=document.getElementById("music");
@@ -292,8 +292,8 @@ function music(){
 if(n==ns-1){n=0;}
 else{n=n+1;}
 mp33.pause();
-var mp33=new Audio(mp3);
 mp3=music[n];
+var mp33=new Audio(mp3);
 <!--mp33.load();-->
 mp33.play();
 }
