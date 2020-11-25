@@ -286,15 +286,16 @@ var ns={{ns}};
 var mp3=music[n];
 var mp33=new Audio(mp3);
 var mus=document.getElementById("music");
+window.onload=function(){mp33.load();}
 function music(){
 
 if(n==ns-1){n=0;}
 else{n=n+1;}
+mp3=music[n];
+mp33.load();
 mp33.play();
-
 }
 function playy(){
-mp33.load();
 mp33.play();
 }
 function pausee(){
