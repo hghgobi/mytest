@@ -798,3 +798,5 @@ class Uselucky(models.Model):
 	def addmss(cls,name,num,ornot):
 		addms = cls(name=name,num=num,ornot=ornot)
 		addms.save()
+class Music(models.Model):
+	name = models.CharField(max_length=500)

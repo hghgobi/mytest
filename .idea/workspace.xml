@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/templates/showqszk.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/showqszk.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1250">
-              <caret line="3832" column="8" selection-start-line="3832" selection-start-column="4" selection-end-line="3832" selection-end-column="8" />
+            <state relative-caret-position="721">
+              <caret line="3902" column="156" selection-start-line="3902" selection-start-column="156" selection-end-line="3902" selection-end-column="156" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -27,8 +31,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/showqszk.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="276" column="6" lean-forward="true" selection-start-line="276" selection-start-column="6" selection-end-line="276" selection-end-column="6" />
+            <state relative-caret-position="390">
+              <caret line="292" lean-forward="true" selection-start-line="292" selection-end-line="292" />
             </state>
           </provider>
         </entry>
@@ -41,15 +45,6 @@
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/奖励红花/getnames.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
         </entry>
@@ -70,10 +65,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="792" column="33" lean-forward="true" selection-start-line="792" selection-start-column="33" selection-end-line="792" selection-end-column="33" />
+            <state relative-caret-position="722">
+              <caret line="800" column="26" lean-forward="true" selection-start-line="800" selection-start-column="26" selection-end-line="800" selection-end-column="26" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="798">
+              <caret line="270" column="27" lean-forward="true" selection-start-line="270" selection-start-column="27" selection-end-line="270" selection-end-column="27" />
+              <folding>
+                <element signature="e#0#32#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -203,7 +210,6 @@
         <option value="$PROJECT_DIR$/mylearn/templates/getbadnews.html" />
         <option value="$PROJECT_DIR$/mytest/settings.py" />
         <option value="$USER_HOME$/Desktop/奖励红花/添加不良记录.py" />
-        <option value="$PROJECT_DIR$/mylearn/admin.py" />
         <option value="$USER_HOME$/Desktop/奖励红花/test2.py" />
         <option value="$PROJECT_DIR$/mylearn/urls.py" />
         <option value="$USER_HOME$/Desktop/奖励红花/添加抽奖.py" />
@@ -211,9 +217,10 @@
         <option value="$PROJECT_DIR$/mylearn/templates/base3.html" />
         <option value="$USER_HOME$/Desktop/奖励红花/getnames.py" />
         <option value="$USER_HOME$/Desktop/奖励红花/抽奖红花发放.py" />
-        <option value="$PROJECT_DIR$/mylearn/models.py" />
-        <option value="$PROJECT_DIR$/mylearn/views.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/showluckyname.html" />
+        <option value="$PROJECT_DIR$/mylearn/models.py" />
+        <option value="$PROJECT_DIR$/mylearn/admin.py" />
+        <option value="$PROJECT_DIR$/mylearn/views.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/showqszk.html" />
       </list>
     </option>
@@ -644,16 +651,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="261" column="22" lean-forward="true" selection-start-line="261" selection-start-column="22" selection-end-line="261" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/base2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -749,16 +746,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="792" column="33" lean-forward="true" selection-start-line="792" selection-start-column="33" selection-end-line="792" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/showlucky.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="812">
@@ -777,10 +764,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="800" column="26" lean-forward="true" selection-start-line="800" selection-start-column="26" selection-end-line="800" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="798">
+          <caret line="270" column="27" lean-forward="true" selection-start-line="270" selection-start-column="27" selection-end-line="270" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1250">
-          <caret line="3832" column="8" selection-start-line="3832" selection-start-column="4" selection-end-line="3832" selection-end-column="8" />
+        <state relative-caret-position="721">
+          <caret line="3902" column="156" selection-start-line="3902" selection-start-column="156" selection-end-line="3902" selection-end-column="156" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
@@ -789,8 +796,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/showqszk.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="276" column="6" lean-forward="true" selection-start-line="276" selection-start-column="6" selection-end-line="276" selection-end-column="6" />
+        <state relative-caret-position="390">
+          <caret line="292" lean-forward="true" selection-start-line="292" selection-end-line="292" />
         </state>
       </provider>
     </entry>
