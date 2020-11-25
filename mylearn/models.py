@@ -760,3 +760,16 @@ class Homeworksid(models.Model):
 	hwname = models.CharField(max_length=500)
 	class Meta:
 		ordering = ['-time']
+
+class Badnews(models.Model):
+	id = models.AutoField(primary_key=True)
+	name = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	hwname = models.CharField(max_length=500)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,hwname):
+		addms = cls(name=name,hwname=hwname)
+		addms.save()
