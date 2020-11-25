@@ -4715,7 +4715,11 @@ def Addlucky(request):
         ms=Uselucky.objects.filter(ornot=0)
         id = []
         for i in range(len(ms)):
-            id.append(ms[i].pk)
+            n=[]
+            n.append(ms[i].pk)
+            n.append(ms[i].name)
+            n.append(ms[i].num)
+            id.append(n)
         return HttpResponse(str(id))
 
     if request.method=='POST':
