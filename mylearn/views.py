@@ -4711,8 +4711,9 @@ def Showluckynames(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
-    ms=Uselucky.objects.all()
-    return render(request,'showluckyname.html',{'ms':ms})
+    ms=Uselucky.objects.filter(ornot=0)
+    mss = Uselucky.objects.filter(ornot=1)
+    return render(request,'showluckyname.html',{'ms':ms,'mss':mss})
 def Addlucky(request):
     if request.method=='GET':
         ms=Uselucky.objects.filter(ornot=0)

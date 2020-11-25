@@ -7,10 +7,21 @@
                 <div class="panel panel-default">
                     <div class="panel-heading"><a><font size="6">幸运星星</font></a></div>
                     <div class="panel-body">
+                        <p><font size="5" color="red">红花待发放</font></p>
+                        <hr />
 
 
         {%for i in ms %}
-                        <p><font size="3" color="red">{{i.time}}{{i.name}}抽得{{i.num}}朵红花</font></p>
+                        <p style=background-color:#00FF66"><font size="3" color="red">{{i.time}}{{i.name}}抽得{{i.num}}朵红花</font></p>
+
+        {% empty %}
+        <p><font size="5" color="red">暂无相关信息</font></p>
+        {% endfor %}
+                        <hr />
+                        <p><font size="5" color="blue">红花已发放</font></p>
+                        <hr />
+                                {%for j in mss %}
+                        <p style="background-color:#E0E0E0"><font size="3" color="red">{{j.time}}{{j.name}}抽得{{j.num}}朵红花</font></p>
 
         {% empty %}
         <p><font size="5" color="red">暂无相关信息</font></p>

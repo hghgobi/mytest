@@ -788,7 +788,7 @@ class Lucky(models.Model):
 
 class Uselucky(models.Model):
 	name = models.CharField(max_length=500)
-	time = models.DateTimeField(auto_now=True)
+	time = models.DateTimeField(auto_now=False)
 	num = models.IntegerField()
 	ornot = models.IntegerField()
 	class Meta:
