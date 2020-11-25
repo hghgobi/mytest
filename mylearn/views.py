@@ -4669,7 +4669,7 @@ def Showlucky(request):
         return redirect('../../testlogin')
     if request.method=='GET':
         ms=Lucky.objects.all()
-        return render(request,'showluck.html',{'ms':ms})
+        return render(request,'showlucky.html',{'ms':ms})
 
     if request.method=='POST':
         data = {}
