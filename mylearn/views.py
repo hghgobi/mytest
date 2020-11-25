@@ -545,11 +545,14 @@ def Indexs(request):
         cuotiamount = len(cuotis)
         badnews=Badnews.objects.filter(name=teststudent)
         badcount=len(badnews)
+        luckys=Lucky.objects.filter(name=teststudent)
+        luckycount=len(luckys)
     else:
         ms=''
         cuotiamount=0
         badcount=0
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount})
+        luckycount=0
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount})
 
     # try:
     #     n='未读'

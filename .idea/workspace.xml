@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/base3.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/base3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/showlucky.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/showlucky.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="407">
-              <caret line="4720" column="31" lean-forward="true" selection-start-line="4720" selection-start-column="31" selection-end-line="4720" selection-end-column="31" />
+            <state relative-caret-position="490">
+              <caret line="550" column="13" lean-forward="true" selection-start-line="550" selection-start-column="13" selection-end-line="550" selection-end-column="13" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -58,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/base3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
+            <state relative-caret-position="240">
+              <caret line="32" column="100" selection-start-line="32" selection-start-column="100" selection-end-line="32" selection-end-column="100" />
             </state>
           </provider>
         </entry>
@@ -70,8 +72,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/showlucky.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="102" column="25" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
+            <state relative-caret-position="2160">
+              <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
               <folding>
                 <element signature="n#style#0;n#input#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -154,11 +156,11 @@
       <find>classnote</find>
       <find>Classnewslist</find>
       <find>伽</find>
-      <find>Indexs</find>
       <find>zkfxnametg</find>
       <find>Addtxl2</find>
       <find>Showwkqs1</find>
       <find>zkfx</find>
+      <find>Indexs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -212,16 +214,16 @@
         <option value="$PROJECT_DIR$/mylearn/admin.py" />
         <option value="$USER_HOME$/Desktop/奖励红花/test2.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/showluckyname.html" />
-        <option value="$PROJECT_DIR$/mylearn/templates/base3.html" />
         <option value="$PROJECT_DIR$/mylearn/urls.py" />
-        <option value="$PROJECT_DIR$/mylearn/templates/showlucky.html" />
         <option value="$USER_HOME$/Desktop/奖励红花/添加抽奖.py" />
         <option value="$USER_HOME$/Desktop/奖励红花/抽奖红花发放.py" />
+        <option value="$PROJECT_DIR$/mylearn/templates/showlucky.html" />
         <option value="$PROJECT_DIR$/mylearn/views.py" />
+        <option value="$PROJECT_DIR$/mylearn/templates/base3.html" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-535" />
     <option name="y" value="134" />
     <option name="width" value="1319" />
@@ -256,6 +258,12 @@
               <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
               <item name="mytest" type="462c0819:PsiDirectoryNode" />
               <item name="mylearn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mytest" type="462c0819:PsiDirectoryNode" />
+              <item name="mylearn" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
@@ -698,34 +706,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/showluckyname.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/base3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="36" column="13" lean-forward="true" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/tongxl.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1170">
           <caret line="156" column="13" lean-forward="true" selection-start-line="156" selection-start-column="13" selection-end-line="156" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/showlucky.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="102" column="25" selection-start-line="102" selection-start-column="25" selection-end-line="102" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#input#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -772,13 +756,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/showlucky.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2160">
+          <caret line="93" column="20" selection-start-line="93" selection-start-column="20" selection-end-line="93" selection-end-column="20" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="407">
-          <caret line="4720" column="31" lean-forward="true" selection-start-line="4720" selection-start-column="31" selection-end-line="4720" selection-end-column="31" />
+        <state relative-caret-position="490">
+          <caret line="550" column="13" lean-forward="true" selection-start-line="550" selection-start-column="13" selection-end-line="550" selection-end-column="13" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/showluckyname.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/base3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="32" column="100" selection-start-line="32" selection-start-column="100" selection-end-line="32" selection-end-column="100" />
         </state>
       </provider>
     </entry>
