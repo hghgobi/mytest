@@ -270,25 +270,35 @@ background: #EA6F30;
 <td id="select" class="numberkey" >C</td>
 </tr>
  </table>
-    <img id="testrm" src="" width="100%" height="20%"/>
-    <audio id="music" autoplay="autoplay"  loop="loop" preload="auto"
-            	src="/media/music/1.mp3">
-	</audio>
+<!--    <img id="testrm" src="" width="100%" height="20%"/>-->
+<!--    <audio id="music" autoplay="autoplay"  loop="loop" preload="auto"-->
+<!--            	src="/media/music/1.mp3">-->
+<!--	</audio>-->
+    <button id="play" type="button" onclick="playy()">播放</button>
+    <button id="pause" type="button" onclick="pausee()">暂停</button>
     <button id="next" type="button" onclick="music()">切歌now</button>
 </div>
 </div>
 <script language="javascript" type="text/javascript">
 var music={{music|safe}};
-var n=1;
+var n=0;
 var ns={{ns}};
+var mp3=music[n];
+var mp33=new Audio(mp3);
 var mus=document.getElementById("music");
 function music(){
-mus.stop();
-document.getElementById("music").src=music[n];
-mus.play();
+
 if(n==ns-1){n=0;}
 else{n=n+1;}
+mp33.play();
 
+}
+function playy(){
+mp33.load();
+mp33.play();
+}
+function pausee(){
+mp33.pause();
 }
 
 
