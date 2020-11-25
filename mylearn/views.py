@@ -4550,15 +4550,13 @@ def Getbadnews(request):
     return render(request,'getbadnews.html',{'ms':ms})
 
 def Addbadnews(request):
-    if request.method == 'POST':
-        name=request.POST.get('name')
-        hwname=request.POST.get('hwname')
-
-        Badnews.addmss(name,hwname)
+    if request.method=='GET':
+        return HttpResponse("错误")
+    if request.method=='POST':
+        name = request.POST.get('name')
+        hwname = request.POST.get('hwname')
+        Badnews.addmss(name, hwname)
         return HttpResponse('成功')
-    else:
-        return HttpResponse('非法请求')
-
 
 def Showhwunpass(request,time,clas):
     time=time
