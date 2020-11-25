@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky
 import json
 import random
 import numpy as np
@@ -15,6 +15,7 @@ from comment.models import Comment
 
 import time
 import hashlib
+import string
 
 
 
@@ -4047,6 +4048,17 @@ def zkfx(request,id0,id1):
                     pass
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                value=666666
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn=Lucky.objects.filter(num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
+                Lucky.addmss(teststudent,reason,value)
                 return redirect(paths)
             else:
                 try:
@@ -4083,6 +4095,17 @@ def zkfx(request,id0,id1):
                     pass
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                value=666666
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn=Lucky.objects.filter(num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
+                Lucky.addmss(teststudent,reason,value)
                 return redirect(paths)
             elif dd>=int(n1):
                 try:
@@ -4103,6 +4126,17 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                value=666666
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn=Lucky.objects.filter(num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
+                Lucky.addmss(teststudent,reason,value)
                 return redirect(paths)
 
             else:
@@ -4139,6 +4173,17 @@ def zkfx(request,id0,id1):
                     pass
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                value=666666
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn=Lucky.objects.filter(num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
+                Lucky.addmss(teststudent,reason,value)
                 return redirect(paths)
             elif dd >= int(n1):
                 try:
@@ -4159,6 +4204,17 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                value=666666
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn=Lucky.objects.filter(num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
+                Lucky.addmss(teststudent,reason,value)
                 return redirect(paths)
 
             elif dd >=int(n2):
@@ -4180,6 +4236,17 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                value=666666
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn=Lucky.objects.filter(num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
+                Lucky.addmss(teststudent,reason,value)
                 return redirect(paths)
             elif costtime>=limit1:
                 ornot = "通过，"
@@ -4201,6 +4268,17 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
+                value=666666
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn=Lucky.objects.filter(num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
+                Lucky.addmss(teststudent,reason,value)
                 return redirect(paths)
 
             else:
@@ -4442,7 +4520,19 @@ def Hwchange(request,time,stuid):
     mss=get_object_or_404(Homeworks,time=time,stuid=stuid)
     mss.ornot='已订正'
     mss.save()
+    reasons=mss.hwname
     url='../../'+str(time)
+    value = 666666
+    for i in range(10):
+        value = ''.join(random.sample(string.digits, 6))
+        value = int(value)
+        nnn = Lucky.objects.filter(num=value)
+        if nnn:
+            pass
+        else:
+            break
+    reason = '作业' + time+ reasons+'完成订正'
+    Lucky.addmss(teststudent, reason, value)
     return redirect(url)
 
 def Hwaddnames(request,time,clas):
@@ -4558,14 +4648,111 @@ def Addbadnews(request):
         Badnews.addmss(name, hwname)
         return HttpResponse('成功')
 
-def Showhwunpass(request,time,clas):
+def Showhwunpass(request,time,clas,ornot):
     time=time
     clas=clas
+    ornot=ornot
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
-    ms=Homeworks.objects.filter(time=time,clas=clas,ornot='未订正')
+    if ornot==0:
+        ms = Homeworks.objects.filter(time=time, clas=clas, ornot='未订正')
+    else:
+        ms = Homeworks.objects.filter(time=time, clas=clas, ornot='已订正')
     names=[]
     for i in range(len(ms)):
         names.append(ms[i].name)
     return HttpResponse(str(names))
+def Showlucky(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method=='GET':
+        ms=Lucky.objects.all()
+        return render(request,'showluck.html',{'ms':ms})
+
+    if request.method=='POST':
+        data = {}
+        num = request.POST.get('num')
+        if num:
+            pass
+        else:
+            data['error'] = '抽奖码不能为空！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        if num.isdigit():
+            pass
+        else:
+            data['error'] = '抽奖码只能是数字'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        c = Lucky.objects.filter(num=int(num))
+        if c:
+            a = [1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
+                 11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 17,
+                 17, 18, 18, 19, 19, 20, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+            random.shuffle(a)
+            b = a[0]
+            data['status'] = 'success'
+            data['error'] = '恭喜你获得' + str(b) + '朵红花！'
+            Lucky.objects.filter(num=int(num)).delete()
+            ornot = 0
+            Uselucky.addmss(teststudent,b,ornot)
+            return JsonResponse(data)
+        else:
+            data['error'] = '抽奖码已使用或不存在'
+            data['status'] = 'error'
+            return JsonResponse(data)
+
+def Showluckynames(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    ms=Uselucky.objects.all()
+    return render(request,'showluckyname.html',{'ms':ms})
+def Addlucky(request):
+    if request.method=='GET':
+        ms=Uselucky.objects.filter(ornot=0)
+        id = []
+        for i in range(len(ms)):
+            id.append(ms[i].pk)
+        return HttpResponse(str(id))
+
+    if request.method=='POST':
+        id = request.POST.get('id')
+        mss=get_object_or_404(Uselucky,pk=int(id))
+        mss.ornot=1
+        mss.save()
+        return HttpResponse('成功')
+
+def Getkousuan(request,id0,id1,bj):
+    id0 = id0
+    id1 = id1
+    bj = bj
+    ms = Yuxinamezk.objects.filter(zid=id0,jid=id1,bj=bj)
+    names=[]
+    for i in range(len(ms)):
+        names.append(ms[i].name)
+
+    return HttpResponse(str(names))
+def Addluckynum(request):
+    if request.method=='GET':
+        return HttpResponse("错误")
+    if request.method=='POST':
+        name = request.POST.get('name')
+        reason = request.POST.get('reason')
+        value = 666666
+        for i in range(10):
+            value = ''.join(random.sample(string.digits, 6))
+            value = int(value)
+            nnn = Lucky.objects.filter(num=value)
+            if nnn:
+                pass
+            else:
+                break
+        Lucky.addmss(name, reason, value)
+        return HttpResponse('成功')
+
+
+
+

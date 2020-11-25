@@ -773,3 +773,28 @@ class Badnews(models.Model):
 	def addmss(cls,name,hwname):
 		addms = cls(name=name,hwname=hwname)
 		addms.save()
+class Lucky(models.Model):
+	num = models.IntegerField()
+	name = models.CharField(max_length=500)
+	reason = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,reason,num):
+		addms = cls(name=name,reason=reason,num=num)
+		addms.save()
+
+class Uselucky(models.Model):
+	name = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	num = models.IntegerField()
+	ornot = models.IntegerField()
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,num,ornot):
+		addms = cls(name=name,num=num,ornot=ornot)
+		addms.save()

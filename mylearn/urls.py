@@ -116,7 +116,12 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('all/<int:time>', views.Hwshowall),
                path('badnews', views.Getbadnews),
                path('addbadnews', views.Addbadnews),
-               path('hwunpass/<int:time>/<int:clas>', views.Showhwunpass),
+               path('hwunpass/<int:time>/<int:clas>/<int:ornot>', views.Showhwunpass),
+               path('lucky', views.Showlucky),
+               path('showlucky', views.Showluckynames),
+               path('addlucky', views.Addlucky),
+               path('getkousuan/<int:id0>/<int:id1>/<int:bj>', views.Getkousuan),
+               path('addluckynum', views.Addluckynum),
 
 
 
