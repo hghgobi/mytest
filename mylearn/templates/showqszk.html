@@ -274,7 +274,7 @@ background: #EA6F30;
     <audio id="music" autoplay="autoplay" controls="controls" loop="loop" preload="auto"
             	src="/media/music/1.mp3">
 	</audio>
-    <button id="next" type="button">切歌now</button>
+    <button id="next" type="button" onclick="music()">切歌now</button>
 </div>
 </div>
 <script language="javascript" type="text/javascript">
@@ -283,13 +283,10 @@ var n=1;
 var ns={{ns}};
 var mus=document.getElementById("music");
 function music(){
-if (event.srcElement.innerText=="切歌now") {
 mus.stop();
 document.getElementById("music").src=music[n];
 if(n==ns-1){n=0;}
 else{n=n+1;}
-
-}
 
 }
 
