@@ -3898,6 +3898,7 @@ def zkfx(request,id0,id1):
                 for ii in range(len(mus)):
                     music.append(mus[ii].name)
                 ns=len(music)
+                random.shuffle(music)
                 return render(request, 'showqszk.html',                              {
                                'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
                                'qsamount': json.dumps(zs),'id0':id0,'id1':id1,'ornot':ornot,'testrmpc':json.dumps(testrms),'music':json.dumps(music),'ns':ns})
