@@ -91,12 +91,16 @@
                     alert(data['error']);
              setTimeout(function () {
                     window.parent.location.reload();
-                }, 4000);
+                }, 2000);
 
 
                     }else{
                         // 显示错误信息
                         $("#error").text(data['error']);
+                        alert(data['error']);
+                        setTimeout(function () {
+                    window.parent.location.reload();
+                }, 2000);
                     }
                 },
                 error: function(xhr){

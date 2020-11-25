@@ -4668,7 +4668,7 @@ def Showlucky(request):
     if not teststudent:
         return redirect('../../testlogin')
     if request.method=='GET':
-        ms=Lucky.objects.all()
+        ms=Lucky.objects.filter(name=teststudent)
         return render(request,'showlucky.html',{'ms':ms})
 
     if request.method=='POST':
@@ -4686,7 +4686,7 @@ def Showlucky(request):
             data['error'] = '抽奖码只能是数字'
             data['status'] = 'error'
             return JsonResponse(data)
-        c = Lucky.objects.filter(num=int(num))
+        c = Lucky.objects.filter(name=teststudent,num=int(num))
         if c:
             a = [1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
                  11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 17,
