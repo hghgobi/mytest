@@ -116,6 +116,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('all/<int:time>', views.Hwshowall),
                path('badnews', views.Getbadnews),
                path('addbadnews', views.Addbadnews),
+               path('hwunpass/<int:time>/<int:clas>', views.Showhwunpass),
 
 
 

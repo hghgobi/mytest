@@ -4550,9 +4550,6 @@ def Getbadnews(request):
     return render(request,'getbadnews.html',{'ms':ms})
 
 def Addbadnews(request):
-    teststudent = request.session.get("teststudent")
-    if not teststudent:
-        return redirect('../../testlogin')
     if request.method == 'POST':
         name=request.POST.get('name')
         hwname=request.POST.get('hwname')
@@ -4563,3 +4560,14 @@ def Addbadnews(request):
         return HttpResponse('非法请求')
 
 
+def Showhwunpass(request,time,clas):
+    time=time
+    clas=clas
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    ms=Homeworks.objects.filter(time=time,clas=clas,ornot='未订正')
+    names=[]
+    for i in range(len(ms)):
+        names.append(ms[i].name)
+    return HttpResponse(str(names))
