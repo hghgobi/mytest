@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
-    </list>
+    <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,8 +13,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="730">
-              <caret line="4545" column="37" lean-forward="true" selection-start-line="4545" selection-start-column="37" selection-end-line="4545" selection-end-column="37" />
+            <state relative-caret-position="400">
+              <caret line="4534" column="26" lean-forward="true" selection-start-line="4534" selection-start-column="26" selection-end-line="4534" selection-end-column="26" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -783,8 +781,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="730">
-          <caret line="4545" column="37" lean-forward="true" selection-start-line="4545" selection-start-column="37" selection-end-line="4545" selection-end-column="37" />
+        <state relative-caret-position="400">
+          <caret line="4534" column="26" lean-forward="true" selection-start-line="4534" selection-start-column="26" selection-end-line="4534" selection-end-column="26" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
