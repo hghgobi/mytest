@@ -72,10 +72,11 @@
 
 
 
-              <div id="jz" height="260" valign="top" bgcolor="#D9F2FF"><!--站内公告-->
-                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="7" direction="up" width="100%" height="121">
+              <div id="jz" height="89" valign="top" bgcolor="#D9F2FF"><!--站内公告-->
+                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="1" direction="up" width="100%" height="260">
                {%for i in mas1 %}
                 <p>{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p>{{i.reason}}获取抽奖码一个</p>
+						<p>获取抽奖码一个</p>
 						<a>-------------------------------------</a>
                               {% empty %}
                <p> 暂无消息 </p>
