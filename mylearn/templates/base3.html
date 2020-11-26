@@ -13,10 +13,6 @@
     <link rel="stylesheet" href="{% static 'base2.css' %}">
 
     <style>
-	*{
-	    margin: 0;
-	    padding: 0;
-	}
 
 	.text-banner{
 	    width: 100%;
@@ -24,10 +20,7 @@
 	    overflow: hidden;
 	    outline: 1px solid #ddd;
 	}
-	.text-banner2{
-	    width: 100%;
-	    overflow: hidden;
-	    outline: 1px solid #ddd;
+
 	}
 
 	.text-banner-ul-1,.text-banner-ul-2{
@@ -126,13 +119,6 @@
         </ul>
    </div>
 
-    <div class="text-banner2">
-        <div class="text-banner-hx">
-            <div class="text-banner-hx-1"><span style="padding: 8px 0; display: inline-block;">欢迎</span></div><div class="text-banner-hx-2"><span style="padding: 8px 0; display: inline-block;">文字轮播1文字轮播1文字轮播1文字轮播1</span></div>
-        </div>
-    </div>
-
-
     {% block content %}{% endblock %}
 
 
@@ -149,8 +135,8 @@
 		    li[0].style.cssText = 'transition:all linear '+a+'s; top:-'+num+'px';
 		    li2[0].style.cssText = 'transition:all linear '+a*2+'s; top:-'+num*2+'px';
 		    setTimeout(() => {
-		        li[0].style.cssText = 'top:0px';
-		        li2[0].style.cssText = 'top:0px';
+		        li[0].style.cssText = 'top:20px';
+		        li2[0].style.cssText = 'top:20px';
 		        timer();
 		    }, 5000);
 		}
@@ -160,10 +146,10 @@
 		    let div1 = document.getElementsByClassName("text-banner-hx-1");
 		    let div2 = document.getElementsByClassName("text-banner-hx-2");
 		    let offsetWidth = div1[0].offsetWidth;
-		    let a = 5;
+		    let a = 10;
 		    if(offsetWidth<=windowWidth){
-		        div1[0].style.cssText = 'width:100%;'
-		        div2[0].style.cssText = 'width:100%;'
+		        div1[0].style.cssText = 'width:80%;'
+		        div2[0].style.cssText = 'width:80%;'
 		        let offsetWidth2 = div1[0].offsetWidth;
 		        div1[0].style.cssText = 'width:100%; transition:all linear '+a+'s; left:-'+offsetWidth2+'px';
 		        div2[0].style.cssText = 'width:100%; transition:all linear '+a*2+'s; left:-'+offsetWidth2*2+'px';
