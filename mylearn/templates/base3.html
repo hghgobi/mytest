@@ -19,7 +19,14 @@
             var copyDiv = document.getElementById('copyDiv');
             var copyDivW =copyDiv.clientWidth;
             var speed = 10;    //移动速度，值越大速度越慢
+            var msss={{masss|safe}};
+
 			function marquee() {
+			 for(var i=0;i<msss.length;i++){
+              divList.innerHTML = msss[i];
+
+              }
+
                 if (copyDiv.offsetLeft - box.scrollLeft <= 0){//判断复制的信息是否到达box的最左边
                 	box.scrollLeft -= divList.offsetWidth-copyDivW
                 }else {
@@ -104,17 +111,6 @@
 
     {% block content %}{% endblock %}
 <div><a><font size="2" color="red">{{ms}}</font></a></div>
-      <script language="javascript" type="text/javascript">
-          var msss={{masss|safe}};
-          var yunsuan1=document.getElementById("divList");
-          window.onload=function(){
-          for(var i=0;i<msss.length;i++){
-          yunsuan1.innerHTML = msss[i];
-
-          }
-          }
-
-      </script>
 
 <div class="footer">
     <div class="website-info">
