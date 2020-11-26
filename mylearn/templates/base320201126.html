@@ -1,0 +1,85 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+<body bgcolor="#b8fec0">
+<style>
+div{text-align:center  }
+</style>
+
+
+<div class="nav">
+ <ul class="nav nav-pills nav-stacked">
+       <li><a  href='../../'   class="btn " ><font size="6" color="blue">--数学驿站--</font> </a></li>
+       <li> <a href="../../exam" class="btn btn-info " ><font size="8" color="black">数学成绩</font></a></li>
+<!--	    <li><a href="../../homework" class="btn btn-success" ><font size="8" color="black">数学作业</font></a></li>-->
+        <li> <a href="../../classnotes" class="btn btn-primary " ><font size="8" color="black">数学作业/讯息</font></a></li>
+     <li class="dropdown"> <a   data-toggle="dropdown" class="btn btn-success"><font size="8" color="black">作业情况</font><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+             <li><a href="../../gethwms" class="btn btn-success"><font size="4" color="red">本人作业订正情况</font></a></li>
+             <li><a href="../../hwlist" class="btn btn-success"><font size="4" color="red">班级作业订正情况</font></a></li>
+             <li><a href="../../hwmanage" class="btn btn-primary"><font size="4" color="black">作业订正管理员入口</font></a></li>
+        </ul>
+        <li> <a href="../../classnotes0" class="btn btn-primary " ><font size="8" color="black">每日口算</font></a></li>
+     <li> <a href="../../badnews" class="btn btn-danger " ><font size="8" color="black">{{badcount}}条不良记录</font></a></li>
+        <li class="dropdown"> <a   data-toggle="dropdown" class="btn btn-success"><font size="8" color="black">{{luckycount}}个抽奖码</font><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+             <li><a href="../../lucky" class="btn btn-success"><font size="4" color="red">进入抽奖</font></a></li>
+             <li><a href="../../showlucky" class="btn btn-success"><font size="4" color="red">幸运星星</font></a></li>
+        </ul>
+
+     <li class="dropdown"> <a   data-toggle="dropdown" class="btn btn-primary"><font size="8" color="black">flowers</font><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+             <li><a href="../../flower" class="btn btn-success"><font size="4" color="red">个人红花记录</font></a></li>
+             <li><a href="../../flower2" class="btn btn-success"><font size="4" color="red">全体红花记录</font></a></li>
+        </ul>
+       <li class="dropdown"> <a   data-toggle="dropdown" class="btn btn-danger"><font size="8" color="black">{{cuotiamount}}道错题</font><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+             <li><a href="../../killcuoti" class="btn btn-success"><font size="4" color="red">消灭错题</font></a></li>
+        </ul>
+       <li class="dropdown"> <a   data-toggle="dropdown" class="btn btn-danger"><font size="8" color="black">其他</font><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+<!--            <li> <a href="../../loginrecord" class="btn btn-primary " ><font size="8" color="black">足迹</font></a></li>-->
+
+                <li><a href="../../zuotu1" class="btn btn-primary"><font size="4" color="black">画函数图象</font></a></li>
+
+<!--            <li><a href="../../onlinetestrank" class="btn btn-primary"><font size="4" color="black">在线测试排行</font></a></li>-->
+
+<!--            <li><a href="../../onlinetest" class="btn btn-info"><font size="4" color="black">在线测试</font></a></li>-->
+<!--            <li> <a href="../../teacherms" class="btn btn-primary " ><font size="8" color="black">老师的留言</font></a></li>-->
+
+             <li><a href="../../testlogin" class="btn btn-success"><font size="4" color="red">登陆</font></a></li>
+            <li><a href="../../logout" class="btn btn-success"><font size="4" color="red">注销</font></a></li>
+
+
+        </ul>
+
+<!--        </li>-->
+
+<!--    </ul>-->
+
+</div>
+
+
+
+    {% block content %}{% endblock %}
+<div><a><font size="2" color="red">{{ms}}</font></a></div>
+<div class="footer">
+    <div class="website-info">
+        <p> ©2019 35925.top 版权所有&nbsp;&nbsp;&nbsp;<a href="http://beian.miit.gov.cn/" target="_blank">浙ICP备19013564号</a></p>
+        <p>意见反馈或联系我（569258059@qq.com）</p>
+    </div>
+</div>
+
+</body>
+
+
+</html>
