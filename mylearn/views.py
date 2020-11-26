@@ -4531,18 +4531,19 @@ def Hwchange(request,time,stuid):
     mss.save()
     ss = get_object_or_404(Homeworks, time=time, stuid=stuid)
     reasons=ss.hwname
+    name=ss.name
     url='../../'+str(time)
     value = 666666
     for i in range(10):
         value = ''.join(random.sample(string.digits, 6))
         value = int(value)
-        nnn = Lucky.objects.filter(name=teststudent,num=value)
+        nnn = Lucky.objects.filter(name=name,num=value)
         if nnn:
             pass
         else:
             break
     reason = '作业' + str(time)+ reasons+'完成订正'
-    Lucky.addmss(teststudent, reason, value)
+    Lucky.addmss(name, reason, value)
     return redirect(url)
 
 def Hwaddnames(request,time,clas):
