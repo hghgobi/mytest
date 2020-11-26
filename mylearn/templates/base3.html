@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{% static 'base2.css' %}">
 
     <style>
-
+#jz{ margin:0 auto; width:320px; height:129px; }
     </style>
 </head>
 <body>
@@ -72,10 +72,10 @@
 
 
 
-              <div height="29" valign="top" bgcolor="#D9F2FF"><!--站内公告-->
+              <div id="jz" height="29" valign="top" bgcolor="#D9F2FF"><!--站内公告-->
                     <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="7" direction="up" width="100%" height="121">
                {%for i in mas1 %}
-                <p>{{i.time}}</p><p>{{i.name}}得一个抽奖码</p>
+                <p>{{i.time}}{{i.name}}得一个抽奖码</p>
                               {% empty %}
                <p> 暂无消息 </p>
                {% endfor %}
