@@ -18,14 +18,10 @@
             var divList = document.getElementById('divList');
             var copyDiv = document.getElementById('copyDiv');
             var copyDivW =copyDiv.clientWidth;
-            var speed = 10;    //移动速度，值越大速度越慢
-            var msss={{msss|safe}};
+            var speed = 5;    //移动速度，值越大速度越慢
+
 
 			function marquee() {
-			 for(var i=0;i<msss.length;i++){
-              divList.innerHTML = msss[i];
-
-              }
 
                 if (copyDiv.offsetLeft - box.scrollLeft <= 0){//判断复制的信息是否到达box的最左边
                 	box.scrollLeft -= divList.offsetWidth-copyDivW
@@ -104,7 +100,7 @@
 </nav>
 <div  id="box" style="overflow:hidden;height:25px;width:auto;border:1px solid #000;">
     <div id="divList" style="height: 21px;width: 9999px;">
-
+     {{msss|safe}}
     </div>
 
 </div>
