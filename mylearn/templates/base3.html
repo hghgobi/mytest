@@ -100,7 +100,11 @@
 </nav>
 <div  id="box" style="overflow:hidden;height:25px;width:auto;border:1px solid #000;">
     <div id="divList" style="height: 21px;width: 9999px;">
-     {{msss|safe}}
+     {%for i in mas1 %}
+        <div class="news"> {{i.time}}{{i.name}}通过{{i.reason}}获得一个抽奖码 </div>
+        {% empty %}
+        <div class="news"> 暂无消息 </div>
+        {% endfor %}
     </div>
 
 </div>

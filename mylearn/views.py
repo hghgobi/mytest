@@ -555,18 +555,19 @@ def Indexs(request):
 
     mas1=Lucky.objects.all()
     mas2=Uselucky.objects.all()
-    msss=''
-    html = '''<div class="news"> {} </div>'''
-    for ii in range(len(mas1)):
-        a=str(mas1[ii].time)+mas1[ii].name+'-'+mas1[ii].reason+'获得了抽奖码'
-        html = html.format(a)
-        msss=msss+html
+    # msss=''
+    #     # html = '''<div class="news"> {} </div>'''
+    #     # for ii in range(len(mas1)):
+    #     #     a=str(mas1[ii].time)+mas1[ii].name+'-'+mas1[ii].reason+'获得了抽奖码'
+    #     #     html = html.format(a)
+    #     #     msss=msss+html
+    #     #
+    #     # for jj in range(len(mas2))[:15]:
+    #     #     a=str(mas2[jj].time)+mas2[jj].name+'-'+'抽到'+str(mas2[jj].num)+'朵花！'
+    #     #     html = html.format(a)
+    #     #     msss=msss+html
 
-    for jj in range(len(mas2))[:15]:
-        a=str(mas2[jj].time)+mas2[jj].name+'-'+'抽到'+str(mas2[jj].num)+'朵花！'
-        html = html.format(a)
-        msss=msss+html
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'msss':json.dumps(msss)})
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1})
 
     # try:
     #     n='未读'
