@@ -4541,7 +4541,7 @@ def Hwchange(request,time,stuid):
             pass
         else:
             break
-    reason = '作业' + time+ reasons+'完成订正'
+    reason = '作业' + str(time)+ reasons+'完成订正'
     Lucky.addmss(teststudent, reason, value)
     return redirect(url)
 
