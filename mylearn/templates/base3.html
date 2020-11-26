@@ -79,6 +79,11 @@
                               {% empty %}
                <p> 暂无消息 </p>
                {% endfor %}
+                        {%for j in mas2 %}
+                <p>{{i.time}}{{i.name}}抽得{{i.num}}朵花！</p>
+                              {% empty %}
+               <p> 暂无消息 </p>
+               {% endfor %}
                 </marquee>
                 </div>
 

@@ -553,8 +553,11 @@ def Indexs(request):
         badcount=0
         luckycount=0
 
-    mas1=Lucky.objects.all()
-    mas2=Uselucky.objects.all()
+    try:
+        mas1 = Lucky.objects.all()[:5]
+    except:
+        mas1=''
+    mas2=Uselucky.objects.all()[:10]
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''
     #     # for ii in range(len(mas1)):
@@ -567,7 +570,7 @@ def Indexs(request):
     #     #     html = html.format(a)
     #     #     msss=msss+html
 
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1})
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas2':mas2})
 
     # try:
     #     n='未读'
