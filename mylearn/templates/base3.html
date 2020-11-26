@@ -76,12 +76,13 @@
                     <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="7" direction="up" width="100%" height="121">
                {%for i in mas1 %}
                 <p>{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p>{{i.reason}}获取抽奖码一个</p>
-						<br/>
+						<a>--------------------------------</a>
                               {% empty %}
                <p> 暂无消息 </p>
                {% endfor %}
                         {%for j in mas2 %}
-                <p>{{j.time}}{{j.name}}抽得{{j.num}}朵花！</p>
+                <p>{{j.time|date:"m-d H:i:s"}}{{j.name}}抽得{{j.num}}朵花！</p>
+						<a>--------------------------------</a>
                               {% empty %}
                <p> 暂无消息 </p>
                {% endfor %}
