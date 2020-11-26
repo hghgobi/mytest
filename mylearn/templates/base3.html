@@ -73,7 +73,7 @@
 
 
               <div id="jz" height="89" valign="top" style="background:#7FFFD4"><!--站内公告-->
-                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="1" direction="up" width="100%" height="260">
+                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="260">
                {%for i in mas1 %}
                 <p>{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p>{{i.reason}}</p>
 						<a>-------------------------------------</a>
