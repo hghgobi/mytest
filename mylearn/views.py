@@ -564,7 +564,7 @@ def Indexs(request):
         html = '''<div class="news"> %s </div>'''% a
         msss.append(html)
 
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'msss':msss})
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'msss':json.dumps(msss)})
 
     # try:
     #     n='未读'
