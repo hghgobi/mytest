@@ -141,37 +141,8 @@
 		    }, 5000);
 		}
 
-		function timer2(){
-		    let windowWidth = window.innerWidth;
-		    let div1 = document.getElementsByClassName("text-banner-hx-1");
-		    let div2 = document.getElementsByClassName("text-banner-hx-2");
-		    let offsetWidth = div1[0].offsetWidth;
-		    let a = 10;
-		    if(offsetWidth<=windowWidth){
-		        div1[0].style.cssText = 'width:80%;'
-		        div2[0].style.cssText = 'width:80%;'
-		        let offsetWidth2 = div1[0].offsetWidth;
-		        div1[0].style.cssText = 'width:100%; transition:all linear '+a+'s; left:-'+offsetWidth2+'px';
-		        div2[0].style.cssText = 'width:100%; transition:all linear '+a*2+'s; left:-'+offsetWidth2*2+'px';
-		        setTimeout(() => {
-		            div1[0].style.cssText = 'left:0px';
-		            div2[0].style.cssText = 'left:0px';
-		            timer2();
-		        }, 5000);
-		    }else{
-		        offsetWidth = div1[0].offsetWidth+40;
-		        div1[0].style.cssText = 'margin-right:40px; transition:all linear '+a+'s; left:-'+offsetWidth+'px';
-		        div2[0].style.cssText = 'margin-right:40px; transition:all linear '+a*2+'s; left:-'+offsetWidth*2+'px';
-		        setTimeout(() => {
-		            div1[0].style.cssText = 'left:0px';
-		            div2[0].style.cssText = 'left:0px';
-		            timer2();
-		        }, 5000);
-		    }
-		}
-
        timer();
-       timer2();
+
    </script>
 <div class="footer">
     <div class="website-info">
