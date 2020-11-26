@@ -90,10 +90,10 @@
                 </marquee>
                 </div>
 
-              <div id="jz1"  style="background:#7FFFD4,color:red" align="center">
-                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="260">
+              <div id="jz1"  style="background:#7FFFD4" align="center">
+                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="down" width="device-width" height="200">
                {%for i in mas3 %}
-                <p >{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p>{{i.reason}}奖励抽奖码{{i.num}}个</p>
+                <p style="color:red">{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p>{{i.reason}}奖励抽奖码{{i.num}}个</p>
 						<a>-------------------------------------</a>
                               {% empty %}
                <p> 暂无消息 </p>
