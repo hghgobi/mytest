@@ -556,7 +556,7 @@ def Indexs(request):
     try:
         mas1 = Lucky.objects.all()[:5]
     except:
-        mas1=''
+        mas1=Lucky.objects.all()
     mas2=Uselucky.objects.all()[:10]
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''

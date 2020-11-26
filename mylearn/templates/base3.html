@@ -75,7 +75,7 @@
               <div id="jz" height="29" valign="top" bgcolor="#D9F2FF"><!--站内公告-->
                     <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="7" direction="up" width="100%" height="121">
                {%for i in mas1 %}
-                <p>{{i.time}}{{i.name}}得一个抽奖码</p>
+                <p>{{i.time|dd HH:mm:ss}}{{i.name}}</p><p>{{i.reason}}获取抽奖码一个</p>
                               {% empty %}
                <p> 暂无消息 </p>
                {% endfor %}
