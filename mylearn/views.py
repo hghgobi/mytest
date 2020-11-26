@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns
 import json
 import random
 import numpy as np
@@ -558,6 +558,10 @@ def Indexs(request):
     except:
         mas1=Lucky.objects.all()
     mas2=Uselucky.objects.all()[:10]
+    try:
+        mas3 = Setgoodns.objects.all()[:10]
+    except:
+        mas3=Lucky.objects.all()
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''
     #     # for ii in range(len(mas1)):
@@ -570,7 +574,7 @@ def Indexs(request):
     #     #     html = html.format(a)
     #     #     msss=msss+html
 
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas2':mas2})
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas2':mas2,'mas3':mas3})
 
     # try:
     #     n='未读'
@@ -4788,5 +4792,13 @@ def Addluckynum(request):
         return HttpResponse('成功')
 
 
-
+def Addgoodns(request):
+    if request.method=='GET':
+        return HttpResponse("错误")
+    if request.method=='POST':
+        name = request.POST.get('name')
+        reason = request.POST.get('reason')
+        num = request.POST.get('num')
+        Setgoodns.addmss(name, reason, num)
+        return HttpResponse('成功')
 

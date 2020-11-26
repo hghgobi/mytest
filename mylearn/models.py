@@ -800,3 +800,15 @@ class Uselucky(models.Model):
 		addms.save()
 class Music(models.Model):
 	name = models.CharField(max_length=500)
+class Setgoodns(models.Model):
+	name = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now_add=True)
+	num = models.IntegerField()
+	reason = models.CharField(max_length=500)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,num,reason):
+		addms = cls(name=name,num=num,reason=reason)
+		addms.save()
