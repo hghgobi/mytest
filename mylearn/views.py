@@ -4061,7 +4061,7 @@ def zkfx(request,id0,id1):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(num=value)
+                    nnn=Lucky.objects.filter(name=teststudent,num=value)
                     if nnn:
                         pass
                     else:
@@ -4108,7 +4108,7 @@ def zkfx(request,id0,id1):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(num=value)
+                    nnn=Lucky.objects.filter(name=teststudent,num=value)
                     if nnn:
                         pass
                     else:
@@ -4139,7 +4139,7 @@ def zkfx(request,id0,id1):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(num=value)
+                    nnn=Lucky.objects.filter(name=teststudent,num=value)
                     if nnn:
                         pass
                     else:
@@ -4186,7 +4186,7 @@ def zkfx(request,id0,id1):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(num=value)
+                    nnn=Lucky.objects.filter(name=teststudent,num=value)
                     if nnn:
                         pass
                     else:
@@ -4217,7 +4217,7 @@ def zkfx(request,id0,id1):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(num=value)
+                    nnn=Lucky.objects.filter(name=teststudent,num=value)
                     if nnn:
                         pass
                     else:
@@ -4249,7 +4249,7 @@ def zkfx(request,id0,id1):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(num=value)
+                    nnn=Lucky.objects.filter(name=teststudent,num=value)
                     if nnn:
                         pass
                     else:
@@ -4281,7 +4281,7 @@ def zkfx(request,id0,id1):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(num=value)
+                    nnn=Lucky.objects.filter(name=teststudent,num=value)
                     if nnn:
                         pass
                     else:
@@ -4529,13 +4529,14 @@ def Hwchange(request,time,stuid):
     mss=get_object_or_404(Homeworks,time=time,stuid=stuid)
     mss.ornot='已订正'
     mss.save()
-    reasons=mss.hwname
+    ss = get_object_or_404(Homeworks, time=time, stuid=stuid)
+    reasons=ss.hwname
     url='../../'+str(time)
     value = 666666
     for i in range(10):
         value = ''.join(random.sample(string.digits, 6))
         value = int(value)
-        nnn = Lucky.objects.filter(num=value)
+        nnn = Lucky.objects.filter(name=teststudent,num=value)
         if nnn:
             pass
         else:
