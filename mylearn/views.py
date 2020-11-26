@@ -555,7 +555,7 @@ def Indexs(request):
 
     mas1=Lucky.objects.all()
     mas2=Uselucky.objects.all()
-    msss=''''''
+    msss=''
     for ii in range(len(mas1)):
         a=str(mas1[ii].time)+mas1[ii].name+'-'+mas1[ii].reason+'获得了抽奖码'
         html = '''<div class="news"> %s </div>'''% a
