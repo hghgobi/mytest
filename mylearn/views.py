@@ -4800,8 +4800,8 @@ def Addgoodns(request):
         num = request.POST.get('num')
         dates = request.POST.get('dates')
         a=int(num)
-        ornot=0
-        if a==1:
+        ornot=1
+        if a==2:
             reason=str(dates)+'作业认真'
         elif a==5:
             reason = str(dates) + '作业优秀'
