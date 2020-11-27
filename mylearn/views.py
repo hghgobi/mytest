@@ -4799,6 +4799,6 @@ def Addgoodns(request):
         name = request.POST.get('name')
         reason = request.POST.get('reason')
         num = request.POST.get('num')
-        Setgoodns.addmss(name, reason, num)
+        Setgoodns.addmss(name,num,reason)
         return HttpResponse('成功')
 
