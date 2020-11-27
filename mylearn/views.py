@@ -4801,10 +4801,12 @@ def Addgoodns(request):
         dates = request.POST.get('dates')
         a=int(num)
         ornot=0
-        if a==5:
-            reason=str(dates)+'作业优秀奖励抽奖码5个'
+        if a==1:
+            reason=str(dates)+'作业认真'
+        elif a==5:
+            reason = str(dates) + '作业优秀'
         else:
-            reason = str(dates) + '作业优秀奖励抽奖码5个'
+            reason = str(dates) + '上课积极/认真'
         Setgoodns.addmss(name,num,reason,ornot)
         return render(request,'addgoodns.html')
 
