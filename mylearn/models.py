@@ -805,10 +805,11 @@ class Setgoodns(models.Model):
 	time = models.DateTimeField(auto_now_add=True)
 	num = models.IntegerField()
 	reason = models.CharField(max_length=500)
+	ornot = models.IntegerField(default=0)
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,name,num,reason):
-		addms = cls(name=name,num=num,reason=reason)
+	def addmss(cls,name,num,reason,ornot):
+		addms = cls(name=name,num=num,reason=reason,ornot=ornot)
 		addms.save()

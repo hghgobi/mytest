@@ -271,4 +271,4 @@ class MusicAdmin(admin.ModelAdmin):
 	list_display = ['name']
 @admin.register(Setgoodns)
 class SetgoodnsAdmin(admin.ModelAdmin):
-	list_display = ['name','time','num','reason']
+	list_display = ['name','time','num','reason','ornot']

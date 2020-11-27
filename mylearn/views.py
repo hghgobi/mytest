@@ -4794,11 +4794,17 @@ def Addluckynum(request):
 
 def Addgoodns(request):
     if request.method=='GET':
-        return HttpResponse("错误")
+        return render(request,'addgoodns.html')
     if request.method=='POST':
         name = request.POST.get('name')
-        reason = request.POST.get('reason')
         num = request.POST.get('num')
-        Setgoodns.addmss(name,num,reason)
-        return HttpResponse('成功')
+        dates = request.POST.get('dates')
+        a=int(num)
+        ornot=0
+        if a==5:
+            reason=str(dates)+'作业优秀奖励抽奖码5个'
+        else:
+            reason = str(dates) + '作业优秀奖励抽奖码5个'
+        Setgoodns.addmss(name,num,reason,ornot)
+        return render(request,'addgoodns.html')
 
