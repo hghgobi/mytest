@@ -15,6 +15,7 @@
     <style>
 #jz{ margin:0 auto; width:100%; height:160px; }
 #jz1{ margin:0 auto; width:100%; height:160px; }
+#jz2{ margin:0 auto; width:100%; height:20px; }
     </style>
 </head>
 <body>
@@ -81,12 +82,6 @@
                               {% empty %}
                <p> 暂无消息 </p>
                {% endfor %}
-                        {%for j in mas2 %}
-                <p>{{j.time|date:"m-d H:i:s"}}{{j.name}}抽得{{j.num}}朵花！</p>
-						<a>--------------------------------</a>
-                              {% empty %}
-               <p> 暂无消息 </p>
-               {% endfor %}
                 </marquee>
                 </div>
 
@@ -95,6 +90,16 @@
                {%for i in mas3 %}
                 <p style="color:red">{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p style="color:red">{{i.reason}}奖励抽奖码{{i.num}}个</p>
 						<a>-------------------------------------</a>
+                              {% empty %}
+               <p> 暂无消息 </p>
+               {% endfor %}
+                </marquee>
+                </div>
+	              <div id="jz2"  style="background:#7FFFD4" align="center">
+                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="left" width="device-width" height="20">
+                        {%for j in mas2 %}
+                <p>{{j.time|date:"m-d H:i:s"}}{{j.name}}抽得{{j.num}}朵花！</p>
+						<a>--------------------------------</a>
                               {% empty %}
                <p> 暂无消息 </p>
                {% endfor %}
