@@ -85,7 +85,7 @@
                 </marquee>
                 </div>
 
-              <div id="jz1"  style="background:#7FFFD4" align="center">
+              <div id="jz1"  style="background:#FFB6C1" align="center">
                     <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="down" width="device-width" height="160">
                {%for i in mas3 %}
                 <p style="color:red">{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p style="color:red">{{i.reason}}奖励抽奖码{{i.num}}个</p>
@@ -95,7 +95,7 @@
                {% endfor %}
                 </marquee>
                 </div>
-	              <div id="jz2"  style="background:#7FFFD4" align="center">
+	              <div id="jz2"  style="background:#00FF00" align="center">
                     <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="down" width="device-width" height="100">
                         {%for j in mas2 %}
                 <p>{{j.time|date:"m-d H:i:s"}}{{j.name}}抽得{{j.num}}朵花！</p>
