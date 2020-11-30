@@ -123,6 +123,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('getkousuan/<int:id0>/<int:id1>/<int:bj>', views.Getkousuan),
                path('addluckynum', views.Addluckynum),
                path('addgoodns', views.Addgoodns),
+               path('addms/<int:id>', views.Addsaoma),
 
 
 

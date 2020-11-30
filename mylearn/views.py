@@ -4810,3 +4810,6 @@ def Addgoodns(request):
         Setgoodns.addmss(name,num,reason,ornot)
         return render(request,'addgoodns.html')
 
+def Addsaoma(request,id):
+    id=id
+    return render(request,'saoma.html')
