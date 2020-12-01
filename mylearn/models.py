@@ -825,3 +825,8 @@ class Luckys(models.Model):
 	def addmss(cls,name,reason,num):
 		addms = cls(name=name,reason=reason,num=num)
 		addms.save()
+class Classnews(models.Model):
+	name = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
