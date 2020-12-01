@@ -558,9 +558,9 @@ def Indexs(request):
         luckycounts = 0
 
     try:
-        mas1 = Lucky.objects.all()[:10]
+        mas1 = Setgoodns.objects.all()[:10]
     except:
-        mas1=Lucky.objects.all()
+        mas1=Setgoodns.objects.all()
     mas2=Uselucky.objects.all()[:10]
     try:
         mas3 = Luckys.objects.all()[:20]
@@ -4088,6 +4088,8 @@ def zkfx(request,id0,id1):
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 value=666666
+                reasonss = '每日基础练'
+                Setgoodns.addmss(teststudent, 1, reasonss, 1)
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
@@ -4135,6 +4137,8 @@ def zkfx(request,id0,id1):
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 value=666666
+                reasonss = '每日基础练'
+                Setgoodns.addmss(teststudent, 1, reasonss, 1)
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
@@ -4165,7 +4169,10 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+
                 value=666666
+                reasonss = '每日基础练'
+                Setgoodns.addmss(teststudent, 1, reasonss, 1)
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
@@ -4213,6 +4220,8 @@ def zkfx(request,id0,id1):
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 value=666666
+                reasonss = '每日基础练'
+                Setgoodns.addmss(teststudent, 1, reasonss, 1)
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
@@ -4244,6 +4253,8 @@ def zkfx(request,id0,id1):
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 value=666666
+                reasonss = '每日基础练'
+                Setgoodns.addmss(teststudent, 1, reasonss, 1)
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
@@ -4276,6 +4287,8 @@ def zkfx(request,id0,id1):
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 value=666666
+                reasonss = '每日基础练'
+                Setgoodns.addmss(teststudent, 1, reasonss, 1)
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
@@ -4308,6 +4321,8 @@ def zkfx(request,id0,id1):
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
                 value=666666
+                reasonss = '每日基础练'
+                Setgoodns.addmss(teststudent, 1, reasonss, 1)
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
@@ -4779,6 +4794,8 @@ def Showluckys(request):
             Luckys.objects.filter(name=teststudent,num=int(num)).delete()
             value = 666666
             reason='通过兑换码兑换'
+            reasonss = '兑换码兑换'
+            Setgoodns.addmss(teststudent,b,reasonss,1)
             for j in range(b):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
