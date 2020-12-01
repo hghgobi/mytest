@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys
 import json
 import random
 import numpy as np
@@ -547,21 +547,25 @@ def Indexs(request):
         badcount=len(badnews)
         luckys=Lucky.objects.filter(name=teststudent)
         luckycount=len(luckys)
+        luckyss = Luckys.objects.filter(name=teststudent)
+        luckycounts = len(luckyss)
+
     else:
         ms=''
         cuotiamount=0
         badcount=0
         luckycount=0
+        luckycounts = 0
 
     try:
-        mas1 = Lucky.objects.all()[:5]
+        mas1 = Lucky.objects.all()[:10]
     except:
         mas1=Lucky.objects.all()
     mas2=Uselucky.objects.all()[:10]
     try:
-        mas3 = Setgoodns.objects.all()[:10]
+        mas3 = Luckys.objects.all()[:20]
     except:
-        mas3=Lucky.objects.all()
+        mas3=Luckys.objects.all()
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''
     #     # for ii in range(len(mas1)):
@@ -574,7 +578,7 @@ def Indexs(request):
     #     #     html = html.format(a)
     #     #     msss=msss+html
 
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas2':mas2,'mas3':mas3})
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas2':mas2,'mas3':mas3,'luckycounts':luckycounts})
 
     # try:
     #     n='未读'
@@ -4737,6 +4741,55 @@ def Showlucky(request):
             data['status'] = 'error'
             return JsonResponse(data)
 
+def Showluckys(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method=='GET':
+        ms=Luckys.objects.filter(name=teststudent)
+        return render(request,'showluckys.html',{'ms':ms})
+
+    if request.method=='POST':
+        data = {}
+        num = request.POST.get('num')
+        if num:
+            pass
+        else:
+            data['error'] = '兑换码不能为空！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        if num.isdigit():
+            pass
+        else:
+            data['error'] = '兑换码只能是数字'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        c = Luckys.objects.filter(name=teststudent,num=int(num))
+        if c:
+            a = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 6]
+            random.shuffle(a)
+            b = a[0]
+            data['status'] = 'success'
+            data['error'] = '恭喜你获得' + str(b) + '个抽奖码！'
+            Luckys.objects.filter(num=int(num)).delete()
+            value = 666666
+            for j in range(b):
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn = Lucky.objects.filter(num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+                Lucky.addmss(name, reason, value)
+            return JsonResponse(data)
+        else:
+            data['error'] = '兑换码码已使用或不存在'
+            data['status'] = 'error'
+            return JsonResponse(data)
+
+
 def Showluckynames(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
@@ -4783,7 +4836,7 @@ def Addluckynum(request):
         for i in range(10):
             value = ''.join(random.sample(string.digits, 6))
             value = int(value)
-            nnn = Lucky.objects.filter(num=value)
+            nnn = Lucky.objects.filter(name=name,num=value)
             if nnn:
                 pass
             else:
@@ -4791,7 +4844,23 @@ def Addluckynum(request):
         Lucky.addmss(name, reason, value)
         return HttpResponse('成功')
 
-
+def Addluckynums(request):
+    if request.method=='GET':
+        return HttpResponse("错误")
+    if request.method=='POST':
+        name = request.POST.get('name')
+        reason = request.POST.get('reason')
+        value = 666666
+        for i in range(10):
+            value = ''.join(random.sample(string.digits, 6))
+            value = int(value)
+            nnn = Luckys.objects.filter(name=name,num=value)
+            if nnn:
+                pass
+            else:
+                break
+        Luckys.addmss(name, reason, value)
+        return HttpResponse('成功')
 def Addgoodns(request):
     if request.method=='GET':
         return render(request,'addgoodns.html')

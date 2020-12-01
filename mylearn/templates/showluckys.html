@@ -1,0 +1,115 @@
+{% extends 'base2.html' %}  
+{% block content %}
+
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">兑换码列表</font></a></div>
+                    <div class="panel-body">
+                        <p>1.兑换码来源：作业订正、口算任务、老师赠送</p>
+
+                         <form id="addtxl" onsubmit="return false" action="{% url 'luckys' %}" method="POST" style="overflow:hidden">
+        <table>
+            <tbody>
+                 <tr>
+                    <td><font size="5">请输入兑换码</font></td>
+                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="num"></td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="->兑换<-" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+<a><font id="error" size="5" color="red">{{ error}}</font></a>
+
+
+                      <table id="num" class="table table-bordered" >
+
+         <tr>
+             <td style="vertical-align: middle;" ><font size="4">序号</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">姓名</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">来源</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">兑换码</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">时间</font></td>
+
+        </tr>
+        {%for i in ms %}
+            <tr id="hys" >
+                <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
+                 <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.reason}}</font></td>
+                <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.num}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
+
+            </tr>
+
+
+        {% empty %}
+        <p><font size="5" color="red">暂无抽奖码兑换券</font></p>
+        {% endfor %}
+
+    </table> 
+     </div>
+                </div>
+            </div>    
+            </div>
+
+<script language="javascript" type="text/javascript">
+	    window.onload = function(){
+
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	    }
+
+    }
+    </script>
+
+     <script type="text/javascript">
+        $("#addtxl").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'lucky' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+
+                    if(data['status']=="success"){
+                    $("#error").text(data['error']);
+                    alert(data['error']);
+             setTimeout(function () {
+                    window.parent.location.reload();
+                }, 1000);
+
+
+                    }else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                        alert(data['error']);
+                        setTimeout(function () {
+                    window.parent.location.reload();
+                }, 1000);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>
+
+{% endblock %}
+

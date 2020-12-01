@@ -58,6 +58,9 @@ div.website-info p {
 					<a class="nav-link" href="../../hwmanage">作业订正管理</a>
 				</li>
 				<li class="nav-item">
+					<a class="nav-link" href="../../luckys">{{luckyscount}}个兑换码</a>
+				</li>
+				<li class="nav-item">
 					<a class="nav-link" href="../../lucky">{{luckycount}}个抽奖码</a>
 				</li>
 				<li class="nav-item">
@@ -101,7 +104,7 @@ div.website-info p {
               <div id="jz1"  style="background:#FFB6C1" align="center">
                     <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="80" align="center" style="text-align:center;">
                {%for i in mas3 %}
-                <p style="color:red">{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p style="color:red">{{i.reason}}奖励抽奖码{{i.num}}个</p>
+                <p style="color:red">{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p style="color:red">{{i.reason}}兑换码1个</p>
 						<a>-------------------------------------</a>
                               {% empty %}
                <p> 暂无消息 </p>

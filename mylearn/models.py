@@ -813,3 +813,15 @@ class Setgoodns(models.Model):
 	def addmss(cls,name,num,reason,ornot):
 		addms = cls(name=name,num=num,reason=reason,ornot=ornot)
 		addms.save()
+class Luckys(models.Model):
+	num = models.IntegerField()
+	name = models.CharField(max_length=500)
+	reason = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,reason,num):
+		addms = cls(name=name,reason=reason,num=num)
+		addms.save()
