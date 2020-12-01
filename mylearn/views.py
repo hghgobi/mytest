@@ -4560,7 +4560,7 @@ def Hwchange(request,time,stuid):
     mss.ornot='已订正'
     mss.save()
     ss = get_object_or_404(Homeworks, time=time, stuid=stuid)
-    reasons=ss.hwname
+    reasons='通过'+ss.hwname+'获得'
     name=ss.name
     url='../../'+str(time)
     value=66666
