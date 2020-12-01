@@ -4773,6 +4773,7 @@ def Showluckys(request):
             data['error'] = '恭喜你获得' + str(b) + '个抽奖码！'
             Luckys.objects.filter(name=teststudent,num=int(num)).delete()
             value = 666666
+            reason='通过兑换码兑换'
             for j in range(b):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
@@ -4782,7 +4783,7 @@ def Showluckys(request):
                         pass
                     else:
                         break
-                Lucky.addmss(name, reason, value)
+                Lucky.addmss(teststudent, reason, value)
             return JsonResponse(data)
         else:
             data['error'] = '兑换码码已使用或不存在'
