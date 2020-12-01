@@ -4811,6 +4811,34 @@ def Showluckys(request):
             data['error'] = '兑换码码已使用或不存在'
             data['status'] = 'error'
             return JsonResponse(data)
+def Caculates(request):
+    if request.method=='GET':
+        return render(request,'caculate.html')
+    if request.method=='POST':
+        sum = request.POST.get('sum')
+        sum=int(sum)
+        data={}
+        if sum>100000:
+            data['error']='数太大了，服务器受不了。。。'
+            data['status']='error'
+        elif sum.isdigit():
+            data['status']='success'
+            n = 0
+            for i in range(sum):
+                b = random.randint(1, 2)
+                if b == 1:
+                    n = n + 1
+                else:
+                    pass
+            num = format(n / a, '.5f')
+            data['sum']='<td>%s</td>'%sum
+            data['num']='<td>%s</td>'%num
+            data['num0']='<td>%s</td>'%n
+        else:
+            data['error']='数据类型错误。。。'
+            data['status']='error'
+        return JsonResponse(data)
+
 
 
 def Showluckynames(request):
@@ -4905,3 +4933,10 @@ def Addgoodns(request):
 def Addsaoma(request,id):
     id=id
     return render(request,'saoma.html')
+
+
+
+
+
+
+

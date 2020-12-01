@@ -1,0 +1,88 @@
+<html lang="zh-cmn-Hans">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="{% static 'base2.css' %}">
+    <link rel="stylesheet" href="{% static 'bootstrap-3.3.7/css/bootstrap.min.css' %}">
+    <script type="text/javascript" src="{% static 'jquery-1.12.4.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap-3.3.7/js/bootstrap.min.js' %}"></script>
+</head>
+<body bgcolor="#b8fec0">
+<div align="center"><h1 style="font-size:50px;">抛掷硬币试验</h1></div>
+<div>
+<table border="1" style="font-size:50px;">
+    <tr id="a">
+        <td>抛掷总次数</td>
+    </tr>
+    <tr id="b">
+        <td>正面向上次数</td>
+    </tr>
+    <tr id="c">
+        <td>正面向上频率</td>
+    </tr>
+</table>
+    </div>
+  <form id="addtxl" onsubmit="return false" action="{% url 'caculate' %}" method="POST" style="overflow:hidden">
+        <table>
+            <tbody>
+                 <tr align="center">
+                    <td><font size="5">请输入抛掷次数</font></td>
+                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="sum"></td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td align="center"><button onclick="go()" style="font-size:50px;" >抛掷</button></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+
+
+<!--<script>-->
+<!--    function go(){-->
+<!--    var a1='<td>4000</td>';-->
+<!--    var b1='<td>2000</td>';-->
+<!--    var c1='<td>0.5</td>';-->
+<!--    a.innerHTML+=a1;-->
+<!--    b.innerHTML+=b1;-->
+<!--    c.innerHTML+=c1;-->
+<!--    }-->
+<!--</script>-->
+     <script type="text/javascript">
+        $("#addtxl").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'caculate' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+                    if(data['status']=="success"){
+                    a.innerHTML+=data['sum'];
+                    b.innerHTML+=data['num0'];
+                    c.innerHTML+=data['num'];
+                    }else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                        alert(data['error']);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>
+</body>
+
+
+</html>
