@@ -4732,7 +4732,7 @@ def Showlucky(request):
             b = a[0]
             data['status'] = 'success'
             data['error'] = '恭喜你获得' + str(b) + '朵红花！'
-            Lucky.objects.filter(num=int(num)).delete()
+            Lucky.objects.filter(name=teststudent,num=int(num)).delete()
             ornot = 0
             Uselucky.addmss(teststudent,b,ornot)
             return JsonResponse(data)
@@ -4771,13 +4771,13 @@ def Showluckys(request):
             b = a[0]
             data['status'] = 'success'
             data['error'] = '恭喜你获得' + str(b) + '个抽奖码！'
-            Luckys.objects.filter(num=int(num)).delete()
+            Luckys.objects.filter(name=teststudent,num=int(num)).delete()
             value = 666666
             for j in range(b):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn = Lucky.objects.filter(num=value)
+                    nnn = Lucky.objects.filter(name=teststudent,num=value)
                     if nnn:
                         pass
                     else:
