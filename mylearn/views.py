@@ -4836,7 +4836,7 @@ def Caculates(request):
                     n = n + 1
                 else:
                     pass
-            num = format(n / a, '.5f')
+            num = format(n/sum, '.5f')
             data['sum']='<td>%s</td>'%sum
             data['num']='<td>%s</td>'%num
             data['num0']='<td>%s</td>'%n
