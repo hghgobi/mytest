@@ -4816,6 +4816,7 @@ def Caculates(request):
         return render(request,'caculate.html')
     if request.method=='POST':
         sum = request.POST.get('sum')
+        data={}
         if sum.isdigit():
             pass
         else:
@@ -4823,7 +4824,7 @@ def Caculates(request):
             data['status'] = 'error'
             return JsonResponse(data)
         sum=int(sum)
-        data={}
+
         if sum>100000:
             data['error']='数太大了，服务器受不了。。。'
             data['status']='error'
