@@ -94,7 +94,7 @@ div.website-info p {
               <div id="jz" height="89" valign="top" style="background:#7FFFD4" align="center">
                     <marquee  scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="80" align="center" style="text-align:center;">
                {%for i in mas1 %}
-                <p >{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p>{{i.reason}}获得抽奖码一个</p>
+                <p >{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p>{{i.reason}}获得抽奖码{{i.num}}个</p>
 						<a>-------------------------------------</a>
                               {% empty %}
                <p> 暂无消息 </p>
