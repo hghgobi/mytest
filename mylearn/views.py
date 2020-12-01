@@ -4816,12 +4816,18 @@ def Caculates(request):
         return render(request,'caculate.html')
     if request.method=='POST':
         sum = request.POST.get('sum')
+        if sum.isdigit():
+            pass
+        else:
+            data['error'] = '兑换码只能是数字'
+            data['status'] = 'error'
+            return JsonResponse(data)
         sum=int(sum)
         data={}
         if sum>100000:
             data['error']='数太大了，服务器受不了。。。'
             data['status']='error'
-        elif sum.isdigit():
+        elif sum>0:
             data['status']='success'
             n = 0
             for i in range(sum):
