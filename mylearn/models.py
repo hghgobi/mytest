@@ -841,6 +841,7 @@ class Hardqs(models.Model):
 	time = models.DateTimeField(auto_now=True)
 	killer = models.CharField(max_length=50)
 	nums = models.IntegerField(default=0)
+	jihui = models.IntegerField(default=2)
 	class Meta:
 		ordering = ['ornot']
 

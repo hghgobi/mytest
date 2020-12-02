@@ -4982,7 +4982,7 @@ def Hardkiller(request):
                 Hardqsrecord.addmss(id,0,teststudent)
             c = get_object_or_404(Hardqsrecord,idd=id,name=teststudent)
             if c.num>=3:
-                data['error'] = '此题3次机会已用完！请换一题挑战！'
+                data['error'] = '此题'+str(a.jihui)+'次机会已用完！请换一题挑战！'
                 data['status'] = 'error'
                 return JsonResponse(data)
             else:
@@ -5006,13 +5006,13 @@ def Hardkiller(request):
                             else:
                                 break
                         Luckys.addmss(teststudent, reasons, value)
-                        c.num += 1
-                        c.save()
+                    c.num += 1
+                    c.save()
                     return JsonResponse(data)
                 else:
                     c.num+=1
                     c.save()
-                    n=3-c.num
+                    n=a.jihui-c.num
                     a.nums+=1
                     a.save()
                     data['error'] = '答案错误！请再试一试！'+'还剩'+str(n)+'次机会挑战.'
