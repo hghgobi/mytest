@@ -853,6 +853,6 @@ class Hardqsrecord(models.Model):
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,id,num,name):
-		addms = cls(id=id,num=num,name=name)
+	def addmss(cls,idd,num,name):
+		addms = cls(idd=idd,num=num,name=name)
 		addms.save()
