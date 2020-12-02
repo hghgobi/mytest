@@ -2,7 +2,7 @@
 {% block content %}
 <div style="border:5px solid blue">
     <form id="addtxl" onsubmit="return false" action="{% url 'hardkiller' %}" method="POST" style="overflow:hidden">
-        <table>
+        <table align="center">
             <tbody>
                 <tr>
                     <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入题目id:</font></td>
@@ -23,6 +23,7 @@
     </form>
 <a><font id="error" size="5" color="red">{{ error}}</font></a>
     </div>
+<div>
                {%for i in mss %}
                 <div style="border:3px solid red">
                  <img id =6 src="{{i.questiontext.url}}" width="100%" height="auto"/><br/>
@@ -35,8 +36,9 @@
 						<a>=======================================================</a>
                               {% empty %}
                <p> 暂无消息 </p>
-                    </div>
+                   </div>
                {% endfor %}
+                     </div>
 <script language="javascript" type="text/javascript">
          $("#addtxl").submit(function(){
 
