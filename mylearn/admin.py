@@ -283,4 +283,4 @@ class HardqsAdmin(admin.ModelAdmin):
 	list_display = ['id','nums','questiontext','questionanswer','killer','ornot','ornots','num','time']
 @admin.register(Hardqsrecord)
 class HardqsrecordAdmin(admin.ModelAdmin):
-	list_display = ['id','num','name','time']
+	list_display = ['idd','num','name','time']
