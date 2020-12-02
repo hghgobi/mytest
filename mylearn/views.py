@@ -4959,7 +4959,6 @@ def Hardkiller(request):
         return render(request,'hardkiller.html',{'mss':mss})
     if request.method=='POST':
         id = request.POST.get('id')
-        id = int(id)
         answer = request.POST.get('answer')
         answer = str(answer)
         data={}
@@ -4969,6 +4968,7 @@ def Hardkiller(request):
             data['error']='错误'
             data['status']='error'
             return JsonResponse(data)
+        id = int(id)
         a = get_object_or_404(Hardqs, id=id)
         if a.ornot==1:
             data['error']='此题已被终结！请换一题挑战！'
