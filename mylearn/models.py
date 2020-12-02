@@ -830,3 +830,29 @@ class Classnews(models.Model):
 	time = models.DateTimeField(auto_now=True)
 	class Meta:
 		ordering = ['-time']
+
+class Hardqs(models.Model):
+	id = models.AutoField(primary_key=True)
+	questiontext = models.ImageField(upload_to='hardquestions')
+	questionanswer = models.CharField(max_length=50)
+	ornot = models.IntegerField(default=0)
+	ornots = models.CharField(max_length=50)
+	num = models.IntegerField()
+	time = models.DateTimeField(auto_now=True)
+	killer = models.CharField(max_length=50)
+	nums = models.IntegerField(default=0)
+	class Meta:
+		ordering = ['ornot']
+
+class Hardqsrecord(models.Model):
+	idd= models.IntegerField()
+	num = models.IntegerField()
+	name = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,id,num,name):
+		addms = cls(id=id,num=num,name=name)
+		addms.save()

@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs
 import json
 import random
 import numpy as np
@@ -4950,6 +4950,68 @@ def Addsaoma(request,id):
     return render(request,'saoma.html')
 
 
+def Hardkiller(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method=='GET':
+        mss=Hardqs.objects.all()
+        return render(request,'hardkiller.html',{'mss':mss})
+    if request.method=='POST':
+        id = request.POST.get('id')
+        id = int(id)
+        answer = request.POST.get('answer')
+        answer = str(answer)
+        data={}
+        a = get_object_or_404(Hardqs,id=id)
+        if a.ornot==1:
+            data['error']='此题已被终结！请换一题挑战！'
+            data['status']='error'
+            return JsonResponse(data)
+        else:
+            b = Hardqsrecord.objects.filter(idd=id,name=teststudent)
+            if b:
+                pass
+            else:
+                Hardqsrecord.addmss(id,0,teststudent)
+            c = get_object_or_404(Hardqsrecord,idd=id,name=teststudent)
+            if c.num>=3:
+                data['error'] = '此题3次机会已用完！请换一题挑战！'
+                data['status'] = 'error'
+                return JsonResponse(data)
+            else:
+                c.num+=1
+                c.save()
+                if answer==a.questionanswer:
+                    data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
+                    data['status'] = 'success'
+                    a.ornot=1
+                    a.ornots='已被终结'
+                    a.nums+=1
+                    a.killer=teststudent
+                    a.save()
+                    reasons='通过终结难题'
+                    for i in range(a.num):
+                        value = 66666
+                        for i in range(10):
+                            value = ''.join(random.sample(string.digits, 6))
+                            value = int(value)
+                            nnn = Luckys.objects.filter(name=teststudent, num=value)
+                            if nnn:
+                                pass
+                            else:
+                                break
+                        Luckys.addmss(teststudent, reasons, value)
+                    return JsonResponse(data)
+                else:
+                    c.num+=1
+                    c.save()
+                    n=3-c.num
+                    a.nums+=1
+                    a.save()
+                    data['error'] = '答案错误！请再试一试！'+'还剩'+str(n)+'次机会挑战.'
+                    data['status'] = 'error'
+                    return JsonResponse(data)
 
 
 
