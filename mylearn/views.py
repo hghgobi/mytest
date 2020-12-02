@@ -4963,7 +4963,13 @@ def Hardkiller(request):
         answer = request.POST.get('answer')
         answer = str(answer)
         data={}
-        a = get_object_or_404(Hardqs,id=id)
+        try:
+            get_object_or_404(Hardqs, id=id)
+        except:
+            data['error']='错误'
+            data['status']='error'
+            return JsonResponse(data)
+        a = get_object_or_404(Hardqs, id=id)
         if a.ornot==1:
             data['error']='此题已被终结！请换一题挑战！'
             data['status']='error'
@@ -5012,6 +5018,7 @@ def Hardkiller(request):
                     data['error'] = '答案错误！请再试一试！'+'还剩'+str(n)+'次机会挑战.'
                     data['status'] = 'error'
                     return JsonResponse(data)
+
 
 
 
