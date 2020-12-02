@@ -4981,7 +4981,7 @@ def Hardkiller(request):
             else:
                 Hardqsrecord.addmss(id,0,teststudent)
             c = get_object_or_404(Hardqsrecord,idd=id,name=teststudent)
-            if c.num>=3:
+            if c.num>=a.jihui:
                 data['error'] = '此题'+str(a.jihui)+'次机会已用完！请换一题挑战！'
                 data['status'] = 'error'
                 return JsonResponse(data)
