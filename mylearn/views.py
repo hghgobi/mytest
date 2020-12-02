@@ -4087,19 +4087,28 @@ def zkfx(request,id0,id1):
                     pass
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                name=teststudent
                 value=666666
-                reasonss = '每日基础练'
-                Setgoodns.addmss(teststudent, 1, reasonss, 1)
+                reasonss = '通过每日基础练'
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(name=teststudent,num=value)
+                    nnn = Luckys.objects.filter(name=name, num=value)
                     if nnn:
                         pass
                     else:
                         break
-                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
-                Lucky.addmss(teststudent,reason,value)
+                Luckys.addmss(name, reasonss, value)
+                # for i in range(10):
+                #     value = ''.join(random.sample(string.digits, 6))
+                #     value = int(value)
+                #     nnn=Lucky.objects.filter(name=teststudent,num=value)
+                #     if nnn:
+                #         pass
+                #     else:
+                #         break
+                # reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
+                # Lucky.addmss(teststudent,reason,value)
                 return redirect(paths)
             else:
                 try:
@@ -4136,19 +4145,19 @@ def zkfx(request,id0,id1):
                     pass
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                name=teststudent
                 value=666666
-                reasonss = '每日基础练'
-                Setgoodns.addmss(teststudent, 1, reasonss, 1)
+                reasonss = '通过每日基础练'
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(name=teststudent,num=value)
+                    nnn = Luckys.objects.filter(name=name, num=value)
                     if nnn:
                         pass
                     else:
                         break
-                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
-                Lucky.addmss(teststudent,reason,value)
+                Luckys.addmss(name, reasonss, value)
+
                 return redirect(paths)
             elif dd>=int(n1):
                 try:
@@ -4169,20 +4178,19 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
-
+                name=teststudent
                 value=666666
-                reasonss = '每日基础练'
-                Setgoodns.addmss(teststudent, 1, reasonss, 1)
+                reasonss = '通过每日基础练'
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(name=teststudent,num=value)
+                    nnn = Luckys.objects.filter(name=name, num=value)
                     if nnn:
                         pass
                     else:
                         break
-                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
-                Lucky.addmss(teststudent,reason,value)
+                Luckys.addmss(name, reasonss, value)
+
                 return redirect(paths)
 
             else:
@@ -4219,19 +4227,19 @@ def zkfx(request,id0,id1):
                     pass
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                name=teststudent
                 value=666666
-                reasonss = '每日基础练'
-                Setgoodns.addmss(teststudent, 1, reasonss, 1)
+                reasonss = '通过每日基础练'
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(name=teststudent,num=value)
+                    nnn = Luckys.objects.filter(name=name, num=value)
                     if nnn:
                         pass
                     else:
                         break
-                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
-                Lucky.addmss(teststudent,reason,value)
+                Luckys.addmss(name, reasonss, value)
+
                 return redirect(paths)
             elif dd >= int(n1):
                 try:
@@ -4252,19 +4260,19 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                name=teststudent
                 value=666666
-                reasonss = '每日基础练'
-                Setgoodns.addmss(teststudent, 1, reasonss, 1)
+                reasonss = '通过每日基础练'
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(name=teststudent,num=value)
+                    nnn = Luckys.objects.filter(name=name, num=value)
                     if nnn:
                         pass
                     else:
                         break
-                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
-                Lucky.addmss(teststudent,reason,value)
+                Luckys.addmss(name, reasonss, value)
+
                 return redirect(paths)
 
             elif dd >=int(n2):
@@ -4286,19 +4294,19 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
+                name=teststudent
                 value=666666
-                reasonss = '每日基础练'
-                Setgoodns.addmss(teststudent, 1, reasonss, 1)
+                reasonss = '通过每日基础练'
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(name=teststudent,num=value)
+                    nnn = Luckys.objects.filter(name=name, num=value)
                     if nnn:
                         pass
                     else:
                         break
-                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
-                Lucky.addmss(teststudent,reason,value)
+                Luckys.addmss(name, reasonss, value)
+
                 return redirect(paths)
             elif costtime>=limit1:
                 ornot = "通过，"
@@ -4320,19 +4328,19 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
+                name=teststudent
                 value=666666
-                reasonss = '每日基础练'
-                Setgoodns.addmss(teststudent, 1, reasonss, 1)
+                reasonss = '通过每日基础练'
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
                     value = int(value)
-                    nnn=Lucky.objects.filter(name=teststudent,num=value)
+                    nnn = Luckys.objects.filter(name=name, num=value)
                     if nnn:
                         pass
                     else:
                         break
-                reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
-                Lucky.addmss(teststudent,reason,value)
+                Luckys.addmss(name, reasonss, value)
+
                 return redirect(paths)
 
             else:
@@ -4820,7 +4828,7 @@ def Caculates(request):
         if sum.isdigit():
             pass
         else:
-            data['error'] = '兑换码只能是数字'
+            data['error'] = '只能是数字'
             data['status'] = 'error'
             return JsonResponse(data)
         sum=int(sum)
