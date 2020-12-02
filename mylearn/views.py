@@ -4986,8 +4986,6 @@ def Hardkiller(request):
                 data['status'] = 'error'
                 return JsonResponse(data)
             else:
-                c.num+=1
-                c.save()
                 if answer==a.questionanswer:
                     data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
                     data['status'] = 'success'
@@ -5008,6 +5006,8 @@ def Hardkiller(request):
                             else:
                                 break
                         Luckys.addmss(teststudent, reasons, value)
+                        c.num += 1
+                        c.save()
                     return JsonResponse(data)
                 else:
                     c.num+=1
