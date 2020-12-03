@@ -572,9 +572,9 @@ def Indexs(request):
     except:
         mas3=Luckys.objects.filter(clas=clas)
     try:
-        mas4 = Classnews.objects.filter(clas=clas)[:10]
+        mas4 = Classnews.objects.all()[:10]
     except:
-        mas4=Classnews.objects.filter(clas=clas)
+        mas4=Classnews.objects.all()
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''
     #     # for ii in range(len(mas1)):
