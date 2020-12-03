@@ -128,6 +128,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('addluckynums', views.Addluckynums),
                path('addgoodns', views.Addgoodns),
                path('addms/<int:id>', views.Addsaoma),
+               path('gengxin', views.Gengxin),
 
 
 
