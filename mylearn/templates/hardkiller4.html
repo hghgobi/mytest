@@ -1,0 +1,92 @@
+{% extends 'base2.html' %}  
+{% block content %}
+<div style="border:5px solid blue">
+    <form id="addtxl" onsubmit="return false" action="{% url 'hardkiller' %}" method="POST" style="overflow:hidden">
+        <table align="center">
+            <tbody>
+                <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入题目id:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="id"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入你答案:</font></td>
+                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="answer"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="->提交答案<-" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+<a><font id="error" size="5" color="red">{{ error}}</font></a>
+    <a><font id="error" size="5" color="red">提示：用大写字母V表示除号，结果为负二分之一，则应该输入-1V2</font></a>
+    </div>
+<div>
+               {%for i in mss %}
+                <div style="border:3px solid red">
+                 <img id =6 src="{{i.questiontext.url}}" width="100%" height="auto"/><br/>
+
+                <p style="color:red">题目id:{{i.id}}</p>
+                    <p style="color:red">{{i.ornots4}}</p>
+                    <p style="color:red">{{i.jihui}}次答题机会</p>
+                    <p style="color:red">终结者：{{i.killer4}}</p>
+                    <p style="color:red">奖励：{{i.num}}个兑换码</p>
+                    <p style="color:red">总挑战次数：{{i.nums}}次</p>
+						<a>=======================================================</a>
+                              {% empty %}
+               <p> 暂无消息 </p>
+                   </div>
+               {% endfor %}
+                     </div>
+<hr/>
+               {%for i in ms %}
+
+                <p style="color:red">{{i.time}}{{i.name}}终结了id为{{i.idd}}难题，奖励{{i.num}}个兑换码</p>
+
+               {% empty %}
+               <p> 暂无消息 </p>
+               {% endfor %}
+<script language="javascript" type="text/javascript">
+         $("#addtxl").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'hardkiller' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+
+                    if(data['status']=="success"){
+                    alert(data['error']);
+             setTimeout(function () {
+                    window.parent.location.reload();
+                }, 200);
+
+
+                    }else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                        alert(data['error']);
+                        setTimeout(function () {
+                    window.parent.location.reload();
+                }, 200);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+
+</script>
+
+
+
+{% endblock %}

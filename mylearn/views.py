@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname
 import json
 import random
 import numpy as np
@@ -5045,10 +5045,21 @@ def Hardkiller(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
+    aaa=['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
+    if teststudent in aaa:
+        clas=3
+    else:
+        clas=4
     if request.method=='GET':
-        mss=Hardqs.objects.filter(ornot=0)
-        ms = Hardqs.objects.filter(ornot=1)
-        return render(request,'hardkiller.html',{'mss':mss,'ms':ms})
+        if clas==3:
+            mss=Hardqs.objects.filter(ornot=0)
+            ms = Hardqsname.objects.filter(clas=3)
+            return render(request,'hardkiller.html',{'mss':mss,'ms':ms})
+        else:
+            mss=Hardqs.objects.filter(ornot4=0)
+            ms = Hardqsname.objects.filter(clas=4)
+            return render(request,'hardkiller4.html',{'mss':mss,'ms':ms})
+
     if request.method=='POST':
         id = request.POST.get('id')
         answer = request.POST.get('answer')
@@ -5062,62 +5073,107 @@ def Hardkiller(request):
             return JsonResponse(data)
         id = int(id)
         a = get_object_or_404(Hardqs, id=id)
-        if a.ornot==1:
-            data['error']='此题已被终结！请换一题挑战！'
-            data['status']='error'
-            return JsonResponse(data)
-        else:
-            b = Hardqsrecord.objects.filter(idd=id,name=teststudent)
-            if b:
-                pass
-            else:
-                Hardqsrecord.addmss(id,0,teststudent)
-            c = get_object_or_404(Hardqsrecord,idd=id,name=teststudent)
-            if c.num>=a.jihui:
-                data['error'] = '此题'+str(a.jihui)+'次机会已用完！请换一题挑战！'
-                data['status'] = 'error'
+        num=a.num
+        if clas==3:
+            if a.ornot==1:
+                data['error']='此题已被终结！请换一题挑战！'
+                data['status']='error'
                 return JsonResponse(data)
             else:
-                if answer==a.questionanswer:
-                    data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
-                    data['status'] = 'success'
-                    a.ornot=1
-                    a.ornots='已被终结'
-                    a.nums+=1
-                    a.killer=teststudent
-                    a.save()
-                    reasons='通过终结难题'
-                    for i in range(a.num):
-                        value = 66666
-                        for i in range(10):
-                            value = ''.join(random.sample(string.digits, 6))
-                            value = int(value)
-                            nnn = Luckys.objects.filter(name=teststudent, num=value)
-                            if nnn:
-                                pass
-                            else:
-                                break
-                        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒',
-                                           '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮',
-                                           '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩',
-                                           '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔',
-                                           '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
-                            clas = 3
-                        else:
-                            clas = 4
-                        Luckys.addmss(teststudent, reasons, value,clas)
-                    c.num += 1
-                    c.save()
-                    return JsonResponse(data)
+                b = Hardqsrecord.objects.filter(idd=id,name=teststudent)
+                if b:
+                    pass
                 else:
-                    c.num+=1
-                    c.save()
-                    n=a.jihui-c.num
-                    a.nums+=1
-                    a.save()
-                    data['error'] = '答案错误！请再试一试！'+'还剩'+str(n)+'次机会挑战.'
+                    Hardqsrecord.addmss(id,0,teststudent)
+                c = get_object_or_404(Hardqsrecord,idd=id,name=teststudent)
+                if c.num>=a.jihui:
+                    data['error'] = '此题'+str(a.jihui)+'次机会已用完！请换一题挑战！'
                     data['status'] = 'error'
                     return JsonResponse(data)
+                else:
+                    if answer==a.questionanswer:
+                        data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
+                        data['status'] = 'success'
+                        a.ornot=1
+                        a.ornots='已被终结'
+                        a.nums+=1
+                        a.killer=teststudent
+                        a.save()
+                        reasons='通过终结难题'
+                        for i in range(a.num):
+                            value = 66666
+                            for i in range(10):
+                                value = ''.join(random.sample(string.digits, 6))
+                                value = int(value)
+                                nnn = Luckys.objects.filter(name=teststudent, num=value)
+                                if nnn:
+                                    pass
+                                else:
+                                    break
+                            Luckys.addmss(teststudent, reasons, value,clas)
+                        c.num += 1
+                        c.save()
+                        Hardqsname.addmss(id,num,teststudent,clas)
+                        return JsonResponse(data)
+                    else:
+                        c.num+=1
+                        c.save()
+                        n=a.jihui-c.num
+                        a.nums+=1
+                        a.save()
+                        data['error'] = '答案错误！请再试一试！'+'还剩'+str(n)+'次机会挑战.'
+                        data['status'] = 'error'
+                        return JsonResponse(data)
+        else:
+            if a.ornot4==1:
+                data['error']='此题已被终结！请换一题挑战！'
+                data['status']='error'
+                return JsonResponse(data)
+            else:
+                b = Hardqsrecord.objects.filter(idd=id,name=teststudent)
+                if b:
+                    pass
+                else:
+                    Hardqsrecord.addmss(id,0,teststudent)
+                c = get_object_or_404(Hardqsrecord,idd=id,name=teststudent)
+                if c.num>=a.jihui:
+                    data['error'] = '此题'+str(a.jihui)+'次机会已用完！请换一题挑战！'
+                    data['status'] = 'error'
+                    return JsonResponse(data)
+                else:
+                    if answer==a.questionanswer:
+                        data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
+                        data['status'] = 'success'
+                        a.ornot4=1
+                        a.ornots4='已被终结'
+                        a.nums+=1
+                        a.killer4=teststudent
+                        a.save()
+                        reasons='通过终结难题'
+                        for i in range(a.num):
+                            value = 66666
+                            for i in range(10):
+                                value = ''.join(random.sample(string.digits, 6))
+                                value = int(value)
+                                nnn = Luckys.objects.filter(name=teststudent, num=value)
+                                if nnn:
+                                    pass
+                                else:
+                                    break
+                            Luckys.addmss(teststudent, reasons, value,clas)
+                        c.num += 1
+                        c.save()
+                        Hardqsname.addmss(id,num,teststudent,clas)
+                        return JsonResponse(data)
+                    else:
+                        c.num+=1
+                        c.save()
+                        n=a.jihui-c.num
+                        a.nums+=1
+                        a.save()
+                        data['error'] = '答案错误！请再试一试！'+'还剩'+str(n)+'次机会挑战.'
+                        data['status'] = 'error'
+                        return JsonResponse(data)
 
 
 
