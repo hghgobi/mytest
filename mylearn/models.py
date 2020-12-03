@@ -843,7 +843,7 @@ class Hardqs(models.Model):
 	nums = models.IntegerField(default=0)
 	jihui = models.IntegerField(default=2)
 	class Meta:
-		ordering = ['ornot']
+		ordering = ['-time']
 
 class Hardqsrecord(models.Model):
 	idd= models.IntegerField()
