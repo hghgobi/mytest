@@ -837,6 +837,7 @@ class Classnews(models.Model):
 class Hardqs(models.Model):
 	id = models.AutoField(primary_key=True)
 	questiontext = models.ImageField(upload_to='hardquestions')
+	answerdetail = models.ImageField(upload_to='hardquestions')
 	questionanswer = models.CharField(max_length=50)
 	ornot = models.IntegerField(default=0)
 	ornot4 = models.IntegerField(default=0)
@@ -876,3 +877,15 @@ class Hardqsname(models.Model):
 	def addmss(cls,idd,num,name,clas):
 		addms = cls(idd=idd,num=num,name=name,clas=clas)
 		addms.save()
+# class Sendms(models.Model):
+# 	send = models.CharField(max_length=500)
+# 	reply= models.CharField(max_length=500)
+# 	time = models.DateTimeField(auto_now=True)
+# 	clas = models.IntegerField(default=3)
+# 	class Meta:
+# 		ordering = ['-time']
+#
+# 	@classmethod
+# 	def addmss(cls,idd,num,name,clas):
+# 		addms = cls(idd=idd,num=num,name=name,clas=clas)
+# 		addms.save()
