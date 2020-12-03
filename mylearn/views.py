@@ -4955,8 +4955,9 @@ def Hardkiller(request):
     if not teststudent:
         return redirect('../../testlogin')
     if request.method=='GET':
-        mss=Hardqs.objects.all()
-        return render(request,'hardkiller.html',{'mss':mss})
+        mss=Hardqs.objects.filter(ornot=0)
+        ms = Hardqs.objects.filter(ornot=1)
+        return render(request,'hardkiller.html',{'mss':mss,'ms':ms})
     if request.method=='POST':
         id = request.POST.get('id')
         answer = request.POST.get('answer')
