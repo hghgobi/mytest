@@ -4098,7 +4098,15 @@ def zkfx(request,id0,id1):
                         pass
                     else:
                         break
-                Luckys.addmss(name, reasonss, value)
+                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                   '沈珂如', '郑芷欣']:
+                    clas = 3
+                else:
+                    clas = 4
+                Luckys.addmss(name, reasonss, value,clas)
                 # for i in range(10):
                 #     value = ''.join(random.sample(string.digits, 6))
                 #     value = int(value)
@@ -4156,7 +4164,15 @@ def zkfx(request,id0,id1):
                         pass
                     else:
                         break
-                Luckys.addmss(name, reasonss, value)
+                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                   '沈珂如', '郑芷欣']:
+                    clas = 3
+                else:
+                    clas = 4
+                Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
             elif dd>=int(n1):
@@ -4189,7 +4205,15 @@ def zkfx(request,id0,id1):
                         pass
                     else:
                         break
-                Luckys.addmss(name, reasonss, value)
+                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                   '沈珂如', '郑芷欣']:
+                    clas = 3
+                else:
+                    clas = 4
+                Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
 
@@ -4238,7 +4262,15 @@ def zkfx(request,id0,id1):
                         pass
                     else:
                         break
-                Luckys.addmss(name, reasonss, value)
+                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                   '沈珂如', '郑芷欣']:
+                    clas = 3
+                else:
+                    clas = 4
+                Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
             elif dd >= int(n1):
@@ -4271,7 +4303,15 @@ def zkfx(request,id0,id1):
                         pass
                     else:
                         break
-                Luckys.addmss(name, reasonss, value)
+                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                   '沈珂如', '郑芷欣']:
+                    clas = 3
+                else:
+                    clas = 4
+                Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
 
@@ -4305,7 +4345,15 @@ def zkfx(request,id0,id1):
                         pass
                     else:
                         break
-                Luckys.addmss(name, reasonss, value)
+                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                   '沈珂如', '郑芷欣']:
+                    clas = 3
+                else:
+                    clas = 4
+                Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
             elif costtime>=limit1:
@@ -4339,7 +4387,15 @@ def zkfx(request,id0,id1):
                         pass
                     else:
                         break
-                Luckys.addmss(name, reasonss, value)
+                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                   '沈珂如', '郑芷欣']:
+                    clas = 3
+                else:
+                    clas = 4
+                Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
 
@@ -4595,7 +4651,14 @@ def Hwchange(request,time,stuid):
             pass
         else:
             break
-    Luckys.addmss(name, reasons, value)
+    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
+                       '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴',
+                       '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵',
+                       '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+        clas = 3
+    else:
+        clas = 4
+    Luckys.addmss(name, reasons, value,clas)
 
 
     return redirect(url)
@@ -4762,7 +4825,11 @@ def Showlucky(request):
             data['error'] = '恭喜你获得' + str(b) + '朵红花！'
             Lucky.objects.filter(name=teststudent,num=int(num)).delete()
             ornot = 0
-            Uselucky.addmss(teststudent,b,ornot)
+            if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+                clas=3
+            else:
+                clas=4
+            Uselucky.addmss(teststudent,b,ornot,clas)
             return JsonResponse(data)
         else:
             data['error'] = '抽奖码已使用或不存在'
@@ -4803,7 +4870,12 @@ def Showluckys(request):
             value = 666666
             reason='通过兑换码兑换'
             reasonss = '兑换码兑换'
-            Setgoodns.addmss(teststudent,b,reasonss,1)
+
+            if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+                clas=3
+            else:
+                clas=4
+            Setgoodns.addmss(teststudent,b,reasonss,1,clas)
             for j in range(b):
                 for i in range(10):
                     value = ''.join(random.sample(string.digits, 6))
@@ -4925,7 +4997,14 @@ def Addluckynums(request):
                 pass
             else:
                 break
-        Luckys.addmss(name, reason, value)
+        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭',
+                           '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪',
+                           '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨',
+                           '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+            clas = 3
+        else:
+            clas = 4
+        Luckys.addmss(name, reason, value,clas)
         return HttpResponse('成功')
 def Addgoodns(request):
     if request.method=='GET':
@@ -4942,7 +5021,14 @@ def Addgoodns(request):
             reason = str(dates) + '作业优秀'
         else:
             reason = str(dates) + '上课积极/认真'
-        Setgoodns.addmss(name,num,reason,ornot)
+        if name in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭',
+                           '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪',
+                           '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨',
+                           '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+            clas = 3
+        else:
+            clas = 4
+        Setgoodns.addmss(name,num,reason,ornot,clas)
         return render(request,'addgoodns.html')
 
 def Addsaoma(request,id):
@@ -5006,7 +5092,15 @@ def Hardkiller(request):
                                 pass
                             else:
                                 break
-                        Luckys.addmss(teststudent, reasons, value)
+                        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒',
+                                           '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮',
+                                           '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩',
+                                           '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔',
+                                           '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+                            clas = 3
+                        else:
+                            clas = 4
+                        Luckys.addmss(teststudent, reasons, value,clas)
                     c.num += 1
                     c.save()
                     return JsonResponse(data)

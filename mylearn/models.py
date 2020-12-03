@@ -791,12 +791,13 @@ class Uselucky(models.Model):
 	time = models.DateTimeField(auto_now_add=True)
 	num = models.IntegerField()
 	ornot = models.IntegerField()
+	clas = models.IntegerField(default=3)
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,name,num,ornot):
-		addms = cls(name=name,num=num,ornot=ornot)
+	def addmss(cls,name,num,ornot,clas):
+		addms = cls(name=name,num=num,ornot=ornot,clas=clas)
 		addms.save()
 class Music(models.Model):
 	name = models.CharField(max_length=500)
@@ -806,24 +807,26 @@ class Setgoodns(models.Model):
 	num = models.IntegerField()
 	reason = models.CharField(max_length=500)
 	ornot = models.IntegerField(default=0)
+	clas = models.IntegerField(default=3)
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,name,num,reason,ornot):
-		addms = cls(name=name,num=num,reason=reason,ornot=ornot)
+	def addmss(cls,name,num,reason,ornot,clas):
+		addms = cls(name=name,num=num,reason=reason,ornot=ornot,clas=clas)
 		addms.save()
 class Luckys(models.Model):
 	num = models.IntegerField()
 	name = models.CharField(max_length=500)
 	reason = models.CharField(max_length=500)
 	time = models.DateTimeField(auto_now=True)
+	clas = models.IntegerField(default=3)
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,name,reason,num):
-		addms = cls(name=name,reason=reason,num=num)
+	def addmss(cls,name,reason,num,clas):
+		addms = cls(name=name,reason=reason,num=num,clas=clas)
 		addms.save()
 class Classnews(models.Model):
 	name = models.CharField(max_length=500)

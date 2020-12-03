@@ -264,17 +264,17 @@ class LuckyAdmin(admin.ModelAdmin):
 	list_display = ['time','name','reason','num']
 @admin.register(Uselucky)
 class UseluckyAdmin(admin.ModelAdmin):
-	list_display = ['name','time','num','ornot']
+	list_display = ['name','time','num','ornot','clas']
 
 @admin.register(Music)
 class MusicAdmin(admin.ModelAdmin):
 	list_display = ['name']
 @admin.register(Setgoodns)
 class SetgoodnsAdmin(admin.ModelAdmin):
-	list_display = ['name','time','num','reason','ornot']
+	list_display = ['name','time','num','reason','ornot','clas']
 @admin.register(Luckys)
 class LuckysAdmin(admin.ModelAdmin):
-	list_display = ['time','name','reason','num']
+	list_display = ['time','name','reason','num','clas']
 @admin.register(Classnews)
 class ClassnewsAdmin(admin.ModelAdmin):
 	list_display = ['time','name']
