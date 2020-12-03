@@ -839,10 +839,13 @@ class Hardqs(models.Model):
 	questiontext = models.ImageField(upload_to='hardquestions')
 	questionanswer = models.CharField(max_length=50)
 	ornot = models.IntegerField(default=0)
+	ornot4 = models.IntegerField(default=0)
 	ornots = models.CharField(max_length=50)
+	ornots4 = models.CharField(max_length=50)
 	num = models.IntegerField()
 	time = models.DateTimeField(auto_now=True)
 	killer = models.CharField(max_length=50)
+	killer4 = models.CharField(max_length=50)
 	nums = models.IntegerField(default=0)
 	jihui = models.IntegerField(default=2)
 	class Meta:
