@@ -1,0 +1,16 @@
+{% extends 'base2.html' %}  
+{% block content %}
+<h1> ===========难题解密============</h1>
+               {%for i in mss %}
+                <div style="border:3px solid red">
+                 <img id =6 src="{{i.questiontext.url}}" width="100%" height="auto"/><br/>
+
+                    <p style="color:red">终结者：{{i.killer4}}-奖励：{{i.num}}个兑换码-总挑战次数：{{i.nums}}次</p>
+                   <img id =6 src="{{i.answerdetail.url}}" width="100%" height="auto"/><br/>
+						<a>=======================================================</a>
+                              {% empty %}
+               <p> 暂无消息 </p>
+                   </div>
+               {% endfor %}
+
+{% endblock %}
