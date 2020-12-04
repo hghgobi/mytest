@@ -893,3 +893,18 @@ class Hardkilleronoff(models.Model):
 	hard= models.IntegerField(default=1)
 	middle= models.IntegerField(default=1)
 	easy= models.IntegerField(default=1)
+
+class Hardqslimit(models.Model):
+	name = models.IntegerField(default=1)
+	num = models.IntegerField(default=1)
+	time = models.DateTimeField(auto_now=True)
+
+class Middleqslimit(models.Model):
+	name = models.IntegerField(default=1)
+	num = models.IntegerField(default=1)
+	time = models.DateTimeField(auto_now=True)
+
+class Easyqslimit(models.Model):
+	name = models.IntegerField(default=1)
+	num = models.IntegerField(default=1)
+	time = models.DateTimeField(auto_now=True)
