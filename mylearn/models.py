@@ -908,3 +908,24 @@ class Easyqslimit(models.Model):
 	name = models.IntegerField(default=1)
 	num = models.IntegerField(default=1)
 	time = models.DateTimeField(auto_now=True)
+class Easyqs(models.Model):
+	id = models.AutoField(primary_key=True)
+	questiontext = models.ImageField(upload_to='easyqs')
+	questionanswer = models.CharField(max_length=50)
+	num = models.IntegerField()
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+class Easyrecord(models.Model):
+	idd= models.IntegerField()
+	num = models.IntegerField()
+	name = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	clas = models.IntegerField(default=3)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,idd,num,name,clas):
+		addms = cls(idd=idd,num=num,name=name,clas=clas)
+		addms.save()

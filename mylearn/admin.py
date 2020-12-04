@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sdengji,Sshuliang,Getflowerrecord,Homeworks,Homeworksid,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqs,Hardqsrecord,Hardqsname,Hardkilleronoff,Hardqslimit,Middleqslimit,Easyqslimit
+from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sdengji,Sshuliang,Getflowerrecord,Homeworks,Homeworksid,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqs,Hardqsrecord,Hardqsname,Hardkilleronoff,Hardqslimit,Middleqslimit,Easyqslimit,Easyqs,Easyrecord
 
 
 # Register your models here.
@@ -299,3 +299,9 @@ class MiddleqslimitAdmin(admin.ModelAdmin):
 @admin.register(Easyqslimit)
 class EasyqslimitAdmin(admin.ModelAdmin):
 	list_display = ['name','num','time']
+@admin.register(Easyrecord)
+class EasyrecordAdmin(admin.ModelAdmin):
+	list_display = ['idd','num','name','time','clas']
+@admin.register(Easyqs)
+class EasyqsAdmin(admin.ModelAdmin):
+	list_display = ['id','questiontext','questionanswer','num','time']
