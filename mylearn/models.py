@@ -889,3 +889,7 @@ class Hardqsname(models.Model):
 # 	def addmss(cls,idd,num,name,clas):
 # 		addms = cls(idd=idd,num=num,name=name,clas=clas)
 # 		addms.save()
+class Hardkilleronoff(models.Model):
+	hard= models.IntegerField(default=1)
+	middle= models.IntegerField(default=1)
+	easy= models.IntegerField(default=1)
