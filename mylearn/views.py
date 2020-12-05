@@ -4943,6 +4943,50 @@ def Caculates(request):
             data['status']='error'
         return JsonResponse(data)
 
+def Drawpic(request):
+    if request.method=='POST':
+        idd = request.POST.get('idd')
+        data={}
+        if idd.isdigit():
+            pass
+        else:
+            data['error'] = '只能是数字'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        idd=int(idd)
+        exammessages =Draws.objects.filter(idd=idd)
+        sunn = len(exammessages)
+        dates, scores = [], []
+        for i in range(sunn):
+            dates.append(exammessages[i].sum)
+            scores.append(exammessages[i].pl)
+            # ranks.append(exammessages[i].rank)
+        dates.reverse()
+        scores.reverse()
+        plt.switch_backend('agg')
+        fig = plt.figure(figsize=(3.3, 3.3))
+
+        matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+        matplotlib.rcParams['axes.unicode_minus'] = False
+        plt.plot(dates, scores, c='red')
+        plt.title("硬币抛掷实验")
+        fig.autofmt_xdate(rotation=85)
+        plt.ylim(0, 1)
+
+        plt.ylabel("频率")
+        plt.xlabel("抛掷总次数")
+        plt.tick_params(axis='both', which='major', labelsize=8)
+        sio = BytesIO()
+
+        plt.savefig(sio, format='png')
+        datas = base64.encodebytes(sio.getvalue()).decode()
+        html = ''' <img src="data:image/png;base64,{}"/> '''
+        plt.close()
+        imd = html.format(datas)
+        data['status']='success'
+        data['error']=imd
+        return JsonResponse(data)
+
 
 
 def Showluckynames(request):

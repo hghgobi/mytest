@@ -31,7 +31,8 @@
                  <tr align="center">
                     <td><font size="5">请输入抛掷次数</font></td>
                      <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="sum"></td>
-                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="idd" value="{{value}}">ID</td>
+                     <td><font size="5">----查询ID:</font></td>
+                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="idd" value="{{value}}"></td>
                 </tr>
 
 
@@ -44,8 +45,25 @@
             </tbody>
         </table>
     </form>
+  <form id="addtxl2" onsubmit="return false" action="{% url 'caculate2' %}" method="POST" style="overflow:hidden">
+        <table>
+            <tbody>
+                 <tr align="center">
+                     <td><font size="5">ID:</font></td>
+                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="idd" value="{{value}}"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="->作图<-" ></td>
+                </tr>
 
 
+            </tbody>
+        </table>
+    </form>
+              <ul id="comment_list">
+
+                </ul>
 <!--<script>-->
 <!--    function go(){-->
 <!--    var a1='<td>4000</td>';-->
@@ -72,6 +90,31 @@
                     a.innerHTML+=data['sum'];
                     b.innerHTML+=data['num0'];
                     c.innerHTML+=data['num'];
+                    }else{
+                        alert(data['error']);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>
+     <script type="text/javascript">
+        $("#addtxl2").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'caculate2' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+                    if(data['status']=="success"){
+                    comment_list.inner.HTML=data['error'];
                     }else{
                         alert(data['error']);
                     }
