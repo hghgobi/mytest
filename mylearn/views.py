@@ -4964,7 +4964,7 @@ def Drawpic(request):
         dates.reverse()
         scores.reverse()
         plt.switch_backend('agg')
-        fig = plt.figure(figsize=(3.3, 30))
+        fig = plt.figure(figsize=(30, 10))
 
         matplotlib.rcParams['font.sans-serif'] = ['SimHei']
         matplotlib.rcParams['axes.unicode_minus'] = False
