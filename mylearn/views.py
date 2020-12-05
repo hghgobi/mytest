@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord
 import json
 import random
 import numpy as np
@@ -5214,3 +5214,31 @@ def Hardkillershow(request):
         else:
             mss=Hardqs.objects.filter(ornot4=1)
             return render(request,'hardkillershow4.html',{'mss':mss})
+# def Easykiller(request):
+#     teststudent = request.session.get("teststudent")
+#     if not teststudent:
+#         return redirect('../../testlogin')
+#     aaa=['张徐豪', '蒋雨轩', '余思成', '罗晨轩', '孙鉴', '周俊皓', '黄炳铨', '罗李琦', '胡雨诗', '陈敏雪', '沈琪舒', '毛语彤', '何柯瑶', '蒋依洋', '许可欣', '林佳璇', '梁杰', '何相遥', '梁乘玮', '刘世聪', '沈珂如', '沈宏铭', '林奕如', '郭晨宇', '罗俊凯', '陈佳浩', '林千欣卡', '应昊均', '罗羽馨', '王烁森', '李琪', '戴麟懿', '叶潇雅', '谢雨珂', '吴纪涵', '王倩', '吴思淼', '郑芷欣', '梁馨予', '陈柯涵', '陈伊柔', '梁海涛', '林惠婷', '黄婧娴']
+#     if teststudent not in aaa:
+#         return HttpResponse('这些题目太简单了，不适合你做。。。。')
+#     aaaa=['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
+#     if teststudent in aaaa:
+#         clas=3
+#     else:
+#         clas=4
+#
+#     if request.method=='GET':
+#         if clas==3:
+#             mss=Hardqs.objects.filter(ornot=0)
+#             ms = Hardqsname.objects.filter(clas=3)
+#             return render(request,'hardkiller.html',{'mss':mss,'ms':ms})
+#         else:
+#             mss=Hardqs.objects.filter(ornot4=0)
+#             ms = Hardqsname.objects.filter(clas=4)
+#             return render(request,'hardkiller4.html',{'mss':mss,'ms':ms})
+#
+#     if request.method=='POST':
+#         id = request.POST.get('id')
+#         answer = request.POST.get('answer')
+#         answer = str(answer)
+#         data={}

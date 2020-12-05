@@ -929,3 +929,17 @@ class Easyrecord(models.Model):
 	def addmss(cls,idd,num,name,clas):
 		addms = cls(idd=idd,num=num,name=name,clas=clas)
 		addms.save()
+
+class Draws(models.Model):
+	idd= models.IntegerField()
+	sum = models.IntegerField()
+	num =models.IntegerField()
+	pl = models.FloatField()
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,idd,sum,num,pl):
+		addms = cls(idd=idd,sum=sum,num=num,pl=pl)
+		addms.save()
