@@ -114,7 +114,7 @@
                     console.log(data);
 
                     if(data['status']=="success"){
-                    comment_list.inner.HTML=data['error'];
+                    comment_list.innerHTML=data['error'];
                     }else{
                         alert(data['error']);
                     }
