@@ -4964,14 +4964,14 @@ def Drawpic(request):
         dates.reverse()
         scores.reverse()
         plt.switch_backend('agg')
-        fig = plt.figure(figsize=(3.3, 3.3))
+        fig = plt.figure(figsize=(3.3, 30))
 
         matplotlib.rcParams['font.sans-serif'] = ['SimHei']
         matplotlib.rcParams['axes.unicode_minus'] = False
         plt.plot(dates, scores, c='red')
         plt.title("硬币抛掷实验")
-        fig.autofmt_xdate(rotation=85)
-        plt.ylim(0, 1)
+        fig.autofmt_xdate(rotation=0)
+        plt.ylim(0, 1,0.05)
 
         plt.ylabel("频率")
         plt.xlabel("抛掷总次数")
