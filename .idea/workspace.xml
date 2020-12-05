@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mylearn/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/caculate.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/caculate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -14,13 +13,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2117">
-              <caret line="5211" column="43" selection-start-line="5211" selection-start-column="43" selection-end-line="5211" selection-end-column="43" />
+            <state relative-caret-position="370">
+              <caret line="4932" column="29" lean-forward="true" selection-start-line="4932" selection-start-column="29" selection-end-line="4932" selection-end-column="29" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mylearn/templates/caculate.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+              <folding>
+                <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -105,7 +116,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="738">
@@ -204,7 +215,6 @@
         <option value="F:/2020级七年级信息/erweima/makeewm.py" />
         <option value="F:/微课比赛/sripts.py" />
         <option value="$USER_HOME$/Desktop/test.html" />
-        <option value="$PROJECT_DIR$/mylearn/templates/caculate.html" />
         <option value="$PROJECT_DIR$/../saoma.py" />
         <option value="$USER_HOME$/Desktop/change.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/hardkiller4.html" />
@@ -215,13 +225,14 @@
         <option value="$PROJECT_DIR$/mylearn/templates/hardkiller.html" />
         <option value="F:/2020级七年级信息/getnames.py" />
         <option value="$PROJECT_DIR$/../CompressPictures-by-canvas--master/CompressPictures-by-canvas--master/CompressPictures-by-canvas/CompressPictures-by-canvas/test.html" />
-        <option value="$PROJECT_DIR$/mylearn/views.py" />
         <option value="$PROJECT_DIR$/mylearn/models.py" />
         <option value="$PROJECT_DIR$/mylearn/admin.py" />
+        <option value="$PROJECT_DIR$/mylearn/templates/caculate.html" />
+        <option value="$PROJECT_DIR$/mylearn/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="382" />
     <option name="y" value="169" />
     <option name="width" value="1400" />
@@ -256,6 +267,12 @@
               <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
               <item name="mytest" type="462c0819:PsiDirectoryNode" />
               <item name="mylearn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
+              <item name="mytest" type="462c0819:PsiDirectoryNode" />
+              <item name="mylearn" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
@@ -514,16 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/caculate.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="6" column="4" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding>
-            <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/test.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
@@ -775,16 +782,6 @@
     <entry file="file://$PROJECT_DIR$/mylearn/linshi102.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2117">
-          <caret line="5211" column="43" selection-start-line="5211" selection-start-column="43" selection-end-line="5211" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="812">
@@ -801,6 +798,26 @@
           <caret line="309" column="50" lean-forward="true" selection-start-line="309" selection-start-column="50" selection-end-line="309" selection-end-column="50" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/caculate.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+          <folding>
+            <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="4932" column="29" lean-forward="true" selection-start-line="4932" selection-start-column="29" selection-end-line="4932" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
