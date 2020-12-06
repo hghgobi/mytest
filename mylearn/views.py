@@ -4098,23 +4098,24 @@ def zkfx(request,id0,id1):
                 name=teststudent
                 value=666666
                 reasonss = '通过每日基础练'
-                for i in range(10):
-                    value = ''.join(random.sample(string.digits, 6))
-                    value = int(value)
-                    nnn = Luckys.objects.filter(name=name, num=value)
-                    if nnn:
-                        pass
+                for j in range(3):
+                    for i in range(10):
+                        value = ''.join(random.sample(string.digits, 6))
+                        value = int(value)
+                        nnn = Luckys.objects.filter(name=name, num=value)
+                        if nnn:
+                            pass
+                        else:
+                            break
+                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                       '沈珂如', '郑芷欣']:
+                        clas = 3
                     else:
-                        break
-                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                   '沈珂如', '郑芷欣']:
-                    clas = 3
-                else:
-                    clas = 4
-                Luckys.addmss(name, reasonss, value,clas)
+                        clas = 4
+                    Luckys.addmss(name, reasonss, value,clas)
                 # for i in range(10):
                 #     value = ''.join(random.sample(string.digits, 6))
                 #     value = int(value)
@@ -4164,23 +4165,24 @@ def zkfx(request,id0,id1):
                 name=teststudent
                 value=666666
                 reasonss = '通过每日基础练'
-                for i in range(10):
-                    value = ''.join(random.sample(string.digits, 6))
-                    value = int(value)
-                    nnn = Luckys.objects.filter(name=name, num=value)
-                    if nnn:
-                        pass
+                for j in range(3):
+                    for i in range(10):
+                        value = ''.join(random.sample(string.digits, 6))
+                        value = int(value)
+                        nnn = Luckys.objects.filter(name=name, num=value)
+                        if nnn:
+                            pass
+                        else:
+                            break
+                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                       '沈珂如', '郑芷欣']:
+                        clas = 3
                     else:
-                        break
-                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                   '沈珂如', '郑芷欣']:
-                    clas = 3
-                else:
-                    clas = 4
-                Luckys.addmss(name, reasonss, value,clas)
+                        clas = 4
+                    Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
             elif dd>=int(n1):
@@ -4205,23 +4207,24 @@ def zkfx(request,id0,id1):
                 name=teststudent
                 value=666666
                 reasonss = '通过每日基础练'
-                for i in range(10):
-                    value = ''.join(random.sample(string.digits, 6))
-                    value = int(value)
-                    nnn = Luckys.objects.filter(name=name, num=value)
-                    if nnn:
-                        pass
+                for j in range(2):
+                    for i in range(10):
+                        value = ''.join(random.sample(string.digits, 6))
+                        value = int(value)
+                        nnn = Luckys.objects.filter(name=name, num=value)
+                        if nnn:
+                            pass
+                        else:
+                            break
+                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                       '沈珂如', '郑芷欣']:
+                        clas = 3
                     else:
-                        break
-                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                   '沈珂如', '郑芷欣']:
-                    clas = 3
-                else:
-                    clas = 4
-                Luckys.addmss(name, reasonss, value,clas)
+                        clas = 4
+                    Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
 
@@ -4262,23 +4265,24 @@ def zkfx(request,id0,id1):
                 name=teststudent
                 value=666666
                 reasonss = '通过每日基础练'
-                for i in range(10):
-                    value = ''.join(random.sample(string.digits, 6))
-                    value = int(value)
-                    nnn = Luckys.objects.filter(name=name, num=value)
-                    if nnn:
-                        pass
+                for j in range(3):
+                    for i in range(10):
+                        value = ''.join(random.sample(string.digits, 6))
+                        value = int(value)
+                        nnn = Luckys.objects.filter(name=name, num=value)
+                        if nnn:
+                            pass
+                        else:
+                            break
+                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                       '沈珂如', '郑芷欣']:
+                        clas = 3
                     else:
-                        break
-                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                   '沈珂如', '郑芷欣']:
-                    clas = 3
-                else:
-                    clas = 4
-                Luckys.addmss(name, reasonss, value,clas)
+                        clas = 4
+                    Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
             elif dd >= int(n1):
@@ -4303,23 +4307,24 @@ def zkfx(request,id0,id1):
                 name=teststudent
                 value=666666
                 reasonss = '通过每日基础练'
-                for i in range(10):
-                    value = ''.join(random.sample(string.digits, 6))
-                    value = int(value)
-                    nnn = Luckys.objects.filter(name=name, num=value)
-                    if nnn:
-                        pass
+                for j in range(2):
+                    for i in range(10):
+                        value = ''.join(random.sample(string.digits, 6))
+                        value = int(value)
+                        nnn = Luckys.objects.filter(name=name, num=value)
+                        if nnn:
+                            pass
+                        else:
+                            break
+                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                                       '沈珂如', '郑芷欣']:
+                        clas = 3
                     else:
-                        break
-                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                   '沈珂如', '郑芷欣']:
-                    clas = 3
-                else:
-                    clas = 4
-                Luckys.addmss(name, reasonss, value,clas)
+                        clas = 4
+                    Luckys.addmss(name, reasonss, value,clas)
 
                 return redirect(paths)
 
@@ -4651,22 +4656,23 @@ def Hwchange(request,time,stuid):
     name=ss.name
     url='../../'+str(time)
     value=66666
-    for i in range(10):
-        value = ''.join(random.sample(string.digits, 6))
-        value = int(value)
-        nnn = Luckys.objects.filter(name=name, num=value)
-        if nnn:
-            pass
+    for j in range(3):
+        for i in range(10):
+            value = ''.join(random.sample(string.digits, 6))
+            value = int(value)
+            nnn = Luckys.objects.filter(name=name, num=value)
+            if nnn:
+                pass
+            else:
+                break
+        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
+                           '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴',
+                           '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵',
+                           '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+            clas = 3
         else:
-            break
-    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
-                       '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴',
-                       '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵',
-                       '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
-        clas = 3
-    else:
-        clas = 4
-    Luckys.addmss(name, reasons, value,clas)
+            clas = 4
+        Luckys.addmss(name, reasons, value,clas)
 
 
     return redirect(url)
