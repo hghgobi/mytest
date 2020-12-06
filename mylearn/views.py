@@ -23,6 +23,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.dates import DateFormatter
 import matplotlib.pyplot as plt
+from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import datetime
 import base64
 from io import BytesIO
@@ -4963,15 +4964,22 @@ def Drawpic(request):
             # ranks.append(exammessages[i].rank)
         dates.reverse()
         scores.reverse()
+        ymajorLocator = MultipleLocator(0.1)
+        yminorLocator = MultipleLocator(0.01)
+        ymajorFormatter = FormatStrFormatter('%.5f')
         plt.switch_backend('agg')
-        fig = plt.figure(figsize=(30, 10))
+        fig = plt.figure(figsize=(20, 10))
 
         matplotlib.rcParams['font.sans-serif'] = ['SimHei']
         matplotlib.rcParams['axes.unicode_minus'] = False
         plt.plot(dates, scores, c='red')
         plt.title("硬币抛掷实验")
         fig.autofmt_xdate(rotation=0)
-        plt.ylim(0, 1,0.05)
+
+        plt.yaxis.set_major_locator(ymajorLocator)
+        plt.yaxis.set_major_formatter(ymajorFormatter)
+        plt.yaxis.set_minor_locator(yminorLocator)
+        plt.ylim(0, 1)
 
         plt.ylabel("频率")
         plt.xlabel("抛掷总次数")
