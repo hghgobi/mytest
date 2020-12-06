@@ -4939,6 +4939,7 @@ def Caculates(request):
             data['sum']='<td>%s</td>'%sum
             data['num']='<td>%s</td>'%num
             data['num0']='<td>%s</td>'%n
+            idd=int(idd)
             Draws.addmss(idd,sum,n,num)
         else:
             data['error']='数据类型错误。。。'
