@@ -23,6 +23,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.dates import DateFormatter
 import matplotlib.pyplot as plt
+from pylab import *
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import datetime
 import base64
@@ -4964,30 +4965,40 @@ def Drawpic(request):
             # ranks.append(exammessages[i].rank)
         dates.reverse()
         scores.reverse()
-        ymajorLocator = MultipleLocator(0.1)
-        yminorLocator = MultipleLocator(0.01)
-        ymajorFormatter = FormatStrFormatter('%.5f')
-        plt.switch_backend('agg')
-        fig = plt.figure(figsize=(20, 10))
-        ax = subplot(111)
 
-
-        matplotlib.rcParams['font.sans-serif'] = ['SimHei']
-        matplotlib.rcParams['axes.unicode_minus'] = False
-        plt.plot(dates, scores, c='red')
-        plt.title("硬币抛掷实验")
-        fig.autofmt_xdate(rotation=0)
-
+        # plt.switch_backend('agg')
+        # fig = plt.figure(figsize=(20, 10)
+        # matplotlib.rcParams['font.sans-serif'] = ['SimHei']
+        # matplotlib.rcParams['axes.unicode_minus'] = False
+        # plt.plot(dates, scores, c='red')
+        # plt.title("硬币抛掷实验")
+        # fig.autofmt_xdate(rotation=0)
+        # plt.ylim(0, 1
+        # plt.ylabel("频率")
+        # plt.xlabel("抛掷总次数")
+        # plt.tick_params(axis='both', which='major', labelsize=8)
+        xmajorLocator = MultipleLocator(20)  # 将x主刻度标签设置为20的倍数
+        xmajorFormatter = FormatStrFormatter('%1.1f')  # 设置x轴标签文本的格式
+        xminorLocator = MultipleLocator(5)  # 将x轴次刻度标签设置为5的倍数
+        ymajorLocator = MultipleLocator(0.5)  # 将y轴主刻度标签设置为0.5的倍数
+        ymajorFormatter = FormatStrFormatter('%1.1f')  # 设置y轴标签文本的格式
+        yminorLocator = MultipleLocator(0.1)  # 将此y轴次刻度标签设置为0.1的倍数
+        t = arange(0.0, 100.0, 1)
+        s = sin(0.1 * pi * t) * exp(-t * 0.01)
+        ax = subplot(111)  # 注意:一般都在ax中设置,不再plot中设置
+        plot(t, s, '--b*')
+        # 设置主刻度标签的位置,标签文本的格式
+        ax.xaxis.set_major_locator(xmajorLocator)
+        ax.xaxis.set_major_formatter(xmajorFormatter)
         ax.yaxis.set_major_locator(ymajorLocator)
         ax.yaxis.set_major_formatter(ymajorFormatter)
+        # 显示次刻度标签的位置,没有标签文本
+        ax.xaxis.set_minor_locator(xminorLocator)
         ax.yaxis.set_minor_locator(yminorLocator)
-        plt.ylim(0, 1)
+        ax.xaxis.grid(True, which='major')  # x坐标轴的网格使用主刻度
+        ax.yaxis.grid(True, which='minor')  # y坐标轴的网格使用次刻度
 
-        plt.ylabel("频率")
-        plt.xlabel("抛掷总次数")
-        plt.tick_params(axis='both', which='major', labelsize=8)
         sio = BytesIO()
-
         plt.savefig(sio, format='png')
         datas = base64.encodebytes(sio.getvalue()).decode()
         html = ''' <img src="data:image/png;base64,{}"/> '''
