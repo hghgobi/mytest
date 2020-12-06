@@ -4969,6 +4969,8 @@ def Drawpic(request):
         ymajorFormatter = FormatStrFormatter('%.5f')
         plt.switch_backend('agg')
         fig = plt.figure(figsize=(20, 10))
+        ax = SubplotZero(fig,1,1,1)
+        fig.add_subplot(ax)
 
         matplotlib.rcParams['font.sans-serif'] = ['SimHei']
         matplotlib.rcParams['axes.unicode_minus'] = False
@@ -4976,9 +4978,9 @@ def Drawpic(request):
         plt.title("硬币抛掷实验")
         fig.autofmt_xdate(rotation=0)
 
-        plt.yaxis.set_major_locator(ymajorLocator)
-        plt.yaxis.set_major_formatter(ymajorFormatter)
-        plt.yaxis.set_minor_locator(yminorLocator)
+        ax.yaxis.set_major_locator(ymajorLocator)
+        ax.yaxis.set_major_formatter(ymajorFormatter)
+        ax.yaxis.set_minor_locator(yminorLocator)
         plt.ylim(0, 1)
 
         plt.ylabel("频率")
