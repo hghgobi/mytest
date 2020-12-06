@@ -4991,6 +4991,7 @@ def Drawpic(request):
         ax.yaxis.set_minor_locator(yminorLocator)
         ax.xaxis.grid(True, which='major')  # x坐标轴的网格使用主刻度
         ax.yaxis.grid(True, which='minor')  # y坐标轴的网格使用次刻度
+        plt.ylim(0,1)
 
         sio = BytesIO()
         plt.savefig(sio, format='png')
