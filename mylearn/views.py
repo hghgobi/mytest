@@ -4982,7 +4982,7 @@ def Drawpic(request):
 
         ymajorLocator = MultipleLocator(0.1)
         ymajorFormatter = FormatStrFormatter('%.5f')
-        yminorLocator = MultipleLocator(0.01)
+        yminorLocator = MultipleLocator(0.05)
         ax = subplot(111)
         plot(dates, scores,c='red')
         ax.yaxis.set_major_locator(ymajorLocator)
