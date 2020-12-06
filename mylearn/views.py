@@ -4080,6 +4080,11 @@ def zkfx(request,id0,id1):
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
                 except:
                     pass
+                num=3
+                if dd =10:
+                    num=4
+                else:
+                    pass
                 fs = "A优秀"
 
                 ornot = "通过，"
@@ -4098,7 +4103,7 @@ def zkfx(request,id0,id1):
                 name=teststudent
                 value=666666
                 reasonss = '通过每日基础练'
-                for j in range(3):
+                for j in range(num):
                     for i in range(10):
                         value = ''.join(random.sample(string.digits, 6))
                         value = int(value)
@@ -4150,6 +4155,11 @@ def zkfx(request,id0,id1):
                 fs = "A优秀"
 
                 ornot = "通过，"
+                num=3
+                if dd =10:
+                    num=4
+                else:
+                    pass
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
@@ -4165,7 +4175,7 @@ def zkfx(request,id0,id1):
                 name=teststudent
                 value=666666
                 reasonss = '通过每日基础练'
-                for j in range(3):
+                for j in range(num):
                     for i in range(10):
                         value = ''.join(random.sample(string.digits, 6))
                         value = int(value)
@@ -4250,6 +4260,11 @@ def zkfx(request,id0,id1):
                 fs = "A优秀"
 
                 ornot = "通过，"
+                num=3
+                if dd =10:
+                    num=4
+                else:
+                    pass
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
@@ -4265,7 +4280,7 @@ def zkfx(request,id0,id1):
                 name=teststudent
                 value=666666
                 reasonss = '通过每日基础练'
-                for j in range(3):
+                for j in range(num):
                     for i in range(10):
                         value = ''.join(random.sample(string.digits, 6))
                         value = int(value)
