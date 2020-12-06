@@ -23,7 +23,7 @@ from matplotlib.figure import Figure
 from matplotlib.backends.backend_agg import FigureCanvasAgg
 from matplotlib.dates import DateFormatter
 import matplotlib.pyplot as plt
-from pylab import subplot
+from pylab import subplot,plot
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
 import datetime
 import base64
