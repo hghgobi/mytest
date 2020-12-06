@@ -4081,7 +4081,7 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 num=3
-                if dd =10:
+                if dd ==10:
                     num=4
                 else:
                     pass
@@ -4156,7 +4156,7 @@ def zkfx(request,id0,id1):
 
                 ornot = "通过，"
                 num=3
-                if dd =10:
+                if dd ==10:
                     num=4
                 else:
                     pass
@@ -4261,7 +4261,7 @@ def zkfx(request,id0,id1):
 
                 ornot = "通过，"
                 num=3
-                if dd =10:
+                if dd ==10:
                     num=4
                 else:
                     pass
