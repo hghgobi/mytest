@@ -4969,8 +4969,8 @@ def Drawpic(request):
         ymajorFormatter = FormatStrFormatter('%.5f')
         plt.switch_backend('agg')
         fig = plt.figure(figsize=(20, 10))
-        ax = SubplotZero(fig,1,1,1)
-        fig.add_subplot(ax)
+        ax = subplot(111)
+
 
         matplotlib.rcParams['font.sans-serif'] = ['SimHei']
         matplotlib.rcParams['axes.unicode_minus'] = False
