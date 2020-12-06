@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/caculate.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/caculate.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="4992" column="48" lean-forward="true" selection-start-line="4992" selection-start-column="48" selection-end-line="4992" selection-end-column="48" />
+            <state relative-caret-position="520">
+              <caret line="4987" column="36" lean-forward="true" selection-start-line="4987" selection-start-column="36" selection-end-line="4987" selection-end-column="36" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -27,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/caculate.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="452">
-              <caret line="33" column="128" selection-start-line="33" selection-start-column="128" selection-end-line="33" selection-end-column="128" />
+            <state relative-caret-position="1500">
+              <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
               <folding>
                 <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
@@ -233,9 +234,9 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="734" />
-    <option name="y" value="70" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="128" />
+    <option name="y" value="62" />
     <option name="width" value="1400" />
     <option name="height" value="1000" />
   </component>
@@ -377,10 +378,10 @@
     <option name="totallyTimeSpent" value="1090000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="734" y="70" width="1400" height="1000" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18869309" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13540569" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -807,8 +808,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/caculate.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="452">
-          <caret line="33" column="128" selection-start-line="33" selection-start-column="128" selection-end-line="33" selection-end-column="128" />
+        <state relative-caret-position="1500">
+          <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
           <folding>
             <element signature="n#style#0;n#h1#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
@@ -817,8 +818,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="4992" column="48" lean-forward="true" selection-start-line="4992" selection-start-column="48" selection-end-line="4992" selection-end-column="48" />
+        <state relative-caret-position="520">
+          <caret line="4987" column="36" lean-forward="true" selection-start-line="4987" selection-start-column="36" selection-end-line="4987" selection-end-column="36" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>

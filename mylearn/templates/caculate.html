@@ -30,7 +30,7 @@
             <tbody>
                  <tr align="center">
                     <td><font size="5">请输入抛掷次数</font></td>
-                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="sum"></td>
+                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="sum" id="sum"></td>
                      <td><input type="hidden" style="color:red;width:180px;height:30px;font-size:16px" name="idd" value="{{value}}"></td>
                 </tr>
 
@@ -48,7 +48,7 @@
         <table>
             <tbody>
                  <tr align="center">
-                     <td><font size="5">ID:</font></td>
+                     <td><font size="5">==========ID:</font></td>
                      <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="idd" value="{{value}}"></td>
                 </tr>
                 <tr>
@@ -89,6 +89,7 @@
                     a.innerHTML+=data['sum'];
                     b.innerHTML+=data['num0'];
                     c.innerHTML+=data['num'];
+                    sum.innerHTML='';
                     }else{
                         alert(data['error']);
                     }

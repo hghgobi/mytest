@@ -4975,7 +4975,7 @@ def Drawpic(request):
         # plt.plot(dates, scores, c='red')
         # plt.title("硬币抛掷实验")
         # fig.autofmt_xdate(rotation=0)
-        # plt.ylim(0, 1
+        # plt.ylim(0, 1)
         # plt.ylabel("频率")
         # plt.xlabel("抛掷总次数")
         # plt.tick_params(axis='both', which='major', labelsize=8)
@@ -4984,6 +4984,10 @@ def Drawpic(request):
         ymajorFormatter = FormatStrFormatter('%.5f')
         yminorLocator = MultipleLocator(0.05)
         ax = subplot(111)
+        scoress=[]
+        for i in range(len(scores)):
+            scoress.append(0.5)
+        plot(dates, scoress, c='blue')
         plot(dates, scores,c='red')
         ax.yaxis.set_major_locator(ymajorLocator)
         ax.yaxis.set_major_formatter(ymajorFormatter)
@@ -4992,6 +4996,9 @@ def Drawpic(request):
         ax.xaxis.grid(True, which='major')  # x坐标轴的网格使用主刻度
         ax.yaxis.grid(True, which='minor')  # y坐标轴的网格使用次刻度
         plt.ylim(0,1)
+        plt.xlabel("抛掷总次数")
+        plt.ylabel("频率")
+        plt.title("硬币抛掷实验")
 
         sio = BytesIO()
         plt.savefig(sio, format='png')
