@@ -5016,7 +5016,7 @@ def Drawpic(request):
         ax.yaxis.set_minor_locator(yminorLocator)
         ax.xaxis.grid(True, which='major')  # x坐标轴的网格使用主刻度
         ax.yaxis.grid(True, which='minor')  # y坐标轴的网格使用次刻度
-        plt.ylim(0.4,0.7)
+        plt.ylim(0.3,0.8)
         plt.xlabel("抛掷总次数")
         plt.ylabel("频率")
         plt.title("硬币抛掷实验")
