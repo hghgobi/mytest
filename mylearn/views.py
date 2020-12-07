@@ -5008,8 +5008,10 @@ def Drawpic(request):
         scoress=[]
         for i in range(len(scores)):
             scoress.append(0.5)
-        plot(dates, scoress, c='blue')
+
         plot(dates, scores,'--b*',c='red')
+        dates.insert(0,'0')
+        plot(dates, scoress, c='blue')
         ax.yaxis.set_major_locator(ymajorLocator)
         ax.yaxis.set_major_formatter(ymajorFormatter)
 
