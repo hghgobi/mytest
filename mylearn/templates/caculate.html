@@ -15,13 +15,13 @@
 <div>
 <table border="1" style="font-size:50px;">
     <tr id="a">
-        <td>抛掷总次数</td>
+        <td>正面向上次数m</td>
     </tr>
     <tr id="b">
-        <td>正面向上次数</td>
+        <td>抛掷总次数n</td>
     </tr>
     <tr id="c">
-        <td>正面向上频率</td>
+        <td>正面向上频率m&divide n </td>
     </tr>
 </table>
     </div>
@@ -86,8 +86,8 @@
                     console.log(data);
 
                     if(data['status']=="success"){
-                    a.innerHTML+=data['sum'];
-                    b.innerHTML+=data['num0'];
+                    b.innerHTML+=data['sum'];
+                    a.innerHTML+=data['num0'];
                     c.innerHTML+=data['num'];
                     $('#sum').val('');
                     }else{
