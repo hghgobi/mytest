@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="370">
-              <caret line="5006" column="25" selection-start-line="5006" selection-start-column="25" selection-end-line="5006" selection-end-column="25" />
+              <caret line="5006" column="24" selection-start-line="5006" selection-start-column="24" selection-end-line="5006" selection-end-column="24" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -817,7 +817,7 @@
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="370">
-          <caret line="5006" column="25" selection-start-line="5006" selection-start-column="25" selection-end-line="5006" selection-end-column="25" />
+          <caret line="5006" column="24" selection-start-line="5006" selection-start-column="24" selection-end-line="5006" selection-end-column="24" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
