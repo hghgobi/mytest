@@ -5003,7 +5003,7 @@ def Drawpic(request):
 
         ymajorLocator = MultipleLocator(0.1)
         ymajorFormatter = FormatStrFormatter('%.5f')
-        yminorLocator = MultipleLocator(0.05)
+        yminorLocator = MultipleLocator(0.1)
         ax = subplot(111)
         scoress=[]
         for i in range(len(scores)):
