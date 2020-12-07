@@ -4957,7 +4957,7 @@ def Caculates(request):
                     n = n + 1
                 else:
                     pass
-            num = format(n/sum, '.5f')
+            num = format(n/sum, '.3f')
             data['sum']='<td>%s</td>'%sum
             data['num']='<td>%s</td>'%num
             data['num0']='<td>%s</td>'%n
@@ -5002,7 +5002,7 @@ def Drawpic(request):
         # plt.tick_params(axis='both', which='major', labelsize=8)
 
         ymajorLocator = MultipleLocator(0.1)
-        ymajorFormatter = FormatStrFormatter('%.5f')
+        ymajorFormatter = FormatStrFormatter('%.3f')
         yminorLocator = MultipleLocator(0.01)
         ax = subplot(111)
         scoress=[]
