@@ -4983,7 +4983,7 @@ def Drawpic(request):
         sunn = len(exammessages)
         dates, scores = [], []
         for i in range(sunn):
-            dates.append(exammessages[i].sum)
+            dates.append(str(exammessages[i].sum))
             scores.append(exammessages[i].pl)
             # ranks.append(exammessages[i].rank)
         dates.reverse()
