@@ -5010,6 +5010,7 @@ def Drawpic(request):
             scoress.append(0.5)
         plot(dates, scoress, c='blue')
         plot(dates, scores,c='red')
+        plot.scatter(dates,scores,s=5)
         ax.yaxis.set_major_locator(ymajorLocator)
         ax.yaxis.set_major_formatter(ymajorFormatter)
 
