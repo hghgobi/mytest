@@ -4990,7 +4990,7 @@ def Drawpic(request):
         scores.reverse()
 
         # plt.switch_backend('agg')
-        # fig = plt.figure(figsize=(20, 10)
+        fig = plt.figure(figsize=(20, 10)
         matplotlib.rcParams['font.sans-serif'] = ['SimHei']
         # matplotlib.rcParams['axes.unicode_minus'] = False
         # plt.plot(dates, scores, c='red')
@@ -5004,7 +5004,7 @@ def Drawpic(request):
         ymajorLocator = MultipleLocator(0.1)
         ymajorFormatter = FormatStrFormatter('%.5f')
         yminorLocator = MultipleLocator(0.05)
-        ax = subplot(100)
+        ax = subplot(111)
         scoress=[]
         for i in range(len(scores)):
             scoress.append(0.5)
