@@ -15,11 +15,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="460">
-              <caret line="5018" column="25" lean-forward="true" selection-start-line="5018" selection-start-column="25" selection-end-line="5018" selection-end-column="25" />
+            <state relative-caret-position="310">
+              <caret line="5097" column="60" lean-forward="true" selection-start-line="5097" selection-start-column="60" selection-end-line="5097" selection-end-column="60" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Desktop/奖励红花/zuoye/作业奖励/saoma.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
             </state>
           </provider>
         </entry>
@@ -62,8 +71,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="386">
-              <caret line="122" column="66" lean-forward="true" selection-start-line="122" selection-start-column="66" selection-end-line="122" selection-end-column="66" />
+            <state relative-caret-position="566">
+              <caret line="128" column="54" lean-forward="true" selection-start-line="128" selection-start-column="54" selection-end-line="128" selection-end-column="54" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -96,18 +105,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/Desktop/奖励红花/考试奖励红花.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret lean-forward="true" selection-end-line="4" selection-end-column="15" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="738">
@@ -131,9 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>xxt</find>
-      <find>Addhomework2</find>
-      <find>荣耀</find>
       <find>我</find>
       <find>save</find>
       <find>梁馨月</find>
@@ -158,9 +152,12 @@
       <find>Setgoo</find>
       <find>Uselucky</find>
       <find>Luckys</find>
-      <find>Indexs</find>
       <find>Exam</find>
       <find>zkfx</find>
+      <find>Dr</find>
+      <find>Addl</find>
+      <find>Indexs</find>
+      <find>Addluc</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -169,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$USER_HOME$/Desktop/奖励红花/订正红花奖励.py" />
         <option value="$USER_HOME$/Desktop/奖励红花/红花奖励.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/flowerrecord.html" />
         <option value="$USER_HOME$/Desktop/奖励红花/奖励红花测试.py" />
@@ -219,11 +215,12 @@
         <option value="$PROJECT_DIR$/mylearn/urls.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/caculate.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/showqszk.html" />
+        <option value="$USER_HOME$/Desktop/奖励红花/zuoye/作业奖励/saoma.py" />
         <option value="$PROJECT_DIR$/mylearn/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="150" />
     <option name="y" value="53" />
     <option name="width" value="1400" />
@@ -258,12 +255,6 @@
               <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
               <item name="mytest" type="462c0819:PsiDirectoryNode" />
               <item name="mylearn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mytest" type="462c0819:PsiDirectoryNode" />
-              <item name="mylearn" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
@@ -397,9 +388,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/mytest/urls.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/base.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -775,16 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="386">
-          <caret line="122" column="66" lean-forward="true" selection-start-line="122" selection-start-column="66" selection-end-line="122" selection-end-column="66" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/zuotu1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -809,10 +787,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/Desktop/奖励红花/zuoye/作业奖励/saoma.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="5" column="36" lean-forward="true" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="128" column="54" lean-forward="true" selection-start-line="128" selection-start-column="54" selection-end-line="128" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="460">
-          <caret line="5018" column="25" lean-forward="true" selection-start-line="5018" selection-start-column="25" selection-end-line="5018" selection-end-column="25" />
+        <state relative-caret-position="310">
+          <caret line="5097" column="60" lean-forward="true" selection-start-line="5097" selection-start-column="60" selection-end-line="5097" selection-end-column="60" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
