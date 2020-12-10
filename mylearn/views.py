@@ -4988,8 +4988,7 @@ def Jifenduihuan(request):
     if not teststudent:
         return redirect('../../testlogin')
     if request.method=='GET':
-        msss=get_object_or_404(Jifeng,name=teststudent)
-        mss = msss.sum
+        mss=Jifeng.objects.filter(name=teststudent)
         ms = Jifengrecord.objects.filter(name=teststudent)
         return render(request,'jifenduihuan.html',{'ms':ms,'mss':mss})
 
@@ -5050,8 +5049,8 @@ def Jifenzs(request):
         return redirect('../../testlogin')
     if request.method=='GET':
 
-        msss = get_object_or_404(Jifeng, name=teststudent)
-        mss=msss.sum
+        mss=Jifeng.objects.filter(name=teststudent)
+
 
         ms = Jifengrecord.objects.filter(name=teststudent)
         return render(request,'jifenzs.html',{'ms':ms,'mss':mss})
