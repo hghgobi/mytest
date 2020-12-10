@@ -280,7 +280,7 @@ class ClassnewsAdmin(admin.ModelAdmin):
 	list_display = ['time','name']
 @admin.register(Hardqs)
 class HardqsAdmin(admin.ModelAdmin):
-	list_display = ['id','nums','jihui','questiontext','questionanswer','answerdetail','killer','killer4','ornot','ornot4','ornots','ornots4','num','time']
+	list_display = ['id','nums','jihui','questiontext','questionanswer','answerdetail','killer','killer4','ornot','ornot4','ornots','ornots4','num','time','sum','sum4']
 @admin.register(Hardqsrecord)
 class HardqsrecordAdmin(admin.ModelAdmin):
 	list_display = ['idd','num','name','time']

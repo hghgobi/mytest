@@ -5175,7 +5175,7 @@ def Hardkiller(request):
         a = get_object_or_404(Hardqs, id=id)
         num=a.num
         if clas==3:
-            if a.ornot==1:
+            if a.sum==15:
                 data['error']='此题已被终结！请换一题挑战！'
                 data['status']='error'
                 return JsonResponse(data)
@@ -5192,12 +5192,17 @@ def Hardkiller(request):
                     return JsonResponse(data)
                 else:
                     if answer==a.questionanswer:
+                        a.sum+=1
+                        a.save()
                         data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
                         data['status'] = 'success'
-                        a.ornot=1
-                        a.ornots='已被终结'
+                        if a.sum==15:
+                            a.ornot = 1
+                            a.ornots = '已被终结'
+                        else:
+                            pass
                         a.nums+=1
-                        a.killer=teststudent
+                        a.killer=a.killer+','+teststudent
                         a.save()
                         reasons='通过终结难题'
                         for i in range(a.num):
@@ -5225,7 +5230,7 @@ def Hardkiller(request):
                         data['status'] = 'error'
                         return JsonResponse(data)
         else:
-            if a.ornot4==1:
+            if a.sum4==15:
                 data['error']='此题已被终结！请换一题挑战！'
                 data['status']='error'
                 return JsonResponse(data)
@@ -5242,12 +5247,15 @@ def Hardkiller(request):
                     return JsonResponse(data)
                 else:
                     if answer==a.questionanswer:
+                        a.sum4+=1
+                        a.save()
                         data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
                         data['status'] = 'success'
-                        a.ornot4=1
-                        a.ornots4='已被终结'
+                        if a.sum4==15:
+                            a.ornot4 = 1
+                            a.ornots4 = '已被终结'
                         a.nums+=1
-                        a.killer4=teststudent
+                        a.killer4=a.killer4+','+teststudent
                         a.save()
                         reasons='通过终结难题'
                         for i in range(a.num):

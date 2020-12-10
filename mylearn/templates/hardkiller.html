@@ -32,7 +32,7 @@
                 <p style="color:red">题目id:{{i.id}}</p>
                     <p style="color:red">{{i.ornots}}</p>
                     <p style="color:red">{{i.jihui}}次答题机会</p>
-                    <p style="color:red">终结者：{{i.killer}}</p>
+                    <p style="color:red">已有：{{i.sum}}人终结此题(上限15人)</p>
                     <p style="color:red">奖励：{{i.num}}个兑换码</p>
                     <p style="color:red">总挑战次数：{{i.nums}}次</p>
 						<a>=======================================================</a>
@@ -44,7 +44,7 @@
 <hr/>
                {%for i in ms %}
 
-                <p style="color:red">{{i.time}}-{{i.name}}终结了id为{{i.id}}难题，奖励{{i.num}}个兑换码</p>
+                <p style="color:red">{{i.time}}-{{i.name}}终结了难题，奖励{{i.num}}个兑换码</p>
 
                {% empty %}
                <p> 暂无消息 </p>

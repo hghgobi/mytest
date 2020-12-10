@@ -845,10 +845,12 @@ class Hardqs(models.Model):
 	ornots4 = models.CharField(max_length=50)
 	num = models.IntegerField()
 	time = models.DateTimeField(auto_now=True)
-	killer = models.CharField(max_length=50)
-	killer4 = models.CharField(max_length=50)
+	killer = models.CharField(max_length=5000)
+	killer4 = models.CharField(max_length=5000)
 	nums = models.IntegerField(default=0)
 	jihui = models.IntegerField(default=2)
+	sum = models.IntegerField(default=0)
+	sum4=models.IntegerField(default=0)
 	class Meta:
 		ordering = ['-time']
 
