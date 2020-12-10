@@ -3873,8 +3873,17 @@ def zkfx(request,id0,id1):
     id1 = id1
     if request.method == 'GET':
         teststudent = request.session.get("teststudent")
+
         if not teststudent:
             return redirect('../../testlogin')
+        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                           '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                           '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                           '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                           '沈珂如', '郑芷欣']:
+            clas = 3
+        else:
+            clas = 4
         if Newnames.objects.filter(zid = id0,jid = id1,name = teststudent):
             timess = int(time.time())
             timels0 = Costtimels.objects.filter(id0=id0, id1=id1, name=teststudent)
@@ -3893,7 +3902,7 @@ def zkfx(request,id0,id1):
                 jifen.sum+=5
                 jifen.save()
                 reason='每日基础练参与奖励'
-                Jifengrecord.addmss(teststudent,5,reason)
+                Jifengrecord.addmss(teststudent,5,reason,clas)
 
             shuxing=Zktishu.objects.filter(id0=id0,id1=id1)
             id2=shuxing[0].id2
@@ -4019,6 +4028,14 @@ def zkfx(request,id0,id1):
         teststudent = request.session.get("teststudent")
         if not teststudent:
             return redirect('../testlogin')
+        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                           '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                           '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                           '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                           '沈珂如', '郑芷欣']:
+            clas = 3
+        else:
+            clas = 4
 
         # costtime = request.POST.get('time')
         id0 = request.POST.get('zid')
@@ -4087,7 +4104,7 @@ def zkfx(request,id0,id1):
                     pass
                 num=25
                 if dd ==10:
-                    num=30
+                    num=35
                     reason = '每日基础对10题奖励'
                 else:
                     reason = '每日基础对9题奖励'
@@ -4118,14 +4135,7 @@ def zkfx(request,id0,id1):
                 #             pass
                 #         else:
                 #             break
-                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                   '沈珂如', '郑芷欣']:
-                    clas = 3
-                else:
-                    clas = 4
+
                     # Luckys.addmss(name, reasonss, value,clas)
                 # for i in range(10):
                 #     value = ''.join(random.sample(string.digits, 6))
@@ -4140,7 +4150,7 @@ def zkfx(request,id0,id1):
                 jifen=Jifeng.objects.filter(name=teststudent)
                 jifen.sum+=num
                 jifen.save()
-                Jifengrecord.addmss(teststudent,5,reason)
+                Jifengrecord.addmss(teststudent,num,reason,clas)
                 return redirect(paths)
             else:
                 try:
@@ -4165,11 +4175,13 @@ def zkfx(request,id0,id1):
                 fs = "A优秀"
 
                 ornot = "通过，"
-                num=3
+                num=25
                 if dd ==10:
-                    num=4
+                    num=35
+                    reason = '每日基础对10题奖励'
                 else:
-                    pass
+                    reason = '每日基础对9题奖励'
+
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
@@ -4183,27 +4195,30 @@ def zkfx(request,id0,id1):
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
                 name=teststudent
-                value=666666
-                reasonss = '通过每日基础练'
-                for j in range(num):
-                    for i in range(10):
-                        value = ''.join(random.sample(string.digits, 6))
-                        value = int(value)
-                        nnn = Luckys.objects.filter(name=name, num=value)
-                        if nnn:
-                            pass
-                        else:
-                            break
-                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                       '沈珂如', '郑芷欣']:
-                        clas = 3
-                    else:
-                        clas = 4
-                    Luckys.addmss(name, reasonss, value,clas)
-
+                # value=666666
+                # reasonss = '通过每日基础练'
+                # for j in range(num):
+                #     for i in range(10):
+                #         value = ''.join(random.sample(string.digits, 6))
+                #         value = int(value)
+                #         nnn = Luckys.objects.filter(name=name, num=value)
+                #         if nnn:
+                #             pass
+                #         else:
+                #             break
+                #     if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                #                        '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                #                        '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                #                        '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                #                        '沈珂如', '郑芷欣']:
+                #         clas = 3
+                #     else:
+                #         clas = 4
+                #     Luckys.addmss(name, reasonss, value,clas)
+                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen.sum+=num
+                jifen.save()
+                Jifengrecord.addmss(teststudent,num,reason,clas)
                 return redirect(paths)
             elif dd>=int(n1):
                 try:
@@ -4211,6 +4226,8 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 fs = "B良好"
+                reason='每日基础对8题奖励'
+                num=15
 
                 ornot = "通过，"
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
@@ -4224,28 +4241,31 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
-                name=teststudent
-                value=666666
-                reasonss = '通过每日基础练'
-                for j in range(2):
-                    for i in range(10):
-                        value = ''.join(random.sample(string.digits, 6))
-                        value = int(value)
-                        nnn = Luckys.objects.filter(name=name, num=value)
-                        if nnn:
-                            pass
-                        else:
-                            break
-                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                       '沈珂如', '郑芷欣']:
-                        clas = 3
-                    else:
-                        clas = 4
-                    Luckys.addmss(name, reasonss, value,clas)
-
+                # name=teststudent
+                # value=666666
+                # reasonss = '通过每日基础练'
+                # for j in range(2):
+                #     for i in range(10):
+                #         value = ''.join(random.sample(string.digits, 6))
+                #         value = int(value)
+                #         nnn = Luckys.objects.filter(name=name, num=value)
+                #         if nnn:
+                #             pass
+                #         else:
+                #             break
+                #     if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                #                        '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                #                        '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                #                        '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                #                        '沈珂如', '郑芷欣']:
+                #         clas = 3
+                #     else:
+                #         clas = 4
+                #     Luckys.addmss(name, reasonss, value,clas)
+                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen.sum+=num
+                jifen.save()
+                Jifengrecord.addmss(teststudent,num,reason,clas)
                 return redirect(paths)
 
             else:
@@ -4270,11 +4290,12 @@ def zkfx(request,id0,id1):
                 fs = "A优秀"
 
                 ornot = "通过，"
-                num=3
+                num=25
                 if dd ==10:
-                    num=4
+                    num=35
+                    reason = '每日基础对10题奖励'
                 else:
-                    pass
+                    reason = '每日基础对9题奖励'
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
@@ -4287,27 +4308,31 @@ def zkfx(request,id0,id1):
                     pass
                 # ms = Yuxinamezk.objects.filter(zid=id0, jid=id1)
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
-                name=teststudent
-                value=666666
-                reasonss = '通过每日基础练'
-                for j in range(num):
-                    for i in range(10):
-                        value = ''.join(random.sample(string.digits, 6))
-                        value = int(value)
-                        nnn = Luckys.objects.filter(name=name, num=value)
-                        if nnn:
-                            pass
-                        else:
-                            break
-                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                       '沈珂如', '郑芷欣']:
-                        clas = 3
-                    else:
-                        clas = 4
-                    Luckys.addmss(name, reasonss, value,clas)
+                # name=teststudent
+                # value=666666
+                # reasonss = '通过每日基础练'
+                # for j in range(num):
+                #     for i in range(10):
+                #         value = ''.join(random.sample(string.digits, 6))
+                #         value = int(value)
+                #         nnn = Luckys.objects.filter(name=name, num=value)
+                #         if nnn:
+                #             pass
+                #         else:
+                #             break
+                #     if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                #                        '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                #                        '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                #                        '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                #                        '沈珂如', '郑芷欣']:
+                #         clas = 3
+                #     else:
+                #         clas = 4
+                #     Luckys.addmss(name, reasonss, value,clas)
+                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen.sum+=num
+                jifen.save()
+                Jifengrecord.addmss(teststudent,num,reason,clas)
 
                 return redirect(paths)
             elif dd >= int(n1):
@@ -4316,6 +4341,8 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 fs = "B良好"
+                reason="每日基础练对8题奖励"
+                num=15
 
                 ornot = "通过，"
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
@@ -4329,27 +4356,31 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
-                name=teststudent
-                value=666666
-                reasonss = '通过每日基础练'
-                for j in range(2):
-                    for i in range(10):
-                        value = ''.join(random.sample(string.digits, 6))
-                        value = int(value)
-                        nnn = Luckys.objects.filter(name=name, num=value)
-                        if nnn:
-                            pass
-                        else:
-                            break
-                    if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                       '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                       '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                       '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                       '沈珂如', '郑芷欣']:
-                        clas = 3
-                    else:
-                        clas = 4
-                    Luckys.addmss(name, reasonss, value,clas)
+                # name=teststudent
+                # value=666666
+                # reasonss = '通过每日基础练'
+                # for j in range(2):
+                #     for i in range(10):
+                #         value = ''.join(random.sample(string.digits, 6))
+                #         value = int(value)
+                #         nnn = Luckys.objects.filter(name=name, num=value)
+                #         if nnn:
+                #             pass
+                #         else:
+                #             break
+                #     if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                #                        '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                #                        '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                #                        '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                #                        '沈珂如', '郑芷欣']:
+                #         clas = 3
+                #     else:
+                #         clas = 4
+                #     Luckys.addmss(name, reasonss, value,clas)
+                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen.sum+=num
+                jifen.save()
+                Jifengrecord.addmss(teststudent,num,reason,clas)
 
                 return redirect(paths)
 
@@ -4359,6 +4390,8 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 fs = "C及格"
+                reason="每日基础练及格奖励"
+                num=10
 
                 ornot = "通过，"
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
@@ -4372,31 +4405,37 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1) + '/' + str(bj)
-                name=teststudent
-                value=666666
-                reasonss = '通过每日基础练'
-                for i in range(10):
-                    value = ''.join(random.sample(string.digits, 6))
-                    value = int(value)
-                    nnn = Luckys.objects.filter(name=name, num=value)
-                    if nnn:
-                        pass
-                    else:
-                        break
-                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                   '沈珂如', '郑芷欣']:
-                    clas = 3
-                else:
-                    clas = 4
-                Luckys.addmss(name, reasonss, value,clas)
+                # name=teststudent
+                # value=666666
+                # reasonss = '通过每日基础练'
+                # for i in range(10):
+                #     value = ''.join(random.sample(string.digits, 6))
+                #     value = int(value)
+                #     nnn = Luckys.objects.filter(name=name, num=value)
+                #     if nnn:
+                #         pass
+                #     else:
+                #         break
+                # if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                #                    '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                #                    '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                #                    '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                #                    '沈珂如', '郑芷欣']:
+                #     clas = 3
+                # else:
+                #     clas = 4
+                # Luckys.addmss(name, reasonss, value,clas)
+                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen.sum+=num
+                jifen.save()
+                Jifengrecord.addmss(teststudent,num,reason,clas)
 
                 return redirect(paths)
             elif costtime>=limit1:
                 ornot = "通过，"
                 fs="C及格"
+                reason="每日基础练及格奖励"
+                num=10
 
                 try:
                     Yuxinamezk.objects.filter(zid=id0, jid=id1, name=teststudent).delete()
@@ -4414,26 +4453,30 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 paths = '../../zkfxnametg/' + str(id0) + '/' + str(id1)+'/'+str(bj)
-                name=teststudent
-                value=666666
-                reasonss = '通过每日基础练'
-                for i in range(10):
-                    value = ''.join(random.sample(string.digits, 6))
-                    value = int(value)
-                    nnn = Luckys.objects.filter(name=name, num=value)
-                    if nnn:
-                        pass
-                    else:
-                        break
-                if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
-                                   '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
-                                   '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
-                                   '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
-                                   '沈珂如', '郑芷欣']:
-                    clas = 3
-                else:
-                    clas = 4
-                Luckys.addmss(name, reasonss, value,clas)
+                # name=teststudent
+                # value=666666
+                # reasonss = '通过每日基础练'
+                # for i in range(10):
+                #     value = ''.join(random.sample(string.digits, 6))
+                #     value = int(value)
+                #     nnn = Luckys.objects.filter(name=name, num=value)
+                #     if nnn:
+                #         pass
+                #     else:
+                #         break
+                # if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪',
+                #                    '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩',
+                #                    '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭',
+                #                    '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵',
+                #                    '沈珂如', '郑芷欣']:
+                #     clas = 3
+                # else:
+                #     clas = 4
+                # Luckys.addmss(name, reasonss, value,clas)
+                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen.sum+=num
+                jifen.save()
+                Jifengrecord.addmss(teststudent,num,reason,clas)
 
                 return redirect(paths)
 
@@ -4677,29 +4720,39 @@ def Hwchange(request,time,stuid):
     mss.ornot='已订正'
     mss.save()
     ss = get_object_or_404(Homeworks, time=time, stuid=stuid)
-    reasons='通过'+ss.hwname+'获得'
+    num=25
+    reasons='通过'+ss.hwname+'获得'+str(num)+'积分'
     name=ss.name
     url='../../'+str(time)
-    value=66666
-    for j in range(3):
-        for i in range(10):
-            value = ''.join(random.sample(string.digits, 6))
-            value = int(value)
-            nnn = Luckys.objects.filter(name=name, num=value)
-            if nnn:
-                pass
-            else:
-                break
-        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
-                           '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴',
-                           '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵',
-                           '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
-            clas = 3
-        else:
-            clas = 4
-        Luckys.addmss(name, reasons, value,clas)
-
-
+    if name in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
+                       '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴',
+                       '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵',
+                       '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+        clas = 3
+    else:
+        clas = 4
+    # value=66666
+    # for j in range(3):
+    #     for i in range(10):
+    #         value = ''.join(random.sample(string.digits, 6))
+    #         value = int(value)
+    #         nnn = Luckys.objects.filter(name=name, num=value)
+    #         if nnn:
+    #             pass
+    #         else:
+    #             break
+    #     if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
+    #                        '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴',
+    #                        '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵',
+    #                        '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+    #         clas = 3
+    #     else:
+    #         clas = 4
+    #     Luckys.addmss(name, reasons, value,clas)
+    jifen = Jifeng.objects.filter(name=name)
+    jifen.sum += num
+    jifen.save()
+    Jifengrecord.addmss(name, num, reasons, clas)
     return redirect(url)
 
 def Hwaddnames(request,time,clas):
@@ -4930,6 +4983,145 @@ def Showluckys(request):
             data['error'] = '兑换码码已使用或不存在'
             data['status'] = 'error'
             return JsonResponse(data)
+def Jifenduihuan(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method=='GET':
+        mss=get_object_or_404(Jifeng,name=teststudent)
+        ms = Jifengrecord.objects.filter(name=teststudent)
+        return render(request,'jifenduihuan.html',{'ms':ms,'mss':mss})
+
+    if request.method=='POST':
+        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭',
+                           '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪',
+                           '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨',
+                           '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+            clas = 3
+        else:
+            clas = 4
+        data = {}
+        num = request.POST.get('num')
+        if num:
+            pass
+        else:
+            data['error'] = '不能为空！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        if num.isdigit():
+            pass
+        else:
+            data['error'] = '只能是数字'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        num=int(num)
+        nums=10*num
+        datass=Jifeng.objects.filter(name=teststudent)
+        nn=datass.sum
+        reason='积分兑换'+str(num)+'个'+'兑换码'
+        if nn>=nums:
+            nn=nn-nums
+            nn.save()
+            data['status'] = 'success'
+            data['error'] = '恭喜你获得' + str(num) + '个兑换码！'
+            Jifengrecord.addmss(teststudent, -nums, reason, clas)
+            name=teststudent
+            value=666666
+            reasonss = '通过积分兑换'
+            for j in range(num):
+                for i in range(10):
+                    value = ''.join(random.sample(string.digits, 6))
+                    value = int(value)
+                    nnn = Luckys.objects.filter(name=name, num=value)
+                    if nnn:
+                        pass
+                    else:
+                        break
+
+            Luckys.addmss(name, reasonss, value,clas)
+        else:
+            data['error'] = '积分不足！！'
+            data['status'] = 'error'
+        return JsonResponse(data)
+def Jifenzs(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method=='GET':
+        mss = get_object_or_404(Jifeng, name=teststudent)
+        ms = Jifengrecord.objects.filter(name=teststudent)
+        return render(request,'jifenzs.html',{'ms':ms,'mss':mss})
+
+    if request.method=='POST':
+        if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭',
+                           '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪',
+                           '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨',
+                           '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
+            clas = 3
+        else:
+            clas = 4
+        data = {}
+        num = request.POST.get('num')
+        phone = request.POST.get('phone')
+        namezs = request.POST.get('name')
+        if num and phone and namezs:
+            pass
+        else:
+            data['error'] = '不能为空！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        if num.isdigit() and phone.isdigit():
+            pass
+        else:
+            data['error'] = '只能是数字'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        if namezs==teststudent:
+            data['error'] = '不能送给自己'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        num=int(num)
+        phone=int(phone)
+        try:
+            get_object_or_404(Searchstudentid,phone=phone)
+        except:
+            data['error'] = '数据不存在，请重试！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        aa= get_object_or_404(Searchstudentid,phone=phone)
+        if aa.student==teststudent:
+            pass
+        else:
+            data['error'] = '号码验证失败，请重试！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        bb=Jifeng.objects.filter(name=namezs)
+        if bb:
+            pass
+        else:
+            data['error'] = '对方不存在，请重试！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        datass=Jifeng.objects.filter(name=teststudent)
+        nn=datass.sum
+        if nn>=num:
+            nn=nn-num
+            nn.save()
+            bb.sum+=num
+            bb.save()
+            data['status'] = 'success'
+            data['error'] = '赠送成功！！'
+            reason='赠送'+str(num)+'积分给'+namezs
+            reasons = teststudent+'赠送' + str(num) + '积分'
+            Jifengrecord.addmss(teststudent, -num, reason, clas)
+            Jifengrecord.addmss(namezs, num, reasons, clas)
+            return JsonResponse(data)
+
+        else:
+            data['error'] = '积分不足！！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+
 def Caculates(request):
     if request.method=='GET':
         value = 6666
