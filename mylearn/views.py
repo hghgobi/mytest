@@ -5017,6 +5017,11 @@ def Jifenduihuan(request):
             data['status'] = 'error'
             return JsonResponse(data)
         num=int(num)
+        if num==0:
+            data['error'] = '数量不对！！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+
         nums=10*num
         datass=get_object_or_404(Jifeng,name=teststudent)
         nn=datass.sum
@@ -5086,6 +5091,10 @@ def Jifenzs(request):
             data['status'] = 'error'
             return JsonResponse(data)
         num=int(num)
+        if num==0:
+            data['error'] = '数量不对！！'
+            data['status'] = 'error'
+            return JsonResponse(data)
         phone=int(phone)
         try:
             get_object_or_404(Searchstudentid,phone=phone)
