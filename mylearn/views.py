@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff
 import json
 from pylab import *
 import random
@@ -5175,6 +5175,13 @@ def Hardkiller(request):
         a = get_object_or_404(Hardqs, id=id)
         num=a.num
         if clas==3:
+            if teststudent in ['沈柯妤', '梁晨宇', '李航', '梁栩铭', '梁宇轩', '徐玮涵', '梁馨月', '蒋米墙', '李亦晴', '郑文婷', '陈镐', '罗懿轩', '蒋承延', '张宇麒', '蒋佳成', '李梦涵', '莫佳颖', '梁珂涵', '陈佳浩', '梁宸豪', '林惠婷', '王曼旭', '梁如妮', '王烁森', '李宗翰', '罗羽馨', '刘俊轩', '郑芷欣', '夏艺宵', '林奕如', '罗俊凯', '王倩', '戴麟懿']:
+                pass
+            else:
+                data['error'] = '答案错误！请再试一试！'
+                data['status'] = 'error'
+                return JsonResponse(data)
+
             if a.sum==15:
                 data['error']='此题已被终结！请换一题挑战！'
                 data['status']='error'
@@ -5234,6 +5241,12 @@ def Hardkiller(request):
                         data['status'] = 'error'
                         return JsonResponse(data)
         else:
+            if teststudent in ['陆宇浩', '陈俏宏', '陈梓烨', '梁仁杰', '梁耀晟', '李欣宜', '陈宇航', '梁隽炜', '卢以悦', '林佳璇', '陶悠然', '颜之依', '梁瑜珈', '廖木村', '林鹏豪', '梁祖铭', '徐翊然', '李佳英', '章涵茜', '李秋佟', '李超宇', '陆可馨', '李梓恒', '蔡锦隆', '许可欣', '沈佳瑶', '尚榆皓', '李聿轩', '沈修平', '蒋依洋', '梁杰', '陈宇珅']:
+                pass
+            else:
+                data['error'] = '答案错误！请再试一试！'
+                data['status'] = 'error'
+                return JsonResponse(data)
             if a.sum4==15:
                 data['error']='此题已被终结！请换一题挑战！'
                 data['status']='error'
@@ -5319,6 +5332,10 @@ def Hardkillershow(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
+    try:
+        get_object_or_404(Hardkilleronoff,pk=1)
+    except:
+        return HttpResponse('做题期间暂时关闭！！！！')
     aaa=['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
     if teststudent in aaa:
         clas=3
