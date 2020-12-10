@@ -5182,7 +5182,7 @@ def Hardkiller(request):
                 data['status'] = 'error'
                 return JsonResponse(data)
 
-            if a.sum==15:
+            if a.sum==20:
                 data['error']='此题已被终结！请换一题挑战！'
                 data['status']='error'
                 return JsonResponse(data)
@@ -5206,7 +5206,7 @@ def Hardkiller(request):
                         a.save()
                         data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
                         data['status'] = 'success'
-                        if a.sum==15:
+                        if a.sum==20:
                             a.ornot = 1
                             a.ornots = '已被终结'
                         else:
@@ -5247,7 +5247,7 @@ def Hardkiller(request):
                 data['error'] = '答案错误！请再试一试！'
                 data['status'] = 'error'
                 return JsonResponse(data)
-            if a.sum4==15:
+            if a.sum4==20:
                 data['error']='此题已被终结！请换一题挑战！'
                 data['status']='error'
                 return JsonResponse(data)
@@ -5272,7 +5272,7 @@ def Hardkiller(request):
                         a.save()
                         data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
                         data['status'] = 'success'
-                        if a.sum4==15:
+                        if a.sum4==20:
                             a.ornot4 = 1
                             a.ornots4 = '已被终结'
                         a.nums+=1

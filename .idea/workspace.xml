@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="377">
-              <caret line="5336" column="19" lean-forward="true" selection-start-line="5336" selection-start-column="19" selection-end-line="5336" selection-end-column="19" />
+            <state relative-caret-position="287">
+              <caret line="5174" column="44" lean-forward="true" selection-start-line="5174" selection-start-column="44" selection-end-line="5174" selection-end-column="44" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -805,6 +805,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="362">
+          <caret line="894" column="6" lean-forward="true" selection-start-line="894" selection-start-column="6" selection-end-line="894" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/caculate.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -816,20 +826,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="362">
-          <caret line="894" column="6" lean-forward="true" selection-start-line="894" selection-start-column="6" selection-end-line="894" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="5336" column="19" lean-forward="true" selection-start-line="5336" selection-start-column="19" selection-end-line="5336" selection-end-column="19" />
+        <state relative-caret-position="287">
+          <caret line="5174" column="44" lean-forward="true" selection-start-line="5174" selection-start-column="44" selection-end-line="5174" selection-end-column="44" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
