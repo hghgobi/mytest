@@ -946,3 +946,23 @@ class Draws(models.Model):
 	def addmss(cls,idd,sum,num,pl):
 		addms = cls(idd=idd,sum=sum,num=num,pl=pl)
 		addms.save()
+
+class Jifeng(models.Model):
+	name = models.CharField(max_length=50)
+	sum = models.IntegerField(default=0)
+	time = models.DateTimeField(auto_now=True)
+	clas = models.IntegerField(default=0)
+	class Meta:
+		ordering = ['-time']
+class Jifengrecord(models.Model):
+	name= models.IntegerField()
+	num =models.IntegerField()
+	reason = models.CharField(max_length=50)
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,num,reason):
+		addms = cls(name=name,num=num,reason=reason)
+		addms.save()
