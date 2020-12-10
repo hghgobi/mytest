@@ -5184,12 +5184,15 @@ def Hardkiller(request):
                 if b:
                     pass
                 else:
-                    Hardqsrecord.addmss(id,0,teststudent)
+                    Hardqsrecord.addmss(id,0,teststudent,0)
                 c = get_object_or_404(Hardqsrecord,idd=id,name=teststudent)
                 if c.num>=a.jihui:
                     data['error'] = '此题'+str(a.jihui)+'次机会已用完！请换一题挑战！'
                     data['status'] = 'error'
                     return JsonResponse(data)
+                elif c.ornot==1:
+                    data['error'] = '此题'+str(a.jihui)+'你已终结！请换一题挑战！'
+                    data['status'] = 'error'
                 else:
                     if answer==a.questionanswer:
                         a.sum+=1
@@ -5217,6 +5220,7 @@ def Hardkiller(request):
                                     break
                             Luckys.addmss(teststudent, reasons, value,clas)
                         c.num += 1
+                        c.ornot=1
                         c.save()
                         Hardqsname.addmss(id,num,teststudent,clas)
                         return JsonResponse(data)
@@ -5239,12 +5243,16 @@ def Hardkiller(request):
                 if b:
                     pass
                 else:
-                    Hardqsrecord.addmss(id,0,teststudent)
+                    Hardqsrecord.addmss(id,0,teststudent,0)
                 c = get_object_or_404(Hardqsrecord,idd=id,name=teststudent)
                 if c.num>=a.jihui:
                     data['error'] = '此题'+str(a.jihui)+'次机会已用完！请换一题挑战！'
                     data['status'] = 'error'
                     return JsonResponse(data)
+                elif c.ornot==1:
+                    data['error'] = '此题'+str(a.jihui)+'你已终结！请换一题挑战！'
+                    data['status'] = 'error'
+
                 else:
                     if answer==a.questionanswer:
                         a.sum4+=1
@@ -5270,6 +5278,7 @@ def Hardkiller(request):
                                     break
                             Luckys.addmss(teststudent, reasons, value,clas)
                         c.num += 1
+                        c.ornot=1
                         c.save()
                         Hardqsname.addmss(id,num,teststudent,clas)
                         return JsonResponse(data)

@@ -859,12 +859,13 @@ class Hardqsrecord(models.Model):
 	num = models.IntegerField()
 	name = models.CharField(max_length=500)
 	time = models.DateTimeField(auto_now=True)
+	ornot=models.IntegerField(default=0)
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,idd,num,name):
-		addms = cls(idd=idd,num=num,name=name)
+	def addmss(cls,idd,num,name,ornot):
+		addms = cls(idd=idd,num=num,name=name,ornot=ornot)
 		addms.save()
 class Hardqsname(models.Model):
 	idd= models.IntegerField()
