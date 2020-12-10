@@ -5048,7 +5048,9 @@ def Jifenzs(request):
     if not teststudent:
         return redirect('../../testlogin')
     if request.method=='GET':
+
         mss = get_object_or_404(Jifeng, name=teststudent)
+
         ms = Jifengrecord.objects.filter(name=teststudent)
         return render(request,'jifenzs.html',{'ms':ms,'mss':mss})
 

@@ -955,7 +955,7 @@ class Jifeng(models.Model):
 	class Meta:
 		ordering = ['-time']
 class Jifengrecord(models.Model):
-	name= models.IntegerField()
+	name= models.CharField(max_length=50)
 	num =models.IntegerField()
 	reason = models.CharField(max_length=50)
 	time = models.DateTimeField(auto_now=True)
