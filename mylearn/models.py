@@ -959,10 +959,11 @@ class Jifengrecord(models.Model):
 	num =models.IntegerField()
 	reason = models.CharField(max_length=50)
 	time = models.DateTimeField(auto_now=True)
+	clas =models.IntegerField(default=0)
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,name,num,reason):
-		addms = cls(name=name,num=num,reason=reason)
+	def addmss(cls,name,num,reason,clas):
+		addms = cls(name=name,num=num,reason=reason,clas=clas)
 		addms.save()
