@@ -5,11 +5,12 @@
         <table align="center">
             <tbody>
                 <tr>
-                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入题目id:</font></td>
-                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="id"></td>
+<!--                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入题目id:</font></td>-->
+<!--                    <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="id"></td>-->
+                    <td><input id="idd" type="hidden" style="color:red;width:180px;height:30px;font-size:16px" name="id" value="" ></td>
                 </tr>
                  <tr>
-                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;请输入你答案:</font></td>
+                    <td><font size="5">(答题前先选中题目)请输入你答案:</font></td>
                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="answer"></td>
                 </tr>
                 <tr>
@@ -27,9 +28,11 @@
 <div>
                {%for i in mss %}
                 <div style="border:3px solid red">
+                    <input name="xx" type="radio" value="{{i.id}}" onclick="Select()" >
                  <img id =6 src="{{i.questiontext.url}}" width="100%" height="auto"/><br/>
 
-                <p style="color:red">题目id:{{i.id}}</p>
+<!--                <p style="color:red">题目id:{{i.id}}</p>-->
+
                     <p style="color:red">{{i.ornots}}</p>
                     <p style="color:red">{{i.jihui}}次答题机会</p>
                     <p style="color:red">已有：{{i.sum}}人终结此题(上限20人)</p>
@@ -49,6 +52,17 @@
                {% empty %}
                <p> 暂无消息 </p>
                {% endfor %}
+<script language="javascript" type="text/javascript">
+    function Select(){
+    var xxs=document.getElementsByName("xx");
+    for(var i=0;i<xxs.length;i++){
+    if(xxs[i].checked){
+    document.getElementById("idd").value=xxs[i].value;
+    }
+    }
+    }
+
+</script>
 <script language="javascript" type="text/javascript">
          $("#addtxl").submit(function(){
 
