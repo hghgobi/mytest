@@ -5022,8 +5022,8 @@ def Jifenduihuan(request):
         nn=datass.sum
         reason='积分兑换'+str(num)+'个'+'兑换码'
         if nn>=nums:
-            nn=nn-nums
-            nn.save()
+            datass.sum=nn-nums
+            datass.save()
             data['status'] = 'success'
             data['error'] = '恭喜你获得' + str(num) + '个兑换码！'
             Jifengrecord.addmss(teststudent, -nums, reason, clas)
@@ -5111,8 +5111,8 @@ def Jifenzs(request):
         bb=get_object_or_404(Jifeng,name=namezs)
         nn=datass.sum
         if nn>=num:
-            nn=nn-num
-            nn.save()
+            datass.sum=nn-num
+            datass.save()
             bb.sum+=num
             bb.save()
             data['status'] = 'success'
