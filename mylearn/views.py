@@ -3898,7 +3898,7 @@ def zkfx(request,id0,id1):
                 Yuxitestcount.addyxcount(id0, id1,teststudent,cishu,timess)
             except:
                 Yuxitestcount.addyxcount(id0, id1,teststudent,1,timess)
-                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen=get_object_or_404(Jifeng,name=teststudent)
                 jifen.sum+=5
                 jifen.save()
                 reason='每日基础练参与奖励'
@@ -4147,7 +4147,7 @@ def zkfx(request,id0,id1):
                 #         break
                 # reason='通过'+str(id0)+str(id1)+'每日10题基础练习'
                 # Lucky.addmss(teststudent,reason,value)
-                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen=get_object_or_404(Jifeng,name=teststudent)
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
@@ -4215,7 +4215,7 @@ def zkfx(request,id0,id1):
                 #     else:
                 #         clas = 4
                 #     Luckys.addmss(name, reasonss, value,clas)
-                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen=get_object_or_404(Jifeng,name=teststudent)
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
@@ -4262,7 +4262,7 @@ def zkfx(request,id0,id1):
                 #     else:
                 #         clas = 4
                 #     Luckys.addmss(name, reasonss, value,clas)
-                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen=get_object_or_404(Jifeng,name=teststudent)
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
@@ -4329,7 +4329,7 @@ def zkfx(request,id0,id1):
                 #     else:
                 #         clas = 4
                 #     Luckys.addmss(name, reasonss, value,clas)
-                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen=get_object_or_404(Jifeng,name=teststudent)
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
@@ -4377,7 +4377,7 @@ def zkfx(request,id0,id1):
                 #     else:
                 #         clas = 4
                 #     Luckys.addmss(name, reasonss, value,clas)
-                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen=get_object_or_404(Jifeng,name=teststudent)
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
@@ -4425,7 +4425,7 @@ def zkfx(request,id0,id1):
                 # else:
                 #     clas = 4
                 # Luckys.addmss(name, reasonss, value,clas)
-                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen=get_object_or_404(Jifeng,name=teststudent)
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
@@ -4473,7 +4473,7 @@ def zkfx(request,id0,id1):
                 # else:
                 #     clas = 4
                 # Luckys.addmss(name, reasonss, value,clas)
-                jifen=Jifeng.objects.filter(name=teststudent)
+                jifen=get_object_or_404(Jifeng,name=teststudent)
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
@@ -4749,7 +4749,7 @@ def Hwchange(request,time,stuid):
     #     else:
     #         clas = 4
     #     Luckys.addmss(name, reasons, value,clas)
-    jifen = Jifeng.objects.filter(name=name)
+    jifen = get_object_or_404(Jifeng,name=teststudent)
     jifen.sum += num
     jifen.save()
     Jifengrecord.addmss(name, num, reasons, clas)
@@ -5016,7 +5016,7 @@ def Jifenduihuan(request):
             return JsonResponse(data)
         num=int(num)
         nums=10*num
-        datass=Jifeng.objects.filter(name=teststudent)
+        datass=get_object_or_404(Jifeng,name=teststudent)
         nn=datass.sum
         reason='积分兑换'+str(num)+'个'+'兑换码'
         if nn>=nums:
@@ -5050,8 +5050,6 @@ def Jifenzs(request):
     if request.method=='GET':
 
         mss=Jifeng.objects.filter(name=teststudent)
-
-
         ms = Jifengrecord.objects.filter(name=teststudent)
         return render(request,'jifenzs.html',{'ms':ms,'mss':mss})
 
@@ -5105,7 +5103,8 @@ def Jifenzs(request):
             data['error'] = '对方不存在，请重试！'
             data['status'] = 'error'
             return JsonResponse(data)
-        datass=Jifeng.objects.filter(name=teststudent)
+        datass=get_object_or_404(Jifeng,name=teststudent)
+        bb=get_object_or_404(Jifeng,name=namezs)
         nn=datass.sum
         if nn>=num:
             nn=nn-num

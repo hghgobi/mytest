@@ -12,8 +12,12 @@
                          <form id="addtxl" onsubmit="return false" action="{% url 'jfzs' %}" method="POST" style="overflow:hidden">
         <table>
             <tbody>
-                 <tr>
+                             <tr>
                      <td><font size="5">你有{{mss.sum}}积分</font></td>
+
+                </tr>
+                 <tr>
+
                     <td><font size="5">请输入赠送积分数</font></td>
                      <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="num"></td>
                 </tr>
@@ -49,7 +53,7 @@
              <td class="warning" style="vertical-align: middle;"><font size="4">时间</font></td>
 
         </tr>
-        {%for i in mss %}
+        {%for i in ms %}
             <tr id="hys" >
                 <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
                  <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}</font></td>
