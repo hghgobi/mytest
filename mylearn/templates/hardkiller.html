@@ -28,7 +28,7 @@
 <div>
                {%for i in mss %}
                 <div style="border:3px solid red">
-                    <input name="xx" type="radio" value="{{i.id}}" onclick="Select()" >
+                    <input name="xx" type="radio" value="{{i.id}}" onclick="Select()" style="width:10px;height:10px">
                  <img id =6 src="{{i.questiontext.url}}" width="100%" height="auto"/><br/>
 
 <!--                <p style="color:red">题目id:{{i.id}}</p>-->
@@ -78,18 +78,16 @@
 
                     if(data['status']=="success"){
                     alert(data['error']);
-             setTimeout(function () {
-                    window.parent.location.reload();
-                }, 200);
+
 
 
                     }else{
                         // 显示错误信息
                         $("#error").text(data['error']);
                         alert(data['error']);
-                        setTimeout(function () {
-                    window.parent.location.reload();
-                }, 200);
+<!--                        setTimeout(function () {-->
+<!--                    window.parent.location.reload();-->
+<!--                }, 200);-->
                     }
                 },
                 error: function(xhr){

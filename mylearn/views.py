@@ -5198,8 +5198,9 @@ def Hardkiller(request):
                     data['status'] = 'error'
                     return JsonResponse(data)
                 elif c.ornot==1:
-                    data['error'] = '此题'+str(a.jihui)+'你已终结！请换一题挑战！'
+                    data['error'] = '此题你已终结！请换一题挑战！'
                     data['status'] = 'error'
+                    return JsonResponse(data)
                 else:
                     if answer==a.questionanswer:
                         a.sum+=1
@@ -5265,6 +5266,7 @@ def Hardkiller(request):
                 elif c.ornot==1:
                     data['error'] = '此题'+str(a.jihui)+'你已终结！请换一题挑战！'
                     data['status'] = 'error'
+                    return JsonResponse(data)
 
                 else:
                     if answer==a.questionanswer:
