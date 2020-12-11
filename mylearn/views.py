@@ -5393,7 +5393,7 @@ def Hardkiller(request):
         a = get_object_or_404(Hardqs, id=id)
         num=a.num
         if clas==3:
-            if teststudent in ['沈柯妤', '梁晨宇', '李航', '梁栩铭', '梁宇轩', '徐玮涵', '梁馨月', '蒋米墙', '李亦晴', '郑文婷', '陈镐', '罗懿轩', '蒋承延', '张宇麒', '蒋佳成', '李梦涵', '莫佳颖', '梁珂涵', '陈佳浩', '梁宸豪', '林惠婷', '王曼旭', '梁如妮', '王烁森', '李宗翰', '罗羽馨', '刘俊轩', '郑芷欣', '夏艺宵', '林奕如', '罗俊凯', '王倩', '戴麟懿']:
+            if teststudent in ['沈珂如','沈柯妤', '梁晨宇', '李航', '梁栩铭', '梁宇轩', '徐玮涵', '梁馨月', '蒋米墙', '李亦晴', '郑文婷', '陈镐', '罗懿轩', '蒋承延', '张宇麒', '蒋佳成', '李梦涵', '莫佳颖', '梁珂涵', '陈佳浩', '梁宸豪', '林惠婷', '王曼旭', '梁如妮', '王烁森', '李宗翰', '罗羽馨', '刘俊轩', '郑芷欣', '夏艺宵', '林奕如', '罗俊凯', '王倩', '戴麟懿']:
                 pass
             else:
                 data['error'] = '答案错误！请再试一试！'
@@ -5502,18 +5502,26 @@ def Hardkiller(request):
                         a.nums+=1
                         a.killer4=a.killer4+','+teststudent
                         a.save()
-                        reasons='通过终结难题'
-                        for i in range(a.num):
-                            value = 66666
-                            for i in range(10):
-                                value = ''.join(random.sample(string.digits, 6))
-                                value = int(value)
-                                nnn = Luckys.objects.filter(name=teststudent, num=value)
-                                if nnn:
-                                    pass
-                                else:
-                                    break
-                            Luckys.addmss(teststudent, reasons, value,clas)
+                        reasons='通过终结难题+'+str(num)+'积分'
+                        # for i in range(a.num):
+                        #                         #     value = 66666
+                        #                         #     for i in range(10):
+                        #                         #         value = ''.join(random.sample(string.digits, 6))
+                        #                         #         value = int(value)
+                        #                         #         nnn = Luckys.objects.filter(name=teststudent, num=value)
+                        #                         #         if nnn:
+                        #                         #             pass
+                        #                         #         else:
+                        #                         #             break
+                        #                         #     Luckys.addmss(teststudent, reasons, value,clas)
+                        #                         # c.num += 1
+                        #                         # c.ornot=1
+                        #                         # c.save()
+                        #                         # Hardqsname.addmss(id,num,teststudent,clas)
+                        d =get_object_or_404(Jifeng,name=teststudent)
+                        Jifengrecord.addmss(teststudent,num,reasons,clas)
+                        d.sum=d.sum+num
+                        d.save()
                         c.num += 1
                         c.ornot=1
                         c.save()

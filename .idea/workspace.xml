@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/templates/hardkiller.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/hardkiller.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/templates/hardkiller4.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/hardkiller4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/hardkillershow.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/hardkillershow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/hardkillershow4.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/hardkillershow4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10">
-              <caret line="5361" column="8" selection-start-line="5361" selection-start-column="4" selection-end-line="5361" selection-end-column="8" />
+            <state relative-caret-position="91">
+              <caret line="5369" column="14" lean-forward="true" selection-start-line="5369" selection-start-column="14" selection-end-line="5369" selection-end-column="14" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -52,8 +52,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+            <state relative-caret-position="536">
+              <caret line="49" column="78" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller4.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
+            <state relative-caret-position="1410">
+              <caret line="47" column="81" lean-forward="true" selection-start-line="47" selection-start-column="81" selection-end-line="47" selection-end-column="81" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -238,15 +238,15 @@
         <option value="$PROJECT_DIR$/mylearn/models.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/jifenzs.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/jifenduihuan.html" />
-        <option value="$PROJECT_DIR$/mylearn/views.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/hardkillershow.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/hardkillershow4.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/hardkiller.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/hardkiller4.html" />
+        <option value="$PROJECT_DIR$/mylearn/views.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1525" />
@@ -785,38 +785,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10">
-          <caret line="5361" column="8" selection-start-line="5361" selection-start-column="4" selection-end-line="5361" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkillershow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkillershow4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="566">
-          <caret line="38" column="56" selection-start-line="38" selection-start-column="56" selection-end-line="38" selection-end-column="56" />
+        <state relative-caret-position="536">
+          <caret line="49" column="78" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -831,8 +803,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller4.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="36" column="56" selection-start-line="36" selection-start-column="56" selection-end-line="36" selection-end-column="56" />
+        <state relative-caret-position="1410">
+          <caret line="47" column="81" lean-forward="true" selection-start-line="47" selection-start-column="81" selection-end-line="47" selection-end-column="81" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -841,6 +813,34 @@
             <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#3;n#div#0;n#div#1;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkillershow4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="74" selection-start-line="7" selection-start-column="74" selection-end-line="7" selection-end-column="74" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkillershow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="7" column="73" selection-start-line="7" selection-start-column="73" selection-end-line="7" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="5369" column="14" lean-forward="true" selection-start-line="5369" selection-start-column="14" selection-end-line="5369" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
           </folding>
         </state>
       </provider>
