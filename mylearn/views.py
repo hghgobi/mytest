@@ -5423,7 +5423,7 @@ def Hardkiller(request):
                     if answer==a.questionanswer:
                         a.sum+=1
                         a.save()
-                        data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个兑换码！'
+                        data['error'] = '恭喜你成为此题终结者！-'+'获得'+str(a.num)+'个积分！'
                         data['status'] = 'success'
                         if a.sum==20:
                             a.ornot = 1
@@ -5433,18 +5433,22 @@ def Hardkiller(request):
                         a.nums+=1
                         a.killer=a.killer+','+teststudent
                         a.save()
-                        reasons='通过终结难题'
-                        for i in range(a.num):
-                            value = 66666
-                            for i in range(10):
-                                value = ''.join(random.sample(string.digits, 6))
-                                value = int(value)
-                                nnn = Luckys.objects.filter(name=teststudent, num=value)
-                                if nnn:
-                                    pass
-                                else:
-                                    break
-                            Luckys.addmss(teststudent, reasons, value,clas)
+                        reasons='通过终结难题+'+str(num)+'积分'
+                        # for i in range(a.num):
+                        #     value = 66666
+                        #     for i in range(10):
+                        #         value = ''.join(random.sample(string.digits, 6))
+                        #         value = int(value)
+                        #         nnn = Luckys.objects.filter(name=teststudent, num=value)
+                        #         if nnn:
+                        #             pass
+                        #         else:
+                        #             break
+                        #     Luckys.addmss(teststudent, reasons, value,clas)
+                        d =get_object_or_404(Jifeng,name=teststudent)
+                        Jifengrecord.addmss(teststudent,num,reasons,clas)
+                        d.sum=d.sum+num
+                        d.save()
                         c.num += 1
                         c.ornot=1
                         c.save()
