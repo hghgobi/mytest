@@ -5044,8 +5044,9 @@ def Jifenduihuan(request):
                         pass
                     else:
                         break
+                Luckys.addmss(name, reasonss, value, clas)
 
-            Luckys.addmss(name, reasonss, value,clas)
+
         else:
             data['error'] = '积分不足！！'
             data['status'] = 'error'

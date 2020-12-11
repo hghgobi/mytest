@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="5094" column="36" lean-forward="true" selection-start-line="5094" selection-start-column="36" selection-end-line="5094" selection-end-column="36" />
+            <state relative-caret-position="670">
+              <caret line="5046" column="58" selection-start-line="5046" selection-start-column="58" selection-end-line="5046" selection-end-column="58" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -241,7 +241,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -279,6 +278,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -742,8 +742,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="5094" column="36" lean-forward="true" selection-start-line="5094" selection-start-column="36" selection-end-line="5094" selection-end-column="36" />
+        <state relative-caret-position="670">
+          <caret line="5046" column="58" selection-start-line="5046" selection-start-column="58" selection-end-line="5046" selection-end-column="58" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
