@@ -1,0 +1,104 @@
+{% extends 'base2.html' %}  
+{% block content %}
+
+<script type="text/javascript">
+urls={{htmls|safe}}
+window.onload=function(){
+var urlsum='';
+for (var i=0;i<urls.length;i++)
+{
+
+   urlsum+= urls[i];
+}
+studentlist.innerHTML=urlsum;
+}
+</script>
+<div>
+      <form id="addtxl" onsubmit="return false" action="{% url 'hwreward' %}" method="POST" style="overflow:hidden">
+        <table>
+            <tbody>
+                <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A+</font></td>
+                    <td><input type="radio" style="color:red;width:180px;height:30px;font-size:16px" name="option" value="60"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A</font></td>
+                    <td><input type="radio" style="color:red;width:180px;height:30px;font-size:16px" name="option" value="45"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B+</font></td>
+                    <td><input type="radio" style="color:red;width:180px;height:30px;font-size:16px" name="option" value="25"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B</font></td>
+                    <td><input type="radio" style="color:red;width:180px;height:30px;font-size:16px" name="option" value="15"></td>
+                </tr>
+                 <tr>
+                    <td><font size="5">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C</font></td>
+                    <td><input type="radio" style="color:red;width:180px;height:30px;font-size:16px" name="option" value="5"></td>
+                </tr>
+                 <tr>
+                     <td><input type="hidden" style="color:red;width:180px;height:30px;font-size:16px" name="stuid" value=""></td>
+                </tr>
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="发放奖励" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+</div>
+
+<div id="bg" align="center" style="font-size:30px">
+    <ul id="studentlist">
+
+    </ul>
+</div>
+<script type="text/javascript">
+    function addname(){
+    var name=document.getElementsByName("student");
+    for (var i=0; i<name.length;i++)
+    {if(name[i].checked){
+    document.getElementById("stuid").value=name[i].value;
+    }
+    }
+
+    }
+</script>
+<script type="text/javascript">
+        $("#addtxl").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'hwreward' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+
+                    if(data['status']=="success"){
+                    alert("发放成功！");
+             setTimeout(function () {
+                    window.parent.location.reload();
+                }, 200);
+
+
+                    }else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>
+{% endblock %}
