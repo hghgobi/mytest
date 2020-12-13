@@ -132,7 +132,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('addms/<int:id>', views.Addsaoma),
                path('jfdh', views.Jifenduihuan,name='jfdh'),
                path('jfzs', views.Jifenzs, name='jfzs'),
-               path('hwreward/<int:time>/<int:clas>', views.Hwreward, name='hwreward'),
+               path('hwreward/<int:time>', views.Hwreward, name='hwreward'),
                # path('gengxin', views.Gengxin),
 
 
