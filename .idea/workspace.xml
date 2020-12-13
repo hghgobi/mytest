@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/hwrewardshow.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/hwrewardshow.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="440">
-              <caret line="4779" column="93" selection-start-line="4779" selection-start-column="93" selection-end-line="4779" selection-end-column="93" />
+              <caret line="4779" column="99" selection-start-line="4779" selection-start-column="99" selection-end-line="4779" selection-end-column="99" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -28,8 +27,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/hwrewardshow.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="482">
-              <caret line="94" column="13" lean-forward="true" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="21" />
+            <state relative-caret-position="-748">
+              <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+              <folding>
+                <element signature="n#style#0;n#input#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -37,8 +39,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="54" selection-start-line="54" selection-end-line="64" selection-end-column="9" />
+            <state relative-caret-position="1530">
+              <caret line="51" column="26" lean-forward="true" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -799,8 +801,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="54" selection-start-line="54" selection-end-line="64" selection-end-column="9" />
+        <state relative-caret-position="1530">
+          <caret line="51" column="26" lean-forward="true" selection-start-line="51" selection-start-column="26" selection-end-line="51" selection-end-column="26" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
@@ -815,15 +817,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/hwrewardshow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="94" column="13" lean-forward="true" selection-start-line="94" selection-start-column="13" selection-end-line="94" selection-end-column="21" />
+        <state relative-caret-position="-748">
+          <caret line="38" column="21" lean-forward="true" selection-start-line="38" selection-start-column="21" selection-end-line="38" selection-end-column="21" />
+          <folding>
+            <element signature="n#style#0;n#input#0;n#td#1;n#tr#5;n#tbody#0;n#table#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="440">
-          <caret line="4779" column="93" selection-start-line="4779" selection-start-column="93" selection-end-line="4779" selection-end-column="93" />
+          <caret line="4779" column="99" selection-start-line="4779" selection-start-column="99" selection-end-line="4779" selection-end-column="99" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
