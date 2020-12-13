@@ -968,3 +968,16 @@ class Jifengrecord(models.Model):
 	def addmss(cls,name,num,reason,clas):
 		addms = cls(name=name,num=num,reason=reason,clas=clas)
 		addms.save()
+class Homewrecord(models.Model):
+	name= models.CharField(max_length=50)
+	hwname =models.IntegerField()
+	qk = models.CharField(max_length=50)
+	time = models.DateTimeField(auto_now=True)
+	times= models.CharField(max_length=50)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,hwname,qk,times):
+		addms = cls(name=name,hwname=hwname,qk=qk,times=times)
+		addms.save()
