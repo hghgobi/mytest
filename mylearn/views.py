@@ -4803,7 +4803,7 @@ def Hwreward(request,time):
                     hwname=ornots.hwname
             except:
                 pass
-        return render(request, 'hwrewardshow.html', {'htmls': json.dumps(htmls),'hwname':hwname})
+        return render(request, 'hwrewardshow.html', {'htmls': json.dumps(htmls),'hwname':hwname,'time':time})
 
 def Hwrewardpost(request):
     teststudent = request.session.get("teststudent")
@@ -4814,6 +4814,7 @@ def Hwrewardpost(request):
         stuid = request.POST.get('stuid')
         dj = request.POST.get('option')
         hwname = request.POST.get('hwname')
+        time =request.POST.get('time')
         data={}
         if teststudent not in names:
             data['status'] = 'error'
@@ -4850,6 +4851,9 @@ def Hwrewardpost(request):
         Jifengrecord.addmss(name,num,reason,clas)
         data['status']='success'
         data['error']='奖励'+str(stuid)+dj+'成功！'
+        ssss=get_object_or_404(Homeworks,time=time,name=name)
+        ssss.ornots='已发放'
+        ssss.save()
         return JsonResponse(data)
 
 
