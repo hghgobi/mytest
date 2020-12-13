@@ -4789,6 +4789,22 @@ def Hwreward(request,time):
         data['status']='success'
         data['error']=str(stuid)+dj
         return JsonResponse(data)
+def Hwrewardpost(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    names=['陆宇浩','陶悠然','李佳英','李秋佟','卢以悦','陈俏宏','梁瑜珈','尚榆皓','颜之依','李欣宜','梁晨宇','梁宇轩','刘俊轩','沈柯妤','李航','李亦晴','梁珂涵','陈镐','蒋佳成','张宇麒']
+    if request.method=='POST':
+        stuid = request.POST.get('stuid')
+        dj = request.POST.get('option')
+        data={}
+        if teststudent not in names:
+            data['status'] = 'error'
+            data['error'] = "你不是组长，没有权限！"
+            return JsonResponse(data)
+        data['status']='success'
+        data['error']=str(stuid)+dj
+        return JsonResponse(data)
 
 
 
