@@ -4674,7 +4674,7 @@ def Hwmanage(request):
             gg=get_object_or_404(Homeworksid,time=j)
             url='http://35925.top/'+str(j)
             name=gg.hwname
-            html = '''<a href="%s" target="_blank">%s -管理作业订正</a><p></p><hr style="size:5px">''' % (url, name)
+            html = '''<a href="%s" target="_blank">%s -管理作业订正</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (url, name)
             htmls.append(html)
         except:
             pass
@@ -4700,7 +4700,7 @@ def Hwshow(request,time):
             else:
                 url = 'http://35925.top/' + str(time) + '/' + str(j[1])
                 name = j[0]
-                html = '''<a href="%s" target="_blank">%s -%s-点击确认订正</a><p></p><hr style="size:5px">''' % (url, name,ornots.hwname)
+                html = '''<a href="%s" target="_blank">%s -%s-点击确认订正</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (url, name,ornots.hwname)
                 htmls.append(html)
         except:
             pass
@@ -4776,7 +4776,7 @@ def Hwrewardmanage(request):
             gg=get_object_or_404(Homeworksid,time=j)
             url='http://35925.top/hwreward/'+str(j)
             name=gg.hwname
-            html = '''<a href="%s" target="_blank">%s -奖励积分管理</a><p></p><hr style="size:5px">''' % (url, name)
+            html = '''<a href="%s" target="_blank">%s -奖励积分管理</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (url, name)
             htmls.append(html)
         except:
             pass
@@ -4956,7 +4956,7 @@ def Hwlist(request):
             gg=get_object_or_404(Homeworksid,time=j)
             url='http://35925.top/all/'+str(j)
             name=gg.hwname
-            html = '''<a href="%s" target="_blank">%s订正情况</a><p></p><hr style="size:5px">''' % (url, name)
+            html = '''<a href="%s" target="_blank">%s订正情况</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (url, name)
             htmls.append(html)
         except:
             pass
