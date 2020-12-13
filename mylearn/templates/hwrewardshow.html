@@ -83,7 +83,7 @@ studentlist.innerHTML=urlsum;
 
 
                     if(data['status']=="success"){
-                    alert("发放成功！");
+                    alert(data['error']);
              setTimeout(function () {
                     window.parent.location.reload();
                 }, 200);
