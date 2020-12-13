@@ -4749,10 +4749,15 @@ def Hwchange(request,time,stuid):
     #     else:
     #         clas = 4
     #     Luckys.addmss(name, reasons, value,clas)
-    jifen = get_object_or_404(Jifeng,name=teststudent)
+    jifen = get_object_or_404(Jifeng,name=name)
+    jifens=get_object_or_404(Jifeng,name=teststudent)
     jifen.sum += num
     jifen.save()
+    jifens.sum += 2
+    jifens.save()
     Jifengrecord.addmss(name, num, reasons, clas)
+    reasonss='作业订正管理'
+    Jifengrecord.addmss(teststudent, 2, reasonss, clas)
     return redirect(url)
 def Hwrewardmanage(request):
     teststudent = request.session.get("teststudent")
@@ -4849,6 +4854,11 @@ def Hwrewardpost(request):
         hhh=get_object_or_404(Jifeng,name=name)
         hhh.sum+=num
         hhh.save()
+        hhhh=get_object_or_404(Jifeng,name=teststudent)
+        hhhh.sum+=2
+        hhhh.save()
+        reasons='作业奖励发放管理'
+        Jifengrecord.addmss(teststudent, 2, reasons, clas)
         Jifengrecord.addmss(name,num,reason,clas)
         data['status']='success'
         data['error']='奖励'+str(stuid)+dj+'成功！'
