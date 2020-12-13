@@ -53,11 +53,10 @@ studentlist.innerHTML=urlsum;
     </form>
 </div>
 
-<div id="bg" align="center" style="font-size:30px">
+
     <ul id="studentlist">
 
     </ul>
-</div>
 
 <script type="text/javascript">
         $("#addtxl").submit(function(){
@@ -93,7 +92,7 @@ studentlist.innerHTML=urlsum;
     </script>
 <script type="text/javascript">
     function addname(){
-    var xx=document.getElementsByName("student");
+    var xx=document.getElementsById("sss");
     for (var i=0; i<name.length;i++)
     {if(xx[i].checked){
     document.getElementById("stuid").value=xx[i].value;

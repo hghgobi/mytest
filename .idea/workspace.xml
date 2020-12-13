@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/mylearn/templates/hwrewardshow.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/hwrewardshow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="410">
-              <caret line="4778" column="55" selection-start-line="4778" selection-start-column="55" selection-end-line="4778" selection-end-column="55" />
+              <caret line="4778" column="48" selection-start-line="4778" selection-start-column="48" selection-end-line="4778" selection-end-column="48" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -27,8 +28,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/hwrewardshow.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="812">
-              <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
+            <state relative-caret-position="272">
+              <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
             </state>
           </provider>
         </entry>
@@ -36,7 +37,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="296">
+            <state relative-caret-position="120">
               <caret line="49" column="78" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -799,7 +800,7 @@
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
-          <caret line="4778" column="55" selection-start-line="4778" selection-start-column="55" selection-end-line="4778" selection-end-column="55" />
+          <caret line="4778" column="48" selection-start-line="4778" selection-start-column="48" selection-end-line="4778" selection-end-column="48" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
@@ -808,7 +809,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="296">
+        <state relative-caret-position="120">
           <caret line="49" column="78" selection-start-line="49" selection-start-column="78" selection-end-line="49" selection-end-column="78" />
           <folding>
             <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
@@ -824,8 +825,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/hwrewardshow.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="103" column="9" selection-start-line="103" selection-start-column="9" selection-end-line="103" selection-end-column="9" />
+        <state relative-caret-position="272">
+          <caret line="54" lean-forward="true" selection-start-line="54" selection-end-line="54" />
         </state>
       </provider>
     </entry>
