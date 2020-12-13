@@ -4844,6 +4844,7 @@ def Hwrewardpost(request):
             ss='B'
         else:
             ss='C'
+        Homewrecord.addmss(name, hwname, ss, str(time))
         reason=hwname+ss+'奖励积分'+str(num)
         hhh=get_object_or_404(Jifeng,name=name)
         hhh.sum+=num
@@ -4854,7 +4855,7 @@ def Hwrewardpost(request):
         ssss=get_object_or_404(Homeworks,time=time,name=name)
         ssss.ornots='已发放'
         ssss.save()
-        Homewrecord.addmss(name,hwname,ss,time)
+
         return JsonResponse(data)
 def Homewdetail(request):
 
