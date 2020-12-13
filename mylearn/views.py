@@ -4754,7 +4754,28 @@ def Hwchange(request,time,stuid):
     jifen.save()
     Jifengrecord.addmss(name, num, reasons, clas)
     return redirect(url)
-
+def Hwrewardmanage(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    names=['陆宇浩','陶悠然','李佳英','李秋佟','卢以悦','陈俏宏','梁瑜珈','尚榆皓','颜之依','李欣宜','梁晨宇','梁宇轩','刘俊轩','沈柯妤','李航','李亦晴','梁珂涵','陈镐','蒋佳成','张宇麒']
+    if teststudent not in names:
+        return HttpResponse("你不是组长，没有权限！")
+    ids = Homeworksid.objects.all()
+    idss = []
+    for i in ids:
+        idss.append(i.time)
+    htmls=[]
+    for j in idss:
+        try:
+            gg=get_object_or_404(Homeworksid,time=j)
+            url='http://35925.top/hwreward/'+str(j)
+            name=gg.hwname
+            html = '''<a href="%s" target="_blank">--->%s -奖励积分管理<---</a><p></p>''' % (url, name)
+            htmls.append(html)
+        except:
+            pass
+    return render(request,'hw01.html',{'htmls':json.dumps(htmls)})
 def Hwreward(request,time):
     time=time
     teststudent = request.session.get("teststudent")
@@ -4768,6 +4789,7 @@ def Hwreward(request,time):
 
         zums=fenzu[teststudent]
         htmls=[]
+        hwname=''
         for j in zums:
             try:
                 ornots=get_object_or_404(Homeworks, time=time, stuid=j[1])
@@ -4778,9 +4800,10 @@ def Hwreward(request,time):
                     nn = str(j[0])
                     html = '''<li><input type="radio" name="student" value= %s onclick="Select()" style="width:35px;height:35px"><font size="5">%s</font></li>''' % (nn,name)
                     htmls.append(html)
+                    hwname=ornots.hwname
             except:
                 pass
-        return render(request, 'hwrewardshow.html', {'htmls': json.dumps(htmls)})
+        return render(request, 'hwrewardshow.html', {'htmls': json.dumps(htmls),'hwname':hwname})
 
 def Hwrewardpost(request):
     teststudent = request.session.get("teststudent")
@@ -4790,13 +4813,43 @@ def Hwrewardpost(request):
     if request.method=='POST':
         stuid = request.POST.get('stuid')
         dj = request.POST.get('option')
+        hwname = request.POST.get('hwname')
         data={}
         if teststudent not in names:
             data['status'] = 'error'
             data['error'] = "你不是组长，没有权限！"
             return JsonResponse(data)
+        if stuid==''or dj=='':
+            data['status'] = 'error'
+            data['error'] = '要同时选中！！'
+            return JsonResponse(data)
+        num = int(dj)
+        name = stuid
+        aaa = ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙',
+               '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵',
+               '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅',
+               '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
+        if name in aaa:
+            clas = 3
+        else:
+            clas = 4
+        if num==60:
+            ss='A+'
+        elif num==45:
+            ss='A'
+        elif num==25:
+            ss='B+'
+        elif num==15:
+            ss='B'
+        else:
+            ss='C'
+        reason=hwname+ss+'奖励积分'+str(num)
+        hhh=get_object_or_404(Jifeng,name=name)
+        hhh.sum+=num
+        hhh.save()
+        Jifengrecord.addmss(name,num,reason,clas)
         data['status']='success'
-        data['error']=str(stuid)+dj
+        data['error']='奖励'+str(stuid)+dj+'成功！'
         return JsonResponse(data)
 
 
