@@ -2,16 +2,15 @@
 {% block content %}
 
 <script type="text/javascript">
-var names={{names|safe}}
-var stuids={{stuids|safe}}
+urls={{htmls|safe}}
 window.onload=function(){
-var options=getElementsByName("student");
-for (var i=0;i<options.length;i++)
+var urlsum='';
+for (var i=0;i<urls.length;i++)
 {
-options[i].value=stuids[i];
-options[i].innerText=names[i];
 
+   urlsum+= urls[i];
 }
+studentlist.innerHTML=urlsum;
 }
 </script>
 <div>
@@ -39,7 +38,7 @@ options[i].innerText=names[i];
                     <td><input type="radio" style="color:red;width:180px;height:30px;font-size:16px" name="option" value="5"></td>
                 </tr>
                  <tr>
-                     <td><input type="hidden" style="color:red;width:180px;height:30px;font-size:16px" name="stuid" value=""></td>
+                     <td><input id="stuid" type="hidden" style="color:red;width:180px;height:30px;font-size:16px" name="stuid" value=""></td>
                 </tr>
 
 
@@ -55,23 +54,8 @@ options[i].innerText=names[i];
 </div>
 
 
-    <div id="studentlist">
-        <ul>
-           <li>
-               <input  type="radio" name="student" value="" onclick="Select()">
-           </li>
-            <li>
-               <input  type="radio" name="student" value="" onclick="Select()">
-           </li>
-            <li>
-               <input  type="radio" name="student" value="" onclick="Select()">
-           </li>
-            <li>
-               <input  type="radio" name="student" value="" onclick="Select()">
-           </li>
-            <li>
-               <input type="radio" name="student" value="" onclick="Select()">
-           </li>
+    <div >
+        <ul id="studentlist">
 
         </ul>
 
@@ -115,7 +99,7 @@ options[i].innerText=names[i];
     var xxs=document.getElementsByName("student");
     for(var i=0;i<xxs.length;i++){
     if(xxs[i].checked){
-    document.getElementByName("stuid").value=xxs[i].value;
+    document.getElementById("stuid").value=xxs[i].value;
     }
     }
     }
