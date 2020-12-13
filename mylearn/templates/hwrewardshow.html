@@ -90,15 +90,17 @@ studentlist.innerHTML=urlsum;
             return false;
         });
     </script>
-<script type="text/javascript">
-    function addname(){
-    var xx=document.getElementsByName("sss");
-    for (var i=0; i<name.length;i++)
-    {if(xx[i].checked){
-    document.getElementById("stuid").value=xx[i].value;
+
+<script language="javascript" type="text/javascript">
+    function Select(){
+    var xxs=document.getElementsByName("sss");
+    for(var i=0;i<xxs.length;i++){
+    if(xxs[i].checked){
+    document.getElementById("stuid").value=xxs[i].value;
+    }
     }
     }
 
-    }
 </script>
+
 {% endblock %}

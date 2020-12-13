@@ -4777,7 +4777,7 @@ def Hwreward(request,time):
 
                     name = j[0]
                     nn = str(j[1])
-                    html = '''<li><input type="radio" name="sss" value= %s onclick="addname()">%s</li>''' % (nn,name)
+                    html = '''<li><input type="radio" name="sss" value= %s onclick="Select()">%s</li>''' % (nn,name)
                     htmls.append(html)
             except:
                 pass
