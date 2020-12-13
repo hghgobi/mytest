@@ -5663,3 +5663,10 @@ def Hardkillershow(request):
 #         answer = request.POST.get('answer')
 #         answer = str(answer)
 #         data={}
+
+def ggg(request):
+    n=Homeworks.objects.all()
+    for i in n:
+        i.ornots='已发放'
+        i.save()
+    return HttpResponse('chenggong')
