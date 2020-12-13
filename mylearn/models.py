@@ -970,7 +970,7 @@ class Jifengrecord(models.Model):
 		addms.save()
 class Homewrecord(models.Model):
 	name= models.CharField(max_length=50)
-	hwname =models.IntegerField()
+	hwname =models.CharField(max_length=50)
 	qk = models.CharField(max_length=50)
 	time = models.DateTimeField(auto_now=True)
 	times= models.CharField(max_length=50)
