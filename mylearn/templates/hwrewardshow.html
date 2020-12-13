@@ -58,17 +58,7 @@ studentlist.innerHTML=urlsum;
 
     </ul>
 </div>
-<script type="text/javascript">
-    function addname(){
-    var name=document.getElementsByName("student");
-    for (var i=0; i<name.length;i++)
-    {if(name[i].checked){
-    document.getElementById("stuid").value=name[i].value;
-    }
-    }
 
-    }
-</script>
 <script type="text/javascript">
         $("#addtxl").submit(function(){
 
@@ -101,4 +91,15 @@ studentlist.innerHTML=urlsum;
             return false;
         });
     </script>
+<script type="text/javascript">
+    function addname(){
+    var xx=document.getElementsByName("student");
+    for (var i=0; i<name.length;i++)
+    {if(xx[i].checked){
+    document.getElementById("stuid").value=xx[i].value;
+    }
+    }
+
+    }
+</script>
 {% endblock %}
