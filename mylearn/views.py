@@ -4776,19 +4776,12 @@ def Hwreward(request,time):
                 else:
 
                     name = j[0]
-                    html = '''<li><input type="radio" name="student" value="%s">%s</li>''' % (j[i],name)
+                    html = '''<li><input type="radio" name="student" value="%s">%s</li>''' % (j[1],name)
                     htmls.append(html)
             except:
                 pass
         return render(request, 'hwrewardshow.html', {'htmls': json.dumps(htmls)})
-    if request.method=='POST':
-        stuid = request.POST.get('stuid')
-        dj = request.POST.get('option')
 
-        data={}
-        data['status']='success'
-        data['error']=str(stuid)+dj
-        return JsonResponse(data)
 def Hwrewardpost(request):
     teststudent = request.session.get("teststudent")
     if not teststudent:
