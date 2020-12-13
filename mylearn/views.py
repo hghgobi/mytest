@@ -4768,18 +4768,14 @@ def Hwreward(request,time):
 
         zums=fenzu[teststudent]
         htmls=[]
-        names=[]
-        stuids=[]
         for j in zums:
             try:
                 ornots=get_object_or_404(Homeworks, time=time, stuid=j[1])
-                if ornots.ornot=='已发放':
+                if ornots.ornots=='已发放':
                     pass
                 else:
-
-
                     name = j[0]
-                    nn = str(j[1])
+                    nn = str(j[0])
                     html = '''<li><input type="radio" name="student" value= %s onclick="Select()" style="width:35px;height:35px"><font size="5">%s</font></li>''' % (nn,name)
                     htmls.append(html)
             except:
@@ -5663,11 +5659,11 @@ def Hardkillershow(request):
 #         answer = request.POST.get('answer')
 #         answer = str(answer)
 #         data={}
-
-def Ggg(request):
-    if request.method == 'GET':
-        n=Homeworks.objects.all()
-        for i in n:
-            i.ornots='已发放'
-            i.save()
-        return HttpResponse('chenggong')
+#
+# def Ggg(request):
+#     if request.method == 'GET':
+#         n=Homeworks.objects.all()
+#         for i in n:
+#             i.ornots='已发放'
+#             i.save()
+#         return HttpResponse('chenggong')
