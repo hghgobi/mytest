@@ -14,7 +14,8 @@ studentlist.innerHTML=urlsum;
 }
 </script>
 <div style="border:3px solid green;" align="center">
-    <h1> 同时选中再发放</h1>
+    <h1> 1.组长要督促组员登记
+         ，否则按作业不交处理</h1>
       <form id="addtxl" onsubmit="return false" action="{% url 'hwreward' %}" method="POST" style="overflow:hidden">
 
         <table >
@@ -47,6 +48,18 @@ studentlist.innerHTML=urlsum;
                      <td></td>
                     <td><input type="radio" style="width:35px;height:35px" name="option" value="5"></td>
                      <td><font size="5" style="width:35px;height:35px">C</font></td>
+
+                </tr>
+                <tr>
+                     <td></td>
+                    <td><input type="radio" style="width:35px;height:35px" name="option" value="1"></td>
+                     <td><font size="5" style="width:35px;height:35px">D</font></td>
+
+                </tr>
+                <tr>
+                     <td></td>
+                    <td><input type="radio" style="width:35px;height:35px" name="option" value="0"></td>
+                     <td><font size="5" style="width:35px;height:35px">作业没交</font></td>
 
                 </tr>
                  <tr>

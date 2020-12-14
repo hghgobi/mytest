@@ -4847,8 +4847,12 @@ def Hwrewardpost(request):
             ss='B+'
         elif num==15:
             ss='B'
-        else:
+        elif num==5:
             ss='C'
+        elif num==1:
+            ss='D'
+        else:
+            ss='没交'
         Homewrecord.addmss(name, hwname, ss, str(time))
         reason=hwname+ss+'奖励积分'+str(num)
         hhh=get_object_or_404(Jifeng,name=name)
