@@ -981,3 +981,8 @@ class Homewrecord(models.Model):
 	def addmss(cls,name,hwname,qk,times):
 		addms = cls(name=name,hwname=hwname,qk=qk,times=times)
 		addms.save()
+
+class Limitin(models.Model):
+	id0 = models.IntegerField()
+	id1 = models.IntegerField()
+	id2 = models.IntegerField()

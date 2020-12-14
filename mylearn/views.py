@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin
 import json
 from pylab import *
 import random
@@ -14,7 +14,7 @@ import string
 from django.contrib.contenttypes.models import ContentType
 from comment.models import Comment
 
-import time
+
 import hashlib
 import string
 
@@ -26,14 +26,14 @@ from matplotlib.dates import DateFormatter
 import matplotlib.pyplot as plt
 
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
-import datetime
+from datetime import datetime,time
 import base64
 from io import BytesIO
 
 import mpl_toolkits.axisartist as axisartist
 import matplotlib
 import math
-import time
+
 from django.db.models import Q
 from random import shuffle
 import cv2
@@ -53,7 +53,8 @@ from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 from wechatpy.pay import logger
 
-
+times = [[7, 50, 8, 30], [8, 40, 9, 20], [9, 50, 10, 30], [10, 40, 11, 20], [13, 20, 14, 0], [14, 10, 14, 50],
+         [15, 5, 15, 45], [15, 55, 16, 35],[18,0,18,40], [18, 50, 19, 35], [19, 45, 20, 30]]
 def Kz(request,code):
     if request.method=='GET':
         code=code
@@ -5102,6 +5103,22 @@ def Showhwunpass(request,time,clas,ornot):
         names.append(ms[i].name)
     return HttpResponse(str(names))
 def Showlucky(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime.now().time()
+
+        nm = 0
+        for n in times:
+            if time(n[0], n[1]) < current < time(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
@@ -5147,6 +5164,23 @@ def Showlucky(request):
             return JsonResponse(data)
 
 def Showluckys(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime.now().time()
+        times = [[7, 50, 8, 30], [8, 40, 9, 20], [9, 50, 10, 30], [10, 40, 11, 20], [13, 20, 14, 0], [14, 10, 14, 50],
+                 [15, 5, 15, 45], [15, 55, 16, 35], [18, 50, 19, 35], [19, 45, 20, 30]]
+        nm = 0
+        for n in times:
+            if time(n[0], n[1]) < current < time(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
@@ -5202,6 +5236,21 @@ def Showluckys(request):
             data['status'] = 'error'
             return JsonResponse(data)
 def Jifenduihuan(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime.now().time()
+        nm = 0
+        for n in times:
+            if time(n[0], n[1]) < current < time(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
@@ -5270,6 +5319,21 @@ def Jifenduihuan(request):
             data['status'] = 'error'
         return JsonResponse(data)
 def Jifenzs(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime.now().time()
+        nm = 0
+        for n in times:
+            if time(n[0], n[1]) < current < time(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
