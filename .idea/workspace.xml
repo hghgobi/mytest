@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="5120" column="37" selection-start-line="5120" selection-start-column="33" selection-end-line="5120" selection-end-column="37" />
+            <state relative-caret-position="421">
+              <caret line="4616" column="24" lean-forward="true" selection-start-line="4616" selection-start-column="24" selection-end-line="4616" selection-end-column="24" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -87,7 +85,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="812">
+            <state relative-caret-position="902">
               <caret line="130" column="56" selection-start-line="130" selection-start-column="56" selection-end-line="130" selection-end-column="56" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -144,7 +142,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>%s</find>
       <find>stop</find>
       <find>er</find>
       <find>兑换</find>
@@ -174,6 +171,7 @@
       <find>Indexs</find>
       <find>上课</find>
       <find>上课期间</find>
+      <find>Showluckyn</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -802,16 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="130" column="56" selection-start-line="130" selection-start-column="56" selection-end-line="130" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/gethwms.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -839,10 +827,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="902">
+          <caret line="130" column="56" selection-start-line="130" selection-start-column="56" selection-end-line="130" selection-end-column="56" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="5120" column="37" selection-start-line="5120" selection-start-column="33" selection-end-line="5120" selection-end-column="37" />
+        <state relative-caret-position="421">
+          <caret line="4616" column="24" lean-forward="true" selection-start-line="4616" selection-start-column="24" selection-end-line="4616" selection-end-column="24" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>

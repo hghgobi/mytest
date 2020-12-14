@@ -4631,6 +4631,22 @@ def Addflowers(request):
         ms=name+hwname+reason+str(flower)
         return HttpResponse(ms)
 def Showflowerms(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime.now().time()
+
+        nm = 0
+        for n in times:
+            if time(n[0], n[1]) < current < time(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
@@ -4641,10 +4657,26 @@ def Showflowerms(request):
     return render(request,'flowers.html',{'mss':mss,'sum':sum})
 
 def Showflowerms2(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime.now().time()
+
+        nm = 0
+        for n in times:
+            if time(n[0], n[1]) < current < time(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
-    mss=Getflowerrecord.objects.all()
+    mss=Getflowerrecord.objects.all()[:100]
     return render(request,'flowerrecord.html',{'mss':mss})
 
 
@@ -5534,6 +5566,22 @@ def Drawpic(request):
 
 
 def Showluckynames(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime.now().time()
+
+        nm = 0
+        for n in times:
+            if time(n[0], n[1]) < current < time(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
