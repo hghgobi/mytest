@@ -16,7 +16,7 @@
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="512">
-              <caret line="4796" column="20" lean-forward="true" selection-start-line="4796" selection-start-column="20" selection-end-line="4796" selection-end-column="20" />
+              <caret line="4914" column="26" lean-forward="true" selection-start-line="4914" selection-start-column="26" selection-end-line="4914" selection-end-column="26" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -120,7 +120,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29100">
+            <state relative-caret-position="6932">
               <caret line="972" column="43" selection-start-line="972" selection-start-column="43" selection-end-line="972" selection-end-column="43" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -269,12 +269,6 @@
               <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
               <item name="mytest" type="462c0819:PsiDirectoryNode" />
               <item name="mylearn" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
-              <item name="mytest" type="462c0819:PsiDirectoryNode" />
-              <item name="mylearn" type="462c0819:PsiDirectoryNode" />
-              <item name="templates" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="mytest" type="b2602c69:ProjectViewProjectNode" />
@@ -810,16 +804,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29100">
-          <caret line="972" column="43" selection-start-line="972" selection-start-column="43" selection-end-line="972" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/base3.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
@@ -850,10 +834,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6932">
+          <caret line="972" column="43" selection-start-line="972" selection-start-column="43" selection-end-line="972" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="512">
-          <caret line="4796" column="20" lean-forward="true" selection-start-line="4796" selection-start-column="20" selection-end-line="4796" selection-end-column="20" />
+          <caret line="4914" column="26" lean-forward="true" selection-start-line="4914" selection-start-column="26" selection-end-line="4914" selection-end-column="26" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
