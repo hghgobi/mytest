@@ -16,11 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="421">
-              <caret line="4616" column="24" lean-forward="true" selection-start-line="4616" selection-start-column="24" selection-end-line="4616" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#62#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="580">
+              <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -163,7 +160,6 @@
       <find>ZKFX</find>
       <find>Index</find>
       <find>Jifeng</find>
-      <find>zkfx</find>
       <find>Hard</find>
       <find>hwc</find>
       <find>hr</find>
@@ -172,6 +168,7 @@
       <find>上课</find>
       <find>上课期间</find>
       <find>Showluckyn</find>
+      <find>zkfx</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -234,7 +231,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-8" />
     <option name="y" value="4" />
     <option name="width" value="1876" />
@@ -839,11 +836,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="4616" column="24" lean-forward="true" selection-start-line="4616" selection-start-column="24" selection-end-line="4616" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="580">
+          <caret line="39" column="10" lean-forward="true" selection-start-line="39" selection-start-column="10" selection-end-line="39" selection-end-column="10" />
         </state>
       </provider>
     </entry>
