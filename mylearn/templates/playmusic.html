@@ -54,6 +54,7 @@
 <!--                    var msg = eval("(" + data + ")");-->
 
                     music.innerHTML=data['error'][0];
+                    $('input[type=radio]').removeAttr('checked');
                     }else{
                         // 显示错误信息
                         $("#error").text(data['error']);
@@ -72,7 +73,6 @@
     </script>
 <script type="text/javascript">
 function times(){
-$('input[type=radio]').removeAttr('checked');
     var time = 100;
     var timer = setInterval(function () {
         time--;
