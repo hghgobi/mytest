@@ -26,7 +26,8 @@ from matplotlib.dates import DateFormatter
 import matplotlib.pyplot as plt
 
 from matplotlib.ticker import MultipleLocator, FormatStrFormatter
-from datetime import datetime,time
+from datetime import datetime as datetime2
+from datetime import time as time2
 import base64
 from io import BytesIO
 
@@ -4636,11 +4637,11 @@ def Showflowerms(request):
     if timess.id0==0:
         pass
     else:
-        current = datetime.now().time()
+        current = datetime2.now().time()
 
         nm = 0
         for n in times:
-            if time(n[0], n[1]) < current < time(n[2], n[3]):
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
                 nm += 1
             else:
                 pass
@@ -4662,11 +4663,11 @@ def Showflowerms2(request):
     if timess.id0==0:
         pass
     else:
-        current = datetime.now().time()
+        current = datetime2.now().time()
 
         nm = 0
         for n in times:
-            if time(n[0], n[1]) < current < time(n[2], n[3]):
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
                 nm += 1
             else:
                 pass
@@ -5140,11 +5141,11 @@ def Showlucky(request):
     if timess.id0==0:
         pass
     else:
-        current = datetime.now().time()
+        current = datetime2.now().time()
 
         nm = 0
         for n in times:
-            if time(n[0], n[1]) < current < time(n[2], n[3]):
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
                 nm += 1
             else:
                 pass
@@ -5201,12 +5202,12 @@ def Showluckys(request):
     if timess.id0==0:
         pass
     else:
-        current = datetime.now().time()
+        current = datetime2.now().time()
         times = [[7, 50, 8, 30], [8, 40, 9, 20], [9, 50, 10, 30], [10, 40, 11, 20], [13, 20, 14, 0], [14, 10, 14, 50],
                  [15, 5, 15, 45], [15, 55, 16, 35], [18, 50, 19, 35], [19, 45, 20, 30]]
         nm = 0
         for n in times:
-            if time(n[0], n[1]) < current < time(n[2], n[3]):
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
                 nm += 1
             else:
                 pass
@@ -5273,10 +5274,10 @@ def Jifenduihuan(request):
     if timess.id0==0:
         pass
     else:
-        current = datetime.now().time()
+        current = datetime2.now().time()
         nm = 0
         for n in times:
-            if time(n[0], n[1]) < current < time(n[2], n[3]):
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
                 nm += 1
             else:
                 pass
@@ -5356,10 +5357,10 @@ def Jifenzs(request):
     if timess.id0==0:
         pass
     else:
-        current = datetime.now().time()
+        current = datetime2.now().time()
         nm = 0
         for n in times:
-            if time(n[0], n[1]) < current < time(n[2], n[3]):
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
                 nm += 1
             else:
                 pass
@@ -5571,11 +5572,11 @@ def Showluckynames(request):
     if timess.id0==0:
         pass
     else:
-        current = datetime.now().time()
+        current = datetime2.now().time()
 
         nm = 0
         for n in times:
-            if time(n[0], n[1]) < current < time(n[2], n[3]):
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
                 nm += 1
             else:
                 pass
