@@ -569,9 +569,9 @@ def Indexs(request):
         luckycounts = 0
 
     try:
-        mas1 = Setgoodns.objects.filter(clas=clas)[:10]
+        mas1 = Homewrecord.objects.filter(clas=clas,qk_contains='A')[:20]
     except:
-        mas1=Setgoodns.objects.filter(clas=clas)
+        mas1=Setgoodns.objects.filter(clas=clas,qk_contains='A')
     mas2=Uselucky.objects.filter(clas=clas)[:10]
     try:
         mas3 = Luckys.objects.filter(clas=clas)[:20]
@@ -5950,19 +5950,19 @@ def Hardkillershow(request):
 #             i.ornots='已发放'
 #             i.save()
 #         return HttpResponse('chenggong')
-def Aaa(request):
-    aaa = ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙',
-           '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵',
-           '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅',
-           '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
-    if request.method == 'GET':
-        mss=Homewrecord.objects.all()
-        for i in mss:
-            if i.name in aaa:
-                clas=3
-            else:
-                clas=4
-            i.clas=clas
-            i.save()
-    return HttpResponse('success')
+# def Aaa(request):
+#     aaa = ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙',
+#            '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵',
+#            '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅',
+#            '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
+#     if request.method == 'GET':
+#         mss=Homewrecord.objects.all()
+#         for i in mss:
+#             if i.name in aaa:
+#                 clas=3
+#             else:
+#                 clas=4
+#             i.clas=clas
+#             i.save()
+#     return HttpResponse('success')
 
