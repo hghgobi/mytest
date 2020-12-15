@@ -5950,7 +5950,7 @@ def Musicplay(request):
             bb.save()
             for i in ms:
                 mss.append(i.names)
-            html = '''<audio id="music" src="%s" autoplay="autoplay" loop="loop" preload="auto" type="audio/mp3" controls="controls"></audio><p>点播放按钮,等加载完即可</p>''' %mss[0]
+            html = '''<audio id="music" src="%s" autoplay="autoplay" loop="loop" preload="auto" type="audio/mp3" controls="controls"></audio><p>点播放按钮,等加载完即可</p><p>刷新后再播下一首，不然会播放失败</p>''' %mss[0]
 
             msss = []
             msss.append(html)

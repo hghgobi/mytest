@@ -24,6 +24,7 @@
                     <td></td>
                     <td></td>
                     <td><input type="submit" style="color:red;width:180px;height:60px;font-size:25px" value ="20积分听歌"  onclick="times()"></td>
+                    <td><input type="button" style="color:red;width:90px;height:30px;font-size:25px"  onclick="reflesh()">刷新</td>
                 </tr>
 
 
@@ -73,7 +74,7 @@
     </script>
 <script type="text/javascript">
 function times(){
-    var time = 100;
+    var time = 300;
     var timer = setInterval(function () {
         time--;
         if (time==0) {
@@ -83,6 +84,11 @@ function times(){
                 }, 1000);
         }
     }, 1000);
+}
+function reflesh(){
+            setTimeout(function () {
+                    window.parent.location.reload();
+                }, 1000);
 }
 </script>
 
