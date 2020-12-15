@@ -571,7 +571,7 @@ def Indexs(request):
     try:
         mas1 = Homewrecord.objects.filter(clas=clas,qk_contains='A')[:20]
     except:
-        mas1=Setgoodns.objects.filter(clas=clas,qk_contains='A')
+        mas1=Homewrecord.objects.filter(clas=clas,qk_contains='A')
     mas2=Uselucky.objects.filter(clas=clas)[:10]
     try:
         mas3 = Luckys.objects.filter(clas=clas)[:20]
