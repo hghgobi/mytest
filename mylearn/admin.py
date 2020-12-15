@@ -318,7 +318,7 @@ class JifengrecordAdmin(admin.ModelAdmin):
 	list_display = ['name','num','reason','time']
 @admin.register(Homewrecord)
 class HomewrecordAdmin(admin.ModelAdmin):
-	list_display = ['name','hwname','qk','times','time']
+	list_display = ['name','hwname','qk','times','time','clas']
 @admin.register(Limitin)
 class LimitinAdmin(admin.ModelAdmin):
 	list_display = ['id0','id1','id2']

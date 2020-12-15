@@ -974,12 +974,13 @@ class Homewrecord(models.Model):
 	qk = models.CharField(max_length=50)
 	time = models.DateTimeField(auto_now=True)
 	times= models.CharField(max_length=50)
+	clas = models.IntegerField()
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,name,hwname,qk,times):
-		addms = cls(name=name,hwname=hwname,qk=qk,times=times)
+	def addmss(cls,name,hwname,qk,times,clas):
+		addms = cls(name=name,hwname=hwname,qk=qk,times=times,clas=clas)
 		addms.save()
 
 class Limitin(models.Model):
