@@ -802,6 +802,11 @@ class Uselucky(models.Model):
 		addms.save()
 class Music(models.Model):
 	name = models.CharField(max_length=500)
+class Musics(models.Model):
+	name = models.CharField(max_length=500)
+	names = models.CharField(max_length=500)
+	num = models.IntegerField(default=0)
+	idd = models.IntegerField()
 class Setgoodns(models.Model):
 	name = models.CharField(max_length=500)
 	time = models.DateTimeField(auto_now_add=True)

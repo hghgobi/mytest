@@ -1,0 +1,70 @@
+{% extends 'base2.html' %}  
+{% block content %}
+
+
+<div style="border:3px solid green;" align="center">
+
+      <form id="addtxl" onsubmit="return false" action="{% url 'playmusic' %}" method="POST" style="overflow:hidden">
+
+        <table >
+            <tbody align="center">
+            {%for i in ms%}
+                <tr>
+                    <td></td>
+                    <td><input type="radio" style="width:35px;height:35px" name="music" value="{{i.idd}}"></td>
+                    <td><font size="5" style="width:35px;height:35px">{{i.name}}--播放次数{{i.num}}</font></td>
+                </tr>
+                  {% empty %}
+             <tr>
+               <td><p> 暂无歌曲 </p></td>
+             </tr>
+               {% endfor %}
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:60px;font-size:25px" value ="听歌" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+</div>
+<div id="music">
+
+</div>
+
+<div id="error">
+
+</div>
+<script type="text/javascript">
+        $("#addtxl").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'musicpaly' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+                    if(data['status']=="success"){
+                    music.innerHTML=data[0];
+                    }else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>
+
+
+
+{% endblock %}

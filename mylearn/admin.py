@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sdengji,Sshuliang,Getflowerrecord,Homeworks,Homeworksid,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqs,Hardqsrecord,Hardqsname,Hardkilleronoff,Hardqslimit,Middleqslimit,Easyqslimit,Easyqs,Easyrecord,Draws,Jifeng,Jifengrecord,Homewrecord,Limitin
+from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sdengji,Sshuliang,Getflowerrecord,Homeworks,Homeworksid,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqs,Hardqsrecord,Hardqsname,Hardkilleronoff,Hardqslimit,Middleqslimit,Easyqslimit,Easyqs,Easyrecord,Draws,Jifeng,Jifengrecord,Homewrecord,Limitin,Musics
 
 
 # Register your models here.
@@ -322,3 +322,6 @@ class HomewrecordAdmin(admin.ModelAdmin):
 @admin.register(Limitin)
 class LimitinAdmin(admin.ModelAdmin):
 	list_display = ['id0','id1','id2']
+@admin.register(Musics)
+class MusicsAdmin(admin.ModelAdmin):
+	list_display = ['name','names','num','idd']

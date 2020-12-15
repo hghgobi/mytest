@@ -138,6 +138,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                # path('gengxin', views.Gengxin),
                # path('aaa123', views.Aaa),
                path('hwdetail', views.Homewdetail),
+               path('musicplay', views.Musicplay,name='musicplay'),
 
 
 
