@@ -14,8 +14,8 @@
 
     <style>
     #news{border:3px solid black;}
-#jz{ margin:0 auto; width:100%; height:100px; }
-#jz1{ margin:0 auto; width:100%; height:100px; }
+#jz{ margin:0 auto; width:100%; height:200px; }
+
 #jz2{ margin:0 auto; width:100%; height:100px;  }
 #jz3{ margin:0 auto; width:100%; height:200px; border:3px solid black; }
 div.footer {
@@ -111,9 +111,9 @@ div.website-info p {
 <div id="news">
 
               <div id="jz" height="89" valign="top" style="background:#7FFFD4" align="center">
-                    <marquee  scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="100" align="center" style="text-align:center;">
+                    <marquee  scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="200" align="center" style="text-align:center;">
                {%for i in mas1 %}
-                <p >{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p>{{i.hwname}}+{{i.qk}}-</p>
+                <p >{{i.name}}</p><p>{{i.hwname}}==>{{i.qk}}</p>
 						<a>-------------------------------------</a>
                               {% empty %}
                <p> 暂无消息 </p>
@@ -121,16 +121,16 @@ div.website-info p {
                 </marquee>
                 </div>
 
-              <div id="jz1"  style="background:#FFB6C1" align="center">
-                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="100" align="center" style="text-align:center;">
-               {%for i in mas3 %}
-                <p style="color:red">{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p style="color:red">{{i.reason}}兑换码1个</p>
-						<a>-------------------------------------</a>
-                              {% empty %}
-               <p> 暂无消息 </p>
-               {% endfor %}
-                </marquee>
-                </div>
+<!--              <div id="jz1"  style="background:#FFB6C1" align="center">-->
+<!--                    <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="100" align="center" style="text-align:center;">-->
+<!--               {%for i in mas3 %}-->
+<!--                <p style="color:red">{{i.time|date:"m-d H:i:s"}}{{i.name}}</p><p style="color:red">{{i.reason}}兑换码1个</p>-->
+<!--						<a>-&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;</a>-->
+<!--                              {% empty %}-->
+<!--               <p> 暂无消息 </p>-->
+<!--               {% endfor %}-->
+<!--                </marquee>-->
+<!--                </div>-->
 	              <div id="jz2"  style="background:#00FF00" align="center">
                     <marquee scrollamount="1" onmouseover="this.stop()" onmouseout="this.start()" scrolldelay="0.1" direction="up" width="device-width" height="100" align="center" style="text-align:center;">
                         {%for j in mas2 %}
