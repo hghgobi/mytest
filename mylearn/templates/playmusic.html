@@ -23,7 +23,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><input type="submit" style="color:red;width:180px;height:60px;font-size:25px" value ="20积分听歌" ></td>
+                    <td><input type="submit" style="color:red;width:180px;height:60px;font-size:25px" value ="20积分听歌"  onclick="times()"></td>
                 </tr>
 
 
@@ -57,6 +57,10 @@
                     }else{
                         // 显示错误信息
                         $("#error").text(data['error']);
+                        alert(data['error']);
+                        setTimeout(function () {
+                    window.parent.location.reload();
+                }, 1000);
                     }
                 },
                 error: function(xhr){

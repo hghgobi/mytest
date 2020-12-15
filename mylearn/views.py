@@ -5930,6 +5930,12 @@ def Musicplay(request):
     if request.method=='POST':
         music = request.POST.get('music')
         data={}
+        if music :
+            pass
+        else:
+            data['status']='error'
+            data['error']='请选一首歌！！'
+            return JsonResponse(data)
         aa=get_object_or_404(Jifeng,name=teststudent)
 
         if aa.sum>=20:
@@ -5939,11 +5945,12 @@ def Musicplay(request):
             Jifengrecord.addmss(teststudent,-20,reason,clas)
             ms = Musics.objects.filter(idd=music)
             mss = []
+            bb=get_object_or_404(Musics,idd=music)
+            bb.num+=1
+            bb.save()
             for i in ms:
-                i.num+=1
-                i.save()
                 mss.append(i.names)
-            html = '''<audio id="music" src="%s" autoplay="autoplay" loop="loop" preload="auto" type="audio/mp3" controls="controls" onclick="times()"></audio>''' % \
+            html = '''<audio id="music" src="%s" autoplay="autoplay" loop="loop" preload="auto" type="audio/mp3" controls="controls"></audio>''' % \
                    mss[0]
             msss = []
             msss.append(html)
