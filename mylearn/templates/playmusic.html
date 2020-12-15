@@ -51,8 +51,9 @@
                     console.log(data);
 
                     if(data['status']=="success"){
+                    var msg = eval("(" + data + ")");
 
-                    music.innerHTML=data[0];
+                    music.innerHTML=msg[0];
                     }else{
                         // 显示错误信息
                         $("#error").text(data['error']);
