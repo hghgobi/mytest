@@ -23,7 +23,7 @@
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td><input type="submit" style="color:red;width:180px;height:60px;font-size:25px" value ="听歌" ></td>
+                    <td><input type="submit" style="color:red;width:180px;height:60px;font-size:25px" value ="20积分听歌" ></td>
                 </tr>
 
 
@@ -66,7 +66,20 @@
             return false;
         });
     </script>
-
+<script type="text/javascript">
+function times(){
+    var time = 100;
+    var timer = setInterval(function () {
+        time--;
+        if (time==0) {
+            clearInterval(timer);
+            setTimeout(function () {
+                    window.parent.location.reload();
+                }, 1000);
+        }
+    }, 1000);
+}
+</script>
 
 
 {% endblock %}

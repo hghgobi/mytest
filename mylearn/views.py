@@ -5917,6 +5917,11 @@ def Hardkillershow(request):
 
 def Musicplay(request):
     teststudent = request.session.get("teststudent")
+    aaas=['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
+    if teststudent in aaas:
+        clas=3
+    else:
+        clas=4
     if not teststudent:
         return redirect('../../testlogin')
     if request.method=='GET':
@@ -5925,16 +5930,32 @@ def Musicplay(request):
     if request.method=='POST':
         music = request.POST.get('music')
         data={}
-        ms = Musics.objects.filter(idd=music)
-        mss=[]
-        for i in ms:
-            mss.append(i.names)
-        html = '''<audio id="music" src="%s" autoplay="autoplay" loop="loop" preload="auto" type="audio/mp3" controls="controls"></audio>'''%mss[0]
-        msss=[]
-        msss.append(html)
-        data['status']='success'
-        data['error']=msss
-        return JsonResponse(data)
+        aa=get_object_or_404(Jifeng,name=teststudent)
+
+        if aa.sum>=20:
+            aa.sum=aa.sum-20
+            aa.save()
+            reason='点歌'
+            Jifengrecord.addmss(teststudent,-20,reason,clas)
+            ms = Musics.objects.filter(idd=music)
+            mss = []
+            for i in ms:
+                i.num+=1
+                i.save()
+                mss.append(i.names)
+            html = '''<audio id="music" src="%s" autoplay="autoplay" loop="loop" preload="auto" type="audio/mp3" controls="controls" onclick="times()"></audio>''' % \
+                   mss[0]
+            msss = []
+            msss.append(html)
+            data['status'] = 'success'
+            data['error'] = msss
+            return JsonResponse(data)
+        else:
+            data['status']='error'
+            data['error']='积分不足！！'
+            return JsonResponse(data)
+
+
 
 # def Easykiller(request):
 #     teststudent = request.session.get("teststudent")
