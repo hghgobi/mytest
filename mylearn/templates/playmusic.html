@@ -51,6 +51,7 @@
                     console.log(data);
 
                     if(data['status']=="success"){
+                    var data={{data|safe}};
                     music.innerHTML=data[0];
                     }else{
                         // 显示错误信息
