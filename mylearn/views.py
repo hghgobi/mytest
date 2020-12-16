@@ -5455,6 +5455,13 @@ def Jifenzs(request):
                 tt.save()
         except:
             Zslimit.addmss(teststudent,year,month,day,1)
+        if num<200:
+            data['error'] = '太小气了，至少得赠送200积分！！'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        else:
+            pass
+
         if nn>=num:
             datass.sum=nn-num
             datass.save()
