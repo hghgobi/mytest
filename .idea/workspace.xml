@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/templates/base3.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/base3.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -13,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="5944" column="42" lean-forward="true" selection-start-line="5944" selection-start-column="42" selection-end-line="5944" selection-end-column="42" />
+            <state relative-caret-position="220">
+              <caret line="595" column="149" selection-start-line="595" selection-start-column="149" selection-end-line="595" selection-end-column="149" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -42,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
-              <caret line="991" column="31" lean-forward="true" selection-start-line="991" selection-start-column="31" selection-end-line="991" selection-end-column="31" />
+            <state relative-caret-position="722">
+              <caret line="1020" column="41" lean-forward="true" selection-start-line="1020" selection-start-column="41" selection-end-line="1020" selection-end-column="41" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -54,8 +56,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="330" column="59" selection-start-line="330" selection-start-column="59" selection-end-line="330" selection-end-column="59" />
+            <state relative-caret-position="768">
+              <caret line="333" column="49" lean-forward="true" selection-start-line="333" selection-start-column="49" selection-end-line="333" selection-end-column="49" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
               </folding>
@@ -77,11 +79,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/base3.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
+            <state relative-caret-position="510">
+              <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
               <folding>
                 <element signature="n#style#0;n#a#0;n#li#5;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#a#0;n#li#6;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -137,8 +139,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Exam</find>
-      <find>Dr</find>
       <find>Addl</find>
       <find>Addluc</find>
       <find>div</find>
@@ -155,18 +155,20 @@
       <find>Geth</find>
       <find>上课</find>
       <find>Showluckyn</find>
-      <find>zkfx</find>
       <find>上课期间</find>
       <find>Homewr</find>
       <find>||</find>
       <find>|</find>
       <find>Q</find>
-      <find>Indexs</find>
       <find>Musi</find>
       <find>mu</find>
       <find>ZS</find>
       <find>zs</find>
       <find>课</find>
+      <find>zkfx</find>
+      <find>作业</find>
+      <find>Homew</find>
+      <find>Indexs</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -222,10 +224,10 @@
         <option value="$PROJECT_DIR$/mylearn/templates/gethwms.html" />
         <option value="$PROJECT_DIR$/mylearn/urls.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/playmusic.html" />
-        <option value="$PROJECT_DIR$/mylearn/templates/base3.html" />
-        <option value="$PROJECT_DIR$/mylearn/admin.py" />
         <option value="$PROJECT_DIR$/mylearn/models.py" />
+        <option value="$PROJECT_DIR$/mylearn/admin.py" />
         <option value="$PROJECT_DIR$/mylearn/views.py" />
+        <option value="$PROJECT_DIR$/mylearn/templates/base3.html" />
       </list>
     </option>
   </component>
@@ -768,42 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/base3.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="79" column="37" lean-forward="true" selection-start-line="79" selection-start-column="37" selection-end-line="79" selection-end-column="37" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#5;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#6;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#li#9;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#marquee#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#marquee#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="330" column="59" selection-start-line="330" selection-start-column="59" selection-end-line="330" selection-end-column="59" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="991" column="31" lean-forward="true" selection-start-line="991" selection-start-column="31" selection-end-line="991" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/linshi102.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -821,12 +787,48 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="768">
+          <caret line="333" column="49" lean-forward="true" selection-start-line="333" selection-start-column="49" selection-end-line="333" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="722">
+          <caret line="1020" column="41" lean-forward="true" selection-start-line="1020" selection-start-column="41" selection-end-line="1020" selection-end-column="41" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="5944" column="42" lean-forward="true" selection-start-line="5944" selection-start-column="42" selection-end-line="5944" selection-end-column="42" />
+        <state relative-caret-position="220">
+          <caret line="595" column="149" selection-start-line="595" selection-start-column="149" selection-end-line="595" selection-end-column="149" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/base3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="18" column="49" lean-forward="true" selection-start-line="18" selection-start-column="49" selection-end-line="18" selection-end-column="49" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#li#5;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#6;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#li#9;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#marquee#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#marquee#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

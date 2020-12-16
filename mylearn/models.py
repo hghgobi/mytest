@@ -1008,3 +1008,16 @@ class Zslimit(models.Model):
 	def addmss(cls,name,year,month,day,num):
 		addms = cls(name=name,year=year,month=month,day=day,num=num)
 		addms.save()
+class Sumrecord(models.Model):
+	name= models.CharField(max_length=50)
+	reason = models.CharField(max_length=500)
+	time = models.DateTimeField(auto_now=True)
+	clas = models.IntegerField()
+	num= models.IntegerField()
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,reason,clas,num):
+		addms = cls(name=name,reason=reason,clas=clas,num=num)
+		addms.save()

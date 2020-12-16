@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord
 import json
 from pylab import *
 import random
@@ -572,11 +572,11 @@ def Indexs(request):
         mas1 = Homewrecord.objects.filter(clas=clas,qk__contains='A')[:20]
     except:
         mas1=Homewrecord.objects.filter(clas=clas,qk__contains='A')
-    mas2=Uselucky.objects.filter(clas=clas)[:10]
+
     try:
-        mas3 = Luckys.objects.filter(clas=clas)[:20]
+        mas3 = Sumrecord.objects.filter(clas=clas)[:20]
     except:
-        mas3=Luckys.objects.filter(clas=clas)
+        mas3=Sumrecord.objects.filter(clas=clas)
     try:
         mas4 = Classnews.objects.all()[:10]
     except:
@@ -593,7 +593,7 @@ def Indexs(request):
     #     #     html = html.format(a)
     #     #     msss=msss+html
 
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas2':mas2,'mas3':mas3,'luckycounts':luckycounts,'mas4':mas4})
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas3':mas3,'luckycounts':luckycounts,'mas4':mas4})
 
     # try:
     #     n='未读'
@@ -4154,6 +4154,7 @@ def zkfx(request,id0,id1):
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
+                Sumrecord.addmss(teststudent, reason, clas, num)
                 return redirect(paths)
             else:
                 try:
@@ -4222,6 +4223,7 @@ def zkfx(request,id0,id1):
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
+                Sumrecord.addmss(teststudent, reason, clas, num)
                 return redirect(paths)
             elif dd>=int(n1):
                 try:
@@ -4269,6 +4271,7 @@ def zkfx(request,id0,id1):
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
+                Sumrecord.addmss(teststudent, reason, clas, num)
                 return redirect(paths)
 
             else:
@@ -4336,6 +4339,7 @@ def zkfx(request,id0,id1):
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
+                Sumrecord.addmss(teststudent, reason, clas, num)
 
                 return redirect(paths)
             elif dd >= int(n1):
@@ -4384,6 +4388,7 @@ def zkfx(request,id0,id1):
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
+                Sumrecord.addmss(teststudent, reason, clas, num)
 
                 return redirect(paths)
 
@@ -4432,6 +4437,7 @@ def zkfx(request,id0,id1):
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
+                Sumrecord.addmss(teststudent, reason, clas, num)
 
                 return redirect(paths)
             elif costtime>=limit1:
@@ -4480,6 +4486,7 @@ def zkfx(request,id0,id1):
                 jifen.sum+=num
                 jifen.save()
                 Jifengrecord.addmss(teststudent,num,reason,clas)
+                Sumrecord.addmss(teststudent, reason, clas, num)
 
                 return redirect(paths)
 
@@ -4791,6 +4798,7 @@ def Hwchange(request,time,stuid):
     ss = get_object_or_404(Homeworks, time=time, stuid=stuid)
     num=25
     reasons='通过订正'+ss.hwname+'获得'+str(num)+'积分'
+
     name=ss.name
     url='../../'+str(time)
     if name in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
@@ -4800,6 +4808,8 @@ def Hwchange(request,time,stuid):
         clas = 3
     else:
         clas = 4
+    reasona = '订正作业'+ss.hwname
+    Sumrecord.addmss(name,reasona,clas,num)
     # value=66666
     # for j in range(3):
     #     for i in range(10):
@@ -4956,6 +4966,11 @@ def Hwrewardpost(request):
             ss='D'
         else:
             ss='没交'
+        if num>=15:
+            reasona='作业'+hwname+ss
+            Sumrecord.addmss(name, reasona, clas, num)
+        else:
+            pass
         Homewrecord.addmss(name, hwname, ss, str(time),clas)
         reason=hwname+ss+'奖励积分'+str(num)
         hhh=get_object_or_404(Jifeng,name=name)
