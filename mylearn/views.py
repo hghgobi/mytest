@@ -4790,7 +4790,7 @@ def Hwchange(request,time,stuid):
     mss.save()
     ss = get_object_or_404(Homeworks, time=time, stuid=stuid)
     num=25
-    reasons='通过'+ss.hwname+'获得'+str(num)+'积分'
+    reasons='通过订正'+ss.hwname+'获得'+str(num)+'积分'
     name=ss.name
     url='../../'+str(time)
     if name in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
