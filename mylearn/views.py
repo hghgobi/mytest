@@ -55,8 +55,8 @@ from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 from wechatpy.pay import logger
 
-times = [[7, 50, 8, 30], [8, 40, 9, 20], [9, 50, 10, 30], [10, 40, 11, 20], [13, 20, 14, 0], [14, 10, 14, 50],
-         [15, 5, 15, 45], [15, 55, 16, 35],[18,0,18,40], [18, 50, 19, 35], [19, 45, 20, 30]]
+times = [[7,20,7,40],[7, 50, 8, 30], [8, 40, 9, 20], [9, 50, 10, 30], [10, 40, 11, 20],[12,20,13,10], [13, 20, 14, 0], [14, 10, 14, 50],
+         [15, 5, 15, 45], [15, 55, 16, 35],[17,40,18,40], [18, 50, 19, 35], [19, 45, 20, 30]]
 def Kz(request,code):
     if request.method=='GET':
         code=code
@@ -5942,6 +5942,22 @@ def Hardkillershow(request):
             return render(request,'hardkillershow4.html',{'mss':mss})
 
 def Musicplay(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime2.now().time()
+
+        nm = 0
+        for n in times:
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     teststudent = request.session.get("teststudent")
     aaas=['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
     if teststudent in aaas:

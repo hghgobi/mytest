@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -15,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="4792" column="47" lean-forward="true" selection-start-line="4792" selection-start-column="47" selection-end-line="4792" selection-end-column="47" />
+            <state relative-caret-position="280">
+              <caret line="5944" column="42" lean-forward="true" selection-start-line="5944" selection-start-column="42" selection-end-line="5944" selection-end-column="42" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -136,7 +137,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Luckys</find>
       <find>Exam</find>
       <find>Dr</find>
       <find>Addl</find>
@@ -166,6 +166,7 @@
       <find>mu</find>
       <find>ZS</find>
       <find>zs</find>
+      <find>课</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -822,8 +823,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="4792" column="47" lean-forward="true" selection-start-line="4792" selection-start-column="47" selection-end-line="4792" selection-end-column="47" />
+        <state relative-caret-position="280">
+          <caret line="5944" column="42" lean-forward="true" selection-start-line="5944" selection-start-column="42" selection-end-line="5944" selection-end-column="42" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
