@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit
 import json
 from pylab import *
 import random
@@ -5380,6 +5380,10 @@ def Jifenzs(request):
         return render(request,'jifenzs.html',{'ms':ms,'mss':mss})
 
     if request.method=='POST':
+        year = datetime2.now().year
+        month = datetime2.now().month
+        day = datetime2.now().day
+
         if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭',
                            '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪',
                            '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨',
@@ -5436,6 +5440,21 @@ def Jifenzs(request):
         datass=get_object_or_404(Jifeng,name=teststudent)
         bb=get_object_or_404(Jifeng,name=namezs)
         nn=datass.sum
+        try:
+            tt=get_object_or_404(Zslimit,name=teststudent)
+            if tt.year==year and tt.month==month and tt.day==day:
+                data = {}
+                data['error'] = '每天只能送一次！！！'
+                data['status'] = 'error'
+                return JsonResponse(data)
+            else:
+                tt.year=year
+                tt.month=month
+                tt.day=day
+                tt.num=1
+                tt.save()
+        except:
+            Zslimit.addmss(teststudent,year,month,day,1)
         if nn>=num:
             datass.sum=nn-num
             datass.save()

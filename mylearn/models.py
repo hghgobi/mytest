@@ -992,3 +992,19 @@ class Limitin(models.Model):
 	id0 = models.IntegerField()
 	id1 = models.IntegerField()
 	id2 = models.IntegerField()
+
+class Zslimit(models.Model):
+	name = models.CharField(max_length=50)
+	year= models.IntegerField()
+	month = models.IntegerField()
+	day =models.IntegerField()
+	num = models.IntegerField()
+	time = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,year,month,day,num,time):
+		addms = cls(name=name,year=year,month=month,day=day,num=num)
+		addms.save()
