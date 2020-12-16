@@ -1005,6 +1005,6 @@ class Zslimit(models.Model):
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,name,year,month,day,num,time):
+	def addmss(cls,name,year,month,day,num):
 		addms = cls(name=name,year=year,month=month,day=day,num=num)
 		addms.save()
