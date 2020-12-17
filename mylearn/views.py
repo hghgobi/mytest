@@ -6038,9 +6038,10 @@ def Musicplay(request):
         ms=Musics.objects.all()
         return render(request,'playmusic.html',{'ms':ms})
     if request.method=='POST':
+        data = {}
         year = datetime2.now().year
         month = datetime2.now().month
-        day=datetime2.now().day
+        day = datetime2.now().day
         zid = str(year)+str(month)
         jid = str(day)
         ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
@@ -6063,7 +6064,7 @@ def Musicplay(request):
             pass
 
         music = request.POST.get('music')
-        data={}
+
         if music :
             pass
         else:
