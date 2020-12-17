@@ -324,7 +324,7 @@ class LimitinAdmin(admin.ModelAdmin):
 	list_display = ['id0','id1','id2']
 @admin.register(Musics)
 class MusicsAdmin(admin.ModelAdmin):
-	list_display = ['name','names','num','idd']
+	list_display = ['name','names','num','idd','cost']
 
 @admin.register(Zslimit)
 class ZslimitAdmin(admin.ModelAdmin):

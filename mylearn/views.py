@@ -5190,7 +5190,7 @@ def Showlucky(request):
             data['error'] = '抽奖码只能是数字'
             data['status'] = 'error'
             return JsonResponse(data)
-        c = Lucky.objects.filter(name=teststudent,num=int(num))
+        c = Lucky.objects.filter(name=teststudent)
         if c:
             a = [1, 2, 3, 4, 5, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10, 11, 11,
                  11, 11, 11, 12, 12, 12, 12, 12, 13, 13, 13, 13, 13, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 16, 16, 17,
@@ -5199,7 +5199,10 @@ def Showlucky(request):
             b = a[0]
             data['status'] = 'success'
             data['error'] = '恭喜你获得' + str(b) + '朵红花！'
-            Lucky.objects.filter(name=teststudent,num=int(num)).delete()
+            numss=[]
+            for jj in c:
+                numss.append(jj.num)
+            Lucky.objects.filter(name=teststudent,num=int(numss[0])).delete()
             ornot = 0
             if teststudent in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']:
                 clas=3
@@ -5252,14 +5255,18 @@ def Showluckys(request):
             data['error'] = '兑换码只能是数字'
             data['status'] = 'error'
             return JsonResponse(data)
-        c = Luckys.objects.filter(name=teststudent,num=int(num))
+        # c = Luckys.objects.filter(name=teststudent,num=int(num))
+        c = Luckys.objects.filter(name=teststudent)
         if c:
             a = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 5, 5, 6]
             random.shuffle(a)
             b = a[0]
             data['status'] = 'success'
             data['error'] = '恭喜你获得' + str(b) + '个抽奖码！'
-            Luckys.objects.filter(name=teststudent,num=int(num)).delete()
+            numss=[]
+            for jj in c:
+                numss.append(jj.num)
+            Luckys.objects.filter(name=teststudent,num=int(numss[0])).delete()
             value = 666666
             reason='通过兑换码兑换'
             reasonss = '兑换码兑换'
@@ -5985,6 +5992,7 @@ def Musicplay(request):
         ms=Musics.objects.all()
         return render(request,'playmusic.html',{'ms':ms})
     if request.method=='POST':
+
         music = request.POST.get('music')
         data={}
         if music :
@@ -5994,15 +6002,16 @@ def Musicplay(request):
             data['error']='请选一首歌！！'
             return JsonResponse(data)
         aa=get_object_or_404(Jifeng,name=teststudent)
+        bb = get_object_or_404(Musics, idd=music)
+        cost=bb.cost
 
-        if aa.sum>=20:
-            aa.sum=aa.sum-20
+        if aa.sum>=cost:
+            aa.sum=aa.sum-cost
             aa.save()
             reason='点歌'
-            Jifengrecord.addmss(teststudent,-20,reason,clas)
+            Jifengrecord.addmss(teststudent,-cost,reason,clas)
             ms = Musics.objects.filter(idd=music)
             mss = []
-            bb=get_object_or_404(Musics,idd=music)
             bb.num+=1
             bb.save()
             for i in ms:

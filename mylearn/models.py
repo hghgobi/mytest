@@ -807,6 +807,7 @@ class Musics(models.Model):
 	names = models.CharField(max_length=500)
 	num = models.IntegerField(default=0)
 	idd = models.IntegerField()
+	cost = models.IntegerField(default=0)
 class Setgoodns(models.Model):
 	name = models.CharField(max_length=500)
 	time = models.DateTimeField(auto_now_add=True)
