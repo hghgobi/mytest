@@ -6248,27 +6248,27 @@ def Getluckyshow(request):
         nns = Getlucky.objects.filter(idd=idd)
 
         if len(nns)>=10:
-            ornot=get_object_or_404(Getluckyornot,idd=idd)
-            if ornot.ornot==0:
-                nam = []
-                namelucky = Getlucky.objects.filter(idd=idd)
-                for h in namelucky:
-                    nam.append(h.name)
-                shuffle(nam)
-                reward = [30, 20, 20, 15]
-                for o in range(4):
-                    Getluckynames.addmss(nam[o], idd, reward[o], o)
-                    nlrw = get_object_or_404(Jifeng, name=nam[o])
-                    nlrw.sum += reward[o]
-                    nlrw.save()
-                    reason = '中' + str(o) + '等奖'
-                    Jifengrecord.addmss(nam[o], reward[o], reason, clas)
-                ornot.ornot=1
-                ornot.save()
-            else:
-                pass
+            # ornot=get_object_or_404(Getluckyornot,idd=idd)
+            # if ornot.ornot==0:
+            #     nam = []
+            #     namelucky = Getlucky.objects.filter(idd=idd)
+            #     for h in namelucky:
+            #         nam.append(h.name)
+            #     shuffle(nam)
+            #     reward = [30, 20, 20, 15]
+            #     for o in range(4):
+            #         Getluckynames.addmss(nam[o], idd, reward[o], o)
+            #         nlrw = get_object_or_404(Jifeng, name=nam[o])
+            #         nlrw.sum += reward[o]
+            #         nlrw.save()
+            #         reason = '中' + str(o) + '等奖'
+            #         Jifengrecord.addmss(nam[o], reward[o], reason, clas)
+            #     ornot.ornot=1
+            #     ornot.save()
+            # else:
+            #     pass
             idd+=1
-            Getluckyornot.addmss(idd,0)
+            # Getluckyornot.addmss(idd,0)
         else:
             pass
     else:
@@ -6351,14 +6351,15 @@ def Getluckyshow(request):
         else:
             pass
         jifen6 = get_object_or_404(Jifeng,name=teststudent)
-        if jifen6.sum>=10:
-            jifen6.sum = jifen6.sum-10
+        limitnum=0
+        if jifen6.sum>=limitnum:
+            jifen6.sum = jifen6.sum-limitnum
             jifen6.save()
         else:
             data['error'] = '积分不足'
             data['status'] = 'error'
             return JsonResponse(data)
-        Jifengrecord.addmss(teststudent,-10,'参与积分碰撞',clas)
+        Jifengrecord.addmss(teststudent,-limitnum,'参与积分碰撞',clas)
         jjj = Getlucky.objects.filter(idd=idd)
         ornot = get_object_or_404(Getluckyornot, idd=idd)
         if len(jjj)==10:
