@@ -58,10 +58,10 @@
             </div>
 <hr/>
      <h1>上一期中奖名单</h1>
-     <ul>
+
              {%for i in ms2 %}
-         <li>{{i.time}}-{{i.name}}-{{i.rank}}等奖-获得{{i.num}}</li>
-     </ul>
+         <a>{{i.time}}-{{i.name}}-{{i.rank}}等奖-获得{{i.num}}</a>
+
         {% empty %}
         <p><font size="5" color="red">暂无信息</font></p>
         {% endfor %}

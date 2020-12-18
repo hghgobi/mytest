@@ -6351,7 +6351,7 @@ def Getluckyshow(request):
         else:
             pass
         jifen6 = get_object_or_404(Jifeng,name=teststudent)
-        limitnum=0
+        limitnum=10
         if jifen6.sum>=limitnum:
             jifen6.sum = jifen6.sum-limitnum
             jifen6.save()
