@@ -6223,7 +6223,7 @@ def Getluckyshow(request):
             break
         nns = Getlucky.objects.filter(idd=idd)
 
-        if len(nns)==10:
+        if len(nns)>=10:
             ornot=get_object_or_404(Getluckyornot,idd=idd)
             if ornot.ornot==0:
                 nam = []
@@ -6239,7 +6239,8 @@ def Getluckyshow(request):
                     nlrw.save()
                     reason = '中' + str(o) + '等奖'
                     Jifengrecord.addmss(nam[o], reward[o], reason, clas)
-                Getluckyornot.addmss(idd,1)
+                ornot.ornot=1
+                ornot.save()
             else:
                 pass
             idd+=1
@@ -6326,27 +6327,32 @@ def Getluckyshow(request):
             data['status'] = 'error'
             return JsonResponse(data)
         Jifengrecord.addmss(teststudent,-10,'抽奖',clas)
-        Getlucky.addmss(teststudent,idd)
         jjj = Getlucky.objects.filter(idd=idd)
+        ornot = get_object_or_404(Getluckyornot, idd=idd)
         if len(jjj)==10:
-            nam=[]
-            namelucky = Getlucky.objects.filter(idd=idd)
-            for h in namelucky:
-                nam.append(h.name)
-            shuffle(nam)
-            reward=[30,20,20,15]
-            for o in range(4):
-                Getluckynames.addmss(nam[o], idd, reward[o], o)
-                nlrw=get_object_or_404(Jifeng,name=nam[o])
-                nlrw.sum+=reward[o]
-                nlrw.save()
-                reason='中'+str(o)+'等奖'
-                Jifengrecord.addmss(nam[o],reward[o],reason,clas)
-            Getluckyornot.addmss(idd, 1)
+            if ornot.ornot==0:
+                nam=[]
+                namelucky = Getlucky.objects.filter(idd=idd)
+                for h in namelucky:
+                    nam.append(h.name)
+                shuffle(nam)
+                reward=[30,20,20,15]
+                for o in range(4):
+                    Getluckynames.addmss(nam[o], idd, reward[o], o)
+                    nlrw=get_object_or_404(Jifeng,name=nam[o])
+                    nlrw.sum+=reward[o]
+                    nlrw.save()
+                    reason='中'+str(o)+'等奖'
+                    Jifengrecord.addmss(nam[o],reward[o],reason,clas)
+                ornot.ornot=1
+                ornot.save()
+            else:
+                pass
             idd+=1
             Getluckyornot.addmss(idd, 0)
+            Getlucky.addmss(teststudent, idd)
         else:
-            pass
+            Getlucky.addmss(teststudent, idd)
         data['error'] = '参与成功！够10人即开奖'
         data['status'] = 'success'
         return JsonResponse(data)
