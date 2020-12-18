@@ -6273,11 +6273,11 @@ def Getluckyshow(request):
         #     pass
     else:
         pass
-    idd0 = idd - 1
+
     if request.method=='GET':
 
         ms1 = Getlucky.objects.filter(idd=idd)
-        ms2 = Getluckynames.objects.filter(idd=idd0)
+        ms2 = Getluckynames.objects.filter(idd=idd)
         return render(request,'getluckyshow.html',{'ms1':ms1,'ms2':ms2})
     if request.method=='POST':
         data = {}

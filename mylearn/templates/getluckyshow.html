@@ -60,7 +60,7 @@
      <h1>上一期中奖名单</h1>
 
              {%for i in ms2 %}
-         <a>{{i.time}}-{{i.name}}-{{i.rank}}等奖-获得{{i.num}}</a>
+         <p>第{{i.idd}}期:{{i.time}}-{{i.name}}-{{i.rank}}等奖-获得{{i.num}}</p>
 
         {% empty %}
         <p><font size="5" color="red">暂无信息</font></p>
