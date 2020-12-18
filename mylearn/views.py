@@ -6326,7 +6326,7 @@ def Getluckyshow(request):
             data['error'] = '积分不足'
             data['status'] = 'error'
             return JsonResponse(data)
-        Jifengrecord.addmss(teststudent,-10,'抽奖',clas)
+        Jifengrecord.addmss(teststudent,-10,'参与积分碰撞',clas)
         jjj = Getlucky.objects.filter(idd=idd)
         ornot = get_object_or_404(Getluckyornot, idd=idd)
         if len(jjj)==10:
