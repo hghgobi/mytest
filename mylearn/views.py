@@ -6277,7 +6277,7 @@ def Getluckyshow(request):
     if request.method=='GET':
 
         ms1 = Getlucky.objects.filter(idd=idd)
-        ms2 = Getluckynames.objects.filter(idd=idd)
+        ms2 = Getluckynames.objects.all()
         return render(request,'getluckyshow.html',{'ms1':ms1,'ms2':ms2})
     if request.method=='POST':
         data = {}
