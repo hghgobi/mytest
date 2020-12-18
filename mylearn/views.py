@@ -6245,32 +6245,32 @@ def Getluckyshow(request):
         for i in ms:
             idd = i.idd
             break
-        nns = Getlucky.objects.filter(idd=idd)
-
-        if len(nns)>=10:
-            # ornot=get_object_or_404(Getluckyornot,idd=idd)
-            # if ornot.ornot==0:
-            #     nam = []
-            #     namelucky = Getlucky.objects.filter(idd=idd)
-            #     for h in namelucky:
-            #         nam.append(h.name)
-            #     shuffle(nam)
-            #     reward = [30, 20, 20, 15]
-            #     for o in range(4):
-            #         Getluckynames.addmss(nam[o], idd, reward[o], o)
-            #         nlrw = get_object_or_404(Jifeng, name=nam[o])
-            #         nlrw.sum += reward[o]
-            #         nlrw.save()
-            #         reason = '中' + str(o) + '等奖'
-            #         Jifengrecord.addmss(nam[o], reward[o], reason, clas)
-            #     ornot.ornot=1
-            #     ornot.save()
-            # else:
-            #     pass
-            idd+=1
-            # Getluckyornot.addmss(idd,0)
-        else:
-            pass
+        # nns = Getlucky.objects.filter(idd=idd)
+        #
+        # if len(nns)>=10:
+        #     # ornot=get_object_or_404(Getluckyornot,idd=idd)
+        #     # if ornot.ornot==0:
+        #     #     nam = []
+        #     #     namelucky = Getlucky.objects.filter(idd=idd)
+        #     #     for h in namelucky:
+        #     #         nam.append(h.name)
+        #     #     shuffle(nam)
+        #     #     reward = [30, 20, 20, 15]
+        #     #     for o in range(4):
+        #     #         Getluckynames.addmss(nam[o], idd, reward[o], o)
+        #     #         nlrw = get_object_or_404(Jifeng, name=nam[o])
+        #     #         nlrw.sum += reward[o]
+        #     #         nlrw.save()
+        #     #         reason = '中' + str(o) + '等奖'
+        #     #         Jifengrecord.addmss(nam[o], reward[o], reason, clas)
+        #     #     ornot.ornot=1
+        #     #     ornot.save()
+        #     # else:
+        #     #     pass
+        #     idd+=1
+        #     # Getluckyornot.addmss(idd,0)
+        # else:
+        #     pass
     else:
         pass
     idd0 = idd - 1
@@ -6361,11 +6361,12 @@ def Getluckyshow(request):
             return JsonResponse(data)
         Jifengrecord.addmss(teststudent,-limitnum,'参与积分碰撞',clas)
         jjj = Getlucky.objects.filter(idd=idd)
-        if len(jjj)==0:
-            Getluckyornot.addmss(idd, 0)
-            Getlucky.addmss(teststudent, idd)
+        # if len(jjj)==0:
+        #     Getluckyornot.addmss(idd, 0)
+        #     Getlucky.addmss(teststudent, idd)
 
-        elif len(jjj)==10:
+        if len(jjj)==9:
+            Getlucky.addmss(teststudent, idd)
             ornot = get_object_or_404(Getluckyornot, idd=idd)
             if ornot.ornot==0:
                 nam=[]
@@ -6387,7 +6388,7 @@ def Getluckyshow(request):
                 pass
             idd+=1
             Getluckyornot.addmss(idd, 0)
-            Getlucky.addmss(teststudent, idd)
+            
         else:
             Getlucky.addmss(teststudent, idd)
         data['error'] = '参与成功！够10人即开奖'
