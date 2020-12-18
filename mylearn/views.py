@@ -6239,7 +6239,7 @@ def Getluckyshow(request):
         clas=4
     if not teststudent:
         return redirect('../../testlogin')
-    ms = Getlucky.objects.all()
+    ms = Getluckyornot.objects.all()
     idd = 0
     if ms:
         for i in ms:
@@ -6388,7 +6388,7 @@ def Getluckyshow(request):
                 pass
             idd+=1
             Getluckyornot.addmss(idd, 0)
-            
+
         else:
             Getlucky.addmss(teststudent, idd)
         data['error'] = '参与成功！够10人即开奖'
