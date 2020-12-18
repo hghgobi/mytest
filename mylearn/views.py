@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot
 import json
 from pylab import *
 import random
@@ -6188,6 +6188,176 @@ def Musicplay(request):
             data['status']='error'
             data['error']='积分不足！！'
             return JsonResponse(data)
+
+
+def Getluckyshow(request):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime2.now().time()
+
+        nm = 0
+        for n in times:
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
+    teststudent = request.session.get("teststudent")
+    aaas=['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
+    if teststudent in aaas:
+        clas=3
+    else:
+        clas=4
+    if not teststudent:
+        return redirect('../../testlogin')
+    ms = Getlucky.objects.all()
+    idd = 0
+    if ms:
+        for i in ms:
+            idd = i.idd
+            break
+        nns = Getlucky.objects.filter(idd=idd)
+
+        if len(nns)==10:
+            ornot=get_object_or_404(Getluckyornot,idd=idd)
+            if ornot.ornot==0:
+                nam = []
+                namelucky = Getlucky.objects.filter(idd=idd)
+                for h in namelucky:
+                    nam.append(h.name)
+                shuffle(nam)
+                reward = [30, 20, 20, 15]
+                for o in range(4):
+                    Getluckynames.addmss(nam[o], idd, reward[o], o)
+                    nlrw = get_object_or_404(Jifeng, name=nam[o])
+                    nlrw.sum += reward[o]
+                    nlrw.save()
+                    reason = '中' + str(o) + '等奖'
+                    Jifengrecord.addmss(nam[o], reward[o], reason, clas)
+                Getluckyornot.addmss(idd,1)
+            else:
+                pass
+            idd+=1
+            Getluckyornot.addmss(idd,0)
+        else:
+            pass
+    else:
+        pass
+    idd0 = idd - 1
+    if request.method=='GET':
+
+        ms1 = Getlucky.objects.filter(idd=idd)
+        ms2 = Getluckynames.objects.filter(idd=idd0)
+        return render(request,'getluckyshow.html',{'ms1':ms1,'ms2':ms2})
+    if request.method=='POST':
+        data = {}
+        find = Homeworks.objects.filter(name=teststudent,ornots='未发放')
+        if find :
+            fenzu = {'梁晨宇': [['梁宇轩', 302], ['李梦涵', 320], ['徐玮涵', 321], ['王烁森', 331], ['陈柯涵', 341]],
+                     '梁宇轩': [['刘俊轩', 303], ['蒋米墙', 319], ['林惠婷', 322], ['王倩', 332], ['陈佳浩', 342]],
+                     '刘俊轩': [['沈柯妤', 304], ['夏艺宵', 318], ['梁宸豪', 323], ['沈珂如', 333], ['梁乘玮', 343]],
+                     '沈柯妤': [['李航', 305], ['李宗翰', 317], ['沈宏铭', 324], ['李琪', 340], ['郭晨宇', 344]],
+                     '李航': [['李亦晴', 306], ['蒋承延', 316], ['罗羽馨', 325], ['戴麟懿', 339], ['吴纪涵', 345]],
+                     '李亦晴': [['梁珂涵', 307], ['罗懿轩', 315], ['林千欣卡', 326], ['应昊均', 338], ['刘世聪', 346]],
+                     '梁珂涵': [['陈镐', 308], ['梁馨月01', 314], ['王曼旭', 327], ['林奕如', 337], ['叶潇雅', 347]],
+                     '陈镐': [['蒋佳成', 309], ['郑文婷', 313], ['罗俊凯', 328], ['谢雨珂', 336], ['陈伊柔', 348]],
+                     '蒋佳成': [['张宇麒', 310], ['梁栩铭', 312], ['莫佳颖', 329], ['吴思淼', 335], ['黄婧娴', 349]],
+                     '张宇麒': [['梁晨宇', 301], ['梁如妮', 311], ['郑芷欣', 330], ['梁馨予', 334], ['梁海涛', 350]],
+                     '陆宇浩': [['李欣宜', 430], ['梁康鑫', 442], ['蒋雨轩', 438], ['沈佳瑶', 421], ['廖木村', 420]],
+                     '陶悠然': [['陆宇浩', 401], ['周俊皓', 443], ['罗李琦', 439], ['陆可馨', 422], ['陈宇航', 419]],
+                     '李佳英': [['陶悠然', 402], ['梁蕙怡', 444], ['张徐豪', 440], ['徐翊然', 423], ['林鹏豪', 418]],
+                     '李秋佟': [['李佳英', 403], ['陈敏雪', 445], ['陈宇珅', 441], ['吴伊豪', 424], ['梁祖铭', 417]],
+                     '卢以悦': [['李秋佟', 404], ['孙鉴', 437], ['胡雨诗', 436], ['李聿轩', 425], ['梁仁杰', 416]],
+                     '陈俏宏': [['卢以悦', 405], ['毛语彤', 446], ['罗晨轩', 431], ['梁杰', 426], ['蔡锦隆', 415]],
+                     '梁瑜珈': [['陈俏宏', 406], ['沈琪舒', 447], ['蒋依洋', 435], ['余思成', 427], ['陈梓烨', 414]],
+                     '尚榆皓': [['梁瑜珈', 407], ['李超宇', 448], ['林佳璇', 434], ['沈修平', 428], ['梁耀晟', 413]],
+                     '颜之依': [['尚榆皓', 409], ['黄炳铨', 449], ['许可欣', 433], ['何相遥', 429], ['李梓恒', 412]],
+                     '李欣宜': [['颜之依', 410], ['何柯瑶', 432], ['梁隽炜', 411], ['章涵茜', 408]]}
+            zuz = ''
+            for key in fenzu:
+                bb = []
+                for i in fenzu[key]:
+                    bb.append(i[0])
+                if teststudent in bb:
+                    zuz = key
+                    break
+                else:
+                    pass
+            ms=[]
+            for i in find:
+                ms.append(i.hwname)
+            mss='下列作业奖励还没到组长'+zuz+'那里领取，请先领取：'+str(ms)
+            data['error'] = mss
+            data['status'] = 'error'
+            return JsonResponse(data)
+        else:
+            pass
+        year = datetime2.now().year
+        month = datetime2.now().month
+        day=datetime2.now().day
+        zid = str(year)+str(month)
+        jid = str(day)
+        ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
+        if ornot:
+            data['error'] = '今日基础练10题还没通过，请先完成'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        else:
+            pass
+
+        ns = Getlucky.objects.filter(idd=idd,name=teststudent)
+        if ns:
+            data['error'] = '本期抽奖你已经参加，不能重复'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        else:
+            pass
+        jifen6 = get_object_or_404(Jifeng,name=teststudent)
+        if jifen6.sum>=10:
+            jifen6.sum = jifen6.sum-10
+            jifen6.save()
+        else:
+            data['error'] = '积分不足'
+            data['status'] = 'error'
+            return JsonResponse(data)
+        Jifengrecord.addmss(teststudent,-10,'抽奖',clas)
+        Getlucky.addmss(teststudent,idd)
+        jjj = Getlucky.objects.filter(idd=idd)
+        if len(jjj)==10:
+            nam=[]
+            namelucky = Getlucky.objects.filter(idd=idd)
+            for h in namelucky:
+                nam.append(h.name)
+            shuffle(nam)
+            reward=[30,20,20,15]
+            for o in range(4):
+                Getluckynames.addmss(nam[o], idd, reward[o], o)
+                nlrw=get_object_or_404(Jifeng,name=nam[o])
+                nlrw.sum+=reward[o]
+                nlrw.save()
+                reason='中'+str(o)+'等奖'
+                Jifengrecord.addmss(nam[o],reward[o],reason,clas)
+            Getluckyornot.addmss(idd, 1)
+            idd+=1
+            Getluckyornot.addmss(idd, 0)
+        else:
+            pass
+        data['error'] = '参与成功！够10人即开奖'
+        data['status'] = 'success'
+        return JsonResponse(data)
+
+
+
+
+
+
+
+
 
 
 

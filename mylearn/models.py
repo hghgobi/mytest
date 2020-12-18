@@ -1022,3 +1022,38 @@ class Sumrecord(models.Model):
 	def addmss(cls,name,reason,clas,num):
 		addms = cls(name=name,reason=reason,clas=clas,num=num)
 		addms.save()
+class Getlucky(models.Model):
+	name = models.CharField(max_length=50)
+	idd = models.IntegerField()
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,idd):
+		addms = cls(name=name,idd=idd)
+		addms.save()
+class Getluckynames(models.Model):
+	name = models.CharField(max_length=50)
+	idd = models.IntegerField()
+	time = models.DateTimeField(auto_now=True)
+	num = models.IntegerField()
+	rank = models.IntegerField()
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,name,idd,num,rank):
+		addms = cls(name=name,idd=idd,num=num,rank=rank)
+		addms.save()
+class Getluckyornot(models.Model):
+	idd = models.IntegerField()
+	ornot = models.IntegerField(default=0)
+	time = models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,idd,ornot):
+		addms = cls(idd=idd,ornot=ornot)
+		addms.save()

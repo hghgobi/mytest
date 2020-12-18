@@ -139,6 +139,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                # path('aaa123', views.Aaa),
                path('hwdetail', views.Homewdetail),
                path('musicplay', views.Musicplay,name='musicplay'),
+               path('getluckyshow', views.Getluckyshow, name='getluckyshow'),
 
 
 
