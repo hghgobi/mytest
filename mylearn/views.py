@@ -6361,8 +6361,12 @@ def Getluckyshow(request):
             return JsonResponse(data)
         Jifengrecord.addmss(teststudent,-limitnum,'参与积分碰撞',clas)
         jjj = Getlucky.objects.filter(idd=idd)
-        ornot = get_object_or_404(Getluckyornot, idd=idd)
-        if len(jjj)==10:
+        if len(jjj)==0:
+            Getluckyornot.addmss(idd, 0)
+            Getlucky.addmss(teststudent, idd)
+
+        elif len(jjj)==10:
+            ornot = get_object_or_404(Getluckyornot, idd=idd)
             if ornot.ornot==0:
                 nam=[]
                 namelucky = Getlucky.objects.filter(idd=idd)
