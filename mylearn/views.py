@@ -6376,7 +6376,7 @@ def Getluckyshow(request):
                 shuffle(nam)
                 reward=[30,20,20,15]
                 for o in range(4):
-                    Getluckynames.addmss(nam[o], idd, reward[o], o)
+                    Getluckynames.addmss(nam[o], idd, reward[o], o+1)
                     nlrw=get_object_or_404(Jifeng,name=nam[o])
                     nlrw.sum+=reward[o]
                     nlrw.save()
