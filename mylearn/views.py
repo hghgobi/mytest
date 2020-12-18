@@ -5178,18 +5178,7 @@ def Showlucky(request):
     if request.method=='POST':
         data = {}
         num = request.POST.get('num')
-        year = datetime2.now().year
-        month = datetime2.now().month
-        day=datetime2.now().day
-        zid = str(year)+str(month)
-        jid = str(day)
-        ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
-        if ornot:
-            data['error'] = '今日基础练10题还没通过，请先完成'
-            data['status'] = 'error'
-            return JsonResponse(data)
-        else:
-            pass
+
         find = Homeworks.objects.filter(name=teststudent,ornots='未发放')
         if find :
             fenzu = {'梁晨宇': [['梁宇轩', 302], ['李梦涵', 320], ['徐玮涵', 321], ['王烁森', 331], ['陈柯涵', 341]],
@@ -5227,6 +5216,18 @@ def Showlucky(request):
                 ms.append(i.hwname)
             mss='下列作业奖励还没到组长'+zuz+'那里领取，请先领取：'+str(ms)
             data['error'] = mss
+            data['status'] = 'error'
+            return JsonResponse(data)
+        else:
+            pass
+        year = datetime2.now().year
+        month = datetime2.now().month
+        day=datetime2.now().day
+        zid = str(year)+str(month)
+        jid = str(day)
+        ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
+        if ornot:
+            data['error'] = '今日基础练10题还没通过，请先完成'
             data['status'] = 'error'
             return JsonResponse(data)
         else:
@@ -5296,18 +5297,6 @@ def Showluckys(request):
     if request.method=='POST':
         data = {}
         num = request.POST.get('num')
-        year = datetime2.now().year
-        month = datetime2.now().month
-        day=datetime2.now().day
-        zid = str(year)+str(month)
-        jid = str(day)
-        ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
-        if ornot:
-            data['error'] = '今日基础练10题还没通过，请先完成'
-            data['status'] = 'error'
-            return JsonResponse(data)
-        else:
-            pass
         find = Homeworks.objects.filter(name=teststudent,ornots='未发放')
         if find :
             fenzu = {'梁晨宇': [['梁宇轩', 302], ['李梦涵', 320], ['徐玮涵', 321], ['王烁森', 331], ['陈柯涵', 341]],
@@ -5345,6 +5334,18 @@ def Showluckys(request):
                 ms.append(i.hwname)
             mss='下列作业奖励还没到组长'+zuz+'那里领取，请先领取：'+str(ms)
             data['error'] = mss
+            data['status'] = 'error'
+            return JsonResponse(data)
+        else:
+            pass
+        year = datetime2.now().year
+        month = datetime2.now().month
+        day=datetime2.now().day
+        zid = str(year)+str(month)
+        jid = str(day)
+        ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
+        if ornot:
+            data['error'] = '今日基础练10题还没通过，请先完成'
             data['status'] = 'error'
             return JsonResponse(data)
         else:
@@ -6099,18 +6100,6 @@ def Musicplay(request):
         return render(request,'playmusic.html',{'ms':ms})
     if request.method=='POST':
         data = {}
-        year = datetime2.now().year
-        month = datetime2.now().month
-        day = datetime2.now().day
-        zid = str(year)+str(month)
-        jid = str(day)
-        ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
-        if ornot:
-            data['error'] = '今日基础练10题还没通过，请先完成'
-            data['status'] = 'error'
-            return JsonResponse(data)
-        else:
-            pass
         find = Homeworks.objects.filter(name=teststudent,ornots='未发放')
         if find :
             fenzu = {'梁晨宇': [['梁宇轩', 302], ['李梦涵', 320], ['徐玮涵', 321], ['王烁森', 331], ['陈柯涵', 341]],
@@ -6148,6 +6137,18 @@ def Musicplay(request):
                 ms.append(i.hwname)
             mss='下列作业奖励还没到组长'+zuz+'那里领取，请先领取：'+str(ms)
             data['error'] = mss
+            data['status'] = 'error'
+            return JsonResponse(data)
+        else:
+            pass
+        year = datetime2.now().year
+        month = datetime2.now().month
+        day=datetime2.now().day
+        zid = str(year)+str(month)
+        jid = str(day)
+        ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
+        if ornot:
+            data['error'] = '今日基础练10题还没通过，请先完成'
             data['status'] = 'error'
             return JsonResponse(data)
         else:

@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="5224" column="17" lean-forward="true" selection-start-line="5224" selection-start-column="17" selection-end-line="5224" selection-end-column="17" />
+            <state relative-caret-position="280">
+              <caret line="6150" column="44" selection-start-line="6150" selection-start-column="42" selection-end-line="6150" selection-end-column="44" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -232,7 +232,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="4" />
     <option name="width" value="1876" />
@@ -365,7 +365,7 @@
     <option name="totallyTimeSpent" value="1090000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.117492095" />
@@ -820,8 +820,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="5224" column="17" lean-forward="true" selection-start-line="5224" selection-start-column="17" selection-end-line="5224" selection-end-column="17" />
+        <state relative-caret-position="280">
+          <caret line="6150" column="44" selection-start-line="6150" selection-start-column="42" selection-end-line="6150" selection-end-column="44" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
