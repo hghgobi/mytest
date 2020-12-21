@@ -6216,6 +6216,8 @@ def Musicplay(request):
             year = datetime2.now().year
             month = datetime2.now().month
             day = datetime2.now().day
+            hours = datetime2.now().hour
+            mins = datetime2.now().minute
             zid = str(year) + str(month)
             jid = str(day)
             ornot = Newnames.objects.filter(name=teststudent, zid=zid, jid=jid)
@@ -6255,10 +6257,14 @@ def Musicplay(request):
             msss.append(html)
             data['status'] = 'success'
             data['error'] = msss
+            data['hour']=hours
+            data['min']=mins
+
             return JsonResponse(data)
         else:
             data['status']='error'
             data['error']='积分不足！！'
+
             return JsonResponse(data)
 
 

@@ -42,6 +42,8 @@
 <div id="error">
 
 </div>
+<input type="hidden" id="hour" value="-1">
+<input type="hidden" id="min" value="-1">
 <script type="text/javascript">
         $("#addtxl").submit(function(){
 
@@ -59,6 +61,8 @@
 
                     music.innerHTML=data['error'][0];
                     $('input[type=radio]').removeAttr('checked');
+                    document.getElementById("hour").value=data["hour"];
+                    document.getElementById("min").value=data["min"];
                     }else{
                         // 显示错误信息
                         $("#error").text(data['error']);
@@ -76,23 +80,54 @@
         });
     </script>
 <script type="text/javascript">
-function times(){
-    var time = 300;
-    var timer = setInterval(function () {
-        time--;
-        if (time==0) {
-            clearInterval(timer);
-            setTimeout(function () {
+<!--function times(){-->
+<!--    var time = 300;-->
+<!--    var timer = setInterval(function () {-->
+<!--        time&#45;&#45;;-->
+<!--        if (time==0) {-->
+<!--            clearInterval(timer);-->
+<!--            setTimeout(function () {-->
+<!--                    window.parent.location.reload();-->
+<!--                }, 1000);-->
+<!--        }-->
+<!--    }, 1000);-->
+<!--}-->
+<!--function reflesh(){-->
+<!--            setTimeout(function () {-->
+<!--                    window.parent.location.reload();-->
+<!--                }, 1000);-->
+<!--}-->
+
+var int = self.setInterval("clock()",5000);
+var d= new Date();
+    function clock(){
+    var hour0=document.getElementById("hour").value;
+    var mins0=document.getElementById("min").value;
+    var hour=d.getHours();
+    var mins = d.getMinutes();
+    if(hour0==-1){}
+    else{
+    if(hour==hour0){
+    if(mins-mins0>=5){
+    setTimeout(function () {
                     window.parent.location.reload();
                 }, 1000);
-        }
-    }, 1000);
-}
-function reflesh(){
-            setTimeout(function () {
+    }
+    }
+        if(hour-hour0==1){
+    if((mins+60)-mins0>=5){
+    setTimeout(function () {
                     window.parent.location.reload();
                 }, 1000);
-}
+    }
+    }
+    if(hour-hour0>1){setTimeout(function () {
+                    window.parent.location.reload();
+                }, 1000);}
+                }
+    }
+
+
 </script>
 
 
