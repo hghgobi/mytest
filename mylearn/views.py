@@ -6255,11 +6255,11 @@ def Musicplay(request):
             msss = []
             msss.append(html)
             data['status'] = 'success'
-            data['error'] = msss
             hourss = datetime2.now().hour
             minss = datetime2.now().minute
-            data['hour']=hourss
-            data['min']=minss
+            mss.append(hourss)
+            mss.append(minss)
+            data['error'] = msss
 
             return JsonResponse(data)
         else:
