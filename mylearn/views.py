@@ -3872,6 +3872,22 @@ def Addxhl0(request):
 
 
 def zkfx(request,id0,id1):
+    timess=get_object_or_404(Limitin,pk=1)
+    if timess.id0==0:
+        pass
+    else:
+        current = datetime2.now().time()
+
+        nm = 0
+        for n in times:
+            if time2(n[0], n[1]) < current < time2(n[2], n[3]):
+                nm += 1
+            else:
+                pass
+        if nm == 0:
+            pass
+        else:
+            return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
     id0 = id0
     id1 = id1
     if request.method == 'GET':
@@ -4028,6 +4044,22 @@ def zkfx(request,id0,id1):
     # if request.method=="POST":
 
     if request.method == 'POST':
+        timess = get_object_or_404(Limitin, pk=1)
+        if timess.id0 == 0:
+            pass
+        else:
+            current = datetime2.now().time()
+
+            nm = 0
+            for n in times:
+                if time2(n[0], n[1]) < current < time2(n[2], n[3]):
+                    nm += 1
+                else:
+                    pass
+            if nm == 0:
+                pass
+            else:
+                return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
         teststudent = request.session.get("teststudent")
         if not teststudent:
             return redirect('../testlogin')
@@ -6115,6 +6147,22 @@ def Musicplay(request):
         ms=Musics.objects.all()
         return render(request,'playmusic.html',{'ms':ms})
     if request.method=='POST':
+        timess = get_object_or_404(Limitin, pk=1)
+        if timess.id0 == 0:
+            pass
+        else:
+            current = datetime2.now().time()
+
+            nm = 0
+            for n in times:
+                if time2(n[0], n[1]) < current < time2(n[2], n[3]):
+                    nm += 1
+                else:
+                    pass
+            if nm == 0:
+                pass
+            else:
+                return HttpResponse("上课期间禁止访问网站！！！！请下课后再访问！")
         data = {}
         if timess.id1 == 0:
             pass
