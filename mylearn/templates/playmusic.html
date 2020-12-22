@@ -39,6 +39,9 @@
 
 </div>
 
+<div id="lefttime">
+
+</div>
 <div id="error">
 
 </div>
@@ -113,6 +116,9 @@ var d= new Date();
                     window.parent.location.reload();
                 }, 1000);
     }
+        else{
+    var lefts=5-(mins-mins0);
+    lefttime.innerHTML==lefts;}
     }
         if(hour-hour0==1){
     if((mins+60)-mins0>=5){
@@ -120,6 +126,9 @@ var d= new Date();
                     window.parent.location.reload();
                 }, 1000);
     }
+    else{
+    var left=5-((mins+60)-mins0);
+    lefttime.innerHTML==left;}
     }
     if(hour-hour0>1){setTimeout(function () {
                     window.parent.location.reload();
