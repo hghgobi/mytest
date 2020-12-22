@@ -62,7 +62,7 @@
                     music.innerHTML=data['error'][0];
                     $('input[type=radio]').removeAttr('checked');
                     document.getElementById("hour").value=data["error"][1];
-                    document.getElementById("min")=data["error"][2];
+                    document.getElementById("min").value=data["error"][2];
                     }else{
                         // 显示错误信息
                         $("#error").text(data['error']);
