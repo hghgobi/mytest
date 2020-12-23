@@ -3,7 +3,7 @@
 <div ><h3>{{hwtime}}--{{hwname}}</h3></div>
 <div id="error"></div>
 <div>
-          <form id="addtxl" onsubmit="gos()" action="{% url 'hweverydaypost' %}" method="POST" style="overflow:hidden">
+          <form id="addtxl" onsubmit="return false" action="{% url 'hweverydaypost' %}" method="POST" style="overflow:hidden">
 
         <table >
             <tbody align="center">
@@ -18,7 +18,9 @@
                 <tr>
                      <td><input id="idd" type="hidden" style="font-size:16px" name="idd" value=""></td>
                 </tr>
-
+                <tr>
+                    <td><input id="sub" type="submit"  value ="" ></td>
+                </tr>
 
             </tbody>
         </table>
@@ -105,14 +107,14 @@ function go(){
     if(xxs[i].checked){
     document.getElementById("idd").value=xxs[i].value;
     document.getElementById(xxs[i].value).remove();
-    addtxl.submit();
+    document.getElementById("sub").click();
 
 
     }
 
 </script>
 <script type="text/javascript">
-        function gos(){
+        $("#addtxl").submit(function(){
 
             // 异步提交
             $.ajax({
@@ -138,7 +140,7 @@ function go(){
                 }
             });
             return false;
-        }
+       });
     </script>
 
 {% endblock %}
