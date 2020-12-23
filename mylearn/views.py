@@ -6633,7 +6633,7 @@ def Hwday(request,time,num):
                 pass
 
             n += 1
-        return render(request,'hwevery.html',{'ms':ms,'mss':mss,'hwname':hwname,'hwtime':hwtime,'mm':json.dumps(mm)})
+        return render(request,'hweveryday.html',{'ms':ms,'mss':mss,'hwname':hwname,'hwtime':hwtime,'mm':json.dumps(mm)})
 
     if request.method == 'POST':
         data={}
