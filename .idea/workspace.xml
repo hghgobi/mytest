@@ -3,9 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/getluckyshow.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/getluckyshow.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,8 +17,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3000">
-              <caret line="6501" column="26" selection-start-line="6501" selection-start-column="26" selection-end-line="6501" selection-end-column="26" />
+            <state relative-caret-position="715">
+              <caret line="6668" lean-forward="true" selection-start-line="6668" selection-end-line="6668" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -29,35 +27,69 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/templates/getluckyshow.html">
+        <entry file="file://$PROJECT_DIR$/mylearn/templates/addgoodns.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="13" column="53" lean-forward="true" selection-start-line="13" selection-start-column="53" selection-end-line="13" selection-end-column="53" />
+            <state relative-caret-position="-270" />
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mylearn/templates/hwrewardshow.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2777">
+              <caret line="131" column="25" lean-forward="true" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
               <folding>
-                <element signature="n#style#0;n#input#0;n#td#1;n#tr#1;n#tbody#0;n#table#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#1;n#tr#6;n#tbody#0;n#table#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#td#1;n#tr#7;n#tbody#0;n#table#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/templates/zuoyerecord.html">
+        <entry file="file://$PROJECT_DIR$/mylearn/templates/exam.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="107">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+            <state relative-caret-position="930">
+              <caret line="49" column="13" lean-forward="true" selection-start-line="11" selection-end-line="49" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mylearn/templates/jifenduihuan.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-199">
+              <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller4.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="857">
+              <caret line="47" column="81" selection-start-line="47" selection-start-column="81" selection-end-line="47" selection-end-column="81" />
               <folding>
-                <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#3;n#div#0;n#div#1;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#4;n#div#0;n#div#1;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mylearn/models.py">
+        <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="707">
-              <caret line="1078" column="52" lean-forward="true" selection-start-line="1078" selection-start-column="52" selection-end-line="1078" selection-end-column="52" />
+            <state relative-caret-position="497">
+              <caret line="145" column="78" selection-start-line="145" selection-start-column="78" selection-end-line="145" selection-end-column="78" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
@@ -66,12 +98,12 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
+        <entry file="file://$PROJECT_DIR$/mylearn/templates/hweveryday.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="753">
-              <caret line="356" column="64" lean-forward="true" selection-start-line="356" selection-start-column="64" selection-end-line="356" selection-end-column="64" />
+            <state relative-caret-position="647">
+              <caret line="142" column="14" lean-forward="true" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
               <folding>
-                <element signature="e#0#32#0" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,8 +112,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/mylearn/templates/hw01.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="15" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="600">
+              <caret line="20" column="14" lean-forward="true" selection-end-line="20" selection-end-column="14" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
@@ -90,45 +122,13 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/templates/base3.html">
+        <entry file="file://$PROJECT_DIR$/mylearn/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="35" column="6" selection-start-line="35" selection-start-column="6" selection-end-line="35" selection-end-column="6" />
-              <folding>
-                <element signature="n#style#0;n#a#0;n#li#5;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#6;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#7;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#li#9;n#ul#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#marquee#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#marquee#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1277">
-              <caret line="143" column="54" selection-start-line="143" selection-start-column="54" selection-end-line="143" selection-end-column="54" />
+            <state relative-caret-position="587">
+              <caret line="1078" column="19" lean-forward="true" selection-start-line="1078" selection-start-column="19" selection-end-line="1078" selection-end-column="50" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/templates/homework3.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/mylearn/templates/homewdetail.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="27" column="101" selection-start-line="27" selection-start-column="101" selection-end-line="27" selection-end-column="101" />
             </state>
           </provider>
         </entry>
@@ -145,7 +145,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>||</find>
       <find>|</find>
       <find>Q</find>
       <find>Musi</find>
@@ -175,6 +174,7 @@
       <find>hwc</find>
       <find>zkfx</find>
       <find>getl</find>
+      <find>radi</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -183,7 +183,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/mylearn/templates/hw02.html" />
         <option value="F:/2020级七年级信息/分组/make - 副本.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/hwms.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/getbadnews.html" />
@@ -229,11 +228,12 @@
         <option value="$PROJECT_DIR$/mylearn/templates/renwu.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/hwrewardshow.html" />
         <option value="$PROJECT_DIR$/mylearn/templates/zuoyerecord.html" />
-        <option value="$PROJECT_DIR$/mylearn/urls.py" />
-        <option value="$PROJECT_DIR$/mylearn/views.py" />
         <option value="$PROJECT_DIR$/mylearn/templates/getluckyshow.html" />
         <option value="$PROJECT_DIR$/mylearn/admin.py" />
         <option value="$PROJECT_DIR$/mylearn/models.py" />
+        <option value="$PROJECT_DIR$/mylearn/templates/hweveryday.html" />
+        <option value="$PROJECT_DIR$/mylearn/views.py" />
+        <option value="$PROJECT_DIR$/mylearn/urls.py" />
       </list>
     </option>
   </component>
@@ -423,35 +423,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://F:/2020级七年级信息/题目/documentname.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="36" column="36" lean-forward="true" selection-start-line="31" selection-end-line="36" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/change.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="27" column="14" lean-forward="true" selection-start-line="27" selection-start-column="14" selection-end-line="27" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mytest/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-810" />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/奖励红花/getnames.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/奖励红花/text.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -529,22 +500,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller4.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1410">
-          <caret line="47" column="81" selection-start-line="47" selection-start-column="81" selection-end-line="47" selection-end-column="81" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#3;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#4;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://F:/2020级七年级信息/getnames.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
@@ -559,20 +514,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="28" column="37" lean-forward="true" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/hw02.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="3" selection-start-line="3" selection-end-line="14" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/exam.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="18" column="96" selection-end-line="52" />
         </state>
       </provider>
     </entry>
@@ -659,13 +600,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/jifenduihuan.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="30" column="20" selection-end-line="116" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/playmusic.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2553">
@@ -688,52 +622,12 @@
     <entry file="file://$PROJECT_DIR$/mylearn/templates/yuxiname.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/hwrewardshow.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4320">
-          <caret line="144" selection-start-line="144" selection-end-line="144" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#1;n#tr#6;n#tbody#0;n#table#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#td#1;n#tr#7;n#tbody#0;n#table#0;n#form#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/renwu.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
           <caret line="13" column="6" selection-end-line="47" />
           <folding>
             <element signature="n#style#0;n#p#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1290">
-          <caret line="43" column="25" selection-end-line="104" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#3;n#div#0;n#div#1;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#4;n#div#0;n#div#1;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/templates/hw01.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -764,16 +658,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1277">
-          <caret line="143" column="54" selection-start-line="143" selection-start-column="54" selection-end-line="143" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/templates/zuoyerecord.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="107">
@@ -795,16 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3000">
-          <caret line="6501" column="26" selection-start-line="6501" selection-start-column="26" selection-end-line="6501" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#62#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/admin.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="753">
@@ -815,10 +689,128 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="791">
+          <caret line="43" column="25" selection-end-line="104" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#3;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/hw02.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="3" selection-start-line="3" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/index.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/kzgeturl.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/hw01.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="20" column="14" lean-forward="true" selection-end-line="20" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/addgoodns.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-270" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/jifenduihuan.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199">
+          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/hardkiller4.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="857">
+          <caret line="47" column="81" selection-start-line="47" selection-start-column="81" selection-end-line="47" selection-end-column="81" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#2;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#3;n#div#0;n#div#1;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#4;n#div#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/exam.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="930">
+          <caret line="49" column="13" lean-forward="true" selection-start-line="11" selection-end-line="49" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/hwrewardshow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2777">
+          <caret line="131" column="25" lean-forward="true" selection-start-line="131" selection-start-column="25" selection-end-line="131" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#1;n#tr#6;n#tbody#0;n#table#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#td#1;n#tr#7;n#tbody#0;n#table#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/templates/hweveryday.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="142" column="14" lean-forward="true" selection-start-line="142" selection-start-column="14" selection-end-line="142" selection-end-column="14" />
+          <folding>
+            <element signature="n#style#0;n#form#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="707">
-          <caret line="1078" column="52" lean-forward="true" selection-start-line="1078" selection-start-column="52" selection-end-line="1078" selection-end-column="52" />
+        <state relative-caret-position="587">
+          <caret line="1078" column="19" lean-forward="true" selection-start-line="1078" selection-start-column="19" selection-end-line="1078" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="715">
+          <caret line="6668" lean-forward="true" selection-start-line="6668" selection-end-line="6668" />
+          <folding>
+            <element signature="e#0#62#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mylearn/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="145" column="78" selection-start-line="145" selection-start-column="78" selection-end-line="145" selection-end-column="78" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
           </folding>

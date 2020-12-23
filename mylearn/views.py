@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweverydayrecord,Hweveryday
 import json
 from pylab import *
 import random
@@ -6590,6 +6590,85 @@ def renwusum(teststudent):
         nnn=0
     nsum=n+nn+nnn
     return nsum
+def Clas(teststudent):
+    aaas=['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵', '梁馨予', '李琪', '陈伊柔', '叶潇雅', '黄婧娴', '梁如妮', '陈柯涵', '沈珂如', '郑芷欣']
+    if teststudent in aaas:
+        clas=3
+    else:
+        clas=4
+    return clas
+def Hwday(request,time,num):
+    time=time
+    num=num
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method=='GET':
+        if teststudent in ['沈柯妤','陈镐','陆宇浩','廖木村']:
+            pass
+        else:
+            return HttpResponse("没权限！！")
+        clas = Clas(teststudent)
+        m = get_object_or_404(Hweveryday,time=time,num=num)
+        hwname = m.hwname
+        hwtime = time
+        ms = Hweverydayrecord.objects.filter(time=time,num=num,ornot="未交",clas=clas)
+        mss = Hweverydayrecord.objects.filter(time=time, num=num, ornot="已交",clas=clas)
+        mm = ''
+        n = 1
+        a = ''
+        for i in range(50):
+            try :
+                names=get_object_or_404(Studentids,idd=i+1,clas=clas)
+                name=names.name
+                ornot = Hweverydayrecord.objects.filter(time=time,num=num,ornot="未交",name=name)
+                if ornot:
+                    a = '''<a id="%s">=<input name="student" type="radio"  value="%s" onclick="go()" style="width:35px;height:35px"><font size="5">%s</font>=</a>''' % (i+1,i+1,i+1)
+
+                else:
+                    pass
+            except:
+                pass
+            if n % 5 == 0:
+            a += '''<p></p>'''
+            mm += a
+            n += 1
+        return render(request,'hwevery.html',{'ms':ms,'mss':mss,'hwname':hwname,'hwtime':hwtime,'mm':json.dumps(mm)})
+
+    if request.method == 'POST':
+        data={}
+        idd = request.POST.get('idd')
+        time = request.POST.get('time')
+        num = request.POST.get('num')
+        clas=Clas(teststudent)
+        names = get_object_or_404(Studentids, idd=idd, clas=clas)
+        name = names.name
+        namess=get_object_or_404(Hweverydayrecord,time=time,name=name,num=num)
+        namess.ornot='已交'
+        namess.save()
+        data['status']="success"
+        data['error']=name
+        return JsonResponse(data)
+
+def Hwaddday(request,time,num,clas):
+    time=time
+    num=num
+    clas=clas
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method=='GET':
+        ms=get_object_or_404(Hweveryday,time=time,num=num)
+        hwname=ms.hwname
+        mss=Studentids.objects.filter(clas=clas)
+        for i  in mss:
+            Hweverydayrecord.addmss(hwname,time,num,i.name,clas,'未交')
+        return HttpResponse("success")
+
+
+
+
+
 
 
 
