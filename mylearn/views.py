@@ -6684,7 +6684,7 @@ def Hwdaymanage(request):
             time=i.time
             num=i.num
             hwname=i.hwname
-            url = 'http://35925.top/' + str(time)+'/'+str(num)
+            url = 'http://35925.top/hweveryday/' + str(time)+'/'+str(num)
             html = '''<a href="%s" target="_blank">%s -清点作业</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (
             url, hwname)
             htmls.append(html)
