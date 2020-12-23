@@ -17,6 +17,7 @@ studentlist.innerHTML=urlsum;
     <h1> 1.组长要督促组员登记
          ，不听从者按作业不交处理；
         2.单次作业，所有成员发放完，再奖励5积分！
+        3.组长务必查看作业本，确定后再登记！！
     </h1>
       <form id="addtxl" onsubmit="return false" action="{% url 'hwreward' %}" method="POST" style="overflow:hidden">
 
@@ -54,7 +55,7 @@ studentlist.innerHTML=urlsum;
                 </tr>
                 <tr>
                      <td></td>
-                    <td><input type="radio" style="width:35px;height:35px" name="option" value="1"></td>
+                    <td><input type="radio" style="width:35px;height:35px" name="option" value="-5"></td>
                      <td><font size="5" style="width:35px;height:35px">D</font></td>
 
                 </tr>

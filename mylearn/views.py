@@ -4995,7 +4995,7 @@ def Hwrewardpost(request):
             ss='B'
         elif num==5:
             ss='C'
-        elif num==1:
+        elif num==-5:
             ss='D'
         else:
             ss='没交'
