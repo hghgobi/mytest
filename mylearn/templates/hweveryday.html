@@ -105,10 +105,36 @@ function go(){
     if(xxs[i].checked){
     document.getElementById("idd").value=xxs[i].value;
     document.getElementById(xxs[i].value).remove();
-    addtxl.submit();
+
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'hweverydaypost' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+
+                    if(data['status']=="success"){
+                     $("#error").text(data['error']);
+
+
+                    }else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        }
     }
     }
-}
+
 </script>
 <script type="text/javascript">
         $("#addtxl").submit(function(){
