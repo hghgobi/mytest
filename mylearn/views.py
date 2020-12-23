@@ -581,6 +581,7 @@ def Indexs(request):
         mas4 = Classnews.objects.all()[:10]
     except:
         mas4=Classnews.objects.all()
+    nsum = renwusum()
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''
     #     # for ii in range(len(mas1)):
@@ -6450,7 +6451,46 @@ def Getluckyshow(request):
         data['status'] = 'success'
         return JsonResponse(data)
 
+def Renwu(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    ms = Homeworks.objects.filter(name=teststudent,ornots="未发放")
+    if ms:
+        n = len(ms)
+    else:
+        n=0
+    mss = Newnames.objects.filter(name=teststudent)
+    if mss:
+        nn = len(mss)
+    else:
+        nn=0
+    msss=Homeworks.objects.filter(name=teststudent, ornot="未订正")
+    if msss:
+        nnn = len(msss)
+    else:
+        nnn=0
+    nsum=n+nn+nnn
+    return render(request,"renwu.html",{'ms':ms,'mss':mss,'msss':msss,'n':n,'nn':nn,'nnn':nnn,'nsum':nsum})
 
+def renwusum():
+    ms = Homeworks.objects.filter(name=teststudent,ornots="未发放")
+    if ms:
+        n = len(ms)
+    else:
+        n=0
+    mss = Newnames.objects.filter(name=teststudent)
+    if mss:
+        nn = len(mss)
+    else:
+        nn=0
+    msss=Homeworks.objects.filter(name=teststudent, ornot="未订正")
+    if msss:
+        nnn = len(msss)
+    else:
+        nnn=0
+    nsum=n+nn+nnn
+    return nsum
 
 
 

@@ -1,0 +1,46 @@
+{% extends 'base2.html' %}  
+{% block content %}
+<div>
+    <h3>作业奖励/情况未登记有{{n}}次</h3>
+    <h4>抓紧时间到组长那登记，否则按不交作业处理</h4>
+                   {%for i in ms %}
+
+                <p style="color:red">{{i.hwname}}-时间{{i.time}}</p>
+
+               {% empty %}
+               <p> 暂无消息 </p>
+               {% endfor %}
+
+</div>
+<hr/>
+<hr/>
+<div>
+        <h3>每日口算未完成有{{nn}}次</h3>
+                   {%for i in mss %}
+
+                <p style="color:red">{{i.zid}}-{{i.jid}}号</p>
+
+               {% empty %}
+               <p> 暂无消息 </p>
+               {% endfor %}
+
+</div>
+<hr/>
+<hr/>
+<div>
+        <h3>作业未订正{{nnn}}次</h3>s
+                   {%for i in msss %}
+
+                <p style="color:red">{{i.hwname}}-时间{{i.time}}</p>
+
+               {% empty %}
+               <p> 暂无消息 </p>
+               {% endfor %}
+
+</div>
+<hr/>
+<hr/>
+
+
+
+{% endblock %}
