@@ -1057,3 +1057,25 @@ class Getluckyornot(models.Model):
 	def addmss(cls,idd,ornot):
 		addms = cls(idd=idd,ornot=ornot)
 		addms.save()
+class Studentids(models.Model):
+	name = models.CharField(max_length=50)
+	idd = models.IntegerField()
+	clas = models.IntegerField()
+class Hweveryday(models.Model):
+	hwname = models.CharField(max_length=50)
+	time = models.CharField(max_length=500)
+	num = models.IntegerField(default=0)
+class Hweverydayrecord(models.Model):
+	hwname = models.CharField(max_length=50)
+	time = models.CharField(max_length=500)
+	num = models.IntegerField(default=0)
+	name = models.CharField(max_length=50)
+	clas = models.IntegerField(default=0)
+	ornot = models.CharField(max_length=50)
+	times =  models.DateTimeField(auto_now=True)
+	class Meta:
+		ordering = ['-time']
+	@classmethod
+	def addmss(cls,hwname,time,num,name,clas,ornot):
+		addms = cls(hwname=hwname,time=time,num=num,name=name,clas=clas,ornot=ornot)
+		addms.save()

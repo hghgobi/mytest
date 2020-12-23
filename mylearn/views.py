@@ -6490,7 +6490,7 @@ def Getluckyshow(request):
         #     Getluckyornot.addmss(idd, 0)
         #     Getlucky.addmss(teststudent, idd)
 
-        if len(jjj)==9:
+        if len(jjj)==19:
             Getlucky.addmss(teststudent, idd)
             ornot = get_object_or_404(Getluckyornot, idd=idd)
             if ornot.ornot==0:
@@ -6516,7 +6516,7 @@ def Getluckyshow(request):
 
         else:
             Getlucky.addmss(teststudent, idd)
-        data['error'] = '参与成功！够10人即开奖'
+        data['error'] = '参与成功！够20人即开奖'
         data['status'] = 'success'
         return JsonResponse(data)
 
