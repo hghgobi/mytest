@@ -1,0 +1,32 @@
+{% extends 'base2.html' %}  
+{% block content %}
+<div>
+    <h3>3班</h3>
+
+                   {%for i in ms %}
+
+                <p style="color:red">{{i.name}}--{{i.hwname}}-时间{{i.time}}</p>
+
+               {% empty %}
+               <p> 暂无消息 </p>
+               {% endfor %}
+
+</div>
+<hr/>
+<hr/>
+<div>
+    <h3>4班</h3>
+
+                   {%for i in mss %}
+
+                <p style="color:red">{{i.name}}--{{i.hwname}}-时间{{i.time}}</p>
+
+               {% empty %}
+               <p> 暂无消息 </p>
+               {% endfor %}
+
+</div>
+<hr/>
+<hr/>
+
+{% endblock %}

@@ -6136,6 +6136,12 @@ def Hardkiller(request):
                         data['status'] = 'error'
                         return JsonResponse(data)
 
+def zuoyerecord(request):
+    if request.method=='GET':
+        ms = Homeworks.objects.filter(ornots='未发放',clas=3)
+        mss = Homeworks.objects.filter(ornots='未发放', clas=4)
+        return render(request,'zuoyerecord.html',{'ms':ms,'mss':mss})
+
 
 
 

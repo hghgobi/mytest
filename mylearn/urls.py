@@ -141,6 +141,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('musicplay', views.Musicplay,name='musicplay'),
                path('getluckyshow', views.Getluckyshow, name='getluckyshow'),
                path('renwu', views.Renwu),
+               path('zuoyerecord', views.zuoyerecord),
 
 
 
