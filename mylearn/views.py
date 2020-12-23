@@ -6669,7 +6669,26 @@ def Hwaddday(request,time,num,clas):
             Hweverydayrecord.addmss(hwname,time,num,i.name,clas,'未交')
         return HttpResponse("success")
 
-
+def Hwdaymanage(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method=='GET':
+        if teststudent in ['沈柯妤','陈镐','陆宇浩','廖木村']:
+            pass
+        else:
+            return HttpResponse("没权限！！")
+        ms=Hweveryday.objects.all()
+        htmls=[]
+        for i in ms:
+            time=i.time
+            num=i.num
+            hwname=i.hwname
+            url = 'http://35925.top/' + str(time)+'/'+str(num)
+            html = '''<a href="%s" target="_blank">%s -清点作业</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (
+            url, hwname)
+            htmls.append(html)
+        return render(request,'hw06.html',{'htmls':json.dumps(htmls)})
 
 
 
