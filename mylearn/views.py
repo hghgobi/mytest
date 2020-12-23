@@ -581,7 +581,7 @@ def Indexs(request):
         mas4 = Classnews.objects.all()[:10]
     except:
         mas4=Classnews.objects.all()
-    nsum = renwusum()
+    nsum = renwusum(teststudent)
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''
     #     # for ii in range(len(mas1)):
@@ -6473,7 +6473,7 @@ def Renwu(request):
     nsum=n+nn+nnn
     return render(request,"renwu.html",{'ms':ms,'mss':mss,'msss':msss,'n':n,'nn':nn,'nnn':nnn,'nsum':nsum})
 
-def renwusum():
+def renwusum(teststudent):
     ms = Homeworks.objects.filter(name=teststudent,ornots="未发放")
     if ms:
         n = len(ms)
