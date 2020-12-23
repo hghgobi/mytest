@@ -6633,7 +6633,7 @@ def Hwday(request,time,num):
                 pass
 
             n += 1
-        return render(request,'hweveryday.html',{'ms':ms,'mss':mss,'hwname':hwname,'hwtime':hwtime,'mm':json.dumps(mm),'time':time,'num':num})
+        return render(request,'hweveryday.html',{'ms':ms,'mss':mss,'hwname':hwname,'hwtime':hwtime,'mm':mm,'time':time,'num':num})
 
 def Hweverypost(request):
     teststudent = request.session.get("teststudent")
