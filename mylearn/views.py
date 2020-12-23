@@ -6614,9 +6614,9 @@ def Hwday(request,time,num):
         hwtime = time
         ms = Hweverydayrecord.objects.filter(time=time,num=num,ornot="未交",clas=clas)
         mss = Hweverydayrecord.objects.filter(time=time, num=num, ornot="已交",clas=clas)
-        mm = ''
+        mm = ''''''
         n = 1
-        a = ''
+
         for i in range(50):
             try :
                 names=get_object_or_404(Studentids,idd=i+1,clas=clas)
@@ -6624,14 +6624,14 @@ def Hwday(request,time,num):
                 ornot = Hweverydayrecord.objects.filter(time=time,num=num,ornot="未交",name=name)
                 if ornot:
                     a = '''<a id="%s">=<input name="student" type="radio"  value="%s" onclick="go()" style="width:35px;height:35px"><font size="5">%s</font>=</a>''' % (i+1,i+1,i+1)
-
+                    if n % 5 == 0:
+                        a += '''<p></p>'''
+                    mm += a
                 else:
                     pass
             except:
                 pass
-            if n % 5 == 0:
-            a += '''<p></p>'''
-            mm += a
+
             n += 1
         return render(request,'hwevery.html',{'ms':ms,'mss':mss,'hwname':hwname,'hwtime':hwtime,'mm':json.dumps(mm)})
 
