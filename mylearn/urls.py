@@ -143,7 +143,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('renwu', views.Renwu),
                path('zuoyerecord', views.zuoyerecord),
                path('hweveryday/<int:time>/<int:num>', views.Hwday),
-               path('hweverydaypost', views.Hweverypost),
+               path('hweverydaypost', views.Hweverypost,name='hweverydaypost'),
                path('hwaddday/<int:time>/<int:num>/<int:clas>', views.Hwaddday),
 
 
