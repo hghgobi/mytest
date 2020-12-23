@@ -3,7 +3,7 @@
 <div ><h3>{{hwtime}}--{{hwname}}</h3></div>
 <div id="error"></div>
 <div>
-          <form id="addtxl" onsubmit="return false" action="{% url 'hweverydaypost' %}" method="POST" style="overflow:hidden">
+          <form id="addtxl" onsubmit="gos()" action="{% url 'hweverydaypost' %}" method="POST" style="overflow:hidden">
 
         <table >
             <tbody align="center">
@@ -112,7 +112,7 @@ function go(){
 
 </script>
 <script type="text/javascript">
-        addtxl.onsubmit=function(){
+        function gos(){
 
             // 异步提交
             $.ajax({
@@ -138,7 +138,7 @@ function go(){
                 }
             });
             return false;
-        };
+        }
     </script>
 
 {% endblock %}
