@@ -6598,7 +6598,7 @@ def Clas(teststudent):
         clas=4
     return clas
 def Hwday(request,time,num):
-    time=time
+    time=str(time)
     num=num
     teststudent = request.session.get("teststudent")
     if not teststudent:
@@ -6635,6 +6635,10 @@ def Hwday(request,time,num):
             n += 1
         return render(request,'hweveryday.html',{'ms':ms,'mss':mss,'hwname':hwname,'hwtime':hwtime,'mm':json.dumps(mm),'time':time,'num':num})
 
+def Hweverypost(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
     if request.method == 'POST':
         data={}
         idd = request.POST.get('idd')

@@ -3,7 +3,7 @@
 <div ><h3>{{hwtime}}--{{hwname}}</h3></div>
 <div id="error"></div>
 <div>
-          <form id="addtxl" onsubmit="return false" action="{% url 'hweveryday' %}" method="POST" style="overflow:hidden">
+          <form id="addtxl" onsubmit="return false" action="{% url 'hweverydaypost' %}" method="POST" style="overflow:hidden">
 
         <table >
             <tbody align="center">
@@ -115,7 +115,7 @@ function go(){
 
             // 异步提交
             $.ajax({
-                url: "{% url 'hweveryday' %}",
+                url: "{% url 'hweverydaypost' %}",
                 type: 'POST',
                 data: $(this).serialize(),
                 cache: false,
