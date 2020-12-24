@@ -1079,3 +1079,15 @@ class Hweverydayrecord(models.Model):
 	def addmss(cls,hwname,time,num,name,clas,ornot):
 		addms = cls(hwname=hwname,time=time,num=num,name=name,clas=clas,ornot=ornot)
 		addms.save()
+class Paotui(models.Model):
+	id = models.AutoField(primary_key=True)
+	name = models.CharField(max_length=500)
+	studentname = models.CharField(max_length=50)
+	ornot = models.CharField(max_length=50)
+	ornots = models.CharField(max_length=50)
+	clas = models.IntegerField(default=3)
+	time = models.DateTimeField(auto_now=True)
+	num = models.IntegerField()
+	jihui = models.IntegerField(default=1)
+	class Meta:
+		ordering = ['-time']

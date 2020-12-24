@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweverydayrecord,Hweveryday
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweverydayrecord,Hweveryday,Paotui
 import json
 from pylab import *
 import random
@@ -6624,6 +6624,7 @@ def Hwday(request,time,num):
                 ornot = Hweverydayrecord.objects.filter(time=time,num=num,ornot="未交",name=name)
                 if ornot:
                     a = '''<a id="%s">=<input name="student" type="radio"  value="%s" onclick="go()" style="width:35px;height:35px"><font size="5">%s</font>=</a>''' % (i+1,i+1,i+1)
+
                     if n % 5 == 0:
                         a += '''<p></p>'''
                     mm += a
@@ -6691,13 +6692,32 @@ def Hwdaymanage(request):
         return render(request,'hw06.html',{'htmls':json.dumps(htmls)})
 
 
-
-
-
-
-
-
-
+def Paotuishow(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    clas = Clas(teststudent)
+    if request.method == 'GET':
+        ms = Paotui.objects.filter(clas=clas,ornot='未接单')
+        mss = Paotui.objects.filter(clas=clas, ornot='已接单')
+        a = ''''''
+        if ms:
+            for i in ms:
+                a += '''<hr/><a><input name="paotui" type="radio"  value="%s" onclick="go()" style="width:35px;height:35px"><font size="5">点击接单</font>=</a><p>内容:%s</p><p>状态:%s</p><p>接单人：%s</p><p>奖励积分:%s个</p>''' %(i.id,i.name,i.ornot,i.studentname,i.num)
+        if mss:
+            for j in mss:
+                a += '''<hr/><p>内容:%s</p><p>状态:%s</p><p>接单人：%s</p><p>奖励积分:%s个</p>''' %(j.name,j.ornot,j.studentname,j.num)
+        return render(request, 'paotui.html',{'a':a})
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        ms = get_object_or_404(Paotui,pk=id)
+        if ms.ornot=='已接单':
+            return redirect('../../paotui')
+        else:
+            ms.ornot='已接单'
+            ms.stuentname=teststudent
+            ms.save()
+            return redirect('../../paotui')
 
 
 
