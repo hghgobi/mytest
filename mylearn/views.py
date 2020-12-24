@@ -6715,7 +6715,7 @@ def Paotuishow(request):
             return redirect('../../paotui')
         else:
             ms.ornot='已接单'
-            ms.stuentname=teststudent
+            ms.studentname=teststudent
             ms.save()
             return redirect('../../paotui')
 
