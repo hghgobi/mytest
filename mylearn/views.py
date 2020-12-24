@@ -6748,6 +6748,35 @@ def Paotuireward(request):
         Jifengrecord.addmss(name,num,'跑腿',clas)
         return redirect('../../paotui2')
 
+def Task(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        num = request.POST.get('num')
+        reason = request.POST.get('reason')
+
+        clas = Clas(name)
+        Sumrecord.addmss(name,reason,clas,num)
+        ms = get_object_or_404(Jifeng,name=name)
+        ms.sum+=int(num)
+        ms.save()
+        Jifengrecord.addmss(name,num,reason,clas)
+        return HttpResponse("成功")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 # def Easykiller(request):
 #     teststudent = request.session.get("teststudent")
