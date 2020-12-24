@@ -6718,7 +6718,35 @@ def Paotuishow(request):
             ms.studentname=teststudent
             ms.save()
             return redirect('../../paotui')
+def Paotuireward(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if teststudent=='管理员':
+        pass
+    else:
+        return HttpResponse("没权限！！！")
+    if request.method == 'GET':
+        ms = Paotui.objects.filter( ornot='已接单',ornots='未发放')
+        a = ''''''
+        if ms:
+            for i in ms:
+                a += '''<hr/><a><input name="paotui" type="radio"  value="%s" onclick="go()" style="width:35px;height:35px"><font size="5">点击发放</font>=</a><p>内容:%s</p><p>状态:%s</p><p>接单人：%s</p><p>奖励积分:%s个</p>''' %(i.id,i.name,i.ornot,i.studentname,i.num)
 
+        return render(request, 'paotui2.html',{'a':a})
+    if request.method == 'POST':
+        id = request.POST.get('id')
+        ms = get_object_or_404(Paotui,pk=id)
+        name = ms.studentname
+        num  = ms.num
+        ms.ornots='已发放'
+        ms.save()
+        mss=get_object_or_404(Jifeng,name=name)
+        mss.sum+=num
+        mss.save()
+        clas = Clas(name)
+        Jifengrecord.addmss(name,num,'跑腿',clas)
+        return redirect('../../paotui2')
 
 
 # def Easykiller(request):
