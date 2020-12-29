@@ -3945,7 +3945,7 @@ def zkfx(request,id0,id1):
                 ornot=zbhf.ornot
             except:
                 ornot=0
-            if id2==1  and id3==1:
+            if id2==1  and id3==1 and id4==0:
                 ts2=0
                 tss=Zkfx.objects.all()
                 for e in tss:
@@ -3974,6 +3974,30 @@ def zkfx(request,id0,id1):
                 return render(request, 'showqszk.html',                              {
                                'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer),'qsid':qsid,
                                'qsamount': json.dumps(zs),'id0':id0,'id1':id1,'ornot':ornot,'testrmpc':json.dumps(testrms),'music':json.dumps(music),'ns':ns})
+            if id2 == 1 and id3 == 1 and id4 == 1:
+                ts2 = 0
+                tss = Zkfx.objects.all()
+                for e in tss:
+                    ts2 = ts2 + 1
+                    qsid0.append(e.pk)
+                a1 = qsid0[-zs:]
+                shuffle(a1)
+                for i in range(ts):
+                    qs = get_object_or_404(Zkfx, pk=a1[i])
+                    qstext.append(qs.questiontext.url)
+                    qsanswer.append(qs.questionanswer)
+                    qsid.append(a1[i])
+                mus = Music.objects.all()
+                music = []
+                for ii in range(len(mus)):
+                    music.append(mus[ii].name)
+                ns = len(music)
+                random.shuffle(music)
+                return render(request, 'showqszk.html', {
+                    'qstext': json.dumps(qstext), 'qsanswer': json.dumps(qsanswer), 'qsid': qsid,
+                    'qsamount': json.dumps(ts), 'id0': id0, 'id1': id1, 'ornot': ornot, 'testrmpc': json.dumps(testrms),
+                    'music': json.dumps(music), 'ns': ns})
+
             elif id2==0  and id3==0:
                 ts2=0
                 tss=Zkfx.objects.all()
