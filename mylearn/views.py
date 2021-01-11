@@ -582,7 +582,7 @@ def Indexs(request):
         mas4 = Classnews.objects.all()[:10]
     except:
         mas4=Classnews.objects.all()
-    nsum = renwusum(teststudent)
+    # nsum = renwusum(teststudent)
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''
     #     # for ii in range(len(mas1)):
