@@ -57,6 +57,7 @@ from wechatpy.pay import logger
 
 times = [[7,20,7,40],[7, 50, 8, 30], [8, 40, 9, 20], [9, 50, 10, 30], [10, 40, 11, 20],[12,20,13,10], [13, 20, 14, 0], [14, 10, 14, 50],
          [15, 5, 15, 45], [15, 55, 16, 35],[17,40,18,40], [18, 50, 19, 35], [19, 45, 20, 30]]
+
 def Kz(request,code):
     if request.method=='GET':
         code=code
@@ -4163,11 +4164,10 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 num=25
-                if dd ==10:
+                if dd ==int(n0):
                     num=35
-                    reason = '每日基础对10题奖励'
-                else:
-                    reason = '每日基础对9题奖励'
+                reason = '每日基础对'+str(dd)+'题奖励'
+
                 fs = "A优秀"
 
                 ornot = "通过，"
@@ -4237,11 +4237,9 @@ def zkfx(request,id0,id1):
 
                 ornot = "通过，"
                 num=25
-                if dd ==10:
+                if dd ==int(n0):
                     num=35
-                    reason = '每日基础对10题奖励'
-                else:
-                    reason = '每日基础对9题奖励'
+                reason = '每日基础对' + str(dd) + '题奖励'
 
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
@@ -4288,7 +4286,7 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 fs = "B良好"
-                reason='每日基础对8题奖励'
+                reason = '每日基础对'+str(dd)+'题奖励'
                 num=15
 
                 ornot = "通过，"
@@ -4354,11 +4352,10 @@ def zkfx(request,id0,id1):
 
                 ornot = "通过，"
                 num=25
-                if dd ==10:
+                if dd ==int(n0):
                     num=35
-                    reason = '每日基础对10题奖励'
-                else:
-                    reason = '每日基础对9题奖励'
+                reason = '每日基础对' + str(dd) + '题奖励'
+
                 timelss2 = get_object_or_404(Costtimels, id0=id0, id1=id1, name=teststudent)
                 costtime2 = timelss2.timels
 
@@ -4405,7 +4402,7 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 fs = "B良好"
-                reason="每日基础练对8题奖励"
+                reason = '每日基础对' + str(dd) + '题奖励'
                 num=15
 
                 ornot = "通过，"
@@ -4765,8 +4762,10 @@ def Hwmanage(request):
         return HttpResponse("你不是组长，没有权限！")
     ids = Homeworksid.objects.all()
     idss = []
+    idsss = []
     for i in ids:
         idss.append(i.time)
+        idsss.append(i.num)
     htmls=[]
     fenzu = {'梁晨宇': [['梁宇轩', 302], ['李梦涵', 320], ['徐玮涵', 321], ['王烁森', 331], ['陈柯涵', 341]],
              '梁宇轩': [['刘俊轩', 303], ['蒋米墙', 319], ['林惠婷', 322], ['王倩', 332], ['陈佳浩', 342]],
@@ -4789,11 +4788,13 @@ def Hwmanage(request):
              '颜之依': [['尚榆皓', 409], ['黄炳铨', 449], ['许可欣', 433], ['何相遥', 429], ['李梓恒', 412]],
              '李欣宜': [['颜之依', 410], ['何柯瑶', 432], ['梁隽炜', 411], ['章涵茜', 408]]}
     zums = fenzu[teststudent]
+    nid=0
     for j in idss:
+
         nnn=0
         for i in zums:
             try:
-                ornots=get_object_or_404(Homeworks, time=j, stuid=i[1])
+                ornots=get_object_or_404(Homeworks, time=j, stuid=i[1],num=idsss[nid])
                 if ornots.ornot=='已订正':
                     pass
                 else:
@@ -4804,17 +4805,19 @@ def Hwmanage(request):
             pass
         else:
             try:
-                gg=get_object_or_404(Homeworksid,time=j)
-                url='http://35925.top/'+str(j)
+                gg=get_object_or_404(Homeworksid,time=j,num=idsss[nid])
+                url='http://35925.top/'+str(j)+'/'+str(idsss[nid])
                 name=gg.hwname
                 html = '''<a href="%s" target="_blank">%s -管理作业订正</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (url, name)
                 htmls.append(html)
             except:
                 pass
+        nid+=1
     return render(request,'hw01.html',{'htmls':json.dumps(htmls)})
 
-def Hwshow(request,time):
+def Hwshow(request,time,num):
     time=time
+    num=num
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
@@ -4827,11 +4830,11 @@ def Hwshow(request,time):
     htmls=[]
     for j in zums:
         try:
-            ornots=get_object_or_404(Homeworks, time=time, stuid=j[1])
+            ornots=get_object_or_404(Homeworks, time=time, stuid=j[1],num=num)
             if ornots.ornot=='已订正':
                 pass
             else:
-                url = 'http://35925.top/' + str(time) + '/' + str(j[1])
+                url = 'http://35925.top/' + str(time) + '/' + str(j[1])+'/'+str(num)
                 name = j[0]
                 html = '''<a href="%s" target="_blank">%s -%s-点击确认订正</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (url, name,ornots.hwname)
                 htmls.append(html)
@@ -4840,24 +4843,25 @@ def Hwshow(request,time):
     return render(request, 'hw02.html', {'htmls': json.dumps(htmls)})
 
 
-def Hwchange(request,time,stuid):
+def Hwchange(request,time,stuid,num):
     time=time
     stuid=stuid
+    num=num
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
     names=['陆宇浩','陶悠然','李佳英','李秋佟','卢以悦','陈俏宏','梁瑜珈','尚榆皓','颜之依','李欣宜','梁晨宇','梁宇轩','刘俊轩','沈柯妤','李航','李亦晴','梁珂涵','陈镐','蒋佳成','张宇麒']
     if teststudent not in names:
         return HttpResponse("你不是组长，没有权限！")
-    mss=get_object_or_404(Homeworks,time=time,stuid=stuid)
+    mss=get_object_or_404(Homeworks,time=time,stuid=stuid,num=num)
     mss.ornot='已订正'
     mss.save()
-    ss = get_object_or_404(Homeworks, time=time, stuid=stuid)
+    ss = get_object_or_404(Homeworks, time=time, stuid=stuid,num=num)
     num=25
     reasons='通过订正'+ss.hwname+'获得'+str(num)+'积分'
 
     name=ss.name
-    url='../../'+str(time)
+    url='../../'+str(time)+'/'+str(num)
     if name in ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼',
                        '蒋米墙', '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴',
                        '莫佳颖', '梁珂涵', '李梦涵', '林千欣卡', '王倩', '谢雨珂', '梁馨月01', '王曼旭', '林惠婷', '林奕如', '罗羽馨', '郑文婷', '夏艺宵',
@@ -4904,8 +4908,10 @@ def Hwrewardmanage(request):
         return HttpResponse("你不是组长，没有权限！")
     ids = Homeworksid.objects.all()
     idss = []
+    idsss=[]
     for i in ids:
         idss.append(i.time)
+        idsss.append(i.num)
     htmls=[]
     fenzu = {'梁晨宇': [['梁宇轩', 302], ['李梦涵', 320], ['徐玮涵', 321], ['王烁森', 331], ['陈柯涵', 341]],
              '梁宇轩': [['刘俊轩', 303], ['蒋米墙', 319], ['林惠婷', 322], ['王倩', 332], ['陈佳浩', 342]],
@@ -4930,9 +4936,10 @@ def Hwrewardmanage(request):
     zums = fenzu[teststudent]
     for j in idss:
         nnn=0
+        nid=0
         for i in zums:
             try:
-                ornots=get_object_or_404(Homeworks, time=j, stuid=i[1])
+                ornots=get_object_or_404(Homeworks, time=j, stuid=i[1],num=idsss[nid])
                 if ornots.ornots=='已发放':
                     pass
                 else:
@@ -4943,16 +4950,18 @@ def Hwrewardmanage(request):
             pass
         else:
             try:
-                gg=get_object_or_404(Homeworksid,time=j)
-                url='http://35925.top/hwreward/'+str(j)
+                gg=get_object_or_404(Homeworksid,time=j,num=idsss[nid])
+                url='http://35925.top/hwreward/'+str(j)+'/'+str(idsss[nid])
                 name=gg.hwname
                 html = '''<a href="%s" target="_blank">%s -奖励积分管理</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (url, name)
                 htmls.append(html)
             except:
                 pass
+        nid+=1
     return render(request,'hw01.html',{'htmls':json.dumps(htmls)})
-def Hwreward(request,time):
+def Hwreward(request,time,num):
     time=time
+    num=num
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
@@ -4967,7 +4976,7 @@ def Hwreward(request,time):
         hwname=''
         for j in zums:
             try:
-                ornots=get_object_or_404(Homeworks, time=time, stuid=j[1])
+                ornots=get_object_or_404(Homeworks, time=time, stuid=j[1],num=num)
                 if ornots.ornots=='已发放':
                     pass
                 else:
@@ -4978,7 +4987,7 @@ def Hwreward(request,time):
                     hwname=ornots.hwname
             except:
                 pass
-        return render(request, 'hwrewardshow.html', {'htmls': json.dumps(htmls),'hwname':hwname,'time':time})
+        return render(request, 'hwrewardshow.html', {'htmls': json.dumps(htmls),'hwname':hwname,'time':time,'num':num})
 
 def Hwrewardpost(request):
     teststudent = request.session.get("teststudent")
@@ -4990,6 +4999,7 @@ def Hwrewardpost(request):
         dj = request.POST.get('option')
         hwname = request.POST.get('hwname')
         time =request.POST.get('time')
+        num = request.POST.get('num')
         data={}
         if teststudent not in names:
             data['status'] = 'error'
@@ -4999,7 +5009,7 @@ def Hwrewardpost(request):
             data['status'] = 'error'
             data['error'] = '要同时选中！！'
             return JsonResponse(data)
-        num = int(dj)
+        nums = int(dj)
         name = stuid
         aaa = ['梁晨宇', '沈柯妤', '梁宇轩', '陈镐', '李航', '刘俊轩', '罗俊凯', '梁栩铭', '徐玮涵', '蒋承延', '张宇麒', '梁宸豪', '沈宏铭', '吴思淼', '蒋米墙',
                '蒋佳成', '王烁森', '吴纪涵', '郭晨宇', '李宗翰', '应昊均', '梁乘玮', '戴麟懿', '罗懿轩', '陈佳浩', '刘世聪', '梁海涛', '李亦晴', '莫佳颖', '梁珂涵',
@@ -5009,39 +5019,39 @@ def Hwrewardpost(request):
             clas = 3
         else:
             clas = 4
-        if num==60:
+        if nums==60:
             ss='A+'
-        elif num==45:
+        elif nums==45:
             ss='A'
-        elif num==25:
+        elif nums==25:
             ss='B+'
-        elif num==15:
+        elif nums==15:
             ss='B'
-        elif num==5:
+        elif nums==5:
             ss='C'
-        elif num==-5:
+        elif nums==-5:
             ss='D'
         else:
             ss='没交'
-        if num>=15:
+        if nums>=15:
             reasona='作业'+hwname+ss
-            Sumrecord.addmss(name, reasona, clas, num)
+            Sumrecord.addmss(name, reasona, clas, nums)
         else:
             pass
         Homewrecord.addmss(name, hwname, ss, str(time),clas)
-        reason=hwname+ss+'奖励积分'+str(num)
+        reason=hwname+ss+'奖励积分'+str(nums)
         hhh=get_object_or_404(Jifeng,name=name)
-        hhh.sum+=num
+        hhh.sum+=nums
         hhh.save()
         hhhh=get_object_or_404(Jifeng,name=teststudent)
         hhhh.sum+=2
         hhhh.save()
         reasons='作业奖励发放管理'
         Jifengrecord.addmss(teststudent, 2, reasons, clas)
-        Jifengrecord.addmss(name,num,reason,clas)
+        Jifengrecord.addmss(name,nums,reason,clas)
         data['status']='success'
         data['error']='奖励'+str(stuid)+dj+'成功！'
-        ssss=get_object_or_404(Homeworks,time=time,name=name)
+        ssss=get_object_or_404(Homeworks,time=time,name=name,num=num)
         ssss.ornots='已发放'
         ssss.save()
         fenzu={'梁晨宇':[['梁宇轩',302],['李梦涵',320],['徐玮涵',321],['王烁森',331],['陈柯涵',341]],'梁宇轩':[['刘俊轩', 303], ['蒋米墙', 319], ['林惠婷', 322], ['王倩', 332], ['陈佳浩', 342]],'刘俊轩':[['沈柯妤', 304], ['夏艺宵', 318], ['梁宸豪', 323], ['沈珂如', 333], ['梁乘玮', 343]],'沈柯妤':[['李航', 305], ['李宗翰', 317], ['沈宏铭', 324], ['李琪', 340], ['郭晨宇', 344]],'李航':[['李亦晴', 306], ['蒋承延', 316], ['罗羽馨', 325], ['戴麟懿', 339], ['吴纪涵', 345]],'李亦晴':[['梁珂涵', 307], ['罗懿轩', 315], ['林千欣卡', 326], ['应昊均', 338], ['刘世聪', 346]],'梁珂涵':[['陈镐', 308], ['梁馨月01', 314], ['王曼旭', 327], ['林奕如', 337], ['叶潇雅', 347]],'陈镐':[['蒋佳成', 309], ['郑文婷', 313], ['罗俊凯', 328], ['谢雨珂', 336], ['陈伊柔', 348]],'蒋佳成':[['张宇麒', 310], ['梁栩铭', 312], ['莫佳颖', 329], ['吴思淼', 335], ['黄婧娴', 349]],'张宇麒':[['梁晨宇', 301], ['梁如妮', 311], ['郑芷欣', 330], ['梁馨予', 334], ['梁海涛', 350]],'陆宇浩': [['李欣宜', 430], ['梁康鑫', 442], ['蒋雨轩', 438], ['沈佳瑶', 421], ['廖木村', 420]],'陶悠然': [['陆宇浩', 401], ['周俊皓', 443], ['罗李琦', 439], ['陆可馨', 422], ['陈宇航', 419]],'李佳英': [['陶悠然', 402], ['梁蕙怡', 444], ['张徐豪', 440], ['徐翊然', 423], ['林鹏豪', 418]],'李秋佟': [['李佳英', 403], ['陈敏雪', 445], ['陈宇珅', 441], ['吴伊豪', 424], ['梁祖铭', 417]],'卢以悦': [['李秋佟', 404], ['孙鉴', 437], ['胡雨诗', 436], ['李聿轩', 425], ['梁仁杰', 416]],'陈俏宏': [['卢以悦', 405], ['毛语彤', 446], ['罗晨轩', 431], ['梁杰', 426], ['蔡锦隆', 415]],'梁瑜珈': [['陈俏宏', 406], ['沈琪舒', 447], ['蒋依洋', 435], ['余思成', 427], ['陈梓烨', 414]],'尚榆皓': [['梁瑜珈', 407], ['李超宇', 448], ['林佳璇', 434], ['沈修平', 428], ['梁耀晟', 413]],'颜之依': [['尚榆皓', 409], ['黄炳铨', 449], ['许可欣', 433], ['何相遥', 429], ['李梓恒', 412]],'李欣宜': [['颜之依', 410], ['何柯瑶', 432], ['梁隽炜', 411], ['章涵茜', 408]]}
@@ -5049,7 +5059,7 @@ def Hwrewardpost(request):
         nnn=0
         for j in zums:
             try:
-                ornots=get_object_or_404(Homeworks, time=time, stuid=j[1])
+                ornots=get_object_or_404(Homeworks, time=time, stuid=j[1],num=num)
                 if ornots.ornots=='已发放':
                     pass
                 else:
@@ -5079,13 +5089,14 @@ def Homewdetail(request):
 
 
 
-def Hwaddnames(request,time,clas):
+def Hwaddnames(request,time,clas,num):
     time=time
     clas=clas
+    num=num
     teststudent = request.session.get("teststudent")
     if not teststudent:
         return redirect('../../testlogin')
-    ms=get_object_or_404(Homeworksid,time=time)
+    ms=get_object_or_404(Homeworksid,time=time,num=num)
     hwname=ms.hwname
     ornot='未订正'
     clas3=[['梁晨宇', 301], ['梁宇轩', 302], ['刘俊轩', 303], ['沈柯妤', 304], ['李航', 305], ['李亦晴', 306], ['梁珂涵', 307], ['陈镐', 308], ['蒋佳成', 309], ['张宇麒', 310], ['梁如妮', 311], ['梁栩铭', 312], ['郑文婷', 313], ['梁馨月01', 314], ['罗懿轩', 315], ['蒋承延', 316], ['李宗翰', 317], ['夏艺宵', 318], ['蒋米墙', 319], ['李梦涵', 320], ['徐玮涵', 321], ['林惠婷', 322], ['梁宸豪', 323], ['沈宏铭', 324], ['罗羽馨', 325], ['林千欣卡', 326], ['王曼旭', 327], ['罗俊凯', 328], ['莫佳颖', 329], ['郑芷欣', 330], ['王烁森', 331], ['王倩', 332], ['沈珂如', 333], ['梁馨予', 334], ['吴思淼', 335], ['谢雨珂', 336], ['林奕如', 337], ['应昊均', 338], ['戴麟懿', 339], ['李琪', 340], ['陈柯涵', 341], ['陈佳浩', 342], ['梁乘玮', 343], ['郭晨宇', 344], ['吴纪涵', 345], ['刘世聪', 346], ['叶潇雅', 347], ['陈伊柔', 348], ['黄婧娴', 349], ['梁海涛', 350]]
@@ -5099,7 +5110,7 @@ def Hwaddnames(request,time,clas):
     for i in classs:
         name=i[0]
         stuid=i[1]
-        Homeworks.addhw(name,hwname,time,ornot,clas,stuid,ornots)
+        Homeworks.addhw(name,hwname,time,ornot,clas,stuid,ornots,num)
     return HttpResponse('成功')
 
 def Gethwms(request):
@@ -5146,18 +5157,22 @@ def Hwlist(request):
         return redirect('../../testlogin')
     ids = Homeworksid.objects.all()
     idss = []
+    idsss=[]
     for i in ids:
         idss.append(i.time)
+        idsss.append(i.num)
     htmls=[]
+    nid=0
     for j in idss:
         try:
-            gg=get_object_or_404(Homeworksid,time=j)
-            url='http://35925.top/all/'+str(j)
+            gg=get_object_or_404(Homeworksid,time=j,num=idsss[nid])
+            url='http://35925.top/all/'+str(j)+'/'+str(idsss[nid])
             name=gg.hwname
             html = '''<a href="%s" target="_blank">%s订正情况</a><p></p><hr style="height:3px;border:none;color:#333;background-color:#333;" />''' % (url, name)
             htmls.append(html)
         except:
             pass
+        nid+=1
     return render(request,'hw01.html',{'htmls':json.dumps(htmls)})
 
 

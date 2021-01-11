@@ -749,16 +749,18 @@ class Homeworks(models.Model):
 	clas=models.IntegerField()
 	stuid=models.IntegerField()
 	ornots=models.CharField(max_length=200)
+	num = models.IntegerField(default=0)
 	class Meta:
 		ordering = ['-time']
 
 	@classmethod
-	def addhw(cls,name,hwname,time,ornot,clas,stuid,ornots):
-		addms = cls(name=name,hwname=hwname,time=time,ornot=ornot,clas=clas,stuid=stuid,ornots=ornots)
+	def addhw(cls,name,hwname,time,ornot,clas,stuid,ornots,num):
+		addms = cls(name=name,hwname=hwname,time=time,ornot=ornot,clas=clas,stuid=stuid,ornots=ornots,num=num)
 		addms.save()
 class Homeworksid(models.Model):
 	time = models.IntegerField()
 	hwname = models.CharField(max_length=500)
+	num = models.IntegerField(default=0)
 	class Meta:
 		ordering = ['-time']
 
