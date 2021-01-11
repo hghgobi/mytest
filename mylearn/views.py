@@ -595,7 +595,7 @@ def Indexs(request):
     #     #     html = html.format(a)
     #     #     msss=msss+html
 
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas3':mas3,'luckycounts':luckycounts,'mas4':mas4,'nsum':nsum})
+    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas3':mas3,'luckycounts':luckycounts,'mas4':mas4})
 
     # try:
     #     n='未读'

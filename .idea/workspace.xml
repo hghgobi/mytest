@@ -15,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mylearn/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="430">
-              <caret line="585" column="13" lean-forward="true" selection-start-line="585" selection-start-column="13" selection-end-line="585" selection-end-column="13" />
+            <state relative-caret-position="520">
+              <caret line="597" column="180" selection-start-line="597" selection-start-column="180" selection-end-line="597" selection-end-column="180" />
               <folding>
                 <element signature="e#0#62#0" expanded="true" />
               </folding>
@@ -814,8 +814,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/mylearn/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="430">
-          <caret line="585" column="13" lean-forward="true" selection-start-line="585" selection-start-column="13" selection-end-line="585" selection-end-column="13" />
+        <state relative-caret-position="520">
+          <caret line="597" column="180" selection-start-line="597" selection-start-column="180" selection-end-line="597" selection-end-column="180" />
           <folding>
             <element signature="e#0#62#0" expanded="true" />
           </folding>
