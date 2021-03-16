@@ -584,7 +584,7 @@ def Indexs(request):
         mas4=Classnews.objects.all()
     try:
         num0 = Studentids.objects.filter(name=teststudent)
-        num = '学号为：'+str(num0[0].idd)
+        num = num0[0].name+'你学号为：'+str(num0[0].idd)
     except:
         num = '请先登录'
 
