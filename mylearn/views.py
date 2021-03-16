@@ -582,6 +582,12 @@ def Indexs(request):
         mas4 = Classnews.objects.all()[:10]
     except:
         mas4=Classnews.objects.all()
+    try:
+        num0 = Studentids.objects.filter(name=teststudent)
+        num = '学号为：'+str(num0[0].idd)
+    except:
+        num = '请先登录'
+
     # nsum = renwusum(teststudent)
     # msss=''
     #     # html = '''<div class="news"> {} </div>'''
@@ -595,7 +601,7 @@ def Indexs(request):
     #     #     html = html.format(a)
     #     #     msss=msss+html
 
-    return render(request, 'base3.html',{'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas3':mas3,'luckycounts':luckycounts,'mas4':mas4})
+    return render(request, 'base3.html',{'num':num,'ms':ms,'cuotiamount':cuotiamount,'badcount':badcount,'luckycount':luckycount,'mas1':mas1,'mas3':mas3,'luckycounts':luckycounts,'mas4':mas4})
 
     # try:
     #     n='未读'
