@@ -6957,7 +6957,7 @@ def Addmints(request,idd,clas):
         data = Mintest.objects.filter(idd=idd)[0]
         name = data.name
         sumscore = data.sumscore
-        names = Studentids.objects.all()
+        names = Studentids.objects.filter(clas=clas)
         for i in names:
             stuname = i.name
             Mintestrecord.addmss(stuname,name,idd,clas,sumscore)
