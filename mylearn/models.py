@@ -1113,7 +1113,7 @@ class Mintestdata(models.Model):
 	name2 = models.CharField(max_length=100)
 	clas = models.IntegerField()
 	class Meta:
-		ordering = ['-time']
+		ordering = ['-idd','-score']
 
 	@classmethod
 	def addmss(cls,testtime,name,score,sumscore,idd,name1,name2,clas):

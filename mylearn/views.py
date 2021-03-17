@@ -6999,6 +6999,26 @@ def Mintestshow(request):
         return render(request,'mintestshow.html',{'htmls':json.dumps(htmls)})
 
 
+def Mintestshowdetail(request,idd,clas):
+    idd = idd
+    clas = clas
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method == 'GET':
+        data = Mintestdata.objects.filter(idd=idd,clas=clas,name1=teststudent)
+        name1 = teststudent
+        if data:
+            score = data[0].score
+        else:
+            score = '试卷没交'
+        datas = Mintestdata.objects.filter(idd=idd,clas=clas)
+        if datas[:30]:
+            datas=datas
+        else:
+            pass
+        title = datas[0].testtime+datas[0].name+'总分'+str(datas[0].sumscore)+'分-'+'-前30-'
+        return render(request,'mintestshowdetail.html',{'title':title,'datas':datas,'name1':name1,'score':score})
 
 
 
