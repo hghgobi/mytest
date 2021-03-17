@@ -6888,7 +6888,7 @@ def Addmintest(request):
             idd = data[0].idd
             clas = data[0].clas
             sumscore = data[0].sumscore
-            return render(request,addmintest.html,{'stuname':stuname,'name':name,'idd':idd,'clas':clas,'sumscore':sumscore})
+            return render(request,'addmintest.html',{'stuname':stuname,'name':name,'idd':idd,'clas':clas,'sumscore':sumscore})
         else:
             return HttpResponse('没有需要登记的成绩，请关注')
     if request.method == 'POST':
