@@ -1,0 +1,67 @@
+{% extends 'base2.html' %}  
+{% block content %}
+
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">测试成绩</font></a></div>
+                    <div class="panel-body">
+
+                      <table id="num" class="table table-bordered" >
+
+         <tr>
+
+            <td class="warning" style="vertical-align: middle;"><font size="4">姓名</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">内容</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">总分</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">成绩</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="1">登记人</font></td>
+
+            
+            
+        </tr>
+        {%for i in data %}
+            <tr id="hys" >
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name1}}</font></td>
+                <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}</font></td>
+                 <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.sumscore}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.score}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name2}}</font></td>
+
+
+            </tr>
+
+
+        {% empty %}
+        <p><font size="5" color="red">暂无相关信息</font></p>
+        {% endfor %}
+
+    </table> 
+     </div>
+                </div>
+            </div>    
+            </div>
+
+<script language="javascript" type="text/javascript">
+var rank={{rank|safe}};
+	    window.onload = function(){
+
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =rank[i] ;
+	    }
+
+    }
+    </script>
+<!--<a><font size="6">未预习或者预习测试没通过的还有以下{{n}}位同学：</font></a><p></p>-->
+<!--{%for j in mss%}-->
+<!--     <a>{{j.name}},</a>-->
+<!--{% empty %}-->
+<!--<p><font size="5" color="red">已全部通过！</font></p>-->
+<!--{% endfor %}-->
+
+
+{% endblock %}
+

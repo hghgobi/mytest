@@ -6938,6 +6938,16 @@ def Addmintest(request):
             data['error'] = '输入格式有误，请重新输入！'
             return JsonResponse(data)
 
+def Mintestdetail(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method == 'GET':
+        data = Mintestdata.objects.filter(name1=teststudent)
+        return render(request,'mintestdetail.html',{'data':data})
+
+
+
 
 
 
