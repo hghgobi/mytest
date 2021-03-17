@@ -6947,6 +6947,31 @@ def Mintestdetail(request):
         return render(request,'mintestdetail.html',{'data':data})
 
 
+def Addmints(request,idd,clas):
+    idd = idd
+    clas = clas
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method == 'GET':
+        data = Mintest.objects.filter(idd=idd)[0]
+        name = data.name
+        sumscore = data.sumscore
+        names = Studentids.objects.all()
+        for i in names:
+            stuname = i.name
+            Mintestrecord.addmss(stuname,name,idd,clas,sumscore)
+        return HttpResponse("成功")
+
+def Delmints(request,idd,clas):
+    idd = idd
+    clas = clas
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method == 'GET':
+        Mintestrecord.objects.filter(idd=idd,clas=clas).delete()
+        return HttpResponse("成功")
 
 
 
