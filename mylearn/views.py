@@ -6973,6 +6973,33 @@ def Delmints(request,idd,clas):
         Mintestrecord.objects.filter(idd=idd,clas=clas).delete()
         return HttpResponse("成功")
 
+def Mintestshow(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    clases = Studentids.objects.filter(name=teststudent)
+    clas = clases[0].clas
+    if request.method == 'GET':
+        datas = Mintest.objects.all()
+        idds =[]
+        for i in datas:
+            idds.append(i.idd)
+        htmls=[]
+        for j in idds:
+            ornot = Mintestdata.objects.filter(idd=j,clas=clas)
+            if ornot:
+                testtime = ornot[0].testtime
+                name = ornot[0].name
+                url = 'http://35925.top/mintestshow/'+str(j)+'/'+str(clas)
+                html = '''<a href="%s" target="_blank">%s-%s </a><p></p><hr style="height:2px;border:none;color:#333;background-color:#333;" />''' % (
+                    url,testtime,name)
+                htmls.append(html)
+            else:
+                pass
+        return render(request,'mintestshow.html',{'htmls':json.dumps(htmls)})
+
+
+
 
 
 

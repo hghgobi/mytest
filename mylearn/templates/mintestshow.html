@@ -1,0 +1,21 @@
+{% extends 'base2.html' %}  
+{% block content %}
+
+<script type="text/javascript">
+urls={{htmls|safe}}
+window.onload=function(){
+var urlsum='';
+for (var i=0;i<urls.length;i++)
+{
+
+   urlsum+= urls[i];
+}
+bg.innerHTML=urlsum;
+}
+</script>
+
+
+<div id="bg" align="center" style="font-size:30px"></div>
+
+
+{% endblock %}

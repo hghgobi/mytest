@@ -153,6 +153,7 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('mintest', views.Mintestdetail),
                path('addmintest/<int:idd>/<int:clas>', views.Addmints),
                path('delmintest/<int:idd>/<int:clas>', views.Delmints),
+               path('mintestshow', views.Mintestshow),
 
 
 
