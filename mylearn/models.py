@@ -1116,7 +1116,7 @@ class Mintestdata(models.Model):
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,testtime,name,score,sumscore,id,name1,name2,clas):
+	def addmss(cls,testtime,name,score,sumscore,idd,name1,name2,clas):
 		addms = cls(testtime=testtime,name=name,score=score,sumscore=sumscore,idd=idd,name1=name1,name2=name2,clas=clas)
 		addms.save()
 
@@ -1132,6 +1132,6 @@ class Mintestrecord(models.Model):
 		ordering = ['-time']
 
 	@classmethod
-	def addmss(cls,stuname,name,id,clas,sumscore):
+	def addmss(cls,stuname,name,idd,clas,sumscore):
 		addms = cls(stuname=stuname,name=name,idd=idd,clas=clas,sumscore=sumscore)
 		addms.save()
