@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweverydayrecord,Hweveryday,Paotui
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweverydayrecord,Hweveryday,Paotui,Mintestrecord,Mintest,Mintestdata
 import json
 from pylab import *
 import random
@@ -6874,4 +6874,69 @@ def Task(request):
 #             i.clas=clas
 #             i.save()
 #     return HttpResponse('success')
+
+def Addmintest(request):
+    teststudent = request.session.get("teststudent")
+    if not teststudent:
+        return redirect('../../testlogin')
+    if request.method == 'GET':
+
+        data = Mintestrecord.objects.filter(stuname=teststudent)
+        if data:
+            stuname = data[0].stuname
+            name = data[0].name
+            idd = data[0].idd
+            clas = data[0].clas
+            sumscore = data[0].sumscore
+            return render(request,addmintest.html,{'stuname':stuname,'name':name,'idd':idd,'clas':clas,'sumscore':sumscore})
+        else:
+            return HttpResponse('没有需要登记的成绩，请关注')
+    if request.method == 'POST':
+        idd = request.POST.get('idd')
+        clas = request.POST.get('clas')
+        score = request.POST.get('score')
+        stuid = request.POST.get('stuid')
+        sumscore = request.POST.get('sumscore')
+        data = {}
+        if score.isdigit() and stuid.isdigit():
+
+            if score<=sumscore and score>=0:
+                name1 = Studentids.objects.filter(idd=stuid,clas=clas)
+                if name1:
+                    name1 = name1[0].name
+                    if name1 == teststudent:
+                        data['status'] = "error"
+                        data['error'] = '不能给自己登记分数！！'
+                        return JsonResponse(data)
+                    else:
+                        if Mintestdata.objects.filter(idd=idd,name1=name1):
+                            data['status'] = "error"
+                            data['error'] = '该生成绩已登记，请勿重新登记！'
+                            return JsonResponse(data)
+                        else:
+                            testtime = Mintest.objects.filter(idd=idd)[0].testtime
+                            name = Mintest.objects.filter(idd=idd)[0].name
+                            name2 = teststudent
+                            Mintestdata.addmss(testtime,name,score,sumscore,idd,name1,name2,clas)
+                            data['status'] = "success"
+                            data['error'] = '登记成功！！！即将刷新'
+                            Mintestrecord.objects.filter(stuname=teststudent,idd=idd).delete()
+                            return JsonResponse(data)
+                else:
+                    data['status'] = "error"
+                    data['error'] = '学号不存在!请重新输入！'
+                    return JsonResponse(data)
+            else:
+                data['status']="error"
+                data['error']='分数高了或者低了！！请重新输入！'
+                return JsonResponse(data)
+        else:
+            data['status'] = "error"
+            data['error'] = '输入格式有误，请重新输入！'
+            return JsonResponse(data)
+
+
+
+
+
 

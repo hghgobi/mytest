@@ -149,6 +149,8 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('paotui', views.Paotuishow),
                path('paotui2', views.Paotuireward),
                path('task', views.Task),
+               path('addmintest', views.Addmintest,name='addmintest'),
+               # path('addmintest', views.Addmintest),
 
 
 

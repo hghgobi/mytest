@@ -1093,3 +1093,45 @@ class Paotui(models.Model):
 	jihui = models.IntegerField(default=1)
 	class Meta:
 		ordering = ['-time']
+
+class Mintest(models.Model):
+	testtime = models.IntegerField()
+	name = models.CharField(max_length=100)
+	sumscore = models.IntegerField()
+	time = models.DateTimeField(auto_now=True)
+	idd = models.IntegerField()
+	class Meta:
+		ordering = ['-time']
+class Mintestdata(models.Model):
+	testtime = models.IntegerField()
+	name = models.CharField(max_length=100)
+	score = models.IntegerField()
+	sumscore = models.IntegerField()
+	time = models.DateTimeField(auto_now=True)
+	idd = models.IntegerField()
+	name1 = models.CharField(max_length=100)
+	name2 = models.CharField(max_length=100)
+	clas = models.IntegerField()
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,testtime,name,score,sumscore,id,name1,name2,clas):
+		addms = cls(testtime=testtime,name=name,score=score,sumscore=sumscore,idd=idd,name1=name1,name2=name2,clas=clas)
+		addms.save()
+
+
+class Mintestrecord(models.Model):
+	stuname = models.CharField(max_length=100)
+	name = models.CharField(max_length=100)
+	time = models.DateTimeField(auto_now=True)
+	idd = models.IntegerField()
+	clas = models.IntegerField()
+	sumscore = models.IntegerField()
+	class Meta:
+		ordering = ['-time']
+
+	@classmethod
+	def addmss(cls,stuname,name,id,clas,sumscore):
+		addms = cls(stuname=stuname,name=name,idd=idd,clas=clas,sumscore=sumscore)
+		addms.save()

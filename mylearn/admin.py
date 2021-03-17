@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sdengji,Sshuliang,Getflowerrecord,Homeworks,Homeworksid,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqs,Hardqsrecord,Hardqsname,Hardkilleronoff,Hardqslimit,Middleqslimit,Easyqslimit,Easyqs,Easyrecord,Draws,Jifeng,Jifengrecord,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweveryday,Hweverydayrecord,Paotui
+from .models import Kzidrecord, Kzlogin1,Kzonoff, Address1,Address2, Kzlogin, Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime, Rankxhl, Xxqs22,Xxqs23,Xxqs24, Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,XHL,Classes,Courses,Homework,Exams,Students,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguanname,guoguan,rankq,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sdengji,Sshuliang,Getflowerrecord,Homeworks,Homeworksid,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqs,Hardqsrecord,Hardqsname,Hardkilleronoff,Hardqslimit,Middleqslimit,Easyqslimit,Easyqs,Easyrecord,Draws,Jifeng,Jifengrecord,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweveryday,Hweverydayrecord,Paotui,Mintest,Mintestdata,Mintestrecord
 
 
 # Register your models here.
@@ -358,3 +358,13 @@ class HweverydayrecordAdmin(admin.ModelAdmin):
 @admin.register(Paotui)
 class PaotuiAdmin(admin.ModelAdmin):
 	list_display = ['id','name','studentname','ornot','clas','ornots','time','num','jihui']
+
+@admin.register(Mintestdata)
+class MintestdataAdmin(admin.ModelAdmin):
+	list_display = ['testtime','name','score','sumscore','idd','name1','name2','clas','time']
+@admin.register(Mintest)
+class MintestAdmin(admin.ModelAdmin):
+	list_display = ['testtime','name','sumscore','idd','time']
+@admin.register(Mintestrecord)
+class MintestrecordAdmin(admin.ModelAdmin):
+	list_display = ['stuname','name','time','idd','clas']

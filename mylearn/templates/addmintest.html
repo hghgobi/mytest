@@ -1,0 +1,105 @@
+{% extends 'base2.html' %}  
+{% block content %}
+
+ <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
+                <div class="panel panel-default">
+                    <div class="panel-heading"><a><font size="6">登记分数</font></a></div>
+                    <div class="panel-body">
+
+
+                         <form id="addtxl" onsubmit="return false" action="{% url 'addmintest' %}" method="POST" style="overflow:hidden">
+        <table>
+            <tbody>
+                <tr>
+                     <td><font size="2">{{name}}</font></td>
+
+                </tr>
+                 <tr>
+                    <td><font size="5">请输入对方学号</font></td>
+                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="stuid"></td>
+                </tr>
+                <tr>
+                    <td><font size="5">请输入对方分数</font></td>
+                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="score"></td>
+                </tr>
+                <tr>
+                     <td><input type="text"  style="hidden" name="idd" value="{{idd}}"></td>
+                </tr>
+                <tr>
+                     <td><input type="text"  style="hidden" name="sumscore" value="{{sumscore}}"></td>
+                </tr>
+                <tr>
+                     <td><input type="text"  style="hidden" name="clas" value="{{clas}}"></td>
+                </tr>
+
+
+
+                <tr>
+                    <td></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="->登记<-" ></td>
+                </tr>
+
+
+            </tbody>
+        </table>
+    </form>
+
+     </div>
+                </div>
+            </div>    
+            </div>
+
+<script language="javascript" type="text/javascript">
+	    window.onload = function(){
+
+		    var oTable = document.getElementById("num");
+		    for(var i=0;i<oTable.rows.length;i++){
+		    n=oTable.rows.length;
+		    oTable.rows[i+1].cells[0].innerHTML =(n-i-1) ;
+	    }
+
+    }
+    </script>
+
+     <script type="text/javascript">
+        $("#addtxl").submit(function(){
+
+            // 异步提交
+            $.ajax({
+                url: "{% url 'mintest' %}",
+                type: 'POST',
+                data: $(this).serialize(),
+                cache: false,
+                success: function(data){
+                    console.log(data);
+
+
+                    if(data['status']=="success"){
+                    $("#error").text(data['error']);
+                    alert(data['error']);
+             setTimeout(function () {
+                    window.parent.location.reload();
+                }, 1000);
+
+
+                    }else{
+                        // 显示错误信息
+                        $("#error").text(data['error']);
+                        alert(data['error']);
+                        setTimeout(function () {
+                    window.parent.location.reload();
+                }, 1000);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr);
+                }
+            });
+            return false;
+        });
+    </script>
+
+{% endblock %}
+
