@@ -6899,8 +6899,11 @@ def Addmintest(request):
         sumscore = request.POST.get('sumscore')
         data = {}
         if score.isdigit() and stuid.isdigit():
-
+            score = int(score)
+            sumscore = int(sumscore)
             if score<=sumscore and score>=0:
+                stuid = int(stuid)
+                clas = int(clas)
                 name1 = Studentids.objects.filter(idd=stuid,clas=clas)
                 if name1:
                     name1 = name1[0].name
