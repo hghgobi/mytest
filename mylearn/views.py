@@ -6880,7 +6880,8 @@ def Addmintest(request):
     if not teststudent:
         return redirect('../../testlogin')
     if request.method == 'GET':
-
+        clases = Studentids.objects.filter(name=teststudent)
+        clas = clases[0].clas
         data = Mintestrecord.objects.filter(stuname=teststudent)
         if data:
             stuname = data[0].stuname
@@ -6888,7 +6889,8 @@ def Addmintest(request):
             idd = data[0].idd
             clas = data[0].clas
             sumscore = data[0].sumscore
-            return render(request,'addmintest.html',{'stuname':stuname,'name':name,'idd':idd,'clas':clas,'sumscore':sumscore})
+            studentids = Studentids.objects.filter(clas=clas)
+            return render(request,'addmintest.html',{'stuname':stuname,'name':name,'idd':idd,'clas':clas,'sumscore':sumscore,'studentids':studentids})
         else:
             return HttpResponse('没有需要登记的成绩，请关注')
     if request.method == 'POST':
@@ -7014,10 +7016,10 @@ def Mintestshowdetail(request,idd,clas):
             score = '试卷没交'
         datas = Mintestdata.objects.filter(idd=idd,clas=clas)
         if datas[:30]:
-            datas=datas
+            datas=datas[:25]
         else:
             pass
-        title = datas[0].testtime+datas[0].name+'总分'+str(datas[0].sumscore)+'分-'+'-前30-'
+        title = str(datas[0].testtime)+datas[0].name+'总分'+str(datas[0].sumscore)+'分-'+'-前30-'
         return render(request,'mintestshowdetail.html',{'title':title,'datas':datas,'name1':name1,'score':score})
 
 

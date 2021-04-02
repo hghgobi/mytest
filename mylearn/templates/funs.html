@@ -5,58 +5,59 @@
         <div class="row">
             <div class="col-xs-12 col-sm-8 col-md-9 col-lg-10">
                 <div class="panel panel-default">
-                    <div class="panel-heading"><a><font size="6">登记分数</font></a></div>
+                    <div class="panel-heading"><a><font size="6">积分兑换</font></a></div>
                     <div class="panel-body">
 
-
-                         <form id="addtxl" onsubmit="return false" action="{% url 'addmintest' %}" method="POST" style="overflow:hidden">
+           <form id="addtxl" onsubmit="return false" action="{% url 'fun' %}" method="POST" style="overflow:hidden">
         <table>
             <tbody>
-                <tr>
-                     <td><font size="2">{{name}}</font></td>
 
-                </tr>
                  <tr>
-                    <td><font size="5">请输入对方学号</font></td>
+                    <td><font size="5">学生id</font></td>
                      <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="stuid"></td>
-                </tr>
-                <tr>
-                    <td><font size="5">请输入对方分数</font></td>
-                     <td><input type="text" style="color:red;width:180px;height:30px;font-size:16px" name="score"></td>
-                </tr>
-                <tr>
-                     <td><input type="hidden" name="idd" value="{{idd}}"></td>
-                </tr>
-                <tr>
-                     <td><input type="hidden"  style="hidden" name="sumscore" value="{{sumscore}}"></td>
-                </tr>
-                <tr>
-                     <td><input type="hidden" name="clas" value="{{clas}}"></td>
-                </tr>
-
+                 </tr>
 
 
                 <tr>
                     <td></td>
-                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="->登记<-" ></td>
+                    <td><input type="submit" style="color:red;width:180px;height:30px;font-size:16px" value ="->兑换<-" ></td>
                 </tr>
 
 
             </tbody>
         </table>
     </form>
+                        <table id="num" class="table table-bordered" >
 
+         <tr>
+             <td style="vertical-align: middle;" ><font size="4">序号</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">姓名</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">来源</font></td>
+            <td class="warning" style="vertical-align: middle;"><font size="4">收支</font></td>
+             <td class="warning" style="vertical-align: middle;"><font size="4">时间</font></td>
+
+        </tr>
+        {%for i in ms %}
+            <tr id="hys" >
+                <td style="vertical-align: middle;" > <font size="3" color="red"></font></td>
+                 <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.reason}}</font></td>
+                <td class="danger" style="vertical-align: middle;"><font size="3" color="red" >{{i.num}}</font></td>
+                <td class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.time}}</font></td>
+
+            </tr>
+
+
+        {% empty %}
+        <p><font size="5" color="red">暂无信息</font></p>
+        {% endfor %}
+
+    </table>
      </div>
                 </div>
-            </div>    
             </div>
-<div>
-     {%for i in studentids %}
-    <p class="active" style="vertical-align: middle;"><font size="3" color="red" >{{i.name}}-学号为:{{i.idd}}</font></p>
-     {% empty %}
-    <p><font size="5" color="red">暂无相关信息</font></p>
-    {% endfor %}
-</div>
+            </div>
+
 <script language="javascript" type="text/javascript">
 	    window.onload = function(){
 
@@ -74,7 +75,7 @@
 
             // 异步提交
             $.ajax({
-                url: "{% url 'addmintest' %}",
+                url: "{% url 'jfdh' %}",
                 type: 'POST',
                 data: $(this).serialize(),
                 cache: false,
