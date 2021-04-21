@@ -155,6 +155,8 @@ urlpatterns = [path('homework/',views.Homeworkmessages),
                path('delmintest/<int:idd>/<int:clas>', views.Delmints),
                path('mintestshow', views.Mintestshow),
                path('mintestshow/<int:idd>/<int:clas>', views.Mintestshowdetail),
+               path('mintestaddteacher', views.Mintestaddteacher),
+               path('youxi', views.Youxi),
 
 
 

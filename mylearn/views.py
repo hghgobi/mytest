@@ -1,7 +1,7 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from .models import Classes
 from django.http import HttpResponse,JsonResponse
-from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweverydayrecord,Hweveryday,Paotui,Mintestrecord,Mintest,Mintestdata
+from .models import Kzidrecord, Kzonoff,Kzlogin1, Address1,Address2, Kzlogin,Kzms, Zbhf, Datirecord, Dati,Daticontrol, Costtimels, Timelimitzk, Yuxinamezk, Zktishu,Zkfx, Lasttime,Rankxhl, Xxqs22,Xxqs23,Xxqs24,Xxqs2,Wktestlimit0,Yuxiname0,Yuxitestcount0,Newnames0,Classnotes0,Classes,Courses,XHL,Homework,Exams,Students,rankq,Classnotes,onlinetestgrade,onlinetestlist,Questions,Scores,Searchstudentid,Loginrecord,Classingss,Homeworksum,TXL,guoguan,guoguanname,addrankqdetail,badhomework,Wkqs,Yuxiname,Newnames,Yuxitestcount,Leavems,Xxqs,Wkqs2,Wktestlimit,Testrm,Wkqs3,Wkqs4,Xxdata,Wrongqs,Sshuliang,Sdengji,Getflowerrecord,Homeworksid,Homeworks,Badnews,Lucky,Uselucky,Music,Setgoodns,Luckys,Classnews,Hardqsrecord,Hardqs,Hardqsname,Easyqs,Easyrecord,Draws,Hardkilleronoff,Jifengrecord,Jifeng,Homewrecord,Limitin,Musics,Zslimit,Sumrecord,Getlucky,Getluckynames,Getluckyornot,Studentids,Hweverydayrecord,Hweveryday,Paotui,Mintestrecord,Mintest,Mintestdata,Wks,Wksrecord
 import json
 from pylab import *
 import random
@@ -55,8 +55,8 @@ from wechatpy.exceptions import InvalidSignatureException
 from wechatpy.utils import check_signature
 from wechatpy.pay import logger
 
-times = [[7,20,7,40],[7, 50, 8, 30], [8, 40, 9, 20], [9, 50, 10, 30], [10, 40, 11, 20],[12,20,13,10], [13, 20, 14, 0], [14, 10, 14, 50],
-         [15, 5, 15, 45], [15, 55, 16, 35],[17,40,18,40], [18, 50, 19, 35], [19, 45, 20, 30]]
+times = [[7,20,7,40],[7, 50, 8, 30], [8, 40, 9, 20], [10, 0, 10, 40], [10, 50, 11, 30],[12,20,13,10], [13, 25, 14, 5], [14, 15, 14, 55],
+         [15, 10, 15, 50], [15, 55, 16, 35],[17,40,18,40], [18, 50, 19, 35], [19, 45, 20, 30]]
 
 def Kz(request,code):
     if request.method=='GET':
@@ -4170,7 +4170,7 @@ def zkfx(request,id0,id1):
                 except:
                     pass
                 num=25
-                if dd ==int(n0):
+                if dd >int(n0):
                     num=35
                 reason = '每日基础对'+str(dd)+'题奖励'
 
@@ -4243,7 +4243,7 @@ def zkfx(request,id0,id1):
 
                 ornot = "通过，"
                 num=25
-                if dd ==int(n0):
+                if dd >int(n0):
                     num=35
                 reason = '每日基础对' + str(dd) + '题奖励'
 
@@ -4358,7 +4358,7 @@ def zkfx(request,id0,id1):
 
                 ornot = "通过，"
                 num=25
-                if dd ==int(n0):
+                if dd >int(n0):
                     num=35
                 reason = '每日基础对' + str(dd) + '题奖励'
 
@@ -6503,11 +6503,20 @@ def Getluckyshow(request):
             year = datetime2.now().year
             month = datetime2.now().month
             day=datetime2.now().day
-            zid = str(year)+str(month)
+            if month<10:
+                zid = str(year)+'0'+str(month)
+            else:
+                zid = str(year) + str(month)
             jid = str(day)
             ornot = Newnames.objects.filter(name=teststudent,zid=zid,jid=jid)
+            # ornot1 = Newnames.objects.all()
+            # for ii in ornot1:
+            #     zid = ii.zid
+            #     jid = ii.jid
+            #     break
+            # ornot = Newnames.objects.filter(name=teststudent, zid=zid, jid=jid)
             if ornot:
-                data['error'] = '今日基础练10题还没通过，请先完成'
+                data['error'] = '今日(或最近一次)基础练10题还没通过，请先完成！！'
                 data['status'] = 'error'
                 return JsonResponse(data)
             else:
@@ -6521,7 +6530,7 @@ def Getluckyshow(request):
         else:
             pass
         jifen6 = get_object_or_404(Jifeng,name=teststudent)
-        limitnum=10
+        limitnum=20
         if jifen6.sum>=limitnum:
             jifen6.sum = jifen6.sum-limitnum
             jifen6.save()
@@ -6529,13 +6538,14 @@ def Getluckyshow(request):
             data['error'] = '积分不足'
             data['status'] = 'error'
             return JsonResponse(data)
-        Jifengrecord.addmss(teststudent,-limitnum,'参与积分碰撞',clas)
+        count = random.randint(5,20)
+        Jifengrecord.addmss(teststudent,-count,'参与积分碰撞',clas)
         jjj = Getlucky.objects.filter(idd=idd)
         # if len(jjj)==0:
         #     Getluckyornot.addmss(idd, 0)
         #     Getlucky.addmss(teststudent, idd)
 
-        if len(jjj)==19:
+        if len(jjj)>=9:
             Getlucky.addmss(teststudent, idd)
             ornot = get_object_or_404(Getluckyornot, idd=idd)
             if ornot.ornot==0:
@@ -6544,7 +6554,7 @@ def Getluckyshow(request):
                 for h in namelucky:
                     nam.append(h.name)
                 shuffle(nam)
-                reward=[30,20,20,15]
+                reward=[30,20,15,10]
                 for o in range(4):
                     Getluckynames.addmss(nam[o], idd, reward[o], o+1)
                     nlrw=get_object_or_404(Jifeng,name=nam[o])
@@ -6561,7 +6571,7 @@ def Getluckyshow(request):
 
         else:
             Getlucky.addmss(teststudent, idd)
-        data['error'] = '参与成功！够20人即开奖'
+        data['error'] = '参与成功！'+'花了'+str(count)+'积分~~'+'够10人即开奖'
         data['status'] = 'success'
         return JsonResponse(data)
 
@@ -6900,6 +6910,7 @@ def Addmintest(request):
         stuid = request.POST.get('stuid')
         sumscore = request.POST.get('sumscore')
         data = {}
+        limitname=['黄炳铨','余思成','陆可馨','何相遥']
         if score.isdigit() and stuid.isdigit():
             score = int(score)
             sumscore = int(sumscore)
@@ -6913,6 +6924,9 @@ def Addmintest(request):
                         data['status'] = "error"
                         data['error'] = '不能给自己登记分数！！'
                         return JsonResponse(data)
+                    elif (name1 in limitname) and (teststudent in limitname):
+                        data['status'] = "error"
+                        data['error'] = '你不能给此人登记分数！请换一个！'
                     else:
                         if Mintestdata.objects.filter(idd=idd,name1=name1):
                             data['status'] = "error"
@@ -6924,7 +6938,12 @@ def Addmintest(request):
                             name2 = teststudent
                             Mintestdata.addmss(testtime,name,score,sumscore,idd,name1,name2,clas)
                             data['status'] = "success"
-                            data['error'] = '登记成功！！！即将刷新'
+                            data['error'] = '登记成功！！！即将刷新,奖励10积分！！'
+                            nlrw = get_object_or_404(Jifeng, name=teststudent)
+                            nlrw.sum += 10
+                            nlrw.save()
+                            reason = '帮老师登记成绩奖励10积分！'
+                            Jifengrecord.addmss(teststudent, 10, reason, clas)
                             Mintestrecord.objects.filter(stuname=teststudent,idd=idd).delete()
                             return JsonResponse(data)
                 else:
@@ -7010,20 +7029,59 @@ def Mintestshowdetail(request,idd,clas):
     if request.method == 'GET':
         data = Mintestdata.objects.filter(idd=idd,clas=clas,name1=teststudent)
         name1 = teststudent
+        mss=''
         if data:
             score = data[0].score
         else:
             score = '试卷没交'
+            notrecord = Mintestrecord.objects.filter(idd=idd)
+            if notrecord:
+                mss='请尽快找下列同学登记分数：'
+                for i in notrecord:
+                    mss=mss+i.stuname+','
+            else:
+                mss='请尽快找老师登记分数。'
+
+
         datas = Mintestdata.objects.filter(idd=idd,clas=clas)
+        mssss='成绩未登记的有：'
+        for jj in ['陆宇浩', '李聿轩', '尚榆皓', '梁祖铭', '梁隽炜', '陈宇航', '徐翊然', '吴伊豪', '梁仁杰', '林鹏豪', '李秋佟', '梁耀晟', '廖木村', '陈梓烨', '蔡锦隆', '蒋雨轩', '李梓恒', '余思成', '张徐豪', '陈宇珅', '罗晨轩', '孙鉴', '梁杰', '周俊皓', '梁康鑫', '黄炳铨', '李欣宜', '李佳英', '梁瑜珈', '颜之依', '卢以悦', '章涵茜', '陶悠然', '李超宇', '陆可馨', '沈佳瑶', '何柯瑶', '何相遥', '林佳璇', '许可欣', '罗李琦', '胡雨诗', '蒋依洋', '陈敏雪', '毛语彤', '沈修平', '陈俏宏', '梁蕙怡', '沈琪舒']:
+            namesss=jj
+            if Mintestdata.objects.filter(idd=idd,name1=namesss):
+                pass
+            else:
+                mssss=mssss+jj+','
+
         if datas[:30]:
             datas=datas[:25]
         else:
             pass
+
+
         title = str(datas[0].testtime)+datas[0].name+'总分'+str(datas[0].sumscore)+'分-'+'-前30-'
-        return render(request,'mintestshowdetail.html',{'title':title,'datas':datas,'name1':name1,'score':score})
+        return render(request,'mintestshowdetail.html',{'title':title,'datas':datas,'name1':name1,'score':score,'mss':mss,'mssss':mssss})
 
 
 
+def Mintestaddteacher(request):
+
+    if request.method == 'POST':
+        idd = request.POST.get('idd')
+        clas = request.POST.get('clas')
+        score = request.POST.get('score')
+        sumscore = request.POST.get('sumscore')
+        testtime = request.POST.get('testtime')
+        name1 = request.POST.get('name1')
+        name2 = request.POST.get('name2')
+        name = request.POST.get('name')
+        try:
+            Mintestdata.addmss(testtime,name,score,sumscore,idd,name1,name2,clas)
+            data='success'
+        except:
+            data='error'
+
+        HttpResponse(data)
 
 
-
+def Youxi(request):
+    return render(request,'darkblue.html')
