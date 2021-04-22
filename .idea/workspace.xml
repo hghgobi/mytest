@@ -6,10 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="412e5ce1-2638-41ee-9ac4-53a029b63241" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mylearn/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/getluckyshow.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/getluckyshow.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/templates/mintestshowdetail.html" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/templates/mintestshowdetail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mylearn/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mylearn/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/mylearn/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -220,7 +218,7 @@
       <workItem from="1618840231508" duration="745000" />
       <workItem from="1618885357378" duration="16163000" />
       <workItem from="1618923349065" duration="620000" />
-      <workItem from="1618977754224" duration="3298000" />
+      <workItem from="1618977754224" duration="4390000" />
     </task>
     <servers />
   </component>
