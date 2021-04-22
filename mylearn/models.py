@@ -1136,7 +1136,7 @@ class Mintestrecord(models.Model):
 		addms = cls(stuname=stuname,name=name,idd=idd,clas=clas,sumscore=sumscore)
 		addms.save()
 
-class Wkss(models.Model):
+class Wks(models.Model):
 	name = models.CharField(max_length=500)
 	zid = models.IntegerField()
 	time = models.DateTimeField(auto_now=True)
@@ -1148,7 +1148,7 @@ class Wkss(models.Model):
 	def addmss(cls,name,zid,link):
 		addms = cls(name=name,zid=zid,link=link)
 		addms.save()
-class Wkssrecord(models.Model):
+class Wksrecord(models.Model):
 	name = models.CharField(max_length=500)
 	learn = models.CharField(max_length=500)
 	num = models.IntegerField()
